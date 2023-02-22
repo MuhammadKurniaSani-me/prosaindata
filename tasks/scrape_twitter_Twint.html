@@ -51,6 +51,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scrape Website with Beautiful Soap" href="scrape_media_indonesia_news.html" />
+    <link rel="prev" title="📚 Proyek Sains Data" href="../introduction/proyek_sain_data.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -127,20 +129,20 @@ const thebe_selector_output = ".output, .cell_output"
   Tasks
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../markdown.html">
-   Markdown Files
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Scrapping Twitter with Twint
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks.html">
-   Content with notebooks
+  <a class="reference internal" href="scrape_media_indonesia_news.html">
+   Scrape Website with Beautiful Soap
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown-notebooks.html">
-   Notebooks with MyST Markdown
+  <a class="reference internal" href="scrape_PTA_UTM.html">
+   Scrape Website with Beautiful Soap
   </a>
  </li>
 </ul>
@@ -401,119 +403,50 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting Twint
-  Downloading twint-2.1.20.tar.gz (31 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
-Requirement already satisfied: aiohttp in /usr/local/lib/python3.8/dist-packages (from Twint) (3.8.4)
-Collecting aiodns
-  Downloading aiodns-3.0.0-py3-none-any.whl (5.0 kB)
+Requirement already satisfied: Twint in /root/.local/lib/python3.8/site-packages (2.1.21)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.8/dist-packages (from Twint) (4.6.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting cchardet
-  Downloading cchardet-2.1.7-cp38-cp38-manylinux2010_x86_64.whl (265 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/266.0 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">266.0/266.0 KB</span> <span class=" -Color -Color-Red">29.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting elasticsearch
-  Downloading elasticsearch-8.6.2-py3-none-any.whl (385 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/385.4 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">385.4/385.4 KB</span> <span class=" -Color -Color-Red">40.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: pysocks in /usr/local/lib/python3.8/dist-packages (from Twint) (1.7.1)
 Requirement already satisfied: pandas in /usr/local/lib/python3.8/dist-packages (from Twint) (1.3.5)
-Collecting aiohttp_socks
-  Downloading aiohttp_socks-0.8.0-py3-none-any.whl (9.4 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting schedule
-  Downloading schedule-1.1.0-py2.py3-none-any.whl (10 kB)
+Requirement already satisfied: fake-useragent in /usr/local/lib/python3.8/dist-packages (from Twint) (1.1.1)
+Requirement already satisfied: googletransx in /usr/local/lib/python3.8/dist-packages (from Twint) (2.4.2)
+Requirement already satisfied: elasticsearch in /usr/local/lib/python3.8/dist-packages (from Twint) (8.6.2)
+Requirement already satisfied: aiohttp in /usr/local/lib/python3.8/dist-packages (from Twint) (3.8.4)
 Requirement already satisfied: geopy in /usr/local/lib/python3.8/dist-packages (from Twint) (1.17.0)
-Collecting fake-useragent
-  Downloading fake_useragent-1.1.1-py3-none-any.whl (50 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/50.4 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">50.4/50.4 KB</span> <span class=" -Color -Color-Red">6.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hCollecting googletransx
-  Downloading googletransx-2.4.2.tar.gz (13 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pycares&gt;=4.0.0
-  Downloading pycares-4.3.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (288 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/289.0 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">289.0/289.0 KB</span> <span class=" -Color -Color-Red">29.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (21.4.0)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (4.0.2)
+Requirement already satisfied: dataclasses in /root/.local/lib/python3.8/site-packages (from Twint) (0.6)
+Requirement already satisfied: cchardet in /usr/local/lib/python3.8/dist-packages (from Twint) (2.1.7)
+Requirement already satisfied: aiodns in /usr/local/lib/python3.8/dist-packages (from Twint) (3.0.0)
+Requirement already satisfied: pysocks in /usr/local/lib/python3.8/dist-packages (from Twint) (1.7.1)
+Requirement already satisfied: aiohttp-socks in /usr/local/lib/python3.8/dist-packages (from Twint) (0.8.0)
+Requirement already satisfied: schedule in /usr/local/lib/python3.8/dist-packages (from Twint) (1.1.0)
+Requirement already satisfied: pycares&gt;=4.0.0 in /usr/local/lib/python3.8/dist-packages (from aiodns-&gt;Twint) (4.3.0)
+Requirement already satisfied: charset-normalizer&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (3.0.1)
+Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (21.4.0)
 Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (6.0.4)
 Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (1.3.1)
-Requirement already satisfied: charset-normalizer&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (3.0.1)
-Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (1.3.3)
 Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (1.8.2)
-Collecting python-socks[asyncio]&lt;3.0.0,&gt;=2.0.0
-  Downloading python_socks-2.1.1-py3-none-any.whl (49 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/49.7 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">49.7/49.7 KB</span> <span class=" -Color -Color-Red">6.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting elastic-transport&lt;9,&gt;=8
-  Downloading elastic_transport-8.4.0-py3-none-any.whl (59 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/59.5 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">59.5/59.5 KB</span> <span class=" -Color -Color-Red">7.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: importlib-resources&gt;=5.0 in /usr/local/lib/python3.8/dist-packages (from fake-useragent-&gt;Twint) (5.10.2)
+Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (1.3.3)
+Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;Twint) (4.0.2)
+Requirement already satisfied: python-socks[asyncio]&lt;3.0.0,&gt;=2.0.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-socks-&gt;Twint) (2.1.1)
+Requirement already satisfied: elastic-transport&lt;9,&gt;=8 in /usr/local/lib/python3.8/dist-packages (from elasticsearch-&gt;Twint) (8.4.0)
+Requirement already satisfied: importlib-resources&gt;=5.0 in /usr/local/lib/python3.8/dist-packages (from fake-useragent-&gt;Twint) (5.10.2)
 Requirement already satisfied: geographiclib&lt;2,&gt;=1.49 in /usr/local/lib/python3.8/dist-packages (from geopy-&gt;Twint) (1.52)
 Requirement already satisfied: requests in /usr/local/lib/python3.8/dist-packages (from googletransx-&gt;Twint) (2.25.1)
 Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.8/dist-packages (from pandas-&gt;Twint) (1.22.4)
 Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas-&gt;Twint) (2.8.2)
 Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas-&gt;Twint) (2022.7.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting urllib3&lt;2,&gt;=1.26.2
-  Downloading urllib3-1.26.14-py2.py3-none-any.whl (140 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/140.6 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">140.6/140.6 KB</span> <span class=" -Color -Color-Red">16.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: certifi in /usr/local/lib/python3.8/dist-packages (from elastic-transport&lt;9,&gt;=8-&gt;elasticsearch-&gt;Twint) (2022.12.7)
+Requirement already satisfied: certifi in /usr/local/lib/python3.8/dist-packages (from elastic-transport&lt;9,&gt;=8-&gt;elasticsearch-&gt;Twint) (2022.12.7)
+Requirement already satisfied: urllib3&lt;2,&gt;=1.26.2 in /usr/local/lib/python3.8/dist-packages (from elastic-transport&lt;9,&gt;=8-&gt;elasticsearch-&gt;Twint) (1.26.14)
 Requirement already satisfied: zipp&gt;=3.1.0 in /usr/local/lib/python3.8/dist-packages (from importlib-resources&gt;=5.0-&gt;fake-useragent-&gt;Twint) (3.13.0)
 Requirement already satisfied: cffi&gt;=1.5.0 in /usr/local/lib/python3.8/dist-packages (from pycares&gt;=4.0.0-&gt;aiodns-&gt;Twint) (1.15.1)
 Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil&gt;=2.7.3-&gt;pandas-&gt;Twint) (1.15.0)
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.8/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp-&gt;Twint) (2.10)
 Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.8/dist-packages (from requests-&gt;googletransx-&gt;Twint) (4.0.0)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.8/dist-packages (from cffi&gt;=1.5.0-&gt;pycares&gt;=4.0.0-&gt;aiodns-&gt;Twint) (2.21)
-Building wheels for collected packages: Twint, googletransx
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for Twint (setup.py) ... ?25l?25hdone
-  Created wheel for Twint: filename=twint-2.1.20-py3-none-any.whl size=33929 sha256=5a2872873cb483e11b0a9741b121b5505cd31b78fa4e4806e0b551581e6569b3
-  Stored in directory: /root/.cache/pip/wheels/4e/80/ea/5b82b5140b7dec857ec0bbfe908193ebf2e5d7f2ebee297519
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for googletransx (setup.py) ... ?25l?25hdone
-  Created wheel for googletransx: filename=googletransx-2.4.2-py3-none-any.whl size=15968 sha256=8f00749920c587e4e67664c1175fe41e263f6d0901f844ac8997e34ef2207fce
-  Stored in directory: /root/.cache/pip/wheels/6a/54/98/96b62f08dd73eca3147e36b5099d77c3f8fedc5472bb488167
-Successfully built Twint googletransx
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: python-socks, cchardet, urllib3, schedule, pycares, fake-useragent, elastic-transport, googletransx, elasticsearch, aiohttp_socks, aiodns, Twint
-  Attempting uninstall: urllib3
-    Found existing installation: urllib3 1.24.3
-    Uninstalling urllib3-1.24.3:
-      Successfully uninstalled urllib3-1.24.3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed Twint-2.1.20 aiodns-3.0.0 aiohttp_socks-0.8.0 cchardet-2.1.7 elastic-transport-8.4.0 elasticsearch-8.6.2 fake-useragent-1.1.1 googletransx-2.4.2 pycares-4.3.0 python-socks-2.1.1 schedule-1.1.0 urllib3-1.26.14
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting twint
-  Cloning https://github.com/twintproject/twint.git (to revision origin/master) to /tmp/pip-install-u5perfhw/twint_d6bac7559c304ed7bce5d0bff13a8063
-  Running command git clone --filter=blob:none --quiet https://github.com/twintproject/twint.git /tmp/pip-install-u5perfhw/twint_d6bac7559c304ed7bce5d0bff13a8063
+  Cloning https://github.com/twintproject/twint.git (to revision origin/master) to /tmp/pip-install-b74974rq/twint_44c10d02d98047f9a674d643921485b9
+  Running command git clone --filter=blob:none --quiet https://github.com/twintproject/twint.git /tmp/pip-install-b74974rq/twint_44c10d02d98047f9a674d643921485b9
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">  WARNING: Did not find branch or tag &#39;origin/master&#39;, assuming revision or ref.</span>
@@ -526,10 +459,7 @@ Requirement already satisfied: aiohttp in /usr/local/lib/python3.8/dist-packages
 Requirement already satisfied: aiodns in /usr/local/lib/python3.8/dist-packages (from twint) (3.0.0)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.8/dist-packages (from twint) (4.6.3)
 Requirement already satisfied: cchardet in /usr/local/lib/python3.8/dist-packages (from twint) (2.1.7)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting dataclasses
-  Downloading dataclasses-0.6-py3-none-any.whl (14 kB)
+Requirement already satisfied: dataclasses in /root/.local/lib/python3.8/site-packages (from twint) (0.6)
 Requirement already satisfied: elasticsearch in /usr/local/lib/python3.8/dist-packages (from twint) (8.6.2)
 Requirement already satisfied: pysocks in /usr/local/lib/python3.8/dist-packages (from twint) (1.7.1)
 Requirement already satisfied: pandas in /usr/local/lib/python3.8/dist-packages (from twint) (1.3.5)
@@ -539,24 +469,22 @@ Requirement already satisfied: geopy in /usr/local/lib/python3.8/dist-packages (
 Requirement already satisfied: fake-useragent in /usr/local/lib/python3.8/dist-packages (from twint) (1.1.1)
 Requirement already satisfied: googletransx in /usr/local/lib/python3.8/dist-packages (from twint) (2.4.2)
 Requirement already satisfied: pycares&gt;=4.0.0 in /usr/local/lib/python3.8/dist-packages (from aiodns-&gt;twint) (4.3.0)
-Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (4.0.2)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (6.0.4)
-Requirement already satisfied: charset-normalizer&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (3.0.1)
 Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (1.3.1)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (1.8.2)
-Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (21.4.0)
 Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (1.3.3)
+Requirement already satisfied: charset-normalizer&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (3.0.1)
+Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (4.0.2)
+Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (21.4.0)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (1.8.2)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.8/dist-packages (from aiohttp-&gt;twint) (6.0.4)
 Requirement already satisfied: python-socks[asyncio]&lt;3.0.0,&gt;=2.0.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp_socks-&gt;twint) (2.1.1)
 Requirement already satisfied: elastic-transport&lt;9,&gt;=8 in /usr/local/lib/python3.8/dist-packages (from elasticsearch-&gt;twint) (8.4.0)
 Requirement already satisfied: importlib-resources&gt;=5.0 in /usr/local/lib/python3.8/dist-packages (from fake-useragent-&gt;twint) (5.10.2)
 Requirement already satisfied: geographiclib&lt;2,&gt;=1.49 in /usr/local/lib/python3.8/dist-packages (from geopy-&gt;twint) (1.52)
 Requirement already satisfied: requests in /usr/local/lib/python3.8/dist-packages (from googletransx-&gt;twint) (2.25.1)
 Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas-&gt;twint) (2022.7.1)
-Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas-&gt;twint) (2.8.2)
 Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.8/dist-packages (from pandas-&gt;twint) (1.22.4)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: certifi in /usr/local/lib/python3.8/dist-packages (from elastic-transport&lt;9,&gt;=8-&gt;elasticsearch-&gt;twint) (2022.12.7)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas-&gt;twint) (2.8.2)
+Requirement already satisfied: certifi in /usr/local/lib/python3.8/dist-packages (from elastic-transport&lt;9,&gt;=8-&gt;elasticsearch-&gt;twint) (2022.12.7)
 Requirement already satisfied: urllib3&lt;2,&gt;=1.26.2 in /usr/local/lib/python3.8/dist-packages (from elastic-transport&lt;9,&gt;=8-&gt;elasticsearch-&gt;twint) (1.26.14)
 Requirement already satisfied: zipp&gt;=3.1.0 in /usr/local/lib/python3.8/dist-packages (from importlib-resources&gt;=5.0-&gt;fake-useragent-&gt;twint) (3.13.0)
 Requirement already satisfied: cffi&gt;=1.5.0 in /usr/local/lib/python3.8/dist-packages (from pycares&gt;=4.0.0-&gt;aiodns-&gt;twint) (1.15.1)
@@ -564,19 +492,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.8/dist-pack
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.8/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp-&gt;twint) (2.10)
 Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.8/dist-packages (from requests-&gt;googletransx-&gt;twint) (4.0.0)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.8/dist-packages (from cffi&gt;=1.5.0-&gt;pycares&gt;=4.0.0-&gt;aiodns-&gt;twint) (2.21)
-Building wheels for collected packages: twint
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for twint (setup.py) ... ?25l?25hdone
-  Created wheel for twint: filename=twint-2.1.21-py3-none-any.whl size=38870 sha256=fb7fda58313637fbdb8267fcac88fb9963adebdc455dc4c3fafd16373c24f090
-  Stored in directory: /tmp/pip-ephem-wheel-cache-lf0d_2t2/wheels/82/67/14/5495652787d3c55288164de4234c0712a1f785a64f61f1ea70
-Successfully built twint
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: dataclasses, twint
-<span class=" -Color -Color-Yellow">  WARNING: The script twint is installed in &#39;/root/.local/bin&#39; which is not on PATH.</span>
-<span class=" -Color -Color-Yellow">  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</span>
-Successfully installed dataclasses-0.6 twint-2.1.21
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
@@ -602,132 +517,153 @@ Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.8/dist-pac
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRITICAL:root:twint.run:Twint:Feed:noDataExpecting value: line 1 column 1 (char 0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628459596380798976 2023-02-22 18:19:57 +0000 &lt;JatengTV&gt; (13) Masih belum banyak peraturan yang mengatur perusahaan PT perorangan ini sehingga pemilik perusahaan bebas melakukan aktivitas usahanya. #ptperorangan #badanhukum #badanusaha #umkm #ganjarpranowo #prabowo #aniesbaswedan #puanmaharani #pilpres2024  https://t.co/HRqCfZUnue
+1628452936711012352 2023-02-22 17:53:29 +0000 &lt;folktrade&gt; @ndahmutty @AikHoki @maulanarifki @PNS_Ababil @prastow @kemendagri @kempanrb @KASN_RI @OmbudsmanRI137 @PNS_Garis_Lucu @mohmahfudmd @BKNgoid @puanmaharani_ri Sorry OOT, TPP itu ibaratnya tukin tp di Pemda ya?
+1628451399104368640 2023-02-22 17:47:23 +0000 &lt;Muhamma43425577&gt; @andre_rosiade Yakin : Capres 1. Puan Maharani/..., 2. Prabowo/GP, 3. Anies/AHY
+1628438595517423616 2023-02-22 16:56:30 +0000 &lt;dicaprio_deni&gt; @puanmaharani_ri Mbak @puanmaharani_ri for 2024. 🔥🔥🔥
+1628435940309110784 2023-02-22 16:45:57 +0000 &lt;iniandii&gt; @hanmula @kring_pajak @KPK_RI @BBCIndonesia @jokowi @DivHumas_Polri @PolhukamRI @mohmahfudmd @puanmaharani_ri
+1628434331155980289 2023-02-22 16:39:34 +0000 &lt;sospolkw&gt; @StopPlandemit Yth buk @puanmaharani_ri  apa anda tdk syg sm ibu anda,beliau sdh tua dan lelah sdh saatnya istirahat perbanyak ibadah bekal di akhirat,Setau sy semakin tua seseorang dia akn kembali sprt anak kecil,cb perhatikan.
+1628433693307191296 2023-02-22 16:37:01 +0000 &lt;DamnWaldo&gt; @kayakuwek22 @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Lu ga usah SARA, yg suka bubarin ibadah orang lain kan golongan lu, klo dibalikin gmn? Kan taik
+1628433495772237824 2023-02-22 16:36:14 +0000 &lt;Denigz0&gt; ada lagi nih ,viral bocil SMK full durasi &quot;CEK LINK DI BIO* KUUU bokep indo viral terbaru clmk skandal bacok mmk basah bocil sangek mmk pink #bocilmesum #bpcilviral2022#bocilsange  https://t.co/MMSKRzvFQH
+1628432918686347264 2023-02-22 16:33:57 +0000 &lt;ArdoGoenawan&gt; @Msimsims2ND Soekarno presiden pertama,Megawati presiden pertama perempuan,Puan Maharani Ketua DPR perempuan pertama serba pertama takdir keluarga Soekarno sang Proklamator Bangganya kami dengan keluarga Soekarno 👍
+1628422357814743045 2023-02-22 15:51:59 +0000 &lt;fikri_arif&gt; @Ronnie_Rusli @prabowo Perlu di apresiasi. dan saya juga kemungkinan akan tetap GOLPUT selama belum ada capres yg berani menghapus sistem kerja kontrak dan outsourcing. @prabowo @aniesbaswedan @ganjarpranowo @puanmaharani_ri @airlangga_hrt @EXCOPARTAIBURUH @budimandjatmiko @Dita_Sari_  #saveburuh
+1628419213659607040 2023-02-22 15:39:29 +0000 &lt;Bustomi28692834&gt; @SalJu_SoYaLa @puanmaharani_ri @MariaAlcaff @La_22722  https://t.co/LtVh7S9pIg
+1628416047857664002 2023-02-22 15:26:54 +0000 &lt;AndyHuskyyy&gt; @pras_pective @mediocrickey @puanmaharani_ri Doain acc yes 😳
+1628415832324964352 2023-02-22 15:26:03 +0000 &lt;pras_pective&gt; @AndyHuskyyy @mediocrickey @puanmaharani_ri selebtweet super micro seperti saya juga ditawari dong, mas andy  bagian copywriting juga gapapah 🫵🏻😋  https://t.co/0CDUsJfgjA
+1628414715402813440 2023-02-22 15:21:37 +0000 &lt;MuslanBachmid&gt; Dari Timur Indonesia Kami Mendukung Prof YIM maju sebagai Capres atau Cawapres di tahun 2024   @Yusrilihza_Mhd  @jokowi  @puanmaharani_ri  @mohmahfudmd  @PDI_Perjuangan  @OfficialDPP_PBB  @airlangga_hrt  @ridwankamil  @ListyoSigitP  https://t.co/GAOi18ABf3
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sleeping for 1.0 secs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628413469728071681 2023-02-22 15:16:40 +0000 &lt;AR_Wiran6&gt; @setiyo_welly @Anaksemut4 @puanmaharani_ri @Miduk17 Sii k0nt0l_ kang Hoax
+1628412540471615490 2023-02-22 15:12:58 +0000 &lt;rifkiThoriqazi2&gt; @Miduk17 Bismillah next Puan maharani memimpin penerus Beliau ini😇😇
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRITICAL:root:twint.run:Twint:Feed:noDataExpecting value: line 1 column 1 (char 0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628406751388377089 2023-02-22 14:49:58 +0000 &lt;ndakik2&gt; @puanmaharani_ri  https://t.co/EJiL8eDAyt
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sleeping for 8.0 secs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628404909019369472 2023-02-22 14:42:39 +0000 &lt;pemudamerahh&gt; Puan: Negara &amp;amp; Swasta Wajib Penuhi Layanan Air Bersih Rakyat  Jakarta,  https://t.co/dtBb24w8Xn - Ketua DPR RI Puan Maharani mengatakan, penyediaan layanan air bersih merupakan tanggung jawab negara dan memastikan bahwa air bersih    https://t.co/XeyCSjgAC5
+1628404296730681344 2023-02-22 14:40:13 +0000 &lt;jokerjutex&gt; @setiyo_welly @Anaksemut4 @puanmaharani_ri @Miduk17 jongos
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRITICAL:root:twint.run:Twint:Feed:noDataExpecting value: line 1 column 1 (char 0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628398492053049345 2023-02-22 14:17:09 +0000 &lt;the3brothers2&gt; @setiyo_welly @Anaksemut4 @puanmaharani_ri @Miduk17 muka mesum tuh
+1628394189296750594 2023-02-22 14:00:03 +0000 &lt;RelawanPuan_ID&gt; Puan Maharani Bangga Saksikan Karya Anak Bangsa di New York Fashion Week  #relawanpuan #2024bersamapuan  https://t.co/bpeSvWGio9
+1628390167458336768 2023-02-22 13:44:04 +0000 &lt;PUANnews&gt; #Kalahkan AHY, Sandi hingga Puan, Ini 2 Faktor yang Bikin Erick Thohir Jadi Kandidat Cawapres Terkuat -  https://t.co/gL4HNBd1Bc  #PuanMaharani   https://t.co/PGLOLzgNPN
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sleeping for 27.0 secs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628389198310039553 2023-02-22 13:40:13 +0000 &lt;ZainalPras&gt; Pemilih Prabowo S. : Tidak tahu: 21,6% ; Ganjar Pranowo: 19,7% ; Anies B. : 19,3% ; Ridwan Kamil: 14,2% ; AHY : 8,4% ; Sandiaga S. Uno: 8,4% ; Tokoh lainnya: 4,6% ; Andika Perkasa: 2,8% ; Erick Thohir: 2,3% ; Tri Rismaharini: 1,8% ; Puan Maharani: 0,9%. #BersamaJuara
+1628389045704474624 2023-02-22 13:39:37 +0000 &lt;rahmamamarah&gt; Pemilih Prabowo S. : Tidak tahu: 21,6% ; Ganjar Pranowo: 19,7% ; Anies B. : 19,3% ; Ridwan Kamil: 14,2% ; AHY : 8,4% ; Sandiaga S. Uno: 8,4% ; Tokoh lainnya: 4,6% ; Andika Perkasa: 2,8% ; Erick Thohir: 2,3% ; Tri Rismaharini: 1,8% ; Puan Maharani: 0,9%. #BersamaJuara
+1628389043401809923 2023-02-22 13:39:36 +0000 &lt;rahmamamarah&gt; Pemilih Ganjar Pranowo : Tidak Tahu: 30,2% ; Prabowo Subianto: 21,1% ; Ridwan Kamil: 14,8% ; Anies : 7,6% ; Tokoh lainnya: 7,2% ; Erick Thohir: 5,6% ; Tri Rismaharini: 4,9% ; Puan Maharani: 3% ; Sandiaga S. Uno: 2,3% ;  Andika Perkasa: 2% ; Agus Harimurti Y. : 1,3%. #BersamaJuara
+1628389041208168448 2023-02-22 13:39:36 +0000 &lt;rahmamamarah&gt; Sandiaga Salahuddin Uno: 8,2% ; Tokoh lainnya: 5,1% ; Andika Perkasa: 2,5% ; Puan Maharani: 2,5% ; Erick Thohir: 0,6% ; Tri Rismaharini: 0%. #BersamaJuara Ridwan Kamil
+1628389036300828674 2023-02-22 13:39:34 +0000 &lt;rahmamamarah&gt; Puan Maharani: 1,5% ; Airlangga Hartarto: 0,8% ; Mahfud Md: 0,7% ; Hary Tanoesoedibyo: 0,5% ; Khofifah Indar Parawansa: 0,5% ; Surya Paloh: 0,5% ; Basuki Tjahaja Purnama: 0,5% ; Lainnya: 2,2% ; Tidak Tahu/tidak jawab: 45,9%. #BersamaJuara Ridwan Kamil
+1628388214032719873 2023-02-22 13:36:18 +0000 &lt;AleinIbrahim&gt; @kangwaqfi2 @SalJu_SoYaLa @MariaAlcaff @puanmaharani_ri @La_22722 Udah gila orang satu ini yaa ...
+1628386472519938048 2023-02-22 13:29:23 +0000 &lt;KNanden&gt; @puanmaharani_ri 👍
+1628386451137380353 2023-02-22 13:29:18 +0000 &lt;adangkomarudin3&gt; @puanmaharani_ri Sehat jasmani dan rohani dambaan semua manusia beriman dan bertaqwa pada Tuhan Yang Maha Esa.  Banyak manusia mendambakan harta dan tahta tapi mereka lupa dengan bagaimana cara mendapatkannya.  Jangan lupakan sejarah di mana firaun dan balatentaranya tenggelam melawan utusan-Nya.
+1628386243838111746 2023-02-22 13:28:29 +0000 &lt;TheUncleDee&gt; Sekarang jelas ya semuanya,   Nggak usah heran kalau ada yg alergi liat Ibu Ibu pergi ke  pengajian..  @puanmaharani_ri  @PDI_Perjuangan    https://t.co/mDZ8W7zfDO
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">JSONDecodeError</span>Traceback (most recent call last)
-<span class="nn">/usr/local/lib/python3.8/dist-packages/twint/run.py</span> in <span class="ni">Feed</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span>                 <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">TwitterSearch</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">65</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">feed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">init</span> <span class="o">=</span> <span class="n">feed</span><span class="o">.</span><span class="n">Json</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span>                 <span class="k">break</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/twint/feed.py</span> in <span class="ni">Json</span><span class="nt">(response)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">logme</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="vm">__name__</span><span class="o">+</span><span class="s1">&#39;:Json&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">42</span>     <span class="n">json_response</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="n">html</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;items_html&quot;</span><span class="p">]</span>
-
-<span class="nn">/usr/lib/python3.8/json/__init__.py</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span>             <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">357</span>         <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">358</span>     <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">/usr/lib/python3.8/json/decoder.py</span> in <span class="ni">decode</span><span class="nt">(self, s, _w)</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">337</span><span class="s2">         obj, end = self.raw_decode(s, idx=_w(s, 0).end())</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span><span class="s2">         end = _w(s, end).end()</span>
-
-<span class="nn">/usr/lib/python3.8/json/decoder.py</span> in <span class="ni">raw_decode</span><span class="nt">(self, s, idx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span><span class="s2">         except StopIteration as err:</span>
-<span class="ne">--&gt; </span><span class="mi">355</span><span class="s2">             raise JSONDecodeError(&quot;Expecting value&quot;, s, err.value) from None</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span><span class="s2">         return obj, end</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
-
-<span class="s2">During handling of the above exception, another exception occurred:</span>
-
-<span class="ne">KeyboardInterrupt</span>Traceback (most recent call last)
-<span class="s2">&lt;ipython-input-4-0c967dddc5ba&gt; in &lt;module&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="s2"> c.Pandas = True</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="s2"> c.Store_csv = True</span>
-<span class="ne">---&gt; </span><span class="mi">10</span><span class="s2"> twint.run.Search(c)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span><span class="s2"> Tweets_df = twint.storage.panda.Tweets_df</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/twint/run.py</span> in <span class="ni">Search</span><span class="nt">(config, callback)</span>
-<span class="g g-Whitespace">    </span><span class="mi">325</span><span class="s2">     config.Profile = False</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span><span class="s2">     config.Profile_full = False</span>
-<span class="ne">--&gt; </span><span class="mi">327</span><span class="s2">     run(config, callback)</span>
-<span class="g g-Whitespace">    </span><span class="mi">328</span><span class="s2">     if config.Pandas_au:</span>
-<span class="g g-Whitespace">    </span><span class="mi">329</span><span class="s2">         storage.panda._autoget(&quot;tweet&quot;)</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/twint/run.py</span> in <span class="ni">run</span><span class="nt">(config, callback)</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="s2">         raise</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">226</span><span class="s2">     get_event_loop().run_until_complete(Twint(config).main(callback))</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span><span class="s2"> def Favorites(config):</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/nest_asyncio.py</span> in <span class="ni">run_until_complete</span><span class="nt">(self, future)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">                 f._log_destroy_pending = False</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s2">             while not f.done():</span>
-<span class="ne">---&gt; </span><span class="mi">84</span><span class="s2">                 self._run_once()</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="s2">                 if self._stopping:</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span><span class="s2">                     break</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/nest_asyncio.py</span> in <span class="ni">_run_once</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span><span class="s2">             handle = ready.popleft()</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span><span class="s2">             if not handle._cancelled:</span>
-<span class="ne">--&gt; </span><span class="mi">120</span><span class="s2">                 handle._run()</span>
-<span class="g g-Whitespace">    </span><span class="mi">121</span><span class="s2">         handle = None</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span><span class="s2"> </span>
-
-<span class="nn">/usr/lib/python3.8/asyncio/events.py</span> in <span class="ni">_run</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span><span class="s2">     def _run(self):</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span><span class="s2">         try:</span>
-<span class="ne">---&gt; </span><span class="mi">81</span><span class="s2">             self._context.run(self._callback, *self._args)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">         except (SystemExit, KeyboardInterrupt):</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s2">             raise</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/nest_asyncio.py</span> in <span class="ni">step</span><span class="nt">(task, exc)</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span><span class="s2">         curr_task = curr_tasks.get(task._loop)</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span><span class="s2">         try:</span>
-<span class="ne">--&gt; </span><span class="mi">196</span><span class="s2">             step_orig(task, exc)</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="s2">         finally:</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="s2">             if curr_task is None:</span>
-
-<span class="nn">/usr/lib/python3.8/asyncio/tasks.py</span> in <span class="ni">__step</span><span class="nt">(***failed resolving arguments***)</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="s2">                 # We use the `send` method directly, because coroutines</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span><span class="s2">                 # don&#39;t have `__iter__` and `__next__` methods.</span>
-<span class="ne">--&gt; </span><span class="mi">280</span><span class="s2">                 result = coro.send(None)</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span><span class="s2">             else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span><span class="s2">                 result = coro.throw(exc)</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/twint/run.py</span> in <span class="ni">run</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="s2">                     elif self.config.TwitterSearch:</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="s2">                         logme.debug(__name__+&#39;:Twint:main:twitter-search&#39;)</span>
-<span class="ne">--&gt; </span><span class="mi">199</span><span class="s2">                         await self.tweets()</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span><span class="s2">                 else:</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span><span class="s2">                     logme.debug(__name__+&#39;:Twint:main:no-more-tweets&#39;)</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/twint/run.py</span> in <span class="ni">tweets</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span><span class="s2">     async def tweets(self):</span>
-<span class="ne">--&gt; </span><span class="mi">137</span><span class="s2">         await self.Feed()</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span><span class="s2">         if self.config.Location:</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="s2">             logme.debug(__name__+&#39;:Twint:tweets:location&#39;)</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/twint/run.py</span> in <span class="ni">Feed</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span><span class="s2"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="s2">                     sys.stderr.write(&#39;sleeping for </span><span class="si">{}</span><span class="s2"> secs</span><span class="se">\n</span><span class="s2">&#39;.format(delay))</span>
-<span class="ne">---&gt; </span><span class="mi">98</span><span class="s2">                     time.sleep(delay)</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="s2">                     self.user_agent = await get.RandomUserAgent(wa=True)</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span><span class="s2">                     continue</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628386236691021825 2023-02-22 13:28:27 +0000 &lt;KNanden&gt; @puanmaharani_ri 👍
+1628385846008352769 2023-02-22 13:26:54 +0000 &lt;WahyuTekeks&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Sangking susah nya cari kesalahan
+1628385453949984768 2023-02-22 13:25:20 +0000 &lt;adangkomarudin3&gt; @puanmaharani_ri @KAI121 KRL merupakan alat tranfortasi murah tapi terarah sehingga sampai tujuan dengan tepat waktu.  2024 merupakan waktu kita merubah keadaan dari jaman jahil yah ke jaman terang benderang karena semua anggaran terbuka.  Beda sama pemilihan mau tertutup karena mereka menutupi anggaran.
+1628384268912300034 2023-02-22 13:20:38 +0000 &lt;adangkomarudin3&gt; @puanmaharani_ri Mendengarkan musik sebagai alat untuk mengingat kepada pencipta langit dan bumi beserta isinya.  Ada sebagian manusia mengharamkan musik karena mereka beragama bukan pakai perasaan tapi pakai aturan baku dari hati membeku.  Sehingga segala sesuatu mereka atur tanpa tahu dan malu.
+1628384115186872321 2023-02-22 13:20:01 +0000 &lt;WartaEkonomi&gt; Waduh... Karena Persoalan Ini, Puan Maharani Bakal Dilaporkan ke MKD, Siap-siap!  https://t.co/WMfvNZuPoq
+1628380850609061890 2023-02-22 13:07:03 +0000 &lt;kangwaqfi2&gt; @SalJu_SoYaLa @MariaAlcaff @puanmaharani_ri @La_22722  https://t.co/Ir4aNZru7Q
+1628376550289842177 2023-02-22 12:49:58 +0000 &lt;JatengTV&gt; (10) Dalam PT Perorangan, modal pendirian badan hukum bersifat bebas, mulai dari Rp0 hingga maksimal Rp5 Miliar. Menarik bukan? #Indonesiamaju #jokowi #ptperorangan #badanhukum #umkm #ganjarpranowo #prabowo #aniesbaswedan #puanmaharani #pilpres2024  https://t.co/HRqCfZUnue
+1628376159833710596 2023-02-22 12:48:24 +0000 &lt;Taufiq_canser&gt; @ekowboy2 Justru kebalik Dul,, Anis yg tak mampu mengimbangi Ganjar, Itu sbbnya para buzzer2nya Anis giat menyuarakan puan Maharani agar dipilih PDIP, Krn Anis tau dan mmg tdk mmpu melawan Ganjar
+1628375913640652801 2023-02-22 12:47:26 +0000 &lt;Hendrikorachman&gt; Ada kerajaan tiongkok memiliki raja yg sangat baik tapi kerajaannya hancur.Saking baiknya menimbulkan kekacauan sistem kerajaan akan hukumnya,timbul pemberontakan.Daerah kerinci sana, byk kelelawar jumlahnya besar Cc @mohmahfudmd @jokowi @prabowo @puanmaharani_ri @KPU_ID @KPK_RI
+1628375104471334917 2023-02-22 12:44:13 +0000 &lt;Selera_Milenial&gt; Hasil musra hari ini.  #airlanggahartarto  #golkarindonesia  #pemilu2024  #capres2024  #ridwankamil  #GanjarPranowo  #AniesBaswedan  #prabowo  #puanmaharani  https://t.co/9EX2jXIZKy
+1628371478747160583 2023-02-22 12:29:48 +0000 &lt;AtokSsk&gt; @bawaslu_RI bagaimana dengan baleho nya @puanmaharani_ri yg sdh terpasang dari tahun lalu di tiap kab/kota se Indonesia oleh @PDI_Perjuangan .
+1628366069412007939 2023-02-22 12:08:19 +0000 &lt;Widyarenee&gt; Ibu @puanmaharani_ri masih keturunan Minang &amp;amp; sbg pejabat, apakah akan diam saja thdp hal ini ? Tunggu laporan DPR kah ? Atau gak penting2 banget suara PDIP di Sumbar kali ya.. 😊   https://t.co/SNN9axlESU..  https://t.co/CbCbe6Mx10
+1628365765266276354 2023-02-22 12:07:06 +0000 &lt;ndahmutty&gt; @AikHoki @maulanarifki @PNS_Ababil @prastow @kemendagri @kempanrb @KASN_RI @OmbudsmanRI137 @PNS_Garis_Lucu @mohmahfudmd @BKNgoid @puanmaharani_ri gak mau, ak perlu uang ny buat beli tiket pulkam huft
+1628363324550426624 2023-02-22 11:57:24 +0000 &lt;AikHoki&gt; @ndahmutty @maulanarifki @PNS_Ababil @prastow @kemendagri @kempanrb @KASN_RI @OmbudsmanRI137 @PNS_Garis_Lucu @mohmahfudmd @BKNgoid @puanmaharani_ri siap2 ketemu pienice badan keuangan di akherat utk selesaikan utang piutang
+1628363309174112256 2023-02-22 11:57:21 +0000 &lt;Hendrikorachman&gt; Keputusan pengadilan @officialMKRI &amp;amp; @MahkamahAgung paling tinggi,tdk bisa kebijakan menteri/sederajat menganulir krn melanggar konstitusi (ASN).Beda sama anggota @DPR_RI  Cc @jokowi @mohmahfudmd @Yusrilihza_Mhd @ListyoSigitP @prabowo @jansen_jsp @DivHumas_Polri @puanmaharani_ri
+1628362940402503681 2023-02-22 11:55:53 +0000 &lt;LaNyallaAcademy&gt; @KAPLAK_DENGKLAK @ganjarpranowo @dprdjatengprov @DPR_RI @puanmaharani_ri Nah itu silahkan tanya ke yang berwenang pak
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628360444439322625 2023-02-22 11:45:58 +0000 &lt;AndyHuskyyy&gt; @mediocrickey Bu @puanmaharani_ri 🙏 Bisa DM nanti, saya buka jasa endorse jugha
+1628360024056803329 2023-02-22 11:44:17 +0000 &lt;Via_AbdullahR2&gt; @SalJu_SoYaLa @puanmaharani_ri @MariaAlcaff @La_22722 Wkwkwkwkwk
+1628360023540748288 2023-02-22 11:44:17 +0000 &lt;PUANnews&gt; #Dewan Minta Relokasi Pedagang Cik Puan Lancar, Pedagang Hanya Butuh Kepastian Pemko Pekanbaru - Tribun Pekanbaru  #PuanMaharani   https://t.co/OXHowGnVOF
+1628359226564444162 2023-02-22 11:41:07 +0000 &lt;AndyHuskyyy&gt; @mediocrickey Bismillah 2024 Puan Maharani
+1628355273638449153 2023-02-22 11:25:25 +0000 &lt;Hendrikorachman&gt; Kebijakan @Kemhan_RI pk @prabowo &amp;amp; @DivHumas_Polri pk @ListyoSigitP tdk punya hak menerima SDM kembali setelah kep @MahkamahAgung ttg pidana krn melanggar konstitusi Cc @jokowi @mohmahfudmd @DPR_RI @jansen_jsp @puanmaharani_ri @ZUL_Hasan @Fahrihamzah @KPK_RI @officialMKRI
+1628353746416836611 2023-02-22 11:19:21 +0000 &lt;mercifulove&gt; Diikuti Puan Maharani mendapat 41 suara atau 1,15 persen. #PrabowoPemersatu #IkutPakde Prabowo Subianto
+1628353487368228864 2023-02-22 11:18:19 +0000 &lt;Hendrikorachman&gt; Richard elizer bkn melaksanakan tugas intelejen internal membongkar kasus sambo dlm ada justice kolaborator krn sifatnya pribadi memakai kekuasaan lakukan pembunuhan. @DPR_RI hrs panggil pk @ListyoSigitP Cc @jokowi @mohmahfudmd @MahkamahAgung @DPR_RI @puanmaharani_ri @jansen_jsp
+1628348070747602946 2023-02-22 10:56:47 +0000 &lt;Hendrikorachman&gt; Namanya melakukan pembunuhan yg sdh diputuskan @MahkamahAgung , @DivHumas_Polri pk @ListyoSigitP tdk boleh menerima kembali richard elizer jika polri kumpulan org taat hukum kecuali kumpulan bajingan Cc @jokowi @mohmahfudmd @jansen_jsp @DPR_RI @MardaniAliSera @puanmaharani_ri
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628347847438397440 2023-02-22 10:55:54 +0000 &lt;SalJu_SoYaLa&gt; @MariaAlcaff @puanmaharani_ri @La_22722 Iya Ifah ,pas brangkat ktemu nenek Ega kagk ? Kan dia lgi senewen Ama emak2 pngajian
+1628344219571195909 2023-02-22 10:41:29 +0000 &lt;KAPLAK_DENGKLAK&gt; Kapan diPurwokerto Banyumas ki @ganjarpranowo @dprdjatengprov @DPR_RI @puanmaharani_ri
+1628344075027120130 2023-02-22 10:40:55 +0000 &lt;SalJu_SoYaLa&gt; Mba puan @puanmaharani_ri ,Titip salam buat nenek Mega..Aku Ke pengajian dlu,Uang Arisan RT udah ku titipin ke Bu SriMul..    Alhamdulillah ,Allah Ta&#39;Ala izinkan hadir di Ta&#39;lim Pengajian Syarifah Ustdzah Halimah Alaydrus bersama rombongan emak² ..  @MariaAlcaff @La_22722  https://t.co/XRV9z71rLN
+1628338267275014144 2023-02-22 10:17:50 +0000 &lt;gerinisk2&gt; @yusuf_dumdum mba @puanmaharani_ri jangan mau pendampingnya yg suka nonton PILEM PORNO..wkwkwkwk  https://t.co/mFp98XJdN2
+1628337685432770566 2023-02-22 10:15:31 +0000 &lt;aswinazha1&gt; @jokowi @puanmaharani_ri @PDI_Perjuangan @PemkotSemarang   https://t.co/851dtvAjZg
+1628337433292201989 2023-02-22 10:14:31 +0000 &lt;mamang_opik&gt; @Tan_Mar3M Cucu Sukarno aja @puanmaharani_ri
+1628337410353541123 2023-02-22 10:14:26 +0000 &lt;Baiymaxx&gt; @twtbynayss @puanmaharani_ri cek ava nya buk
+1628332049777172480 2023-02-22 09:53:08 +0000 &lt;ndahmutty&gt; @maulanarifki @AikHoki @PNS_Ababil @prastow @kemendagri @kempanrb @KASN_RI @OmbudsmanRI137 @PNS_Garis_Lucu @mohmahfudmd @BKNgoid @puanmaharani_ri sya pun, gakda kabar nih wkwkw eh + kkurangan 20% juga gakda kabar
+1628331853215330305 2023-02-22 09:52:21 +0000 &lt;Hendrikorachman&gt; Bu Mega @PDI_Perjuangan,bu @puanmaharani_ri sdh mendeteksi ketampanan,tinggi badan aku serta kecerdasan sesuai kriteria calon diinginkan. Hanya saja, aku yg tampan ini suka dg pedesaan Cc @xcintakiehlx  @LunaMaya26 @aurakasih87 @maman1965 @sandiuno @erickthohir @ridwankamil
+1628331662718402560 2023-02-22 09:51:35 +0000 &lt;noer_arians&gt; @rahmansandre Kalau Pilih Mbak Puan Maharani Ketik apa?
+1628329914784161792 2023-02-22 09:44:39 +0000 &lt;PUANnews&gt; #IHSG Terkoreksi, Saham Suami Puan Maharani (RAJA) Masuk Top Losers -  https://t.co/3xOCY6eQWi  #PuanMaharani   https://t.co/3Zp3nDvyZM
+1628329913156571138 2023-02-22 09:44:38 +0000 &lt;PUANnews&gt; #Pemko Masih Jalin Komunikasi dengan Pedagang Korban ... - Pemerintah Kota Pekanbaru  #PuanMaharani   https://t.co/9vE3uK95pM
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628329911160037377 2023-02-22 09:44:38 +0000 &lt;PUANnews&gt; #Korban Kebakaran Pasar Cik Puan Pekanbaru Keluhkan Akses ... - Go Riau  #PuanMaharani   https://t.co/K99eVKIqak
+1628329402831609856 2023-02-22 09:42:37 +0000 &lt;beritaekonomi24&gt; IHSG Terkoreksi, Saham Suami Puan Maharani (RAJA) Masuk Top Losers  https://t.co/LFaqXUDOPM
+1628326667818246144 2023-02-22 09:31:45 +0000 &lt;prematur1um&gt; @Anaksemut4 @puanmaharani_ri @Miduk17  https://t.co/kiEkje20wI
+1628325504444137472 2023-02-22 09:27:07 +0000 &lt;Bisniscom&gt; IHSG) ditutup melemah 0,92 persen ke level 6.809,97 dengan emiten milik suami Ketua DPR RI Puan Maharani (RAJA) masuk top losers.  https://t.co/bURzHyU4m0
+1628323707260379140 2023-02-22 09:19:59 +0000 &lt;JatengTV&gt; (03) Pemilik PT Perorangan menjadi pemeran utama dalam mengatur kebijakan perusahaannya, termasuk dalam hal pengolahan data dan keuangan. #ptperorangan #sange #ciptakerja #indonesia #umkm #ganjarpranowo #prabowo #aniesbaswedan #puanmaharani #pilpres2024  https://t.co/HRqCfZUnue
+1628322943192424448 2023-02-22 09:16:57 +0000 &lt;AikHoki&gt; slogan pejabat ~&amp;gt; &quot;rakyat adalah majikanku!&quot; antitesa dg segala pungutan yg kita hadapi tiap hari sbg rakyat biasa! K/L aja digenjot utk punya income besar demi meraih Twoqueen Soeltan! @KASN_RI @PNS_Ababil @PNS_Garis_Lucu @PolJokesID @kempanrb @BKNgoid @prastow @puanmaharani_ri
+1628322843854520327 2023-02-22 09:16:33 +0000 &lt;Anaksemut4&gt; Mbak @puanmaharani_ri  mau jadi ketua Timsesnya ganjar pranowo.. ??  Yg bener aja Hai pendukung ganjar.  Emang ganjar apa prestasi di Jawa Tengah...??  Kalau ganjar berprestasi di Jateng,gk mungkin rakyat Jawa Tengah cari kerjaan  di tempat lain @Miduk17 .  https://t.co/XT3vr8Dqtn
+1628322598634520577 2023-02-22 09:15:34 +0000 &lt;vlonnie_vlonn&gt; @yusuf_dumdum Laahhh gw mending milih @puanmaharani_ri drpd @ganjarpranowo krn apa??area perbatasan jateng-DIY ga ada perhatiannya
+1628320109935886336 2023-02-22 09:05:41 +0000 &lt;kayakuwek22&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Lu oten gk usah ikut campur lompat pager napa. Ntr klo dibales di bilang kita radikal. Kan taik
+1628319704703180800 2023-02-22 09:04:04 +0000 &lt;luksutanto&gt; @Miduk17 Mantap dan setuju klo mbak @puanmaharani_ri yg di calonkan cawapres dari partai @PDI_Perjuangan sebagai wanita keturunan dari Presiden Soekarno.
+1628316489089712129 2023-02-22 08:51:18 +0000 &lt;mahendrabiarin&gt; @Judakusumah1 @arvindonoviar @PDI_Perjuangan @puanmaharani_ri @budimandjatmiko @ganjarpranowo @gibran_tweet Lh ganjar yo gk pantes blas opo sg prnah dia capai jateng deloken nas enek apane bar dicekel ganjar mnding budiman produsen kebebasan pencetus uu desa
+1628316150538063872 2023-02-22 08:49:57 +0000 &lt;JatengTV&gt; (04) Pada PT Perorangan seluruh kendala dan resiko kerugian serta keuntungan akan dihadapi dan ditanggung oleh pemilik usaha itu sendiri. #ptperorangan #badanhukum #badanusaha #umkm #ganjarpranowo #prabowo #aniesbaswedan #puanmaharani #pilpres2024  https://t.co/HRqCfZUnue
+1628316118745219072 2023-02-22 08:49:50 +0000 &lt;mahendrabiarin&gt; @kangmas_otoy @arvindonoviar @PDI_Perjuangan @puanmaharani_ri @budimandjatmiko @ganjarpranowo @gibran_tweet Merakyat opo liat kendeng semen pati rembang cuma dikonten doang mending mas budiman
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628316028055986177 2023-02-22 08:49:28 +0000 &lt;yud_kurnianto&gt; Memang benar. Pak Amin Rais, Ibu Megawati, Ibu Puan Maharani, Bung Raja Antoni, dan lain-lain adalah keluarga besar Muhammadiyah. Muhammadiyah adalah rumah bersama, jangan sampai ada yang merasa paling Muhammadiyah hanya karena beda kepentingan.
+1628314790887141378 2023-02-22 08:44:33 +0000 &lt;PUANnews&gt; #Jokowi Sebut Banyak Capres, Adi Prayitno: Tidak Sebut Puan Padahal Kader PDIP - Harian Haluan - Harian Haluan Network  #PuanMaharani   https://t.co/hV4FoPWAWn
+1628314788320215040 2023-02-22 08:44:32 +0000 &lt;PUANnews&gt; #Pria Paruh Baya Ditemukan Tewas Dalam Pickup di Parkiran Pasar Cik Puan -  https://t.co/EUOLpx0YMg  #PuanMaharani   https://t.co/Cac6SWe8Po
+1628313339473596417 2023-02-22 08:38:47 +0000 &lt;zerriegmarun&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri komnashem klo kasus cabul di ponpes ga ada suara nya
+1628313044848902145 2023-02-22 08:37:37 +0000 &lt;hany_pin&gt; @MemeSejutaUmat Puan maharani
+1628308457542799360 2023-02-22 08:19:23 +0000 &lt;naigirlsec&gt; @puanmaharani_ri  PUAN CHAN ARA ARA #SquidcraftGames2  #Putin  #FOMECONCHETUMADRE  https://t.co/3VeKgwZJJY
+1628303516925308928 2023-02-22 07:59:45 +0000 &lt;golongankarya_&gt; Capres Musra Sultra:  1. Airlangga Hartarto: 346 atau 21,98% 2. Prabowo Subianto: 298 atau 18,93 persen 3. Ganjar Pranowo: 283 atau 17,98% 4. Moeldoko: 215 atau 13,67% 5. Erick Thohir: 127 atau 8,07% 6. Anies Baswedan; 7. Khofifah; 8. Muhaimin; 9. Ridwan Kamil; 10. Puan Maharani
+1628295068850483200 2023-02-22 07:26:11 +0000 &lt;HeriHendrayan11&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Yg remeh temeh kok dipermasalahkan ? Baca seutuhnya....jangan se potong2. Bijaklah dlm menilai.
+1628294838159540225 2023-02-22 07:25:16 +0000 &lt;AikHoki&gt; @buddykuofficial @smindrawati penegak hukum paling jiper kalo berhadapan dg pegawe packjeck n bipikey! @muhadjir_ef @mohmahfudmd @pramonoanung @puanmaharani_ri @jokowi @ListyoSigitP @PNS_Ababil @KASN_RI @KomnasHAM @KejaksaanRI @MahkamahAgung @KPK_RI @prastow
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628293728111849472 2023-02-22 07:20:51 +0000 &lt;ISumanata&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Seorang Ibu yg memiliki komitmen kuat untk menjaga keutuhan NKRI dan Pancasila, maka kelompok yg ingin merubah akan memakai bermacam cara dan celah yg bisa dipakai untk melawan beliaunya, harap waspada
+1628293557374287873 2023-02-22 07:20:10 +0000 &lt;AikHoki&gt; @ruhulmaani siapa tuh pejabrut yg mewajarkan pegawe di dejepe pantas dapat THP/twoqueen Sultan?! only Gayus known 😬 @prastow @puanmaharani_ri @jokowi @KASN_RI @mohmahfudmd @muhadjir_ef @KPK_RI @kempanrb @BKNgoid @PNS_Ababil
+1628292094690476032 2023-02-22 07:14:22 +0000 &lt;AikHoki&gt; @maulanarifki @PNS_Ababil @prastow @kemendagri @kempanrb @KASN_RI @OmbudsmanRI137 @PNS_Garis_Lucu @mohmahfudmd @BKNgoid @puanmaharani_ri pusat tutup mata telinga n membisu 🙈🙉🙊 template banget kan
+1628292086738059264 2023-02-22 07:14:20 +0000 &lt;RoyRojaya&gt; @MrSimpl92795338 @kad_ding @Muhammad_Saewad @puanmaharani_ri Maksudnya esemka buatan Indonesia?
+1628290264581423104 2023-02-22 07:07:05 +0000 &lt;PWhiby&gt; @Mdy_Asmara1701 Kayaknya ok juga tuh idenya,  mba @puanmaharani_ri di calonin sama @PDI_Perjuangan  Jadi Lawan pak @prabowo dan Pak @aniesbaswedan atau bahkan berpasangan sama pak @prabowo.tunggu pengumuman aja ah
+1628289490040270848 2023-02-22 07:04:01 +0000 &lt;mamuiz&gt; Logikanya kalo taat konstitusi, ya harus dicabut perpu dan secara hukum tidak berlaku. Alhamdulillah @mohmahfudmd @PKSejahtera @puanmaharani_ri @jokowi
+1628286994337103873 2023-02-22 06:54:06 +0000 &lt;Syafira2010&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri suruh baca baca lagi dan telaah apa yang ibu mega bilang , itukan lagi ngomong in Stunting dan minta ibu ibu fokus di balita and boleh pengajian tapi bukan kewajiban rutin perlu management lagi pula istri nabi juga pintar ibadah tidak ikut pengajian yang ganggu rumah tangga,
+1628284642796228608 2023-02-22 06:44:45 +0000 &lt;PUANnews&gt; #Puan-Airlangga Andalkan Mesin Partai Ketimbang Popularitas dan ... -  https://t.co/6SfiJrFI0C  #PuanMaharani   https://t.co/vzptv5I9hJ
+1628284640413855746 2023-02-22 06:44:44 +0000 &lt;PUANnews&gt; #Solusi Pemkot untuk Pasar Cik Puan Pekanbaru yang Terbakar -  https://t.co/pUR0vO2M3q  #PuanMaharani   https://t.co/BN5MKhELBz
+1628284638539001856 2023-02-22 06:44:44 +0000 &lt;PUANnews&gt; #Pekanbaru diminta tata kembali Pasar Cik Puan - ANTARA Riau  #PuanMaharani   https://t.co/xM2aG5YCqr
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628283087305195520 2023-02-22 06:38:34 +0000 &lt;wiwin40718731&gt; @USekiyu 🫠😁😁😃😄.....ujungnya @puanmaharani_ri yg disodorin....
+1628281123766964224 2023-02-22 06:30:46 +0000 &lt;edikadina02&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Waktu ada orang lg ibadah di bubar kan paksa  @KomnasHAM tiarap ga Nongol, kemana aja nie..???
+1628278128748687360 2023-02-22 06:18:52 +0000 &lt;Yono2910&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri +62 kalau baca berita terbiasa tidak selesai jadi asal gabrus aja
+1628274013226283008 2023-02-22 06:02:31 +0000 &lt;wiwin40718731&gt; @GunRomli Semua sekarang msh mengkhayal..... Ujungnya @puanmaharani_ri yg disodorin.... 😀😃😃😁......
+1628272882450337793 2023-02-22 05:58:01 +0000 &lt;Wahyu_Nces&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Gmn gk begitu Kasus sepele di besarkan agar semua tau ada UU yg terkait sedangkan kasus yg besar di sepelekan Krn tidak semua tau ada UU yg terkait Ahg itu mah sudah biasa Tergantung jaksa penuntut dan jaksa pembela saja Berani bongkar UU tsb atau gk Gk da duit gk keluar itu UU🤭
+1628272303615406080 2023-02-22 05:55:43 +0000 &lt;gtobing2903&gt; @Wahyu_Nces @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Gemes kan 🤣🤣hal sepele d besarkan kasus besar di sepele kan 🤣🤣ngakak
+1628271339487502338 2023-02-22 05:51:53 +0000 &lt;Wahyu_Nces&gt; @gtobing2903 @PDI_Perjuangan @KomnasHAM @KomnasPerempuan @jokowi @mohmahfudmd @puanmaharani_ri Heleeeeehh bubarkan saja tu organisasi gk jelas
+1628271158545223681 2023-02-22 05:51:10 +0000 &lt;maulanarifki&gt; @AikHoki @PNS_Ababil @prastow @kemendagri @kempanrb @KASN_RI @OmbudsmanRI137 @PNS_Garis_Lucu @mohmahfudmd @BKNgoid @puanmaharani_ri Saya kak.  Ilang sebulan wkwkwk
+1628270813509214209 2023-02-22 05:49:48 +0000 &lt;gtobing2903&gt; ketua @PDI_Perjuangan di laporkan k @KomnasHAM cuman blg klw hal sepele begn @KomnasHAM ikut campuri  kekerasan sex @KomnasPerempuan @KomnasHAM kmn utk edukasi agar kekerasan sex PD anak dan perempuan TDK terjadi . @jokowi @mohmahfudmd  @puanmaharani_ri  Yg setuju👇👇  https://t.co/rMzCQ5KGUV
+1628269870625492993 2023-02-22 05:46:03 +0000 &lt;Jokowo09994509&gt; @Miduk17 Mbak @puanmaharani_ri  jelas lebih baik drpda ganjar yg ngurus banjir aja gx mampu  https://t.co/DjGHKaoR1M
+1628269481871933446 2023-02-22 05:44:30 +0000 &lt;PUANnews&gt; #Jika Prabowo Bersanding dengan Puan, Cak Imin Kemungkinan ... - RMOL  #PuanMaharani   https://t.co/R959kHvYwH
+1628269479447625728 2023-02-22 05:44:30 +0000 &lt;PUANnews&gt; #GPMN Galang Dukungan Puan Maharani di Desa - holopis  #PuanMaharani   https://t.co/QVtPzwJ4Hc
+1628269476134133760 2023-02-22 05:44:29 +0000 &lt;PUANnews&gt; #Untuk Raih Kemenangan pada 2024, Puan-Airlangga Harus ... - RMOL  #PuanMaharani   https://t.co/7sLcDWOlHA
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628269474125062146 2023-02-22 05:44:29 +0000 &lt;PUANnews&gt; #Jokowi Sebut Banyak Capres, Adi Prayitno: Nunggu Nama Puan Disebut, Namun Belum Muncul Walaupun Kader PDIP - Harian Haluan - Harian Haluan Network  #PuanMaharani   https://t.co/Tyv0R6zdaF
+1628269471340105730 2023-02-22 05:44:28 +0000 &lt;PUANnews&gt; #Polisi Duga Kebakaran Pasar Cik Puan akibat Korsleting Listrik -  https://t.co/03fZ0lLryk  #PuanMaharani   https://t.co/mAEEyb3vul
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1628269197263523840 2023-02-22 05:43:23 +0000 &lt;JarnasABWBpn&gt; Survey Capres Favorit Kaltim, yuk yg domisili Kaltim pilih Capres Favorit kamu    https://t.co/biprM1WQFX  #Prabowo #ganjarpranowo #AniesBaswedan #puanmaharani
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[!] No more data! Scraping will stop now.
+found 0 deleted tweets in this search.
 </pre></div>
 </div>
 </div>
@@ -766,7 +702,7 @@ Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.8/dist-pac
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-f1be56cf-cbcf-41b6-94b5-4e1d58081e7e">
+  <div id="df-c7a288eb-fcb9-41ae-99cd-c4376791f3c2">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -796,37 +732,37 @@ Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.8/dist-pac
     <tr>
       <th>0</th>
       <td>0</td>
+      <td>JatengTV</td>
+      <td>Jateng TV</td>
+      <td>(13) Masih belum banyak peraturan yang mengatu...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
       <td>folktrade</td>
       <td>Petrichor🌧️</td>
       <td>@ndahmutty @AikHoki @maulanarifki @PNS_Ababil ...</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>1</td>
+      <th>2</th>
+      <td>2</td>
       <td>Muhamma43425577</td>
       <td>#PISANGrebus</td>
       <td>@andre_rosiade Yakin : Capres 1. Puan Maharani...</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>2</td>
+      <th>3</th>
+      <td>3</td>
       <td>dicaprio_deni</td>
       <td>Deni Dicaprio</td>
       <td>@puanmaharani_ri Mbak @puanmaharani_ri for 202...</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>3</td>
+      <th>4</th>
+      <td>4</td>
       <td>iniandii</td>
       <td>𝕴𝖓𝖎𝖆𝖓𝖉𝖎𝖎 ´༎ຶ ۝ ༎ຶ༽</td>
       <td>@hanmula @kring_pajak @KPK_RI @BBCIndonesia @j...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>sospolkw</td>
-      <td>Rezim Buzzer</td>
-      <td>@StopPlandemit Yth buk @puanmaharani_ri  apa a...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -836,45 +772,45 @@ Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.8/dist-pac
       <td>...</td>
     </tr>
     <tr>
-      <th>132</th>
-      <td>132</td>
+      <th>110</th>
+      <td>110</td>
       <td>PUANnews</td>
       <td>Berita Mbak Puan Maharani</td>
       <td>#GPMN Galang Dukungan Puan Maharani di Desa - ...</td>
     </tr>
     <tr>
-      <th>133</th>
-      <td>133</td>
+      <th>111</th>
+      <td>111</td>
       <td>PUANnews</td>
       <td>Berita Mbak Puan Maharani</td>
       <td>#Untuk Raih Kemenangan pada 2024, Puan-Airlang...</td>
     </tr>
     <tr>
-      <th>134</th>
-      <td>134</td>
+      <th>112</th>
+      <td>112</td>
       <td>PUANnews</td>
       <td>Berita Mbak Puan Maharani</td>
       <td>#Jokowi Sebut Banyak Capres, Adi Prayitno: Nun...</td>
     </tr>
     <tr>
-      <th>135</th>
-      <td>135</td>
+      <th>113</th>
+      <td>113</td>
       <td>PUANnews</td>
       <td>Berita Mbak Puan Maharani</td>
       <td>#Polisi Duga Kebakaran Pasar Cik Puan akibat K...</td>
     </tr>
     <tr>
-      <th>136</th>
-      <td>136</td>
+      <th>114</th>
+      <td>114</td>
       <td>JarnasABWBpn</td>
       <td>JARNAS ABW BALIKPAPAN</td>
       <td>Survey Capres Favorit Kaltim, yuk yg domisili ...</td>
     </tr>
   </tbody>
 </table>
-<p>137 rows × 4 columns</p>
+<p>115 rows × 4 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-f1be56cf-cbcf-41b6-94b5-4e1d58081e7e')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c7a288eb-fcb9-41ae-99cd-c4376791f3c2')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -925,12 +861,12 @@ Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.8/dist-pac
 
       <script>
         const buttonEl =
-          document.querySelector('#df-f1be56cf-cbcf-41b6-94b5-4e1d58081e7e button.colab-df-convert');
+          document.querySelector('#df-c7a288eb-fcb9-41ae-99cd-c4376791f3c2 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-f1be56cf-cbcf-41b6-94b5-4e1d58081e7e');
+          const element = document.querySelector('#df-c7a288eb-fcb9-41ae-99cd-c4376791f3c2');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -980,6 +916,20 @@ Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.8/dist-pac
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../introduction/proyek_sain_data.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">📚 Proyek Sains Data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="scrape_media_indonesia_news.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scrape Website with Beautiful Soap</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
