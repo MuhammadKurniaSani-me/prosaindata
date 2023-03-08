@@ -1,0 +1,1122 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Langkah 1 Ambil Data &#8212; Proyek Sains Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tasks/get_data_from_dbs';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Scrape Website with Beautiful Soap" href="scrape_PTA_UTM.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Selamat Datang 👋
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/proyek_sain_data.html">📚 Proyek Sains Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Langkah 1 Ambil Data</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MuhammadKurniaSani-me/prosaindata/blob/gh-pages/_sources/tasks/get_data_from_dbs.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MuhammadKurniaSani-me/prosaindata" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MuhammadKurniaSani-me/prosaindata/issues/new?title=Issue%20on%20page%20%2Ftasks/get_data_from_dbs.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tasks/get_data_from_dbs.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Langkah 1 Ambil Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-lingkungan">Persiapan Lingkungan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-kolom-id-dan-sepal-length">Data Kolom ID dan Sepal Length</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-kolom-sepal-width">Data Kolom Sepal Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-kolom-petal-length">Data Kolom Petal Length</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-kolom-petal-width-class">Data Kolom Petal Width &amp; Class</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="langkah-1-ambil-data">
+<h1>Langkah 1 Ambil Data<a class="headerlink" href="#langkah-1-ambil-data" title="Permalink to this heading">#</a></h1>
+<div class="section" id="persiapan-lingkungan">
+<h2>Persiapan Lingkungan<a class="headerlink" href="#persiapan-lingkungan" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Download &amp; Install Package</p></li>
+<li><p>Import Package</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">orchest</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">jupyterlab_code_formatter</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span> <span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span> 
+<span class="n">pip</span> <span class="n">install</span> <span class="n">typing</span> 
+<span class="n">pip</span> <span class="n">install</span> <span class="n">SQLAlchemy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">mysql</span><span class="o">-</span><span class="n">connector</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-1-4cc08a3620e0&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">pip</span> <span class="n">install</span> <span class="n">orchest</span>
+        <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>mysql-connector-python
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mysql-connector-python in ./anaconda3/lib/python3.9/site-packages (8.0.32)
+Requirement already satisfied: protobuf&lt;=3.20.3,&gt;=3.11.0 in ./anaconda3/lib/python3.9/site-packages (from mysql-connector-python) (3.20.3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">orchest</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span> <span class="k">as</span> <span class="nn">up</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="kn">import</span> <span class="nn">mysql.connector</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span> <span class="k">as</span> <span class="nn">db</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-kolom-id-dan-sepal-length">
+<h2>Data Kolom ID dan Sepal Length<a class="headerlink" href="#data-kolom-id-dan-sepal-length" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Database : PostgreSQL</p></li>
+<li><p>Runtime Lokal</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;dbname=prosain200411100046 user=postgres password=passtome123 host=localhost&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT sepal_length FROM iris_data&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">tuples_list</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tuples_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="data-kolom-sepal-width">
+<h2>Data Kolom Sepal Width<a class="headerlink" href="#data-kolom-sepal-width" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Database : ElephantSQL</p></li>
+<li><p>Runtime Cloud</p></li>
+</ul>
+<p>Buat koneksi dengan ElephantSQL</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;postgresql+psycopg2://vxvfdqsv:zE_56p9mPiltOOEuuu2Aj4EBEtyfuQpf@floppy.db.elephantsql.com/vxvfdqsv&quot;</span><span class="p">)</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">MetaData</span><span class="p">()</span>
+<span class="n">elephantsql_db</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;iris_data&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">autoload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">autoload_with</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_wrap_pool_connect</span><span class="nt">(self, fn, connection)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3279</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3280</span>             <span class="k">return</span> <span class="n">fn</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">3281</span>         <span class="k">except</span> <span class="n">dialect</span><span class="o">.</span><span class="n">dbapi</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">310</span><span class="sd">         return _ConnectionFairy._checkout(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span><span class="sd"> </span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">_checkout</span><span class="nt">(cls, pool, threadconns, fairy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span><span class="sd">         if not fairy:</span>
+<span class="ne">--&gt; </span><span class="mi">868</span><span class="sd">             fairy = _ConnectionRecord.checkout(pool)</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span><span class="sd"> </span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">checkout</span><span class="nt">(cls, pool)</span>
+<span class="g g-Whitespace">    </span><span class="mi">475</span><span class="sd">     def checkout(cls, pool):</span>
+<span class="ne">--&gt; </span><span class="mi">476</span><span class="sd">         rec = pool._do_get()</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span><span class="sd">         try:</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/impl.py</span> in <span class="ni">_do_get</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span><span class="sd">                 with util.safe_reraise():</span>
+<span class="ne">--&gt; </span><span class="mi">146</span><span class="sd">                     self._dec_overflow()</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span><span class="sd">         else:</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py</span> in <span class="ni">__exit__</span><span class="nt">(self, type_, value, traceback)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span><span class="sd">             if not self.warn_only:</span>
+<span class="ne">---&gt; </span><span class="mi">70</span><span class="sd">                 compat.raise_(</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">                     exc_value,</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/compat.py</span> in <span class="ni">raise_</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span><span class="sd">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">208</span><span class="sd">             raise exception</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span><span class="sd">         finally:</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/impl.py</span> in <span class="ni">_do_get</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span><span class="sd">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">143</span><span class="sd">                 return self._create_connection()</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span><span class="sd">             except:</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">_create_connection</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span><span class="sd"> </span>
+<span class="ne">--&gt; </span><span class="mi">256</span><span class="sd">         return _ConnectionRecord(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="sd"> </span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">__init__</span><span class="nt">(self, pool, connect)</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span><span class="sd">         if connect:</span>
+<span class="ne">--&gt; </span><span class="mi">371</span><span class="sd">             self.__connect()</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span><span class="sd">         self.finalize_callback = deque()</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">__connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span><span class="sd">             with util.safe_reraise():</span>
+<span class="ne">--&gt; </span><span class="mi">666</span><span class="sd">                 pool.logger.debug(&quot;Error on connect(): %s&quot;, e)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span><span class="sd">         else:</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py</span> in <span class="ni">__exit__</span><span class="nt">(self, type_, value, traceback)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span><span class="sd">             if not self.warn_only:</span>
+<span class="ne">---&gt; </span><span class="mi">70</span><span class="sd">                 compat.raise_(</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">                     exc_value,</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/compat.py</span> in <span class="ni">raise_</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span><span class="sd">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">208</span><span class="sd">             raise exception</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span><span class="sd">         finally:</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">__connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">660</span><span class="sd">             self.starttime = time.time()</span>
+<span class="ne">--&gt; </span><span class="mi">661</span><span class="sd">             self.dbapi_connection = connection = pool._invoke_creator(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">662</span><span class="sd">             pool.logger.debug(&quot;Created new connection %r&quot;, connection)</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/create.py</span> in <span class="ni">connect</span><span class="nt">(connection_record)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span><span class="sd">                         return connection</span>
+<span class="ne">--&gt; </span><span class="mi">590</span><span class="sd">             return dialect.connect(*cargs, **cparams)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span><span class="sd"> </span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/default.py</span> in <span class="ni">connect</span><span class="nt">(self, *cargs, **cparams)</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span><span class="sd">         # inherits the docstring from interfaces.Dialect.connect</span>
+<span class="ne">--&gt; </span><span class="mi">597</span><span class="sd">         return self.dbapi.connect(*cargs, **cparams)</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span><span class="sd"> </span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/psycopg2/__init__.py</span> in <span class="ni">connect</span><span class="nt">(dsn, connection_factory, cursor_factory, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span><span class="sd">     dsn = _ext.make_dsn(dsn, **kwargs)</span>
+<span class="ne">--&gt; </span><span class="mi">122</span><span class="sd">     conn = _connect(dsn, connection_factory=connection_factory, **kwasync)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span><span class="sd">     if cursor_factory is not None:</span>
+
+<span class="ne">OperationalError</span>: connection to server at &quot;floppy.db.elephantsql.com&quot; (54.178.151.252), port 5432 failed: FATAL:  too many connections for role &quot;vxvfdqsv&quot;
+
+
+<span class="sd">The above exception was the direct cause of the following exception:</span>
+
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="sd">/tmp/ipykernel_13795/689056985.py in &lt;module&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="sd"> engine = create_engine(&quot;postgresql+psycopg2://vxvfdqsv:zE_56p9mPiltOOEuuu2Aj4EBEtyfuQpf@floppy.db.elephantsql.com/vxvfdqsv&quot;)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span><span class="sd"> connection = engine.connect()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> metadata = db.MetaData()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> elephantsql_db = db.Table(&#39;iris_data&#39;, metadata, autoload=True, autoload_with=engine)</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">connect</span><span class="nt">(self, close_with_result)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3232</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3233</span> 
+<span class="ne">-&gt; </span><span class="mi">3234</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection_cls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">close_with_result</span><span class="o">=</span><span class="n">close_with_result</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3235</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3236</span>     <span class="nd">@util</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">__init__</span><span class="nt">(self, engine, connection, close_with_result, _branch_from, _execution_options, _dispatch, _has_events, _allow_revalidate)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>                 <span class="n">connection</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>                 <span class="k">if</span> <span class="n">connection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="ne">---&gt; </span><span class="mi">96</span>                 <span class="k">else</span> <span class="n">engine</span><span class="o">.</span><span class="n">raw_connection</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>             <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="w"> </span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">raw_connection</span><span class="nt">(self, _connection)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3311</span><span class="w"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3312</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">3313</span><span class="sd">         return self._wrap_pool_connect(self.pool.connect, _connection)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3314</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3315</span><span class="sd"> </span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_wrap_pool_connect</span><span class="nt">(self, fn, connection)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3281</span><span class="sd">         except dialect.dbapi.Error as e:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3282</span><span class="sd">             if connection is None:</span>
+<span class="ne">-&gt; </span><span class="mi">3283</span><span class="sd">                 Connection._handle_dbapi_exception_noconnection(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3284</span><span class="sd">                     e, dialect, self</span>
+<span class="g g-Whitespace">   </span><span class="mi">3285</span><span class="sd">                 )</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_handle_dbapi_exception_noconnection</span><span class="nt">(cls, e, dialect, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2115</span><span class="sd">             util.raise_(newraise, with_traceback=exc_info[2], from_=e)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2116</span><span class="sd">         elif should_wrap:</span>
+<span class="ne">-&gt; </span><span class="mi">2117</span><span class="sd">             util.raise_(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2118</span><span class="sd">                 sqlalchemy_exception, with_traceback=exc_info[2], from_=e</span>
+<span class="g g-Whitespace">   </span><span class="mi">2119</span><span class="sd">             )</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/compat.py</span> in <span class="ni">raise_</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span><span class="sd">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">208</span><span class="sd">             raise exception</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span><span class="sd">         finally:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span><span class="sd">             # credit to</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/base.py</span> in <span class="ni">_wrap_pool_connect</span><span class="nt">(self, fn, connection)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3278</span><span class="sd">         dialect = self.dialect</span>
+<span class="g g-Whitespace">   </span><span class="mi">3279</span><span class="sd">         try:</span>
+<span class="ne">-&gt; </span><span class="mi">3280</span><span class="sd">             return fn()</span>
+<span class="g g-Whitespace">   </span><span class="mi">3281</span><span class="sd">         except dialect.dbapi.Error as e:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3282</span><span class="sd">             if connection is None:</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">310</span>         <span class="k">return</span> <span class="n">_ConnectionFairy</span><span class="o">.</span><span class="n">_checkout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span> 
+<span class="g g-Whitespace">    </span><span class="mi">312</span>     <span class="k">def</span> <span class="nf">_return_conn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">_checkout</span><span class="nt">(cls, pool, threadconns, fairy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="k">def</span> <span class="nf">_checkout</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pool</span><span class="p">,</span> <span class="n">threadconns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fairy</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">fairy</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">868</span>             <span class="n">fairy</span> <span class="o">=</span> <span class="n">_ConnectionRecord</span><span class="o">.</span><span class="n">checkout</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span> 
+<span class="g g-Whitespace">    </span><span class="mi">870</span>             <span class="n">fairy</span><span class="o">.</span><span class="n">_pool</span> <span class="o">=</span> <span class="n">pool</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">checkout</span><span class="nt">(cls, pool)</span>
+<span class="g g-Whitespace">    </span><span class="mi">474</span>     <span class="nd">@classmethod</span>
+<span class="g g-Whitespace">    </span><span class="mi">475</span>     <span class="k">def</span> <span class="nf">checkout</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pool</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">476</span>         <span class="n">rec</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">_do_get</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">478</span>             <span class="n">dbapi_connection</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">get_connection</span><span class="p">()</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/impl.py</span> in <span class="ni">_do_get</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>             <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>                 <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">safe_reraise</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">146</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_dec_overflow</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_do_get</span><span class="p">()</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py</span> in <span class="ni">__exit__</span><span class="nt">(self, type_, value, traceback)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_exc_info</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># remove potential circular references</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">warn_only</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">70</span>                 <span class="n">compat</span><span class="o">.</span><span class="n">raise_</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>                     <span class="n">exc_value</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                     <span class="n">with_traceback</span><span class="o">=</span><span class="n">exc_tb</span><span class="p">,</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/compat.py</span> in <span class="ni">raise_</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span> 
+<span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">208</span>             <span class="k">raise</span> <span class="n">exception</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>             <span class="c1"># credit to</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/impl.py</span> in <span class="ni">_do_get</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inc_overflow</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">143</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_connection</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>             <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>                 <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">safe_reraise</span><span class="p">():</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">_create_connection</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;Called by subclasses to create a new ConnectionRecord.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span> 
+<span class="ne">--&gt; </span><span class="mi">256</span>         <span class="k">return</span> <span class="n">_ConnectionRecord</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span> 
+<span class="g g-Whitespace">    </span><span class="mi">258</span>     <span class="k">def</span> <span class="nf">_invalidate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">exception</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">_checkin</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">__init__</span><span class="nt">(self, pool, connect)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>         <span class="bp">self</span><span class="o">.</span><span class="n">__pool</span> <span class="o">=</span> <span class="n">pool</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>         <span class="k">if</span> <span class="n">connect</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">371</span>             <span class="bp">self</span><span class="o">.</span><span class="n">__connect</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span>         <span class="bp">self</span><span class="o">.</span><span class="n">finalize_callback</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">373</span> 
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">__connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span>         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span>             <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">safe_reraise</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">666</span>                 <span class="n">pool</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Error on connect(): </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span>             <span class="c1"># in SQLAlchemy 1.4 the first_connect event is not used by</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py</span> in <span class="ni">__exit__</span><span class="nt">(self, type_, value, traceback)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_exc_info</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># remove potential circular references</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span>             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">warn_only</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">70</span>                 <span class="n">compat</span><span class="o">.</span><span class="n">raise_</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>                     <span class="n">exc_value</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                     <span class="n">with_traceback</span><span class="o">=</span><span class="n">exc_tb</span><span class="p">,</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/compat.py</span> in <span class="ni">raise_</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span> 
+<span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">208</span>             <span class="k">raise</span> <span class="n">exception</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>             <span class="c1"># credit to</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/pool/base.py</span> in <span class="ni">__connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">659</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">660</span>             <span class="bp">self</span><span class="o">.</span><span class="n">starttime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">661</span>             <span class="bp">self</span><span class="o">.</span><span class="n">dbapi_connection</span> <span class="o">=</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">_invoke_creator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">662</span>             <span class="n">pool</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Created new connection </span><span class="si">%r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">663</span>             <span class="bp">self</span><span class="o">.</span><span class="n">fresh</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/create.py</span> in <span class="ni">connect</span><span class="nt">(connection_record)</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span>                     <span class="k">if</span> <span class="n">connection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span>                         <span class="k">return</span> <span class="n">connection</span>
+<span class="ne">--&gt; </span><span class="mi">590</span>             <span class="k">return</span> <span class="n">dialect</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">*</span><span class="n">cargs</span><span class="p">,</span> <span class="o">**</span><span class="n">cparams</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span> 
+<span class="g g-Whitespace">    </span><span class="mi">592</span>         <span class="n">creator</span> <span class="o">=</span> <span class="n">pop_kwarg</span><span class="p">(</span><span class="s2">&quot;creator&quot;</span><span class="p">,</span> <span class="n">connect</span><span class="p">)</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/sqlalchemy/engine/default.py</span> in <span class="ni">connect</span><span class="nt">(self, *cargs, **cparams)</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span>     <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">cargs</span><span class="p">,</span> <span class="o">**</span><span class="n">cparams</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="c1"># inherits the docstring from interfaces.Dialect.connect</span>
+<span class="ne">--&gt; </span><span class="mi">597</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dbapi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">*</span><span class="n">cargs</span><span class="p">,</span> <span class="o">**</span><span class="n">cparams</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span> 
+<span class="g g-Whitespace">    </span><span class="mi">599</span>     <span class="k">def</span> <span class="nf">create_connect_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/psycopg2/__init__.py</span> in <span class="ni">connect</span><span class="nt">(dsn, connection_factory, cursor_factory, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> 
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="n">dsn</span> <span class="o">=</span> <span class="n">_ext</span><span class="o">.</span><span class="n">make_dsn</span><span class="p">(</span><span class="n">dsn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">122</span>     <span class="n">conn</span> <span class="o">=</span> <span class="n">_connect</span><span class="p">(</span><span class="n">dsn</span><span class="p">,</span> <span class="n">connection_factory</span><span class="o">=</span><span class="n">connection_factory</span><span class="p">,</span> <span class="o">**</span><span class="n">kwasync</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">if</span> <span class="n">cursor_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="n">conn</span><span class="o">.</span><span class="n">cursor_factory</span> <span class="o">=</span> <span class="n">cursor_factory</span>
+
+<span class="ne">OperationalError</span>: (psycopg2.OperationalError) connection to server at &quot;floppy.db.elephantsql.com&quot; (54.178.151.252), port 5432 failed: FATAL:  too many connections for role &quot;vxvfdqsv&quot;
+
+<span class="p">(</span><span class="n">Background</span> <span class="n">on</span> <span class="n">this</span> <span class="n">error</span> <span class="n">at</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sqlalche</span><span class="o">.</span><span class="n">me</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="mi">14</span><span class="o">/</span><span class="n">e3q8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Buat koneksi ke tabel  <code class="docutils literal notranslate"> <span class="pre">iris_data</span></code> dengan (Object Relational Mapping) SQLAlchemi</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">up</span><span class="o">.</span><span class="n">uses_netloc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;postgres&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">up</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="s2">&quot;postgres://vxvfdqsv:zE_56p9mPiltOOEuuu2Aj4EBEtyfuQpf@floppy.db.elephantsql.com/vxvfdqsv&quot;</span><span class="p">)</span> <span class="c1"># link URL database</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">user</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_13795</span><span class="o">/</span><span class="mf">138765570.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">up</span><span class="o">.</span><span class="n">uses_netloc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;postgres&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">url</span> <span class="o">=</span> <span class="n">up</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="s2">&quot;postgres://vxvfdqsv:zE_56p9mPiltOOEuuu2Aj4EBEtyfuQpf@floppy.db.elephantsql.com/vxvfdqsv&quot;</span><span class="p">)</span> <span class="c1"># link URL database</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">user</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/psycopg2/__init__.py</span> in <span class="ni">connect</span><span class="nt">(dsn, connection_factory, cursor_factory, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> 
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="n">dsn</span> <span class="o">=</span> <span class="n">_ext</span><span class="o">.</span><span class="n">make_dsn</span><span class="p">(</span><span class="n">dsn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">122</span>     <span class="n">conn</span> <span class="o">=</span> <span class="n">_connect</span><span class="p">(</span><span class="n">dsn</span><span class="p">,</span> <span class="n">connection_factory</span><span class="o">=</span><span class="n">connection_factory</span><span class="p">,</span> <span class="o">**</span><span class="n">kwasync</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">if</span> <span class="n">cursor_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="n">conn</span><span class="o">.</span><span class="n">cursor_factory</span> <span class="o">=</span> <span class="n">cursor_factory</span>
+
+<span class="ne">OperationalError</span>: connection to server at &quot;floppy.db.elephantsql.com&quot; (54.178.151.252), port 5432 failed: FATAL:  too many connections for role &quot;vxvfdqsv&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Buat <em>query</em> ambil kolom <code class="docutils literal notranslate"><span class="pre">iris_data.id,</span> <span class="pre">iris_data.sepal_width</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">elephantsql_db</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">elephantsql_db</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">sepal_width</span><span class="p">])</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_10575</span><span class="o">/</span><span class="mf">3664585639.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">query</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">elephantsql_db</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">elephantsql_db</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">sepal_width</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">results</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;elephantsql_db&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-kolom-petal-length">
+<h2>Data Kolom Petal Length<a class="headerlink" href="#data-kolom-petal-length" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Database : MySQL</p></li>
+<li><p>Runtime Lokal</p></li>
+</ul>
+<p>Koneksi MySQL</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mydb</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+	<span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+	<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+	<span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+	<span class="n">database</span> <span class="o">=</span> <span class="s2">&quot;prosain200411100046&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Creating an instance of ‘cursor’ class</p></li>
+<li><p>which is used to execute the ‘SQL’</p></li>
+<li><p>statements in ‘Python’</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cursor</span> <span class="o">=</span> <span class="n">mydb</span><span class="o">.</span><span class="n">cursor</span><span class="p">(</span><span class="n">buffered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_stmt</span> <span class="o">=</span> <span class="s2">&quot;SELECT petal_length FROM iris_data&quot;</span>
+<span class="n">petal_length_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">select_stmt</span><span class="p">,</span><span class="n">mydb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">petal_length_series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>petal_length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>5.4</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>5.1</td>
+    </tr>
+  </tbody>
+</table>
+<p>150 rows × 1 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="data-kolom-petal-width-class">
+<h2>Data Kolom Petal Width &amp; Class<a class="headerlink" href="#data-kolom-petal-width-class" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Database : SQL Server</p></li>
+<li><p>Arsitektur Lokal</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./tasks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="scrape_PTA_UTM.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Scrape Website with Beautiful Soap</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-lingkungan">Persiapan Lingkungan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-kolom-id-dan-sepal-length">Data Kolom ID dan Sepal Length</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-kolom-sepal-width">Data Kolom Sepal Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-kolom-petal-length">Data Kolom Petal Length</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-kolom-petal-width-class">Data Kolom Petal Width &amp; Class</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Muhammad Kurnia Sani - 200411100046
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

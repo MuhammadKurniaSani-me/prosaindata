@@ -164,6 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
 </ul>
 
     </div>
@@ -409,16 +410,16 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.25.1)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.14)
 Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (2.10)
 Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from requests) (4.0.0)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.14)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: html5lib in /usr/local/lib/python3.9/dist-packages (1.0.1)
-Requirement already satisfied: webencodings in /usr/local/lib/python3.9/dist-packages (from html5lib) (0.5.1)
 Requirement already satisfied: six&gt;=1.9 in /usr/local/lib/python3.9/dist-packages (from html5lib) (1.15.0)
+Requirement already satisfied: webencodings in /usr/local/lib/python3.9/dist-packages (from html5lib) (0.5.1)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
@@ -576,7 +577,7 @@ Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-p
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-7ca9dfd2-966c-44f3-8282-4645f42736b6">
+  <div id="df-4cec0ab9-d8b2-4eb3-80b2-b3b1270a199b">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -684,7 +685,7 @@ Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-p
 </table>
 <p>115 rows × 4 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-7ca9dfd2-966c-44f3-8282-4645f42736b6')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-4cec0ab9-d8b2-4eb3-80b2-b3b1270a199b')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -735,12 +736,12 @@ Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-p
 
       <script>
         const buttonEl =
-          document.querySelector('#df-7ca9dfd2-966c-44f3-8282-4645f42736b6 button.colab-df-convert');
+          document.querySelector('#df-4cec0ab9-d8b2-4eb3-80b2-b3b1270a199b button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-7ca9dfd2-966c-44f3-8282-4645f42736b6');
+          const element = document.querySelector('#df-4cec0ab9-d8b2-4eb3-80b2-b3b1270a199b');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
