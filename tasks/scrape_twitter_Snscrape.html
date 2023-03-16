@@ -163,6 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 </ul>
 
     </div>
@@ -412,27 +413,28 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting snscrape
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading snscrape-0.6.0.20230303-py3-none-any.whl (71 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting snscrape
+  Downloading snscrape-0.6.1.20230314-py3-none-any.whl (71 kB)
 ?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/71.6 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">71.6/71.6 KB</span> <span class=" -Color -Color-Red">2.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.6.3)
-Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from snscrape) (3.9.0)
-Requirement already satisfied: requests[socks] in /usr/local/lib/python3.9/dist-packages (from snscrape) (2.25.1)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">71.6/71.6 KB</span> <span class=" -Color -Color-Red">7.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: requests[socks] in /usr/local/lib/python3.9/dist-packages (from snscrape) (2.25.1)
 Requirement already satisfied: lxml in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.9.2)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2022.12.7)
+Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from snscrape) (3.9.0)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.9.3)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;snscrape) (2.4)
 Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (4.0.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2022.12.7)
 Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2.10)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.26.14)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.26.15)
 Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.7.1)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: snscrape
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed snscrape-0.6.0.20230303
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed snscrape-0.6.1.20230314
 </pre></div>
 </div>
 </div>
@@ -471,7 +473,7 @@ Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/pytho
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-86c2654a-4a2b-4b2a-b2a8-b0bc42834190">
+  <div id="df-8f68eb1e-a09e-48fd-acac-ac7a56f69faf">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -501,43 +503,43 @@ Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/pytho
   <tbody>
     <tr>
       <th>0</th>
-      <td>azkaayulutfiah</td>
-      <td>2023-03-08 23:39:56+00:00</td>
+      <td>am_cryy</td>
+      <td>2023-03-16 07:21:52+00:00</td>
       <td>0</td>
-      <td>Twitter Web App</td>
-      <td>@puanmaharani_ri Semoga sehat waalfiat selalu ...</td>
+      <td>Twitter for Android</td>
+      <td>@txtdrimedia ngakak banget sampe batuk berdaha...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AurelTritania</td>
-      <td>2023-03-08 23:39:01+00:00</td>
+      <td>am_cryy</td>
+      <td>2023-03-16 07:19:35+00:00</td>
       <td>0</td>
-      <td>Twitter Web App</td>
-      <td>@Jalangkung1945 @puanmaharani_ri Semoga Mba Pu...</td>
+      <td>Twitter for Android</td>
+      <td>@Askrlfess ngakak banget sampe batuk berdahak ...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AurelTritania</td>
-      <td>2023-03-08 23:38:45+00:00</td>
+      <td>Nesyaagustin8</td>
+      <td>2023-03-16 07:15:54+00:00</td>
       <td>0</td>
       <td>Twitter Web App</td>
-      <td>@Rasputin666999 @puanmaharani_ri Mba Puan eman...</td>
+      <td>@fadilahmaad67 @puanmaharani_ri saya percaya</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>AurelTritania</td>
-      <td>2023-03-08 23:38:31+00:00</td>
+      <td>Nesyaagustin8</td>
+      <td>2023-03-16 07:15:37+00:00</td>
       <td>0</td>
       <td>Twitter Web App</td>
-      <td>@hanto12y @puanmaharani_ri Gass poll mbak Puan...</td>
+      <td>@AyahKami3 @puanmaharani_ri bercita" setinggi ...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>AurelTritania</td>
-      <td>2023-03-08 23:38:20+00:00</td>
+      <td>Nesyaagustin8</td>
+      <td>2023-03-16 07:15:20+00:00</td>
       <td>0</td>
       <td>Twitter Web App</td>
-      <td>@Safitridede1 @puanmaharani_ri Idolaku mantaaa...</td>
+      <td>@AnjiShopee @puanmaharani_ri nkri jaga trus</td>
     </tr>
     <tr>
       <th>...</th>
@@ -549,49 +551,49 @@ Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/pytho
     </tr>
     <tr>
       <th>146</th>
-      <td>Tulang_Godang</td>
-      <td>2023-03-08 22:00:52+00:00</td>
+      <td>azkaayulutfiah</td>
+      <td>2023-03-16 02:31:54+00:00</td>
       <td>0</td>
-      <td>Twitter for Android</td>
-      <td>@MultiNugroho @AndisBoga @ch_chotimah2 @satrio...</td>
+      <td>Twitter Web App</td>
+      <td>@Alfians090 @puanmaharani_ri Mantep 🙌 banget ya</td>
     </tr>
     <tr>
       <th>147</th>
-      <td>Tulang_Godang</td>
-      <td>2023-03-08 22:00:24+00:00</td>
+      <td>azkaayulutfiah</td>
+      <td>2023-03-16 02:31:40+00:00</td>
       <td>0</td>
-      <td>Twitter for Android</td>
-      <td>@MultiNugroho @AndisBoga @ch_chotimah2 @satrio...</td>
+      <td>Twitter Web App</td>
+      <td>@AldainSatu @puanmaharani_ri Tabarokallah</td>
     </tr>
     <tr>
       <th>148</th>
-      <td>Olielleo</td>
-      <td>2023-03-08 21:55:52+00:00</td>
+      <td>azkaayulutfiah</td>
+      <td>2023-03-16 02:31:31+00:00</td>
       <td>0</td>
-      <td>Twitter for Android</td>
-      <td>@ch_chotimah2 @satriohendri @aniesbaswedan @PD...</td>
+      <td>Twitter Web App</td>
+      <td>@Alfians090 @puanmaharani_ri 🔥🔥🔥 ayo Mbak Puan...</td>
     </tr>
     <tr>
       <th>149</th>
-      <td>Hendrikorachman</td>
-      <td>2023-03-08 21:50:52+00:00</td>
+      <td>azkaayulutfiah</td>
+      <td>2023-03-16 02:30:19+00:00</td>
       <td>0</td>
-      <td>Twitter for Android</td>
-      <td>Penahanan AG oleh @DivHumas_Polri pk @ListyoSi...</td>
+      <td>Twitter Web App</td>
+      <td>@rialana86 @puanmaharani_ri Mbak Puan akan kup...</td>
     </tr>
     <tr>
       <th>150</th>
-      <td>fj88i</td>
-      <td>2023-03-08 21:49:29+00:00</td>
+      <td>azkaayulutfiah</td>
+      <td>2023-03-16 02:30:09+00:00</td>
       <td>0</td>
-      <td>Twitter for Android</td>
-      <td>@ch_chotimah2 @satriohendri @aniesbaswedan @PD...</td>
+      <td>Twitter Web App</td>
+      <td>@KNanden @puanmaharani_ri Bismilahirrihmaannir...</td>
     </tr>
   </tbody>
 </table>
 <p>151 rows × 5 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-86c2654a-4a2b-4b2a-b2a8-b0bc42834190')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-8f68eb1e-a09e-48fd-acac-ac7a56f69faf')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -642,12 +644,12 @@ Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/pytho
 
       <script>
         const buttonEl =
-          document.querySelector('#df-86c2654a-4a2b-4b2a-b2a8-b0bc42834190 button.colab-df-convert');
+          document.querySelector('#df-8f68eb1e-a09e-48fd-acac-ac7a56f69faf button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-86c2654a-4a2b-4b2a-b2a8-b0bc42834190');
+          const element = document.querySelector('#df-8f68eb1e-a09e-48fd-acac-ac7a56f69faf');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});

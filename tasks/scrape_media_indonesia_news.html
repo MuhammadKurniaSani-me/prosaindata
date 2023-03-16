@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 </ul>
 
     </div>
@@ -410,21 +411,22 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.25.1)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.14)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (2.10)
 Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from requests) (4.0.0)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (2.10)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.15)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: html5lib in /usr/local/lib/python3.9/dist-packages (1.0.1)
-Requirement already satisfied: six&gt;=1.9 in /usr/local/lib/python3.9/dist-packages (from html5lib) (1.15.0)
 Requirement already satisfied: webencodings in /usr/local/lib/python3.9/dist-packages (from html5lib) (0.5.1)
+Requirement already satisfied: six&gt;=1.9 in /usr/local/lib/python3.9/dist-packages (from html5lib) (1.15.0)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: bs4 in /usr/local/lib/python3.9/dist-packages (0.0.1)
-Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from bs4) (4.6.3)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from bs4) (4.9.3)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;bs4) (2.4)
 </pre></div>
 </div>
 </div>
@@ -492,64 +494,64 @@ Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;PSSI Dapat 86,5 Miliar, Apa Itu Program FIFA Forward 3.0?...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Spalletti Nikmati Kesuksesan Napoli di Liga Champions...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Erick Thohir Didukung Fokus Benahi Sepak Bola Nasional...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ceferin Janji Kekacauan di Final Liga Champions 2022 tidak akan Terulang Lagi...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Piala Dunia U-20 Harus Dimanfaatkan Talenta Muda Sepak Bola Tanah Air...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Timnas Indonesia akan Lawan Palestina di FIFA Matchday Juni Mendatang...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Israel Ikut Piala Dunia U-20, Bagaimana Keamanannya?...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pelatih Frankfurt Sebut Napoli Sejajar dengan Bayern...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;UEFA Refund 19 Ribu Tiket Suporter Liverpool...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ancelotti Puji Kedewasaan Pemain Real Madrid...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Benfica Hantam Club Brugge, Menang 7-1...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pulih dari Kanker Testis, Haller Dipanggil Kembali ke Timnas Pantai Gading...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Chelsea Lolos ke Perempat Final, Havertz: Ini Harapan Terakhir Kami...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Klopp: Real Madrid memang Luar Biasa...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Shin Langsung Siapkan Tim untuk Piala Dunia U-20...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Inter Milan Minta UEFA Selidiki Perlakuan terhadap Pendukung Mereka di Kandang Porto...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Chelsea Lolos ke Perempat Final Liga Champions...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Reyna Dipanggil Timnas AS untuk Dua Laga Liga Negara CONCACAF...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Saatnya Berbenah untuk Piala Dunia U-20...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Gol Tunggal Benzema Pastikan Real Madrid Kalahkan Liverpool...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Persija Dan Persib Akan Maksimalkan Laga Sisa...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Kalahkan Palace, Brighton Buka Peluang Raih Tiket ke Kompetisi Eropa...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Spurs Berharap Conte Bawa Perubahan di San Siro...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Hajar Frankfurt, Napoli Melaju ke Perempat Final Liga Champions...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pemain Liga 2 Tunjukkan Kualitas Di Pelatnas SEA Games 2023...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Fajar/Rian Mengaku Bisa Menang karena Konsistensi Strategi...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ini Hukuman Ten Hag Kepada Pemain MU Usai Dibantai Liverpool ...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39; Ibrahimovic Dipanggil Perkuat Timnas Swedia untuk Piala Eropa 2024...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Bruno Fernandes Diminta Jangan Lagi Jadi Kapten MU...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Palestina Tak Persoalkan Kehadiran Timnas U-20 Israel ke Indonesia...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Karamoh Antar Torino Kalahkan Bologna...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pengamat Sebut Sukses Piala Dunia U-20 Buka Jalan Indonesia Jadi Tuan Rumah Piala Dunia 2034...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Upacara Pemakaman Just Fontaine Digelar di Toulouse...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;FIFA Tetapkan Jeda Istirahat Jelang Piala Dunia 2026 yang Lebih Panjang...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Toney Bantu Brentford Tekuk Fulham...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Manajer Frankfurt tidak Khawatir Meski Tanpa Pendukung di Kandang Napoli...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Shin Tae Yong Janjikan Penampilan Terbaik Kontra Uzbekistan...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Inter Milan Tertarik Datangkan Tajon Buchanan...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Timnas Putri Diminta Fokus Kalahkan Vietnam...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ancelotti: Leg Kedua Lawan Liverpool akan Rumit...&#39;
 </pre></div>
 </div>
 </div>
@@ -577,7 +579,7 @@ Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-p
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-4cec0ab9-d8b2-4eb3-80b2-b3b1270a199b">
+  <div id="df-d22e6f77-e497-4f4c-8258-6bb4e8a3629a">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -685,7 +687,7 @@ Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-p
 </table>
 <p>115 rows × 4 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-4cec0ab9-d8b2-4eb3-80b2-b3b1270a199b')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-d22e6f77-e497-4f4c-8258-6bb4e8a3629a')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -736,12 +738,12 @@ Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-p
 
       <script>
         const buttonEl =
-          document.querySelector('#df-4cec0ab9-d8b2-4eb3-80b2-b3b1270a199b button.colab-df-convert');
+          document.querySelector('#df-d22e6f77-e497-4f4c-8258-6bb4e8a3629a button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-4cec0ab9-d8b2-4eb3-80b2-b3b1270a199b');
+          const element = document.querySelector('#df-d22e6f77-e497-4f4c-8258-6bb4e8a3629a');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});

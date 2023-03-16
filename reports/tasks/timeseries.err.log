@@ -4,7 +4,6 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.9/dist-packages/nbclient/util.py", line 96, in ensure_async
     result = await obj
   File "/usr/local/lib/python3.9/dist-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
-    raise Empty
 _queue.Empty
 
 During handling of the above exception, another exception occurred:
@@ -32,9 +31,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-# instal Twint 
-!pip install Twint
-!pip3 install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint
-!pip install nest_asyncio
+!pip install orchest
+!pip install jupyterlab_code_formatter
+!pip install pandas numpy scikit-learn
 -------------------
 
