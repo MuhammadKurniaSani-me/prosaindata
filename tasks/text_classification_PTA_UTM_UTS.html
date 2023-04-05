@@ -1,0 +1,2074 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Classification (UTS) &#8212; Proyek Sains Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tasks/text_classification_PTA_UTM_UTS';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Time Series" href="timeseries.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Selamat Datang 👋
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/proyek_sain_data.html">📚 Proyek Sains Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Text Classification (UTS)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MuhammadKurniaSani-me/prosaindata/blob/gh-pages/_sources/tasks/text_classification_PTA_UTM_UTS.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MuhammadKurniaSani-me/prosaindata" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MuhammadKurniaSani-me/prosaindata/issues/new?title=Issue%20on%20page%20%2Ftasks/text_classification_PTA_UTM_UTS.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tasks/text_classification_PTA_UTM_UTS.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Text Classification (UTS)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embedding">Word Embedding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embedding-use-cbow-and-skip-gram-model">Word embedding use CBOW and Skip Gram model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#continous-bag-of-word-model">Continous Bag of Word Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-gram-model">Skip Gram Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-preparation">Evaluation Preparation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-with-machine-learning-classifier">Train with machine learning classifier.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-classifier-svm">Support Vector Classifier(SVM)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-test">Classification Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="text-classification-uts">
+<h1>Text Classification (UTS)<a class="headerlink" href="#text-classification-uts" title="Permalink to this heading">#</a></h1>
+<div class="section" id="data-preparation">
+<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h2>
+<p>download requisite libraries and packages</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sentence Transformers: Multilingual Sentence, Paragraph, and Image Embeddings using BERT &amp; Co.</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>sentence-transformers
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/MartinoMensio/spacy-sentence-bert.git
+
+<span class="c1"># for model paraphrase-xlm-r-multilingual-v1</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>https://github.com/MartinoMensio/spacy-sentence-bert/releases/download/v0.1.2/xx_paraphrase_xlm_r_multilingual_v1-0.1.2.tar.gz<span class="w"> </span>#<span class="w"> </span>xx_paraphrase_xlm_r_multilingual_v1-0.1.2
+
+<span class="c1"># for model distiluse-base-multilingual-cased-v2</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>https://github.com/MartinoMensio/spacy-sentence-bert/releases/download/v0.1.2/xx_distiluse_base_multilingual_cased_v2-0.1.2.tar.gz<span class="w"> </span>#xx_distiluse_base_multilingual_cased_v2-0.1.2
+
+<span class="c1"># Stem for Indonesian Language</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>Sastrawi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sentence-transformers
+  Downloading sentence-transformers-2.2.2.tar.gz (85 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/86.0 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">86.0/86.0 KB</span> <span class=" -Color -Color-Red">3.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting transformers&lt;5.0.0,&gt;=4.6.0
+  Downloading transformers-4.27.4-py3-none-any.whl (6.8 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/6.8 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.2/6.8 MB</span> <span class=" -Color -Color-Red">64.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━ <span class=" -Color -Color-Green">6.5/6.8 MB</span> <span class=" -Color -Color-Red">92.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">6.8/6.8 MB</span> <span class=" -Color -Color-Red">90.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.8/6.8 MB</span> <span class=" -Color -Color-Red">56.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: tqdm in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (4.65.0)
+Requirement already satisfied: torch&gt;=1.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (2.0.0+cu118)
+Requirement already satisfied: torchvision in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (0.15.1+cu118)
+Requirement already satisfied: numpy in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (1.22.4)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (1.2.2)
+Requirement already satisfied: scipy in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (1.10.1)
+Requirement already satisfied: nltk in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (3.8.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sentencepiece
+  Downloading sentencepiece-0.1.97-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/1.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.3/1.3 MB</span> <span class=" -Color -Color-Red">55.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting huggingface-hub&gt;=0.4.0
+  Downloading huggingface_hub-0.13.3-py3-none-any.whl (199 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/199.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">199.8/199.8 KB</span> <span class=" -Color -Color-Red">20.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (6.0)
+Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (3.10.7)
+Requirement already satisfied: packaging&gt;=20.9 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (23.0)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (4.5.0)
+Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2.27.1)
+Requirement already satisfied: networkx in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (3.0)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (3.1.2)
+Requirement already satisfied: sympy in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (1.11.1)
+Requirement already satisfied: triton==2.0.0 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (2.0.0)
+Requirement already satisfied: lit in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (16.0.0)
+Requirement already satisfied: cmake in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (3.25.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1
+  Downloading tokenizers-0.13.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/7.8 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4.6/7.8 MB</span> <span class=" -Color -Color-Red">114.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">114.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">114.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">61.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers) (2022.10.31)
+Requirement already satisfied: joblib in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers) (1.1.1)
+Requirement already satisfied: click in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers) (8.1.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn-&gt;sentence-transformers) (3.1.0)
+Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.9/dist-packages (from torchvision-&gt;sentence-transformers) (8.4.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from jinja2-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (2.1.2)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2022.12.7)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (3.4)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2.0.12)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (1.26.15)
+Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.9/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (1.3.0)
+Building wheels for collected packages: sentence-transformers
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for sentence-transformers (setup.py) ... ?25l?25hdone
+  Created wheel for sentence-transformers: filename=sentence_transformers-2.2.2-py3-none-any.whl size=125942 sha256=310da11d26cf3e11dd0105ed38ec9d9da3120df4466b7492fc942d654292ab1e
+  Stored in directory: /root/.cache/pip/wheels/71/67/06/162a3760c40d74dd40bc855d527008d26341c2b0ecf3e8e11f
+Successfully built sentence-transformers
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: tokenizers, sentencepiece, huggingface-hub, transformers, sentence-transformers
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed huggingface-hub-0.13.3 sentence-transformers-2.2.2 sentencepiece-0.1.97 tokenizers-0.13.3 transformers-4.27.4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting git+https://github.com/MartinoMensio/spacy-sentence-bert.git
+  Cloning https://github.com/MartinoMensio/spacy-sentence-bert.git to /tmp/pip-req-build-zvmfmfo9
+  Running command git clone --filter=blob:none --quiet https://github.com/MartinoMensio/spacy-sentence-bert.git /tmp/pip-req-build-zvmfmfo9
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Resolved https://github.com/MartinoMensio/spacy-sentence-bert.git to commit 9fb25f92b5be77d42921a66fda2c54caa3199925
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: sentence-transformers in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2) (2.2.2)
+Requirement already satisfied: spacy&lt;4.0.0,&gt;=3.0.0 in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2) (3.5.1)
+Requirement already satisfied: protobuf in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2) (3.20.3)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.27.1)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (67.6.1)
+Requirement already satisfied: thinc&lt;8.2.0,&gt;=8.1.8 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (8.1.9)
+Requirement already satisfied: smart-open&lt;7.0.0,&gt;=5.2.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (6.3.0)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.0.8)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.11.0,&gt;=1.7.4 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.10.7)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.0.12)
+Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.1.1)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (23.0)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.4.6)
+Requirement already satisfied: pathy&gt;=0.10.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.10.1)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.0.8)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.0.9)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (4.65.0)
+Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.3.0)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.1.2)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.0.7)
+Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.0.4)
+Requirement already satisfied: typer&lt;0.8.0,&gt;=0.3.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.7.0)
+Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.22.4)
+Requirement already satisfied: scipy in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.10.1)
+Requirement already satisfied: transformers&lt;5.0.0,&gt;=4.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (4.27.4)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.2.2)
+Requirement already satisfied: nltk in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.8.1)
+Requirement already satisfied: torchvision in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.15.1+cu118)
+Requirement already satisfied: huggingface-hub&gt;=0.4.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.13.3)
+Requirement already satisfied: torch&gt;=1.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2.0.0+cu118)
+Requirement already satisfied: sentencepiece in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.1.97)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.10.7)
+Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (6.0)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (4.5.0)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.0.12)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2022.12.7)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.26.15)
+Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /usr/local/lib/python3.9/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.8-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.0.4)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.7.8 in /usr/local/lib/python3.9/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.8-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.7.9)
+Requirement already satisfied: triton==2.0.0 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2.0.0)
+Requirement already satisfied: sympy in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.11.1)
+Requirement already satisfied: networkx in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cmake in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.25.2)
+Requirement already satisfied: lit in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (16.0.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.13.3)
+Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2022.10.31)
+Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /usr/local/lib/python3.9/dist-packages (from typer&lt;0.8.0,&gt;=0.3.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (8.1.3)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from jinja2-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.1.2)
+Requirement already satisfied: joblib in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.1.1)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.1.0)
+Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.9/dist-packages (from torchvision-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (8.4.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.9/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.3.0)
+Building wheels for collected packages: spacy-sentence-bert
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for spacy-sentence-bert (setup.py) ... ?25l?25hdone
+  Created wheel for spacy-sentence-bert: filename=spacy_sentence_bert-0.1.2-py3-none-any.whl size=28242 sha256=479f2fcad76064d384f63a2a1b032e78ffa3e3e72d794519856b401d8b08a948
+  Stored in directory: /tmp/pip-ephem-wheel-cache-a0kz2mgo/wheels/6c/23/94/ada1f47469627e1dd3173610861eb841bfae7e4dfeb9f1722e
+Successfully built spacy-sentence-bert
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: spacy-sentence-bert
+Successfully installed spacy-sentence-bert-0.1.2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/download/v0.1.2/xx_paraphrase_xlm_r_multilingual_v1-0.1.2.tar.gz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading https://github.com/MartinoMensio/spacy-sentence-bert/releases/download/v0.1.2/xx_paraphrase_xlm_r_multilingual_v1-0.1.2.tar.gz (11 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting spacy&lt;3.1.0,&gt;=3.0.3
+  Downloading spacy-3.0.9-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.9 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/5.9 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.2/5.9 MB</span> <span class=" -Color -Color-Red">37.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">5.9/5.9 MB</span> <span class=" -Color -Color-Red">98.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.9/5.9 MB</span> <span class=" -Color -Color-Red">64.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: spacy-sentence-bert==0.1.2 in /usr/local/lib/python3.9/dist-packages (from xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.1.2)
+Requirement already satisfied: protobuf in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.20.3)
+Requirement already satisfied: sentence-transformers in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.2.2)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.0.9)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.0.8)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.27.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4
+  Downloading pydantic-1.8.2-cp39-cp39-manylinux2014_x86_64.whl (11.3 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/11.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.4/11.3 MB</span> <span class=" -Color -Color-Red">162.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">11.3/11.3 MB</span> <span class=" -Color -Color-Red">169.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">11.3/11.3 MB</span> <span class=" -Color -Color-Red">169.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">11.3/11.3 MB</span> <span class=" -Color -Color-Red">85.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.22.4)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.7)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.5 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.0.12)
+Requirement already satisfied: smart-open&lt;7.0.0,&gt;=5.2.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (6.3.0)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (4.65.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting typer&lt;0.4.0,&gt;=0.3.0
+  Downloading typer-0.3.2-py3-none-any.whl (21 kB)
+Collecting wasabi&lt;1.1.0,&gt;=0.8.1
+  Downloading wasabi-0.10.1-py3-none-any.whl (26 kB)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (67.6.1)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.7.9)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.4.6)
+Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.10.1)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.4 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.8)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.1.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting thinc&lt;8.1.0,&gt;=8.0.3
+  Downloading thinc-8.0.17-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (668 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/668.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">668.8/668.8 KB</span> <span class=" -Color -Color-Red">54.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (23.0)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.9/dist-packages (from pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (4.5.0)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.26.15)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2022.12.7)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.4)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.12)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting click&lt;7.2.0,&gt;=7.1.1
+  Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/82.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">82.8/82.8 KB</span> <span class=" -Color -Color-Red">10.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from jinja2-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.1.2)
+Requirement already satisfied: torchvision in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.15.1+cu118)
+Requirement already satisfied: torch&gt;=1.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.0+cu118)
+Requirement already satisfied: nltk in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.8.1)
+Requirement already satisfied: scipy in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.10.1)
+Requirement already satisfied: sentencepiece in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.1.97)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.2.2)
+Requirement already satisfied: transformers&lt;5.0.0,&gt;=4.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (4.27.4)
+Requirement already satisfied: huggingface-hub&gt;=0.4.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.13.3)
+Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (6.0)
+Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.10.7)
+Requirement already satisfied: networkx in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.0)
+Requirement already satisfied: triton==2.0.0 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.0)
+Requirement already satisfied: sympy in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.11.1)
+Requirement already satisfied: lit in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (16.0.0)
+Requirement already satisfied: cmake in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.25.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.13.3)
+Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2022.10.31)
+Requirement already satisfied: joblib in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.1.1)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.1.0)
+Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.9/dist-packages (from torchvision-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (8.4.0)
+Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.9/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.3.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building wheels for collected packages: xx-paraphrase-xlm-r-multilingual-v1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for xx-paraphrase-xlm-r-multilingual-v1 (setup.py) ... ?25l?25hcanceled
+Traceback (most recent call last):
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 167, in exc_logging_wrapper
+    status = run_func(*args)
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/req_command.py&quot;, line 199, in wrapper
+    return func(self, options, args)
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/commands/install.py&quot;, line 361, in run
+    _, build_failures = build(
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/wheel_builder.py&quot;, line 348, in build
+    wheel_file = _build_one(
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/wheel_builder.py&quot;, line 222, in _build_one
+    wheel_path = _build_one_inside_env(
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/wheel_builder.py&quot;, line 269, in _build_one_inside_env
+    wheel_path = build_wheel_legacy(
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/operations/build/wheel_legacy.py&quot;, line 83, in build_wheel_legacy
+    output = call_subprocess(
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/utils/subprocess.py&quot;, line 166, in call_subprocess
+    line: str = proc.stdout.readline()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/pip3&quot;, line 8, in &lt;module&gt;
+    sys.exit(main())
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/main.py&quot;, line 70, in main
+    return command.main(cmd_args)
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 101, in main
+    return self._main(args)
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 221, in _main
+    return run(options, args)
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 204, in exc_logging_wrapper
+    logger.critical(&quot;Operation cancelled by user&quot;)
+  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1493, in critical
+    self._log(CRITICAL, msg, args, **kwargs)
+  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1589, in _log
+    self.handle(record)
+  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1599, in handle
+    self.callHandlers(record)
+  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1661, in callHandlers
+    hdlr.handle(record)
+  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 952, in handle
+    self.emit(record)
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/utils/logging.py&quot;, line 164, in emit
+    renderable = self.render_message(record, message)
+  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/rich/logging.py&quot;, line 158, in render_message
+    def render_message(self, record: LogRecord, message: str) -&gt; &quot;ConsoleRenderable&quot;:
+KeyboardInterrupt
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/download/v0.1.2/xx_distiluse_base_multilingual_cased_v2-0.1.2.tar.gz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading https://github.com/MartinoMensio/spacy-sentence-bert/releases/download/v0.1.2/xx_distiluse_base_multilingual_cased_v2-0.1.2.tar.gz (11 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import requisite libraries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="c1">#for text pre-processing</span>
+<span class="kn">import</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
+
+<span class="c1"># stemming for Indonesian Language</span>
+<span class="kn">from</span> <span class="nn">Sastrawi.Stemmer.StemmerFactory</span> <span class="kn">import</span> <span class="n">StemmerFactory</span>
+
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+
+
+<span class="c1">#for model-building</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+
+<span class="c1">#for word embedding</span>
+<span class="kn">import</span> <span class="nn">gensim</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
+
+<span class="c1"># for NLP use BERT</span>
+<span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
+<span class="kn">import</span> <span class="nn">spacy_sentence_bert</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="n">action</span> <span class="o">=</span> <span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dataset preparation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/prosaindata/source/tasks/output/Data_TA.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-de612635-f80d-4635-ba69-af7558cdf835">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NPM</th>
+      <th>Judul</th>
+      <th>Abstrak</th>
+      <th>Prodi</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>40411100468</td>
+      <td>PERANCANGAN DAN IMPLEMENTASI SISTEM DATABASE T...</td>
+      <td>Sistem  informasi  akademik  (SIAKAD) merupaka...</td>
+      <td>Teknik Informatika</td>
+      <td>RPL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>40411100476</td>
+      <td>APLIKASI KONTROL DAN MONITORING JARINGAN KOMPU...</td>
+      <td>Berjalannya koneksi jaringan komputer dengan l...</td>
+      <td>Teknik Informatika</td>
+      <td>RPL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>40411100480</td>
+      <td>RANCANG BANGUN APLIKASI PROXY SERVER UNTUKENKR...</td>
+      <td>Web server adalah sebuah perangkat lunak serve...</td>
+      <td>Teknik Informatika</td>
+      <td>RPL</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>70411100070</td>
+      <td>SISTEM PENDUKUNG KEPUTUSAN OPTIMASI PENJADWALA...</td>
+      <td>Penjadwalan  kuliah  di  Perguruan  Tinggi  me...</td>
+      <td>Teknik Informatika</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>80411100115</td>
+      <td>SISTEM AUGMENTED REALITY ANIMASI BENDA BERGERA...</td>
+      <td>Seiring perkembangan teknologi yang ada diduni...</td>
+      <td>Teknik Informatika</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>70411100007</td>
+      <td>Gerak Pekerja Pada Game Real Time Strategy Men...</td>
+      <td>Gerak pekerja ada pada game yang memiliki genr...</td>
+      <td>Teknik Informatika</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>70411100126</td>
+      <td>RANCANG BANGUN GAME PERAWATAN SAPI KARAPAN MEN...</td>
+      <td>Perkembangan game yang semakin pesat, memberik...</td>
+      <td>Teknik Informatika</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>70411100109</td>
+      <td>EKSTRAKSI FITUR BERBASIS TWO DIMENSIONAL LINEA...</td>
+      <td>Sistem pengenalan wajah adalah suatu sistem un...</td>
+      <td>Teknik Informatika</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>80411100083</td>
+      <td>IMPLEMENTASI  ALGORITMA PRIM  DAN DEPTH FIRST ...</td>
+      <td>Teknologi mobile game beroperating system open...</td>
+      <td>Teknik Informatika</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>70411100092</td>
+      <td>Perancangan Sistem Informasi Badan Kepegawaian...</td>
+      <td>Kantor Badan Kepegawaian kota Bangkalan adalah...</td>
+      <td>Teknik Informatika</td>
+      <td>RPL</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-de612635-f80d-4635-ba69-af7558cdf835')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-de612635-f80d-4635-ba69-af7558cdf835 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-de612635-f80d-4635-ba69-af7558cdf835');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Label&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abstract_datas</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Abstrak&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abstract_datas</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Sistem  informasi  akademik  (SIAKAD) merupaka...
+1    Berjalannya koneksi jaringan komputer dengan l...
+2    Web server adalah sebuah perangkat lunak serve...
+3    Penjadwalan  kuliah  di  Perguruan  Tinggi  me...
+4    Seiring perkembangan teknologi yang ada diduni...
+5    Gerak pekerja ada pada game yang memiliki genr...
+6    Perkembangan game yang semakin pesat, memberik...
+7    Sistem pengenalan wajah adalah suatu sistem un...
+8    Teknologi mobile game beroperating system open...
+9    Kantor Badan Kepegawaian kota Bangkalan adalah...
+Name: Abstrak, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;convert to lowercase, strip and remove punctuations&quot;&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> 
+
+    <span class="c1"># remove whitespace</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> 
+    <span class="c1"># compile pattern that have `&lt;.*?&gt;` then replace with &#39;&#39;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;&lt;.*?&gt;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span> 
+
+    <span class="c1"># compile pattern that have punctuation !&quot;#$%&amp;&#39;()*+, -./:;&lt;=&gt;?@[\]^_`{|}~ then replace with &#39; &#39;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># replace all one or more space to one space</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># replace all number 0-9 to one space</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># replace all first word or space in the beginning of line to &#39;&#39;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+    <span class="c1"># replace all digits to one space</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> 
+
+    <span class="c1"># replace all one or more space to one space</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span> 
+
+    <span class="k">return</span> <span class="n">text</span>
+
+<span class="k">def</span> <span class="nf">stopword</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stopword removal like I, The, An, be, is, etc&quot;&quot;&quot;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clean text using <code class="docutils literal notranslate"><span class="pre">preprocess()</span></code> function from number, capitalize, punctuation, and other unnecessary characters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessed_abstract</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">abstract_datas</span><span class="p">:</span>
+    <span class="n">preprocessed_abstract</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preprocess</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessed_abstract</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">preprocessed_abstract</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessed_abstract</span><span class="p">[</span><span class="mi">90</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;e learning merupakan usaha untuk membuat sebuah transformasi proses belajar mengajar di sekolah dalam bentuk digital yang dijembatani oleh teknologi internet sudah banyak pembelajaran saat ini yang telah didukung oleh e learning namun dalam proses pembelajaran setiap peserta didik mempunyai gaya belajar yang berbeda satu sama lain gaya pembelajaran yang berbeda tersebut dapat dikelompokkan dengan cara menggunakan tool kuisioner dan secara otomatis penelitian ini akan membahas bagaimana menganalisis gaya belajar peserta didik dan mengelompokkannya dengan menggunakan tool kuisioner serta mengklasifikasi gaya belajar peserta didik menggunkan naãve bayes classifier dimensi untuk model gaya belajar yang digunakan adalah felder silvermen learning style model fslsm dengan penelitian ini diharapkan agar dapat mengatasi permasalahan keragaman gaya belajar peserta didik sehingga dapat meningkatkan efektivitas pembelajaran e learning&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clean text use <code class="docutils literal notranslate"><span class="pre">stopword()</span></code> function from conjuction and other unnecessary words</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">removed_stopword_abstract</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">preprocessed_abstract</span><span class="p">:</span>
+    <span class="n">removed_stopword_abstract</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stopword</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">removed_stopword_abstract</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">removed_stopword_abstract</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">removed_stopword_abstract</span><span class="p">[</span><span class="mi">90</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;e learning usaha transformasi proses belajar mengajar sekolah bentuk digital dijembatani teknologi internet pembelajaran didukung e learning proses pembelajaran peserta didik gaya belajar berbeda gaya pembelajaran berbeda dikelompokkan tool kuisioner otomatis penelitian membahas menganalisis gaya belajar peserta didik mengelompokkannya tool kuisioner mengklasifikasi gaya belajar peserta didik menggunkan naãve bayes classifier dimensi model gaya belajar felder silvermen learning style model fslsm penelitian diharapkan mengatasi permasalahan keragaman gaya belajar peserta didik meningkatkan efektivitas pembelajaran e learning&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clean text use <code class="docutils literal notranslate"><span class="pre">to_base_word()</span></code> function to make all the words root words</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sastrawi</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">StemmerFactory</span><span class="p">()</span>
+<span class="n">stemmer</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create_stemmer</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">to_base_word</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Change words to base words&quot;&quot;&quot;</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">string</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_abstract</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">removed_stopword_abstract</span><span class="p">:</span>
+    <span class="n">cleaned_abstract</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">to_base_word</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_abstract</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cleaned_abstract</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_abstract</span><span class="p">[</span><span class="mi">90</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;e learning usaha transformasi proses ajar ajar sekolah bentuk digital jembatan teknologi internet ajar dukung e learning proses ajar serta didik gaya ajar beda gaya ajar beda kelompok tool kuisioner otomatis teliti bahas analis gaya ajar serta didik kelompok tool kuisioner klasifikasi gaya ajar serta didik gun na ve bayes classifier dimensi model gaya ajar felder silvermen learning style model fslsm teliti harap atas masalah ragam gaya ajar serta didik tingkat efektivitas ajar e learning&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="word-embedding">
+<h2>Word Embedding<a class="headerlink" href="#word-embedding" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Cosine</span> <span class="pre">Simmilarity</span></code></p>
+<p>Diukur dengan cosinus sudut antara dua vektor dan menentukan apakah dua vektor menunjuk ke arah yang kira-kira sama.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vector_size</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Dimensionality of the word vectors.</p>
+<p><code class="docutils literal notranslate"><span class="pre">window</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Maximum distance between the current and predicted word within a sentence.</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_count</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Ignores all words with a lower total frequency than this.</p>
+<div class="section" id="word-embedding-use-cbow-and-skip-gram-model">
+<h3>Word embedding use CBOW and Skip Gram model<a class="headerlink" href="#word-embedding-use-cbow-and-skip-gram-model" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python program to generate word vectors using Word2Vec</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># iterate through each sentence in the file</span>
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">cleaned_abstract</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c1"># tokenize the sentence into words</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+    
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>810
+</pre></div>
+</div>
+</div>
+</div>
+<p>dummy data for test CBOW and Skip Gram Model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_word1</span> <span class="o">=</span> <span class="s2">&quot;sistem&quot;</span>
+<span class="n">first_word2</span> <span class="o">=</span> <span class="s2">&quot;game&quot;</span>
+<span class="n">first_word3</span> <span class="o">=</span> <span class="s2">&quot;komputasi&quot;</span>
+
+<span class="n">second_word1</span> <span class="o">=</span> <span class="s2">&quot;perangkat&quot;</span>
+<span class="n">second_word2</span> <span class="o">=</span> <span class="s2">&quot;perangkat&quot;</span>
+<span class="n">second_word3</span> <span class="o">=</span> <span class="s2">&quot;perangkat&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="continous-bag-of-word-model">
+<h4>Continous Bag of Word Model<a class="headerlink" href="#continous-bag-of-word-model" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create CBOW model</span>
+<span class="n">cbow_model</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Word2Vec</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">min_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vector_size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">window</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_with_cbow</span> <span class="o">=</span> <span class="n">cbow_model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">first_word1</span><span class="p">,</span> <span class="n">second_word1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine similarity between &#39;</span><span class="si">{</span><span class="n">first_word1</span><span class="si">}</span><span class="s2">&#39; and &#39;</span><span class="si">{</span><span class="n">second_word1</span><span class="si">}</span><span class="s2">&#39; - with CBOW : </span><span class="si">{</span><span class="n">result_with_cbow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;sistem&#39; and &#39;perangkat&#39; - with CBOW : 0.9801543354988098
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_with_cbow</span> <span class="o">=</span> <span class="n">cbow_model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">first_word2</span><span class="p">,</span> <span class="n">second_word2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine similarity between &#39;</span><span class="si">{</span><span class="n">first_word2</span><span class="si">}</span><span class="s2">&#39; and &#39;</span><span class="si">{</span><span class="n">second_word2</span><span class="si">}</span><span class="s2">&#39; - with CBOW : </span><span class="si">{</span><span class="n">result_with_cbow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;game&#39; and &#39;perangkat&#39; - with CBOW : 0.9825574159622192
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_with_cbow</span> <span class="o">=</span> <span class="n">cbow_model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">first_word3</span><span class="p">,</span> <span class="n">second_word3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine similarity between &#39;</span><span class="si">{</span><span class="n">first_word3</span><span class="si">}</span><span class="s2">&#39; and &#39;</span><span class="si">{</span><span class="n">second_word3</span><span class="si">}</span><span class="s2">&#39; - with CBOW : </span><span class="si">{</span><span class="n">result_with_cbow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;komputasi&#39; and &#39;perangkat&#39; - with CBOW : 0.9897515177726746
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="skip-gram-model">
+<h4>Skip Gram Model<a class="headerlink" href="#skip-gram-model" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Skip Gram model</span>
+<span class="n">skip_gram_model</span> <span class="o">=</span> <span class="n">gensim</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Word2Vec</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">min_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vector_size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span><span class="n">window</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">sg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_with_cbow</span> <span class="o">=</span> <span class="n">skip_gram_model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">first_word1</span><span class="p">,</span> <span class="n">second_word1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine similarity between &#39;</span><span class="si">{</span><span class="n">first_word1</span><span class="si">}</span><span class="s2">&#39; and &#39;</span><span class="si">{</span><span class="n">second_word1</span><span class="si">}</span><span class="s2">&#39; - with CBOW : </span><span class="si">{</span><span class="n">result_with_cbow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;sistem&#39; and &#39;perangkat&#39; - with CBOW : 0.7361634969711304
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_with_cbow</span> <span class="o">=</span> <span class="n">skip_gram_model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">first_word2</span><span class="p">,</span> <span class="n">second_word2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine similarity between &#39;</span><span class="si">{</span><span class="n">first_word2</span><span class="si">}</span><span class="s2">&#39; and &#39;</span><span class="si">{</span><span class="n">second_word2</span><span class="si">}</span><span class="s2">&#39; - with CBOW : </span><span class="si">{</span><span class="n">result_with_cbow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;game&#39; and &#39;perangkat&#39; - with CBOW : 0.7570070028305054
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_with_cbow</span> <span class="o">=</span> <span class="n">skip_gram_model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="n">first_word3</span><span class="p">,</span> <span class="n">second_word3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine similarity between &#39;</span><span class="si">{</span><span class="n">first_word3</span><span class="si">}</span><span class="s2">&#39; and &#39;</span><span class="si">{</span><span class="n">second_word3</span><span class="si">}</span><span class="s2">&#39; - with CBOW : </span><span class="si">{</span><span class="n">result_with_cbow</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;komputasi&#39; and &#39;perangkat&#39; - with CBOW : 0.6018103361129761
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
+<div class="section" id="evaluation-preparation">
+<h3>Evaluation Preparation<a class="headerlink" href="#evaluation-preparation" title="Permalink to this heading">#</a></h3>
+<p>Show all available labels as <code class="docutils literal notranslate"><span class="pre">y</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;RPL&#39; &#39;komputasi&#39; &#39;PBA&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Overview of abstracr as <code class="docutils literal notranslate"><span class="pre">X</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_abstract</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      sistem informasi akademik siakad sistem inform...
+1      jalan koneksi jaring komputer lancar ganggu ha...
+2      web server perangkat lunak server berfungsimen...
+3      jadwal kuliah guru kompleks masalah variabel t...
+4      iring kembang teknologi dunia muncul teknologi...
+                             ...                        
+805    investasi saham milik resiko rugi dikarenakanp...
+806    information retrieval ir ambil informasi simpa...
+807    klasifikasi citra proses kelompok piksel citra...
+808    identifikasi atribut pejal kaki salah teliti k...
+809    topik deteksi objek tarik perhati kembang tekn...
+Length: 810, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>create new normalised and cleaned data frame from raw data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Abstract&quot;</span> <span class="p">:</span> <span class="n">cleaned_abstract</span><span class="p">,</span> <span class="s2">&quot;Label&quot;</span> <span class="p">:</span> <span class="n">label</span><span class="p">}</span>
+<span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-134d2c0a-c164-4258-8f46-a3b35f1e3456">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Abstract</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sistem informasi akademik siakad sistem inform...</td>
+      <td>RPL</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>jalan koneksi jaring komputer lancar ganggu ha...</td>
+      <td>RPL</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>web server perangkat lunak server berfungsimen...</td>
+      <td>RPL</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>jadwal kuliah guru kompleks masalah variabel t...</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>iring kembang teknologi dunia muncul teknologi...</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>805</th>
+      <td>investasi saham milik resiko rugi dikarenakanp...</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>806</th>
+      <td>information retrieval ir ambil informasi simpa...</td>
+      <td>PBA</td>
+    </tr>
+    <tr>
+      <th>807</th>
+      <td>klasifikasi citra proses kelompok piksel citra...</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>808</th>
+      <td>identifikasi atribut pejal kaki salah teliti k...</td>
+      <td>komputasi</td>
+    </tr>
+    <tr>
+      <th>809</th>
+      <td>topik deteksi objek tarik perhati kembang tekn...</td>
+      <td>komputasi</td>
+    </tr>
+  </tbody>
+</table>
+<p>810 rows × 2 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-134d2c0a-c164-4258-8f46-a3b35f1e3456')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-134d2c0a-c164-4258-8f46-a3b35f1e3456 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-134d2c0a-c164-4258-8f46-a3b35f1e3456');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<p>load one of the models listed at <a class="github reference external" href="https://github.com/MartinoMensio/spacy-sentence-bert/">MartinoMensio/spacy-sentence-bert</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for model paraphrase-xlm-r-multilingual-v1</span>
+<span class="c1"># nlp = spacy_sentence_bert.load_model(&#39;xx_paraphrase_xlm_r_multilingual_v1&#39;)</span>
+
+<span class="c1"># for model distiluse-base-multilingual-cased-v2</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy_sentence_bert</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;xx_distiluse_base_multilingual_cased_v2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a48055cb3711448cb7cf0e4dead34b2c"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "12867c56eed3467dbd027f4e51931256"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6b7acf2394fd4088a8c9987b5e5f3f55"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e87d4f04d32344b5aa1521846c57a94d"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fbd07258012f4dbeb4982fd73e1b1193"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7ebbe4d5a5ea4e868c7766b4868e11e1"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "be6bba6b53d348d791455d81c19aef20"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d7a7e0be16c54b5fbad225aba2055311"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b4e6d6ed99c44aee8f90bd2207e77603"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fbf4b4bc2161453db4b8810529563c83"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "daa7fa84824e479faed0110089ae2760"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b930ec8810d54b1aba2f83cedbbf8169"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7d55dada331b4d129a5f7a9c37fdd849"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cd4b5798f0fd4bb2a89d66fec3510d98"}</script></div>
+</div>
+<p>create <code class="docutils literal notranslate"><span class="pre">df['vector']</span></code> where individual abstract are represented as real-valued vectors in a lower-dimensional space</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;vector&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;Abstract&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">nlp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-6ee1b3e7-9631-4629-b058-cdbc0bf981c0">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Abstract</th>
+      <th>Label</th>
+      <th>vector</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sistem informasi akademik siakad sistem inform...</td>
+      <td>RPL</td>
+      <td>[0.031695776, 0.0023456744, 0.024228357, -0.02...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>jalan koneksi jaring komputer lancar ganggu ha...</td>
+      <td>RPL</td>
+      <td>[0.05129607, -0.024710627, 0.007151665, 0.0053...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>web server perangkat lunak server berfungsimen...</td>
+      <td>RPL</td>
+      <td>[-0.018094577, 0.008628332, 0.018115591, -0.04...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>jadwal kuliah guru kompleks masalah variabel t...</td>
+      <td>komputasi</td>
+      <td>[0.022376861, 0.04639912, 0.023099946, -0.0318...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>iring kembang teknologi dunia muncul teknologi...</td>
+      <td>komputasi</td>
+      <td>[0.01736855, 0.012109187, 0.0017237916, -0.039...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>805</th>
+      <td>investasi saham milik resiko rugi dikarenakanp...</td>
+      <td>komputasi</td>
+      <td>[0.069311336, -0.04580292, -0.037823424, -0.02...</td>
+    </tr>
+    <tr>
+      <th>806</th>
+      <td>information retrieval ir ambil informasi simpa...</td>
+      <td>PBA</td>
+      <td>[0.018961675, 0.058011264, 0.00534609, -0.0410...</td>
+    </tr>
+    <tr>
+      <th>807</th>
+      <td>klasifikasi citra proses kelompok piksel citra...</td>
+      <td>komputasi</td>
+      <td>[-0.0014633922, 0.0130769415, 0.013453827, -0....</td>
+    </tr>
+    <tr>
+      <th>808</th>
+      <td>identifikasi atribut pejal kaki salah teliti k...</td>
+      <td>komputasi</td>
+      <td>[0.00845348, 0.016413385, 0.040197726, -0.0150...</td>
+    </tr>
+    <tr>
+      <th>809</th>
+      <td>topik deteksi objek tarik perhati kembang tekn...</td>
+      <td>komputasi</td>
+      <td>[0.03662935, 0.05044071, 0.015380661, -0.03853...</td>
+    </tr>
+  </tbody>
+</table>
+<p>810 rows × 3 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-6ee1b3e7-9631-4629-b058-cdbc0bf981c0')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-6ee1b3e7-9631-4629-b058-cdbc0bf981c0 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-6ee1b3e7-9631-4629-b058-cdbc0bf981c0');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<p>Split X and y as below</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X_train</span></code> train X data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X_test</span></code> test X data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_train</span></code> train y data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_test</span></code> test y data</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;vector&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-with-machine-learning-classifier">
+<h3>Train with machine learning classifier.<a class="headerlink" href="#train-with-machine-learning-classifier" title="Permalink to this heading">#</a></h3>
+<div class="section" id="support-vector-classifier-svm">
+<h4>Support Vector Classifier(SVM)<a class="headerlink" href="#support-vector-classifier-svm" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7126865671641791
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="random-forest-classifier">
+<h4>Random Forest Classifier<a class="headerlink" href="#random-forest-classifier" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7611940298507462
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="classification-test">
+<h3>Classification Test<a class="headerlink" href="#classification-test" title="Permalink to this heading">#</a></h3>
+<p>Given dummy data to classify</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">abstracts</span></code> as data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> as category</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abstracts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan.&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;RPL&#39;</span><span class="p">,</span>  
+    <span class="s1">&#39;RPL&#39;</span><span class="p">,</span>  
+    <span class="s1">&#39;RPL&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Result</p>
+<p>result when use model paraphrase-xlm-r-multilingual-v1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for abstract, label in zip(abstracts, labels):</span>
+<span class="c1">#   print(abstract)</span>
+<span class="c1">#   print(f&quot;True Label: {label}, Predicted Label: {clf.predict(nlp(abstract).vector.reshape(1, -1))[0]} \n&quot;)</span>
+
+<span class="c1"># OUPUT</span>
+<span class="c1"># Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik.</span>
+<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
+
+<span class="c1"># Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.</span>
+<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
+
+<span class="c1"># Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan.</span>
+<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">abstract</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True Label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">, Predicted Label: </span><span class="si">{</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">nlp</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># OUPUT</span>
+<span class="c1"># Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik.</span>
+<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
+
+<span class="c1"># Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.</span>
+<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
+
+<span class="c1"># Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan.</span>
+<span class="c1"># True Label: RPL, Predicted Label: RPL </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik.
+True Label: RPL, Predicted Label: komputasi 
+
+Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.
+True Label: RPL, Predicted Label: komputasi 
+
+Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan.
+True Label: RPL, Predicted Label: RPL 
+</pre></div>
+</div>
+</div>
+</div>
+<p>result when use model distiluse-base-multilingual-cased-v2</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How To Classify Text With Python, Transformers &amp; scikit-learn - <a class="reference external" href="https://newscatcherapi.com/blog/how-to-classify-text-with-python-transformers-and-scikit-learn">NewsCatcher</a></p></li>
+<li><p>A Comprehensive Guide to Understand and Implement Text Classification in Python - <a class="reference external" href="https://www.analyticsvidhya.com/blog/2018/04/a-comprehensive-guide-to-understand-and-implement-text-classification-in-python/">AnalyticsVidhya</a></p></li>
+<li><p>Sentence-BERT for spaCy <a class="reference external" href="https://github.com/MartinoMensio/spacy-sentence-bert">Spacy-Sentence-Bert</a></p></li>
+<li><p>Sentence Transformers <a class="reference external" href="https://www.sbert.net/index.html">see</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./tasks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="timeseries.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Time Series</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embedding">Word Embedding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#word-embedding-use-cbow-and-skip-gram-model">Word embedding use CBOW and Skip Gram model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#continous-bag-of-word-model">Continous Bag of Word Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skip-gram-model">Skip Gram Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-preparation">Evaluation Preparation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-with-machine-learning-classifier">Train with machine learning classifier.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-classifier-svm">Support Vector Classifier(SVM)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-test">Classification Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Muhammad Kurnia Sani - 200411100046
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

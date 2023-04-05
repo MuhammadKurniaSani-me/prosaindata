@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -37,8 +37,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -166,6 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
 </ul>
 
     </div>
@@ -410,22 +411,22 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.25.1)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.15)
-Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from requests) (4.0.0)
+Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.27.1)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (2.10)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests) (2.0.12)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (3.4)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.15)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: html5lib in /usr/local/lib/python3.9/dist-packages (1.0.1)
+Requirement already satisfied: html5lib in /usr/local/lib/python3.9/dist-packages (1.1)
 Requirement already satisfied: webencodings in /usr/local/lib/python3.9/dist-packages (from html5lib) (0.5.1)
-Requirement already satisfied: six&gt;=1.9 in /usr/local/lib/python3.9/dist-packages (from html5lib) (1.15.0)
+Requirement already satisfied: six&gt;=1.9 in /usr/local/lib/python3.9/dist-packages (from html5lib) (1.16.0)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: bs4 in /usr/local/lib/python3.9/dist-packages (0.0.1)
-Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from bs4) (4.9.3)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from bs4) (4.11.2)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;bs4) (2.4)
 </pre></div>
 </div>
@@ -494,64 +495,64 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Tim U-22 Indonesia Didominasi Pemain Liga 2...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Indra Sjafri Panggil 7 Pemain Timnas U-20 ke SEA Games 2023...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Spalletti Nikmati Kesuksesan Napoli di Liga Champions...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Indra Sjafri Fokus Siapkan Anak Asuhnya di Sea Games 2023...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ceferin Janji Kekacauan di Final Liga Champions 2022 tidak akan Terulang Lagi...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Suporter Tuntut Politisi Minta Maaf Atas Batalnya Piala Dunia U-20...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Timnas Indonesia akan Lawan Palestina di FIFA Matchday Juni Mendatang...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Luis Enrique Menuju Stamford Bridge ...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pelatih Frankfurt Sebut Napoli Sejajar dengan Bayern...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Tak ada Lawan Mudah Indonesia buat Masuk Grup A SEA Games 2023...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ancelotti Puji Kedewasaan Pemain Real Madrid...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Manajemen Persikabo Pertimbangkan Banding ke FIFA...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pulih dari Kanker Testis, Haller Dipanggil Kembali ke Timnas Pantai Gading...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Suporter Dukung Erick Thohir Temui FIFA Bawa Cetak Biru Garuda Mendunia ...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Klopp: Real Madrid memang Luar Biasa...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Thomas Tuchel Pasang Badan atas Kekalahan Muenchen di DFB Pokal...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Inter Milan Minta UEFA Selidiki Perlakuan terhadap Pendukung Mereka di Kandang Porto...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ancelotti Betah di Real Madrid...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Reyna Dipanggil Timnas AS untuk Dua Laga Liga Negara CONCACAF...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Meski Ditahan Imbang Juventus, Inzaghi Klaim Inter Tampil Lebih Bagus...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Gol Tunggal Benzema Pastikan Real Madrid Kalahkan Liverpool...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Chelsea Krisis Kepercayaan Diri...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Kalahkan Palace, Brighton Buka Peluang Raih Tiket ke Kompetisi Eropa...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;PSS Sleman Hampir Pasti Gagal Masuk 10 Besar BRI Liga 1...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Hajar Frankfurt, Napoli Melaju ke Perempat Final Liga Champions...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Mitrovic Diganjar Skorsing Delapan Laga karena Dorong Wasit...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Fajar/Rian Mengaku Bisa Menang karena Konsistensi Strategi...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Messi Dilaporkan akan Tinggalkan PSG pada Akhir Musim...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39; Ibrahimovic Dipanggil Perkuat Timnas Swedia untuk Piala Eropa 2024...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Di Laga Pertama Tanpa Potter, Chelsea Imbang dengan Liverpool...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Palestina Tak Persoalkan Kehadiran Timnas U-20 Israel ke Indonesia...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Gol Lukaku Pastikan Inter Imbangi Juventus di Leg Pertama Semifinal Coppa Italia...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pengamat Sebut Sukses Piala Dunia U-20 Buka Jalan Indonesia Jadi Tuan Rumah Piala Dunia 2034...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Menang Agregat Atas Bilbao, Osasuna ke Final Copa del Rey...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;FIFA Tetapkan Jeda Istirahat Jelang Piala Dunia 2026 yang Lebih Panjang...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Freiburg Depak Bayern dari DFB Pokal...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Manajer Frankfurt tidak Khawatir Meski Tanpa Pendukung di Kandang Napoli...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Erik Ten Hag Senang Luke Shaw Perpanjang Kontrak...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Inter Milan Tertarik Datangkan Tajon Buchanan...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Valladolid Tunjuk Pezzolano Sebagai Pelatih Anyar...&#39;
 </pre></div>
 </div>
 </div>
@@ -579,7 +580,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-ff0fe6c3-0d43-4269-8bef-842009f04913">
+  <div id="df-41e8fe2c-72b8-48e9-880d-e7c8e7800f0c">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -687,7 +688,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 </table>
 <p>115 rows × 4 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-ff0fe6c3-0d43-4269-8bef-842009f04913')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-41e8fe2c-72b8-48e9-880d-e7c8e7800f0c')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -738,12 +739,12 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 
       <script>
         const buttonEl =
-          document.querySelector('#df-ff0fe6c3-0d43-4269-8bef-842009f04913 button.colab-df-convert');
+          document.querySelector('#df-41e8fe2c-72b8-48e9-880d-e7c8e7800f0c button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-ff0fe6c3-0d43-4269-8bef-842009f04913');
+          const element = document.querySelector('#df-41e8fe2c-72b8-48e9-880d-e7c8e7800f0c');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -830,7 +831,10 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="scrape_twitter_Twint.html"
@@ -850,7 +854,10 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -860,7 +867,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -890,7 +897,7 @@ By Muhammad Kurnia Sani - 200411100046
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -899,8 +906,8 @@ By Muhammad Kurnia Sani - 200411100046
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

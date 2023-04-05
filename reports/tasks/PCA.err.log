@@ -23,7 +23,7 @@ print('Akurasi = ' + str(accuracy_score(y_test, y_pred)))
 
 [0;31m[0m
 [0;31mNameError[0mTraceback (most recent call last)
-[0;32m<ipython-input-13-667397b04508>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-13-667397b04508>[0m in [0;36m<cell line: 1>[0;34m()[0m
 [0;32m----> 1[0;31m [0mcm[0m [0;34m=[0m [0mconfusion_matrix[0m[0;34m([0m[0my_test[0m[0;34m,[0m [0my_pred[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0mprint[0m[0;34m([0m[0;34m'Akurasi = '[0m [0;34m+[0m [0mstr[0m[0;34m([0m[0maccuracy_score[0m[0;34m([0m[0my_test[0m[0;34m,[0m [0my_pred[0m[0;34m)[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
