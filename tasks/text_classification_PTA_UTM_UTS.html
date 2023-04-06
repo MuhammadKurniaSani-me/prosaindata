@@ -60,6 +60,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tasks/text_classification_PTA_UTM_UTS';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -404,13 +406,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-preparation">Evaluation Preparation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-with-machine-learning-classifier">Train with machine learning classifier.</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-classifier-svm">Support Vector Classifier(SVM)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes">Gaussian Naive Bayes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors">K-Nearest Neighbors</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-test">Classification Test</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi">Reduksi Dimensi</a></li>
 </ul>
             </nav>
         </div>
@@ -426,7 +429,7 @@ document.write(`
 <h1>Text Classification (UTS)<a class="headerlink" href="#text-classification-uts" title="Permalink to this heading">#</a></h1>
 <div class="section" id="data-preparation">
 <h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h2>
-<p>download requisite libraries and packages</p>
+<p>download libraries &amp; packages yang dibutuhkan</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sentence Transformers: Multilingual Sentence, Paragraph, and Image Embeddings using BERT &amp; Co.</span>
@@ -446,12 +449,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sentence-transformers
+Collecting sentence-transformers
   Downloading sentence-transformers-2.2.2.tar.gz (85 kB)
 ?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/86.0 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">86.0/86.0 KB</span> <span class=" -Color -Color-Red">3.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">86.0/86.0 KB</span> <span class=" -Color -Color-Red">3.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>
@@ -461,10 +462,10 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting transformers&lt;5.0.0,&gt;=4.6.0
   Downloading transformers-4.27.4-py3-none-any.whl (6.8 MB)
 ?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/6.8 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.2/6.8 MB</span> <span class=" -Color -Color-Red">64.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━ <span class=" -Color -Color-Green">6.5/6.8 MB</span> <span class=" -Color -Color-Red">92.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">6.8/6.8 MB</span> <span class=" -Color -Color-Red">90.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.8/6.8 MB</span> <span class=" -Color -Color-Red">56.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+     ━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.0/6.8 MB</span> <span class=" -Color -Color-Red">32.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━ <span class=" -Color -Color-Green">5.2/6.8 MB</span> <span class=" -Color -Color-Red">75.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">6.8/6.8 MB</span> <span class=" -Color -Color-Red">74.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.8/6.8 MB</span> <span class=" -Color -Color-Red">53.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hRequirement already satisfied: tqdm in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (4.65.0)
 Requirement already satisfied: torch&gt;=1.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (2.0.0+cu118)
 Requirement already satisfied: torchvision in /usr/local/lib/python3.9/dist-packages (from sentence-transformers) (0.15.1+cu118)
@@ -477,23 +478,23 @@ Requirement already satisfied: nltk in /usr/local/lib/python3.9/dist-packages (f
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sentencepiece
   Downloading sentencepiece-0.1.97-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
 ?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/1.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.3/1.3 MB</span> <span class=" -Color -Color-Red">55.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.3/1.3 MB</span> <span class=" -Color -Color-Red">66.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting huggingface-hub&gt;=0.4.0
+  Downloading huggingface_hub-0.13.3-py3-none-any.whl (199 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/199.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">199.8/199.8 KB</span> <span class=" -Color -Color-Red">19.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting huggingface-hub&gt;=0.4.0
-  Downloading huggingface_hub-0.13.3-py3-none-any.whl (199 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/199.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">199.8/199.8 KB</span> <span class=" -Color -Color-Red">20.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (6.0)
-Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (3.10.7)
-Requirement already satisfied: packaging&gt;=20.9 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (23.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2.27.1)
 Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (4.5.0)
-Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2.27.1)
-Requirement already satisfied: networkx in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (3.0)
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (3.1.2)
-Requirement already satisfied: sympy in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (1.11.1)
+Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (3.10.7)
+Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (6.0)
+Requirement already satisfied: packaging&gt;=20.9 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (23.0)
 Requirement already satisfied: triton==2.0.0 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (2.0.0)
+Requirement already satisfied: sympy in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (1.11.1)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (3.1.2)
+Requirement already satisfied: networkx in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers) (3.0)
 Requirement already satisfied: lit in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (16.0.0)
 Requirement already satisfied: cmake in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (3.25.2)
 </pre></div>
@@ -501,28 +502,28 @@ Requirement already satisfied: cmake in /usr/local/lib/python3.9/dist-packages (
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1
   Downloading tokenizers-0.13.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
 ?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/7.8 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4.6/7.8 MB</span> <span class=" -Color -Color-Red">114.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">114.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">114.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">61.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━ <span class=" -Color -Color-Green">5.5/7.8 MB</span> <span class=" -Color -Color-Red">164.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">114.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">114.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">65.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hRequirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers) (2022.10.31)
-Requirement already satisfied: joblib in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers) (1.1.1)
 Requirement already satisfied: click in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers) (8.1.3)
+Requirement already satisfied: joblib in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers) (1.1.1)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn-&gt;sentence-transformers) (3.1.0)
+Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.9/dist-packages (from torchvision-&gt;sentence-transformers) (8.4.0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn-&gt;sentence-transformers) (3.1.0)
-Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.9/dist-packages (from torchvision-&gt;sentence-transformers) (8.4.0)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from jinja2-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (2.1.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from jinja2-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (2.1.2)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (1.26.15)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2022.12.7)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (3.4)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2.0.12)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (1.26.15)
 Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.9/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (1.3.0)
 Building wheels for collected packages: sentence-transformers
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for sentence-transformers (setup.py) ... ?25l?25hdone
-  Created wheel for sentence-transformers: filename=sentence_transformers-2.2.2-py3-none-any.whl size=125942 sha256=310da11d26cf3e11dd0105ed38ec9d9da3120df4466b7492fc942d654292ab1e
+  Created wheel for sentence-transformers: filename=sentence_transformers-2.2.2-py3-none-any.whl size=125942 sha256=879a912e442728b8ab17d1ae97866e299105162c66d85c4b5bb1d989c1b2edbf
   Stored in directory: /root/.cache/pip/wheels/71/67/06/162a3760c40d74dd40bc855d527008d26341c2b0ecf3e8e11f
 Successfully built sentence-transformers
 </pre></div>
@@ -535,8 +536,8 @@ Successfully built sentence-transformers
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting git+https://github.com/MartinoMensio/spacy-sentence-bert.git
-  Cloning https://github.com/MartinoMensio/spacy-sentence-bert.git to /tmp/pip-req-build-zvmfmfo9
-  Running command git clone --filter=blob:none --quiet https://github.com/MartinoMensio/spacy-sentence-bert.git /tmp/pip-req-build-zvmfmfo9
+  Cloning https://github.com/MartinoMensio/spacy-sentence-bert.git to /tmp/pip-req-build-eauxs78p
+  Running command git clone --filter=blob:none --quiet https://github.com/MartinoMensio/spacy-sentence-bert.git /tmp/pip-req-build-eauxs78p
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Resolved https://github.com/MartinoMensio/spacy-sentence-bert.git to commit 9fb25f92b5be77d42921a66fda2c54caa3199925
@@ -546,75 +547,75 @@ Collecting git+https://github.com/MartinoMensio/spacy-sentence-bert.git
 Requirement already satisfied: sentence-transformers in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2) (2.2.2)
 Requirement already satisfied: spacy&lt;4.0.0,&gt;=3.0.0 in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2) (3.5.1)
 Requirement already satisfied: protobuf in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2) (3.20.3)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.27.1)
+Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.22.4)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.0.12)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.0.9)
+Requirement already satisfied: smart-open&lt;7.0.0,&gt;=5.2.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (6.3.0)
+Requirement already satisfied: typer&lt;0.8.0,&gt;=0.3.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.7.0)
 Requirement already satisfied: setuptools in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (67.6.1)
 Requirement already satisfied: thinc&lt;8.2.0,&gt;=8.1.8 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (8.1.9)
-Requirement already satisfied: smart-open&lt;7.0.0,&gt;=5.2.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (6.3.0)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.0.8)
-Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.11.0,&gt;=1.7.4 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.10.7)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.11 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.0.12)
-Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.1.1)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (23.0)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.4.6)
 Requirement already satisfied: pathy&gt;=0.10.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.10.1)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.0.8)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.0.9)
-Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (4.65.0)
-Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.3.0)
 Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.1.2)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.27.1)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (4.65.0)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.11.0,&gt;=1.7.4 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.10.7)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (23.0)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.0.8)
 Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.0.7)
 Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.0.4)
-Requirement already satisfied: typer&lt;0.8.0,&gt;=0.3.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.7.0)
-Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.22.4)
-Requirement already satisfied: scipy in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.10.1)
+Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.3.0)
+Requirement already satisfied: wasabi&lt;1.2.0,&gt;=0.9.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.1.1)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.4.6)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.0.8)
 Requirement already satisfied: transformers&lt;5.0.0,&gt;=4.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (4.27.4)
-Requirement already satisfied: scikit-learn in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.2.2)
-Requirement already satisfied: nltk in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.8.1)
 Requirement already satisfied: torchvision in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.15.1+cu118)
 Requirement already satisfied: huggingface-hub&gt;=0.4.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.13.3)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.2.2)
+Requirement already satisfied: nltk in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.8.1)
 Requirement already satisfied: torch&gt;=1.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2.0.0+cu118)
 Requirement already satisfied: sentencepiece in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.1.97)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.10.7)
-Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (6.0)
+Requirement already satisfied: scipy in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.10.1)
 Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (4.5.0)
+Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.10.7)
+Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (6.0)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.0.12)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2022.12.7)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.26.15)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2022.12.7)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: blis&lt;0.8.0,&gt;=0.7.8 in /usr/local/lib/python3.9/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.8-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.7.9)
 Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /usr/local/lib/python3.9/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.8-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.0.4)
-Requirement already satisfied: blis&lt;0.8.0,&gt;=0.7.8 in /usr/local/lib/python3.9/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.8-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (0.7.9)
 Requirement already satisfied: triton==2.0.0 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2.0.0)
 Requirement already satisfied: sympy in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.11.1)
 Requirement already satisfied: networkx in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cmake in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.25.2)
+Requirement already satisfied: cmake in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.25.2)
 Requirement already satisfied: lit in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (16.0.0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.13.3)
-Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2022.10.31)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2022.10.31)
+Requirement already satisfied: tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.13.3)
 Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /usr/local/lib/python3.9/dist-packages (from typer&lt;0.8.0,&gt;=0.3.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (8.1.3)
 Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from jinja2-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.1.2)
 Requirement already satisfied: joblib in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.1.1)
 Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.1.0)
 Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.9/dist-packages (from torchvision-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (8.4.0)
+Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.9/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.3.0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.9/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.3.0)
-Building wheels for collected packages: spacy-sentence-bert
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building wheels for collected packages: spacy-sentence-bert
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for spacy-sentence-bert (setup.py) ... ?25l?25hdone
-  Created wheel for spacy-sentence-bert: filename=spacy_sentence_bert-0.1.2-py3-none-any.whl size=28242 sha256=479f2fcad76064d384f63a2a1b032e78ffa3e3e72d794519856b401d8b08a948
-  Stored in directory: /tmp/pip-ephem-wheel-cache-a0kz2mgo/wheels/6c/23/94/ada1f47469627e1dd3173610861eb841bfae7e4dfeb9f1722e
+  Created wheel for spacy-sentence-bert: filename=spacy_sentence_bert-0.1.2-py3-none-any.whl size=28242 sha256=b49fc77bb4078073a8c0992e8fa3ae2bf1ae8bbbdee67f6f285cb376263dd00f
+  Stored in directory: /tmp/pip-ephem-wheel-cache-8nj06f61/wheels/6c/23/94/ada1f47469627e1dd3173610861eb841bfae7e4dfeb9f1722e
 Successfully built spacy-sentence-bert
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: spacy-sentence-bert
-Successfully installed spacy-sentence-bert-0.1.2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed spacy-sentence-bert-0.1.2
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
@@ -630,139 +631,31 @@ Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/downloa
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting spacy&lt;3.1.0,&gt;=3.0.3
   Downloading spacy-3.0.9-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.9 MB)
 ?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/5.9 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.2/5.9 MB</span> <span class=" -Color -Color-Red">37.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">5.9/5.9 MB</span> <span class=" -Color -Color-Red">98.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.9/5.9 MB</span> <span class=" -Color -Color-Red">64.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+     ━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.2/5.9 MB</span> <span class=" -Color -Color-Red">6.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.1/5.9 MB</span> <span class=" -Color -Color-Red">30.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">5.9/5.9 MB</span> <span class=" -Color -Color-Red">63.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.9/5.9 MB</span> <span class=" -Color -Color-Red">45.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hRequirement already satisfied: spacy-sentence-bert==0.1.2 in /usr/local/lib/python3.9/dist-packages (from xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.1.2)
 Requirement already satisfied: protobuf in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.20.3)
 Requirement already satisfied: sentence-transformers in /usr/local/lib/python3.9/dist-packages (from spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.2.2)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.0.9)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.0.8)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.27.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.7)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.4.6)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4
   Downloading pydantic-1.8.2-cp39-cp39-manylinux2014_x86_64.whl (11.3 MB)
 ?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/11.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.4/11.3 MB</span> <span class=" -Color -Color-Red">162.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">11.3/11.3 MB</span> <span class=" -Color -Color-Red">169.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">11.3/11.3 MB</span> <span class=" -Color -Color-Red">169.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">11.3/11.3 MB</span> <span class=" -Color -Color-Red">85.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.22.4)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.7)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.5 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.0.12)
-Requirement already satisfied: smart-open&lt;7.0.0,&gt;=5.2.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (6.3.0)
-Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (4.65.0)
+     ━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.6/11.3 MB</span> <span class=" -Color -Color-Red">169.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ <span class=" -Color -Color-Green">10.8/11.3 MB</span> <span class=" -Color -Color-Red">155.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">11.3/11.3 MB</span> <span class=" -Color -Color-Red">150.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">11.3/11.3 MB</span> <span class=" -Color -Color-Red">77.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.27.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting typer&lt;0.4.0,&gt;=0.3.0
-  Downloading typer-0.3.2-py3-none-any.whl (21 kB)
-Collecting wasabi&lt;1.1.0,&gt;=0.8.1
-  Downloading wasabi-0.10.1-py3-none-any.whl (26 kB)
-Requirement already satisfied: setuptools in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (67.6.1)
-Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.7.9)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.4.6)
-Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.10.1)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.4 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.8)
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.1.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting thinc&lt;8.1.0,&gt;=8.0.3
-  Downloading thinc-8.0.17-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (668 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/668.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">668.8/668.8 KB</span> <span class=" -Color -Color-Red">54.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.9/dist-packages (from spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (23.0)
-Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.9/dist-packages (from pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (4.5.0)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.26.15)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2022.12.7)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.4)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.12)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting click&lt;7.2.0,&gt;=7.1.1
-  Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/82.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">82.8/82.8 KB</span> <span class=" -Color -Color-Red">10.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from jinja2-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.1.2)
-Requirement already satisfied: torchvision in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.15.1+cu118)
-Requirement already satisfied: torch&gt;=1.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.0+cu118)
-Requirement already satisfied: nltk in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.8.1)
-Requirement already satisfied: scipy in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.10.1)
-Requirement already satisfied: sentencepiece in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.1.97)
-Requirement already satisfied: scikit-learn in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.2.2)
-Requirement already satisfied: transformers&lt;5.0.0,&gt;=4.6.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (4.27.4)
-Requirement already satisfied: huggingface-hub&gt;=0.4.0 in /usr/local/lib/python3.9/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.13.3)
-Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (6.0)
-Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.10.7)
-Requirement already satisfied: networkx in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.0)
-Requirement already satisfied: triton==2.0.0 in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.0)
-Requirement already satisfied: sympy in /usr/local/lib/python3.9/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.11.1)
-Requirement already satisfied: lit in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (16.0.0)
-Requirement already satisfied: cmake in /usr/local/lib/python3.9/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.25.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.13.3)
-Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.9/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2022.10.31)
-Requirement already satisfied: joblib in /usr/local/lib/python3.9/dist-packages (from nltk-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.1.1)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.1.0)
-Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.9/dist-packages (from torchvision-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (8.4.0)
-Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.9/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.3.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building wheels for collected packages: xx-paraphrase-xlm-r-multilingual-v1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for xx-paraphrase-xlm-r-multilingual-v1 (setup.py) ... ?25l?25hcanceled
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 167, in exc_logging_wrapper
-    status = run_func(*args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/req_command.py&quot;, line 199, in wrapper
-    return func(self, options, args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/commands/install.py&quot;, line 361, in run
-    _, build_failures = build(
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/wheel_builder.py&quot;, line 348, in build
-    wheel_file = _build_one(
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/wheel_builder.py&quot;, line 222, in _build_one
-    wheel_path = _build_one_inside_env(
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/wheel_builder.py&quot;, line 269, in _build_one_inside_env
-    wheel_path = build_wheel_legacy(
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/operations/build/wheel_legacy.py&quot;, line 83, in build_wheel_legacy
-    output = call_subprocess(
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/utils/subprocess.py&quot;, line 166, in call_subprocess
-    line: str = proc.stdout.readline()
-KeyboardInterrupt
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">ERROR: Operation cancelled by user</span>
 
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/usr/local/bin/pip3&quot;, line 8, in &lt;module&gt;
-    sys.exit(main())
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/main.py&quot;, line 70, in main
-    return command.main(cmd_args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 101, in main
-    return self._main(args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 221, in _main
-    return run(options, args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 204, in exc_logging_wrapper
-    logger.critical(&quot;Operation cancelled by user&quot;)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1493, in critical
-    self._log(CRITICAL, msg, args, **kwargs)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1589, in _log
-    self.handle(record)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1599, in handle
-    self.callHandlers(record)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1661, in callHandlers
-    hdlr.handle(record)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 952, in handle
-    self.emit(record)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/utils/logging.py&quot;, line 164, in emit
-    renderable = self.render_message(record, message)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/rich/logging.py&quot;, line 158, in render_message
-    def render_message(self, record: LogRecord, message: str) -&gt; &quot;ConsoleRenderable&quot;:
-KeyboardInterrupt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
@@ -777,10 +670,12 @@ Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/downloa
 </div>
 </div>
 </div>
-<p>Import requisite libraries</p>
+<p>Impor libraries yang dibutuhkan</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
 
 
 <span class="c1">#for text pre-processing</span>
@@ -801,8 +696,12 @@ Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/downloa
 <span class="c1">#for model-building</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>  <span class="c1"># to standardize the features</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>  <span class="c1"># to apply PCA</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>  <span class="c1"># to plot the heat maps</span>
 
 
 <span class="c1">#for word embedding</span>
@@ -827,7 +726,7 @@ Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/downloa
 </div>
 </div>
 </div>
-<p>Dataset preparation</p>
+<p>Persiapan Dataset</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/prosaindata/source/tasks/output/Data_TA.csv&quot;</span><span class="p">)</span>
@@ -845,7 +744,7 @@ Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/downloa
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-de612635-f80d-4635-ba69-af7558cdf835">
+  <div id="df-dc30fc87-53b7-4787-9866-b4e2f8274b27">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -956,7 +855,7 @@ Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/downloa
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-de612635-f80d-4635-ba69-af7558cdf835')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-dc30fc87-53b7-4787-9866-b4e2f8274b27')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1007,12 +906,12 @@ Collecting https://github.com/MartinoMensio/spacy-sentence-bert/releases/downloa
 
       <script>
         const buttonEl =
-          document.querySelector('#df-de612635-f80d-4635-ba69-af7558cdf835 button.colab-df-convert');
+          document.querySelector('#df-dc30fc87-53b7-4787-9866-b4e2f8274b27 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-de612635-f80d-4635-ba69-af7558cdf835');
+          const element = document.querySelector('#df-dc30fc87-53b7-4787-9866-b4e2f8274b27');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1111,7 +1010,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 </div>
-<p>Clean text using <code class="docutils literal notranslate"><span class="pre">preprocess()</span></code> function from number, capitalize, punctuation, and other unnecessary characters</p>
+<p>Bersihkan kata pada abstrak dengan fungsi <code class="docutils literal notranslate"><span class="pre">preprocess()</span></code> untuk menghilangkan angka, tanda baca, dan ubah kata ke huruf kecil</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessed_abstract</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1140,7 +1039,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 </div>
-<p>Clean text use <code class="docutils literal notranslate"><span class="pre">stopword()</span></code> function from conjuction and other unnecessary words</p>
+<p>Bersihkan kata pada abstrak dengan fungsi <code class="docutils literal notranslate"><span class="pre">stopword()</span></code> untuk menghapus kata hubung dan semua kata bantu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">removed_stopword_abstract</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1169,7 +1068,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 </div>
-<p>Clean text use <code class="docutils literal notranslate"><span class="pre">to_base_word()</span></code> function to make all the words root words</p>
+<p>Bersihkan kata dengan fungsi <code class="docutils literal notranslate"><span class="pre">to_base_word()</span></code> untuk mengubah kata menjadi kata dasar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sastrawi</span>
@@ -1218,9 +1117,9 @@ Name: Abstrak, dtype: object
 <h2>Word Embedding<a class="headerlink" href="#word-embedding" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Cosine</span> <span class="pre">Simmilarity</span></code></p>
 <p>Diukur dengan cosinus sudut antara dua vektor dan menentukan apakah dua vektor menunjuk ke arah yang kira-kira sama.</p>
-<p><code class="docutils literal notranslate"><span class="pre">vector_size</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Dimensionality of the word vectors.</p>
-<p><code class="docutils literal notranslate"><span class="pre">window</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Maximum distance between the current and predicted word within a sentence.</p>
-<p><code class="docutils literal notranslate"><span class="pre">min_count</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Ignores all words with a lower total frequency than this.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vector_size</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Ukuran dimensi vektor kata.</p>
+<p><code class="docutils literal notranslate"><span class="pre">window</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Jarak maksimum antara kata yang akan diprediksi dengan kata yang sudah diprediksi.</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_count</span> <span class="pre">(int,</span> <span class="pre">optional)</span></code> – Abaikan semua kata yang memiliki total frekuensi sedikit.</p>
 <div class="section" id="word-embedding-use-cbow-and-skip-gram-model">
 <h3>Word embedding use CBOW and Skip Gram model<a class="headerlink" href="#word-embedding-use-cbow-and-skip-gram-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -1243,17 +1142,99 @@ Name: Abstrak, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>810
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sistem&#39;,
+ &#39;informasi&#39;,
+ &#39;akademik&#39;,
+ &#39;siakad&#39;,
+ &#39;sistem&#39;,
+ &#39;informasi&#39;,
+ &#39;fungsi&#39;,
+ &#39;tangan&#39;,
+ &#39;kelola&#39;,
+ &#39;saji&#39;,
+ &#39;data&#39;,
+ &#39;data&#39;,
+ &#39;akademik&#39;,
+ &#39;fakultas&#39;,
+ &#39;siakad&#39;,
+ &#39;anggap&#39;,
+ &#39;layan&#39;,
+ &#39;mahasiswa&#39;,
+ &#39;butuh&#39;,
+ &#39;informasi&#39;,
+ &#39;akademik&#39;,
+ &#39;universitas&#39;,
+ &#39;trunojoyo&#39;,
+ &#39;sedia&#39;,
+ &#39;siakad&#39;,
+ &#39;database&#39;,
+ &#39;pusat&#39;,
+ &#39;sistem&#39;,
+ &#39;lebih&#39;,
+ &#39;awat&#39;,
+ &#39;mudah&#39;,
+ &#39;butuh&#39;,
+ &#39;biaya&#39;,
+ &#39;sistem&#39;,
+ &#39;potensi&#39;,
+ &#39;mengahadapi&#39;,
+ &#39;kendala&#39;,
+ &#39;kendala&#39;,
+ &#39;proses&#39;,
+ &#39;transaksi&#39;,
+ &#39;data&#39;,
+ &#39;padat&#39;,
+ &#39;jaring&#39;,
+ &#39;database&#39;,
+ &#39;siakad&#39;,
+ &#39;lambat&#39;,
+ &#39;pemrosesan&#39;,
+ &#39;respon&#39;,
+ &#39;query&#39;,
+ &#39;data&#39;,
+ &#39;simpan&#39;,
+ &#39;pemrosesan&#39;,
+ &#39;kompleks&#39;,
+ &#39;milik&#39;,
+ &#39;lemah&#39;,
+ &#39;sedia&#39;,
+ &#39;data&#39;,
+ &#39;sistem&#39;,
+ &#39;kembang&#39;,
+ &#39;sistem&#39;,
+ &#39;database&#39;,
+ &#39;sistem&#39;,
+ &#39;databases&#39;,
+ &#39;distribusi&#39;,
+ &#39;fakultas&#39;,
+ &#39;jadi&#39;,
+ &#39;solusi&#39;,
+ &#39;masalah&#39;,
+ &#39;basisdata&#39;,
+ &#39;distribusi&#39;,
+ &#39;untung&#39;,
+ &#39;milik&#39;,
+ &#39;basisdata&#39;,
+ &#39;pusat&#39;,
+ &#39;awas&#39;,
+ &#39;distribusi&#39;,
+ &#39;reability&#39;,
+ &#39;availability&#39;,
+ &#39;cepat&#39;,
+ &#39;pemrosesan&#39;,
+ &#39;query&#39;,
+ &#39;otonomi&#39;,
+ &#39;local&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p>dummy data for test CBOW and Skip Gram Model</p>
+<p>Uji coba kata</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_word1</span> <span class="o">=</span> <span class="s2">&quot;sistem&quot;</span>
@@ -1285,7 +1266,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;sistem&#39; and &#39;perangkat&#39; - with CBOW : 0.9801543354988098
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;sistem&#39; and &#39;perangkat&#39; - with CBOW : 0.967322587966919
 </pre></div>
 </div>
 </div>
@@ -1298,7 +1279,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;game&#39; and &#39;perangkat&#39; - with CBOW : 0.9825574159622192
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;game&#39; and &#39;perangkat&#39; - with CBOW : 0.9849453568458557
 </pre></div>
 </div>
 </div>
@@ -1311,7 +1292,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;komputasi&#39; and &#39;perangkat&#39; - with CBOW : 0.9897515177726746
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;komputasi&#39; and &#39;perangkat&#39; - with CBOW : 0.9893550872802734
 </pre></div>
 </div>
 </div>
@@ -1335,7 +1316,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;sistem&#39; and &#39;perangkat&#39; - with CBOW : 0.7361634969711304
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;sistem&#39; and &#39;perangkat&#39; - with CBOW : 0.6850606203079224
 </pre></div>
 </div>
 </div>
@@ -1348,7 +1329,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;game&#39; and &#39;perangkat&#39; - with CBOW : 0.7570070028305054
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;game&#39; and &#39;perangkat&#39; - with CBOW : 0.7462562322616577
 </pre></div>
 </div>
 </div>
@@ -1361,7 +1342,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;komputasi&#39; and &#39;perangkat&#39; - with CBOW : 0.6018103361129761
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cosine similarity between &#39;komputasi&#39; and &#39;perangkat&#39; - with CBOW : 0.5140236616134644
 </pre></div>
 </div>
 </div>
@@ -1373,7 +1354,7 @@ Name: Abstrak, dtype: object
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
 <div class="section" id="evaluation-preparation">
 <h3>Evaluation Preparation<a class="headerlink" href="#evaluation-preparation" title="Permalink to this heading">#</a></h3>
-<p>Show all available labels as <code class="docutils literal notranslate"><span class="pre">y</span></code></p>
+<p>Label <code class="docutils literal notranslate"><span class="pre">y</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
@@ -1386,7 +1367,7 @@ Name: Abstrak, dtype: object
 </div>
 </div>
 </div>
-<p>Overview of abstracr as <code class="docutils literal notranslate"><span class="pre">X</span></code></p>
+<p>Data <code class="docutils literal notranslate"><span class="pre">X</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaned_abstract</span>
@@ -1410,7 +1391,7 @@ Length: 810, dtype: object
 </div>
 </div>
 </div>
-<p>create new normalised and cleaned data frame from raw data</p>
+<p>Buat <em>dataframe</em> baru dari data yang sudah dibersihkan</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Abstract&quot;</span> <span class="p">:</span> <span class="n">cleaned_abstract</span><span class="p">,</span> <span class="s2">&quot;Label&quot;</span> <span class="p">:</span> <span class="n">label</span><span class="p">}</span>
@@ -1427,7 +1408,7 @@ Length: 810, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-134d2c0a-c164-4258-8f46-a3b35f1e3456">
+  <div id="df-bdb2f9b5-c292-4a7c-ad47-f0e4111de172">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1511,7 +1492,7 @@ Length: 810, dtype: object
 </table>
 <p>810 rows × 2 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-134d2c0a-c164-4258-8f46-a3b35f1e3456')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-bdb2f9b5-c292-4a7c-ad47-f0e4111de172')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1562,12 +1543,12 @@ Length: 810, dtype: object
 
       <script>
         const buttonEl =
-          document.querySelector('#df-134d2c0a-c164-4258-8f46-a3b35f1e3456 button.colab-df-convert');
+          document.querySelector('#df-bdb2f9b5-c292-4a7c-ad47-f0e4111de172 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-134d2c0a-c164-4258-8f46-a3b35f1e3456');
+          const element = document.querySelector('#df-bdb2f9b5-c292-4a7c-ad47-f0e4111de172');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1588,21 +1569,16 @@ Length: 810, dtype: object
   </div>
   </div></div>
 </div>
-<p>load one of the models listed at <a class="github reference external" href="https://github.com/MartinoMensio/spacy-sentence-bert/">MartinoMensio/spacy-sentence-bert</a></p>
+<p>Load model dari <a class="github reference external" href="https://github.com/MartinoMensio/spacy-sentence-bert/">MartinoMensio/spacy-sentence-bert</a> untuk melakukan pelatihan setiap kata dan acuan untuk merubah kata menjadi vektor</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for model paraphrase-xlm-r-multilingual-v1</span>
-<span class="c1"># nlp = spacy_sentence_bert.load_model(&#39;xx_paraphrase_xlm_r_multilingual_v1&#39;)</span>
-
-<span class="c1"># for model distiluse-base-multilingual-cased-v2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for model distiluse-base-multilingual-cased-v2</span>
 <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy_sentence_bert</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;xx_distiluse_base_multilingual_cased_v2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a48055cb3711448cb7cf0e4dead34b2c"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "12867c56eed3467dbd027f4e51931256"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6b7acf2394fd4088a8c9987b5e5f3f55"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e87d4f04d32344b5aa1521846c57a94d"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fbd07258012f4dbeb4982fd73e1b1193"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7ebbe4d5a5ea4e868c7766b4868e11e1"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "be6bba6b53d348d791455d81c19aef20"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d7a7e0be16c54b5fbad225aba2055311"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b4e6d6ed99c44aee8f90bd2207e77603"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fbf4b4bc2161453db4b8810529563c83"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "daa7fa84824e479faed0110089ae2760"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b930ec8810d54b1aba2f83cedbbf8169"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7d55dada331b4d129a5f7a9c37fdd849"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cd4b5798f0fd4bb2a89d66fec3510d98"}</script></div>
 </div>
-<p>create <code class="docutils literal notranslate"><span class="pre">df['vector']</span></code> where individual abstract are represented as real-valued vectors in a lower-dimensional space</p>
+<p>Buat kolom <code class="docutils literal notranslate"><span class="pre">df['vector']</span></code> dimana setiap abstrak akan direpresentasikan dalam bentuk vektor</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;vector&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;Abstract&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">nlp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="p">)</span>
@@ -1618,7 +1594,7 @@ Length: 810, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-6ee1b3e7-9631-4629-b058-cdbc0bf981c0">
+  <div id="df-ebbdb3ab-196d-4441-8954-6c41caa022af">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1714,7 +1690,7 @@ Length: 810, dtype: object
 </table>
 <p>810 rows × 3 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-6ee1b3e7-9631-4629-b058-cdbc0bf981c0')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-ebbdb3ab-196d-4441-8954-6c41caa022af')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1765,12 +1741,12 @@ Length: 810, dtype: object
 
       <script>
         const buttonEl =
-          document.querySelector('#df-6ee1b3e7-9631-4629-b058-cdbc0bf981c0 button.colab-df-convert');
+          document.querySelector('#df-ebbdb3ab-196d-4441-8954-6c41caa022af button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-6ee1b3e7-9631-4629-b058-cdbc0bf981c0');
+          const element = document.querySelector('#df-ebbdb3ab-196d-4441-8954-6c41caa022af');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1791,7 +1767,7 @@ Length: 810, dtype: object
   </div>
   </div></div>
 </div>
-<p>Split X and y as below</p>
+<p>Pisah data X &amp; label y</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">X_train</span></code> train X data</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">X_test</span></code> test X data</p></li>
@@ -1810,39 +1786,42 @@ Length: 810, dtype: object
 <h3>Train with machine learning classifier.<a class="headerlink" href="#train-with-machine-learning-classifier" title="Permalink to this heading">#</a></h3>
 <div class="section" id="support-vector-classifier-svm">
 <h4>Support Vector Classifier(SVM)<a class="headerlink" href="#support-vector-classifier-svm" title="Permalink to this heading">#</a></h4>
+</div>
+<div class="section" id="gaussian-naive-bayes">
+<h4>Gaussian Naive Bayes<a class="headerlink" href="#gaussian-naive-bayes" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelGNB</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 
-<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="n">modelGNB</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">modelGNB</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuracyGNB</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy Score:&quot;</span><span class="p">,</span> <span class="n">accuracyGNB</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7126865671641791
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy Score: 0.7201492537313433
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="random-forest-classifier">
-<h4>Random Forest Classifier<a class="headerlink" href="#random-forest-classifier" title="Permalink to this heading">#</a></h4>
+<div class="section" id="k-nearest-neighbors">
+<h4>K-Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">=</span> <span class="pre">3</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy Score:&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7611940298507462
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy Score: 0.8059701492537313
 </pre></div>
 </div>
 </div>
@@ -1851,91 +1830,205 @@ Length: 810, dtype: object
 </div>
 <div class="section" id="classification-test">
 <h3>Classification Test<a class="headerlink" href="#classification-test" title="Permalink to this heading">#</a></h3>
-<p>Given dummy data to classify</p>
+<p>Uji coba abstrak baru terhadap model yang sudah dilatih</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">abstracts</span></code> as data</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> as category</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">abstracts</span></code> untuk data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> untuk kategori</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abstracts</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik.&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik. Di Universitas Trunojoyo telah tersedia SIAKAD,  namun  masih  menggunakan  database  terpusat. Sistem seperti ini memberikan kelebihan yaitu perawatannya mudah  selain  itu  juga  membutuhkan  sedikit  biaya,  namun sistem  tersebut  juga  berpotensi  mengahadapi  kendala-kendala  yaitu  dalam  proses  transaksi  data  karena  padatnya jaringan yang menuju database SIAKAD, kelambatan dalam pemrosesan  respon  query  dikarenakan  data  yang  tersimpan semakin besar dan pemrosesan semakin kompleks, dan  juga memiliki kelemahan dalam hal ketersediaan data. Untuk  itu sistem  seperti  ini  memerlukan  pengembangan  sistem database  yang  lebih  baik  dengan  menggunakan  sistem databases  terdistribusi  pada  masing-masing  fakultas  yang dapat  dijadikan  solusi  bagi  permasalahan  di  atas.  Karena dalam basisdata terdistribusi terdapat keuntungan yang tidak dimiliki oleh basisdata  terpusat yaitu pengawasan distribusi, reability,  availability,  kecepatan  dalam  pemrosesan  query dan otonomi local.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan. Namun tidak selamanya koneksijaringan dapat berjalan dengan lancar tanpa adanya gangguan. Kenyataan di lapangan terutama pada jaringan komputer skalabesar, berpotensi besar terjadi gangguan atau bahkan kerusakan koneksi jaringan komputer.Hal ini rata - rata disebabkan banyaknya penggunaan serta padatnya traffic data dalam jaringan komputer itu sendiri.Oleh karena itu untuk menjaga bahkan meningkatkan kualitas layanan koneksi jaringan maka diperlukan adanya akses kontroldan monitoring pada level administrator jaringan secara real-time berbasis mobile, yang dapat mengatur dan mengetahuiinformasi tentang koneksi jaringan dan dapat diakses setiap saat.Pihak administrator jaringan dituntut untuk terlebih dahulu mengetahui adanya gangguan atau bahkan terputusnyakoneksi jaringan walaupun administrator tidak berada di tempat kontrol dan monitoring, Dengan adanya sistem kontrol danmonitoring berbasis mobile, diharapkan dapat membantu tugas administrator dalam mengontrol dan memantau jaringan sertadalam mengambil kebijakan atas node â node yang terkoneksi pada jaringan yakni memanajemen koneksi, port dan bandwidthsetiap saat dan secara mobile. agar dengan segera dapat melakukan pembenahan ketika terjadi gangguan jaringan sebelumpemakai jaringan (klien) melakukan pengaduan atas adanya gangguan.Kata Kunci : Administrator Jaringan, Koneksi Jaringan, Akses Kontrol dan Monitoring.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.Tujuan dari penelitan ini adalah membuat sebuah aplikasi proxyserver yang menerima permintaan HTTP dari web client danmeneruskannya ke web server. Kemudian aplikasi ini akan menerimarespon dari server dan melakukan proses enkripsi pada dokumen HTMLterlebih dahulu. Sehingga dokumen HTML yang dikirim kepada webclient sudah berbentuk dokumen HTML yang terenkripsi. Web clientdisini bisa berupa aplikasi seperti Internet Explorer, Mozilla Firefox,atau Opera. Aplikasi-aplikasi tersebut biasa dikenal dengan sebutan webbrowser.Ketika web browser menerima dokumen HTML yang terenkripsidari aplikasi proxy server, maka JavaScript Engine yang ada di webbrowser akan melakukan proses dekripsi sekaligus rendering sehinggadokumen akan ditampilkan sesuai dengan aslinya. Namun apabila kodedari dokumen HTML tersebut dilihat melalui menu view source yangada di web browser akan didapatkan dokumen HTML yang tetapterenkripsi.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Penjadwalan  kuliah  di  Perguruan  Tinggi  merupakan  masalah yang  kompleks.  Dalam  permasalahan tersebut  terdapat  beberapa variabel  yang  harus  dipertimbangkan  supaya  mendapatkan  jadwal  yang optimal. Di dalam penyusunan jadwal kuliah ini terdapat sangat banyak kemungkinan  yang  selayaknya  dicoba  untuk  menemukan  penjadwalan yang  terbaik.  Karena  itu  dibutuhkan  metode  optimasi  yang  dapat diterapkan  untuk  mengerjakan  penjadwalan  mata  kuliah  ini.  Metode yang  dapat  digunakan  untuk  menyelesaikan  permasalahan  tersebut adalah  dengan  menggunakan  Algoritma  Genetika.  Tugas  Akhir  ini bertujuan  untuk  membuat  suatu  sistem  yang  dapat  membuat  jadwal matakuliah  secara  otomatis  dan  hasilnya  optimal.  Dari  hasil  penelitian yang  dilakukan  algoritma  genetika  mampu  membuat  jadwal  dengan optimal  yang  dibuktikan  dari  nilai  fitness  yang memiliki  nilai  1  secara otomatis  jadwal  yang  dibentuk  akan  optimal.  Semoga  adanya  aplikasi ini  diharapkan  bisa  mempermudah  didalam  pembuatan  penjadwalan matakuliah dengan mudah dan cepat.  Kata Kunci: Algoritma Genetika, Optimasi,  Penjadwalan.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Seiring perkembangan teknologi yang ada didunia, muncul teknologi yang disebut augmented reality. Augmented Reality (AR) merupakan upaya untuk menggabungkan dunia maya dan dunia virtual yang dibuat melalui komputer sehingga batas antara keduanya menjadi sangat tipis. Head-Mounted Display (HMD) merupakan contoh hasil dari penelitian tentang Augmented Reality, ini merupakan satu-satunya peralatan dasar dalam teknologi-teknologi terbaru. Seiring berjalannya waktu, augmented reality berkembang pesat sehingga memungkinkan pengembangan aplikasi ini di berbagai bidang.Untuk mengembangkan AR banyak sekali library pendukung yang dapat digunakan. FlarToolKit adalah salah satunya. FlarToolKit merupakan library pendukung augmented reality pada platform flash.Berdasarkan sistem AR animasi benda bergerak yang dibuat adalah animasi bergerak permainan pingpong dimana telah dikolaborasikan dengan augmented reality untuk menggerakkan setiap langkah dari playernya. Interaksi antar obyek tersebut dapat dilihat dari gerak bola yang dapat dipukul dengan obyek virtual yang ditampilkan melalui augmented reality.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time Strategy). Gerak pekerja memiliki berbagai macam gerak. Oleh sebab itu dibutuhkan sebuah pendekatan konsep AI  untuk mendesain perilaku pekerja tersebut. Perilaku karakter tersebut harus ditambahi dengan AI (Artifical intelegent) agar perilakunya menjadi lebih hidup dan realistis.Dalam penelitian ini AI yang digunakan adalah Finite State Machine. Finite State Machine digunakan untuk menentukan gerak pekerja terhadap parameter-parameter yang digunakan sebagai dasar gerak yang akan dilakukan . Selanjutnya akan disimulasikan pada game RTS dengan menggunakan game engine.Hasil yang di peroleh dalam penelitian ini adalah penerapan metode Finite State machine untuk menentukan gerak pekerja berdasarkan parameter jumlah harta, prajurit, kondisi bangunan, dan stockpile (jumlah resources yang di bawa). Kata kunci : Game, Real-Time Strategy, Gerak Pekerja, Finite State Machine.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Perkembangan teknologi komunikasi yang begitu cepat memicu perkembangan teknologi telpon seluler sebagai salah satu alat komunikasi modern. Komunikasi data yang diimplementasikan juga beragam, teks, gambar bahkan suara. Medium yang digunakan-pun kini beragam baik itu internet, local connection hingga bluetooth. Bluetooth dapat dipilih sebagai alternatif medium untuk menghubungkan satu perangkat dengan perangkat lain. Ditambah lagi dengan perkembangan android yang belakangan ini juga semakin pesat semakin memberi kemudahan untuk betukar data melalui bluetooth. Bluetooth mampu menghubungkan perangkat yang satu dengan perangkat lainnya. Ini kemudian memungkinkan antar perangkat dapat saling bertukar atau berkirim data. Namun, dalam proses pengiriman data tersebut tidak ada yang dapat menjamin keamanannya. Hal ini yang kemudian membuat proses enkripsi menjadi hal yang penting. Data yang dikirim terlebih dahulu dikodekan sedemikian rupa hingga hanya dengan kunci tertentu kode tersebut dapat dibaca. RSA kemudian muncul sebagai salah satu alternatif algoritma yang dapat digunakan menangani proses enkripsi tersebut. RSA memiliki teknik pemfaktoran yang cukup rumit, hal ini membuat tingkat keamanannya cukup tinggi. Selain itu, RSA juga cocok diaplikasikan dalam platform mobile karena memiliki struktur yang asimetris sehingga tidak terlalu membebani sistem yang dimiliki oleh perangkat mobile tersebut. Pengujian aplikasi ini sudah teruji melalui perhitungan manual dan dari pengambilan dua device yang berbeda. &quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Berita memiliki peranan penting dalam kehidupan manusia. Saat ini tren memperoleh informasi melalui situs berita online semakin populer. Kebanyakan pembaca ingin memperoleh informasi dari sebuah berita dengan cepat, ringkas dan tidak banyak membuang waktu. Tujuan penelitian ini untuk memberikan kemudahan bagi pembaca untuk mendapatkan informasi terpenting dari suatu berita dengan cepat.Pada penelitian ini, dibangun sebuah aplikasi peringkas berita online otomatis yang dikembangkan menggunakan metode perhitungan Ordinary Weighting. Metode Ordinary Weighting merupakan perhitungan bobot term berdasarkan prinsip TF * IDF dengan menggunakan TF tanpa normalisasi. Tujuan aplikasi ini untuk menghasilkan sebuah ringkasan yang terdiri dari tiga kalimat dengan nilai bobot tertinggi sebagai ringkasan dari suatu artikel berita dengan tetap mempertahankan ide utama dari berita tersebut. Proses evaluasi dilakukan dengan cara membandingkan hasil ringkasan yang dihasilkan oleh sistem dengan ringkasan yang dibuat secara manual oleh koresponden melalui metode kuesioner, dengan prinsip Majority Opinion.Dari hasil penelitian diketahui bahwa kesesuaian hasil ringkasan sistem dengan pengguna yang diperoleh dari kuesioner menunjukkan hasil nilai rata-rata recall sebesar 0.47, precision 0.40 dan rata-rata f-measures sebesar 0.53.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Perintah dengan menggunakan suara memungkinkan penggunadapat mengakses isi database dengan mengucapkan perintah melaluiperalatan masukan audio tanpa harus menggunakan cara konvensional.Penggunaan program database dalam pengoperasiannya, diperlukanpemahaman pada struktur SQL (Structured Query Language).Kemudahan bisa dirasakan bagi pengguna awam karena sistempengaksesan database disertai dengan pengembangan NLP (NaturalLanguage Processing).Perintah dengan suara menggunakan piranti masukan audioseperti mikrofon dan mesin pengenal ucapan. Ketika penggunamengucapkan perintah melalui mikrofon, mesin pengenal ucapan akanmenerjemahkan dari ucapan ke teks. Dari teks akan diterjemahkankedalam bentuk perintah SQL untuk pengaksesan database. Penelitianini memanfaatkan Teknologi Pengenalan Suara Automatis padaMicrosoft Speech Aplication Programming Interface. Perintah suarayang diucapkan menggunakan sintaksis bahasa alami, yaitu bahasaInggris. Dengan proses NLP menggunakan metode Top Down Parse.Masalah yang dihadapi dalam menggunakan pengenalanucapan adalah noise juga perlu untuk berbicara sejelas mungkin. Dalampengaplikasiannya dilakukan suatu uji coba pengenalan ucapansebanyak 12 kali pengucapan perintah dan diperoleh hasil keakuratansebesar 33</span><span class="si">% s</span><span class="s2">edangkan inputan kalimat bahasa alami yang berhasilditerjemahkan dalam bentuk SQL sebanyak 67%.&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;RPL&#39;</span><span class="p">,</span>  
-    <span class="s1">&#39;RPL&#39;</span><span class="p">,</span>  
-    <span class="s1">&#39;RPL&#39;</span>
+    <span class="s1">&#39;RPL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RPL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RPL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;komputasi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;komputasi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;komputasi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PBA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PBA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PBA&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Result</p>
-<p>result when use model paraphrase-xlm-r-multilingual-v1</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for abstract, label in zip(abstracts, labels):</span>
-<span class="c1">#   print(abstract)</span>
-<span class="c1">#   print(f&quot;True Label: {label}, Predicted Label: {clf.predict(nlp(abstract).vector.reshape(1, -1))[0]} \n&quot;)</span>
-
-<span class="c1"># OUPUT</span>
-<span class="c1"># Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik.</span>
-<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
-
-<span class="c1"># Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.</span>
-<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
-
-<span class="c1"># Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan.</span>
-<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Model use KNN, because accuracy score of KNN (<span class="math notranslate nohighlight">\( 0.8 \)</span>) is higher than Gaussian Naive Bayes (<span class="math notranslate nohighlight">\( 0.72 \)</span>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">abstract</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True Label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">, Predicted Label: </span><span class="si">{</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">nlp</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># OUPUT</span>
-<span class="c1"># Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik.</span>
-<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
-
-<span class="c1"># Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.</span>
-<span class="c1"># True Label: RPL, Predicted Label: komputasi </span>
-
-<span class="c1"># Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan.</span>
-<span class="c1"># True Label: RPL, Predicted Label: RPL </span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True Label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">, Predicted Label: </span><span class="si">{</span><span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">nlp</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik.
-True Label: RPL, Predicted Label: komputasi 
-
-Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.
-True Label: RPL, Predicted Label: komputasi 
-
-Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik. Di Universitas Trunojoyo telah tersedia SIAKAD,  namun  masih  menggunakan  database  terpusat. Sistem seperti ini memberikan kelebihan yaitu perawatannya mudah  selain  itu  juga  membutuhkan  sedikit  biaya,  namun sistem  tersebut  juga  berpotensi  mengahadapi  kendala-kendala  yaitu  dalam  proses  transaksi  data  karena  padatnya jaringan yang menuju database SIAKAD, kelambatan dalam pemrosesan  respon  query  dikarenakan  data  yang  tersimpan semakin besar dan pemrosesan semakin kompleks, dan  juga memiliki kelemahan dalam hal ketersediaan data. Untuk  itu sistem  seperti  ini  memerlukan  pengembangan  sistem database  yang  lebih  baik  dengan  menggunakan  sistem databases  terdistribusi  pada  masing-masing  fakultas  yang dapat  dijadikan  solusi  bagi  permasalahan  di  atas.  Karena dalam basisdata terdistribusi terdapat keuntungan yang tidak dimiliki oleh basisdata  terpusat yaitu pengawasan distribusi, reability,  availability,  kecepatan  dalam  pemrosesan  query dan otonomi local.
 True Label: RPL, Predicted Label: RPL 
+
+Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan. Namun tidak selamanya koneksijaringan dapat berjalan dengan lancar tanpa adanya gangguan. Kenyataan di lapangan terutama pada jaringan komputer skalabesar, berpotensi besar terjadi gangguan atau bahkan kerusakan koneksi jaringan komputer.Hal ini rata - rata disebabkan banyaknya penggunaan serta padatnya traffic data dalam jaringan komputer itu sendiri.Oleh karena itu untuk menjaga bahkan meningkatkan kualitas layanan koneksi jaringan maka diperlukan adanya akses kontroldan monitoring pada level administrator jaringan secara real-time berbasis mobile, yang dapat mengatur dan mengetahuiinformasi tentang koneksi jaringan dan dapat diakses setiap saat.Pihak administrator jaringan dituntut untuk terlebih dahulu mengetahui adanya gangguan atau bahkan terputusnyakoneksi jaringan walaupun administrator tidak berada di tempat kontrol dan monitoring, Dengan adanya sistem kontrol danmonitoring berbasis mobile, diharapkan dapat membantu tugas administrator dalam mengontrol dan memantau jaringan sertadalam mengambil kebijakan atas node â node yang terkoneksi pada jaringan yakni memanajemen koneksi, port dan bandwidthsetiap saat dan secara mobile. agar dengan segera dapat melakukan pembenahan ketika terjadi gangguan jaringan sebelumpemakai jaringan (klien) melakukan pengaduan atas adanya gangguan.Kata Kunci : Administrator Jaringan, Koneksi Jaringan, Akses Kontrol dan Monitoring.
+True Label: RPL, Predicted Label: RPL 
+
+Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.Tujuan dari penelitan ini adalah membuat sebuah aplikasi proxyserver yang menerima permintaan HTTP dari web client danmeneruskannya ke web server. Kemudian aplikasi ini akan menerimarespon dari server dan melakukan proses enkripsi pada dokumen HTMLterlebih dahulu. Sehingga dokumen HTML yang dikirim kepada webclient sudah berbentuk dokumen HTML yang terenkripsi. Web clientdisini bisa berupa aplikasi seperti Internet Explorer, Mozilla Firefox,atau Opera. Aplikasi-aplikasi tersebut biasa dikenal dengan sebutan webbrowser.Ketika web browser menerima dokumen HTML yang terenkripsidari aplikasi proxy server, maka JavaScript Engine yang ada di webbrowser akan melakukan proses dekripsi sekaligus rendering sehinggadokumen akan ditampilkan sesuai dengan aslinya. Namun apabila kodedari dokumen HTML tersebut dilihat melalui menu view source yangada di web browser akan didapatkan dokumen HTML yang tetapterenkripsi.
+True Label: RPL, Predicted Label: RPL 
+
+Penjadwalan  kuliah  di  Perguruan  Tinggi  merupakan  masalah yang  kompleks.  Dalam  permasalahan tersebut  terdapat  beberapa variabel  yang  harus  dipertimbangkan  supaya  mendapatkan  jadwal  yang optimal. Di dalam penyusunan jadwal kuliah ini terdapat sangat banyak kemungkinan  yang  selayaknya  dicoba  untuk  menemukan  penjadwalan yang  terbaik.  Karena  itu  dibutuhkan  metode  optimasi  yang  dapat diterapkan  untuk  mengerjakan  penjadwalan  mata  kuliah  ini.  Metode yang  dapat  digunakan  untuk  menyelesaikan  permasalahan  tersebut adalah  dengan  menggunakan  Algoritma  Genetika.  Tugas  Akhir  ini bertujuan  untuk  membuat  suatu  sistem  yang  dapat  membuat  jadwal matakuliah  secara  otomatis  dan  hasilnya  optimal.  Dari  hasil  penelitian yang  dilakukan  algoritma  genetika  mampu  membuat  jadwal  dengan optimal  yang  dibuktikan  dari  nilai  fitness  yang memiliki  nilai  1  secara otomatis  jadwal  yang  dibentuk  akan  optimal.  Semoga  adanya  aplikasi ini  diharapkan  bisa  mempermudah  didalam  pembuatan  penjadwalan matakuliah dengan mudah dan cepat.  Kata Kunci: Algoritma Genetika, Optimasi,  Penjadwalan.
+True Label: komputasi, Predicted Label: komputasi 
+
+Seiring perkembangan teknologi yang ada didunia, muncul teknologi yang disebut augmented reality. Augmented Reality (AR) merupakan upaya untuk menggabungkan dunia maya dan dunia virtual yang dibuat melalui komputer sehingga batas antara keduanya menjadi sangat tipis. Head-Mounted Display (HMD) merupakan contoh hasil dari penelitian tentang Augmented Reality, ini merupakan satu-satunya peralatan dasar dalam teknologi-teknologi terbaru. Seiring berjalannya waktu, augmented reality berkembang pesat sehingga memungkinkan pengembangan aplikasi ini di berbagai bidang.Untuk mengembangkan AR banyak sekali library pendukung yang dapat digunakan. FlarToolKit adalah salah satunya. FlarToolKit merupakan library pendukung augmented reality pada platform flash.Berdasarkan sistem AR animasi benda bergerak yang dibuat adalah animasi bergerak permainan pingpong dimana telah dikolaborasikan dengan augmented reality untuk menggerakkan setiap langkah dari playernya. Interaksi antar obyek tersebut dapat dilihat dari gerak bola yang dapat dipukul dengan obyek virtual yang ditampilkan melalui augmented reality.
+True Label: komputasi, Predicted Label: RPL 
+
+Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time Strategy). Gerak pekerja memiliki berbagai macam gerak. Oleh sebab itu dibutuhkan sebuah pendekatan konsep AI  untuk mendesain perilaku pekerja tersebut. Perilaku karakter tersebut harus ditambahi dengan AI (Artifical intelegent) agar perilakunya menjadi lebih hidup dan realistis.Dalam penelitian ini AI yang digunakan adalah Finite State Machine. Finite State Machine digunakan untuk menentukan gerak pekerja terhadap parameter-parameter yang digunakan sebagai dasar gerak yang akan dilakukan . Selanjutnya akan disimulasikan pada game RTS dengan menggunakan game engine.Hasil yang di peroleh dalam penelitian ini adalah penerapan metode Finite State machine untuk menentukan gerak pekerja berdasarkan parameter jumlah harta, prajurit, kondisi bangunan, dan stockpile (jumlah resources yang di bawa). Kata kunci : Game, Real-Time Strategy, Gerak Pekerja, Finite State Machine.
+True Label: komputasi, Predicted Label: komputasi 
+
+Perkembangan teknologi komunikasi yang begitu cepat memicu perkembangan teknologi telpon seluler sebagai salah satu alat komunikasi modern. Komunikasi data yang diimplementasikan juga beragam, teks, gambar bahkan suara. Medium yang digunakan-pun kini beragam baik itu internet, local connection hingga bluetooth. Bluetooth dapat dipilih sebagai alternatif medium untuk menghubungkan satu perangkat dengan perangkat lain. Ditambah lagi dengan perkembangan android yang belakangan ini juga semakin pesat semakin memberi kemudahan untuk betukar data melalui bluetooth. Bluetooth mampu menghubungkan perangkat yang satu dengan perangkat lainnya. Ini kemudian memungkinkan antar perangkat dapat saling bertukar atau berkirim data. Namun, dalam proses pengiriman data tersebut tidak ada yang dapat menjamin keamanannya. Hal ini yang kemudian membuat proses enkripsi menjadi hal yang penting. Data yang dikirim terlebih dahulu dikodekan sedemikian rupa hingga hanya dengan kunci tertentu kode tersebut dapat dibaca. RSA kemudian muncul sebagai salah satu alternatif algoritma yang dapat digunakan menangani proses enkripsi tersebut. RSA memiliki teknik pemfaktoran yang cukup rumit, hal ini membuat tingkat keamanannya cukup tinggi. Selain itu, RSA juga cocok diaplikasikan dalam platform mobile karena memiliki struktur yang asimetris sehingga tidak terlalu membebani sistem yang dimiliki oleh perangkat mobile tersebut. Pengujian aplikasi ini sudah teruji melalui perhitungan manual dan dari pengambilan dua device yang berbeda. 
+True Label: PBA, Predicted Label: RPL 
+
+Berita memiliki peranan penting dalam kehidupan manusia. Saat ini tren memperoleh informasi melalui situs berita online semakin populer. Kebanyakan pembaca ingin memperoleh informasi dari sebuah berita dengan cepat, ringkas dan tidak banyak membuang waktu. Tujuan penelitian ini untuk memberikan kemudahan bagi pembaca untuk mendapatkan informasi terpenting dari suatu berita dengan cepat.Pada penelitian ini, dibangun sebuah aplikasi peringkas berita online otomatis yang dikembangkan menggunakan metode perhitungan Ordinary Weighting. Metode Ordinary Weighting merupakan perhitungan bobot term berdasarkan prinsip TF * IDF dengan menggunakan TF tanpa normalisasi. Tujuan aplikasi ini untuk menghasilkan sebuah ringkasan yang terdiri dari tiga kalimat dengan nilai bobot tertinggi sebagai ringkasan dari suatu artikel berita dengan tetap mempertahankan ide utama dari berita tersebut. Proses evaluasi dilakukan dengan cara membandingkan hasil ringkasan yang dihasilkan oleh sistem dengan ringkasan yang dibuat secara manual oleh koresponden melalui metode kuesioner, dengan prinsip Majority Opinion.Dari hasil penelitian diketahui bahwa kesesuaian hasil ringkasan sistem dengan pengguna yang diperoleh dari kuesioner menunjukkan hasil nilai rata-rata recall sebesar 0.47, precision 0.40 dan rata-rata f-measures sebesar 0.53.
+True Label: PBA, Predicted Label: komputasi 
+
+Perintah dengan menggunakan suara memungkinkan penggunadapat mengakses isi database dengan mengucapkan perintah melaluiperalatan masukan audio tanpa harus menggunakan cara konvensional.Penggunaan program database dalam pengoperasiannya, diperlukanpemahaman pada struktur SQL (Structured Query Language).Kemudahan bisa dirasakan bagi pengguna awam karena sistempengaksesan database disertai dengan pengembangan NLP (NaturalLanguage Processing).Perintah dengan suara menggunakan piranti masukan audioseperti mikrofon dan mesin pengenal ucapan. Ketika penggunamengucapkan perintah melalui mikrofon, mesin pengenal ucapan akanmenerjemahkan dari ucapan ke teks. Dari teks akan diterjemahkankedalam bentuk perintah SQL untuk pengaksesan database. Penelitianini memanfaatkan Teknologi Pengenalan Suara Automatis padaMicrosoft Speech Aplication Programming Interface. Perintah suarayang diucapkan menggunakan sintaksis bahasa alami, yaitu bahasaInggris. Dengan proses NLP menggunakan metode Top Down Parse.Masalah yang dihadapi dalam menggunakan pengenalanucapan adalah noise juga perlu untuk berbicara sejelas mungkin. Dalampengaplikasiannya dilakukan suatu uji coba pengenalan ucapansebanyak 12 kali pengucapan perintah dan diperoleh hasil keakuratansebesar 33% sedangkan inputan kalimat bahasa alami yang berhasilditerjemahkan dalam bentuk SQL sebanyak 67%.
+True Label: PBA, Predicted Label: PBA 
 </pre></div>
 </div>
 </div>
 </div>
-<p>result when use model distiluse-base-multilingual-cased-v2</p>
-</div>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p><em><strong>Result</strong></em></p>
 <ul class="simple">
-<li><p>How To Classify Text With Python, Transformers &amp; scikit-learn - <a class="reference external" href="https://newscatcherapi.com/blog/how-to-classify-text-with-python-transformers-and-scikit-learn">NewsCatcher</a></p></li>
-<li><p>A Comprehensive Guide to Understand and Implement Text Classification in Python - <a class="reference external" href="https://www.analyticsvidhya.com/blog/2018/04/a-comprehensive-guide-to-understand-and-implement-text-classification-in-python/">AnalyticsVidhya</a></p></li>
-<li><p>Sentence-BERT for spaCy <a class="reference external" href="https://github.com/MartinoMensio/spacy-sentence-bert">Spacy-Sentence-Bert</a></p></li>
-<li><p>Sentence Transformers <a class="reference external" href="https://www.sbert.net/index.html">see</a></p></li>
+<li><p>Model KNN, <code class="docutils literal notranslate"><span class="pre">n_neigbors</span> <span class="pre">=</span> <span class="pre">3</span></code></p></li>
+<li><p>6 Abstrak dapat diprediksi dengan <strong>tepat</strong></p></li>
+<li><p>4 Abstrak diprediksi dengan <strong>salah</strong></p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">abstract</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True Label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">, Predicted Label: </span><span class="si">{</span><span class="n">modelGNB</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">nlp</span><span class="p">(</span><span class="n">abstract</span><span class="p">)</span><span class="o">.</span><span class="n">vector</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sistem  informasi  akademik  (SIAKAD) merupakan  sistem  informasi  yang  berfungsi  menangani pengelolaan  dan  penyajian  data-data  akademik,  yang  oleh pihak  fakultas  SIAKAD  dianggap  sangat  penting  dalam memberikan  pelayanan  mahasiswa  yang  membutuhkan informasi akademik. Di Universitas Trunojoyo telah tersedia SIAKAD,  namun  masih  menggunakan  database  terpusat. Sistem seperti ini memberikan kelebihan yaitu perawatannya mudah  selain  itu  juga  membutuhkan  sedikit  biaya,  namun sistem  tersebut  juga  berpotensi  mengahadapi  kendala-kendala  yaitu  dalam  proses  transaksi  data  karena  padatnya jaringan yang menuju database SIAKAD, kelambatan dalam pemrosesan  respon  query  dikarenakan  data  yang  tersimpan semakin besar dan pemrosesan semakin kompleks, dan  juga memiliki kelemahan dalam hal ketersediaan data. Untuk  itu sistem  seperti  ini  memerlukan  pengembangan  sistem database  yang  lebih  baik  dengan  menggunakan  sistem databases  terdistribusi  pada  masing-masing  fakultas  yang dapat  dijadikan  solusi  bagi  permasalahan  di  atas.  Karena dalam basisdata terdistribusi terdapat keuntungan yang tidak dimiliki oleh basisdata  terpusat yaitu pengawasan distribusi, reability,  availability,  kecepatan  dalam  pemrosesan  query dan otonomi local.
+True Label: RPL, Predicted Label: komputasi 
+
+Berjalannya koneksi jaringan komputer dengan lancar dan tanpa gangguan merupakan harapan seluruh penggunanya,terutama pihak yang bertanggung jawab pada bidang itu, yakni administrator jaringan. Namun tidak selamanya koneksijaringan dapat berjalan dengan lancar tanpa adanya gangguan. Kenyataan di lapangan terutama pada jaringan komputer skalabesar, berpotensi besar terjadi gangguan atau bahkan kerusakan koneksi jaringan komputer.Hal ini rata - rata disebabkan banyaknya penggunaan serta padatnya traffic data dalam jaringan komputer itu sendiri.Oleh karena itu untuk menjaga bahkan meningkatkan kualitas layanan koneksi jaringan maka diperlukan adanya akses kontroldan monitoring pada level administrator jaringan secara real-time berbasis mobile, yang dapat mengatur dan mengetahuiinformasi tentang koneksi jaringan dan dapat diakses setiap saat.Pihak administrator jaringan dituntut untuk terlebih dahulu mengetahui adanya gangguan atau bahkan terputusnyakoneksi jaringan walaupun administrator tidak berada di tempat kontrol dan monitoring, Dengan adanya sistem kontrol danmonitoring berbasis mobile, diharapkan dapat membantu tugas administrator dalam mengontrol dan memantau jaringan sertadalam mengambil kebijakan atas node â node yang terkoneksi pada jaringan yakni memanajemen koneksi, port dan bandwidthsetiap saat dan secara mobile. agar dengan segera dapat melakukan pembenahan ketika terjadi gangguan jaringan sebelumpemakai jaringan (klien) melakukan pengaduan atas adanya gangguan.Kata Kunci : Administrator Jaringan, Koneksi Jaringan, Akses Kontrol dan Monitoring.
+True Label: RPL, Predicted Label: komputasi 
+
+Web server adalah sebuah perangkat lunak server yang berfungsimenerima permintaan HTTP atau HTTPS dari web client danmengirimkan jawaban dalam bentuk halaman-halaman web yangumumnya berbentuk dokumen HTML. Dokumen HTML yang dikirimmerupakan dokumen yang dibentuk dari bahasa markup yang plaintext.Artinya, dokumen berisi kode-kode HTML murni tanpa proses enkripsi.Tujuan dari penelitan ini adalah membuat sebuah aplikasi proxyserver yang menerima permintaan HTTP dari web client danmeneruskannya ke web server. Kemudian aplikasi ini akan menerimarespon dari server dan melakukan proses enkripsi pada dokumen HTMLterlebih dahulu. Sehingga dokumen HTML yang dikirim kepada webclient sudah berbentuk dokumen HTML yang terenkripsi. Web clientdisini bisa berupa aplikasi seperti Internet Explorer, Mozilla Firefox,atau Opera. Aplikasi-aplikasi tersebut biasa dikenal dengan sebutan webbrowser.Ketika web browser menerima dokumen HTML yang terenkripsidari aplikasi proxy server, maka JavaScript Engine yang ada di webbrowser akan melakukan proses dekripsi sekaligus rendering sehinggadokumen akan ditampilkan sesuai dengan aslinya. Namun apabila kodedari dokumen HTML tersebut dilihat melalui menu view source yangada di web browser akan didapatkan dokumen HTML yang tetapterenkripsi.
+True Label: RPL, Predicted Label: komputasi 
+
+Penjadwalan  kuliah  di  Perguruan  Tinggi  merupakan  masalah yang  kompleks.  Dalam  permasalahan tersebut  terdapat  beberapa variabel  yang  harus  dipertimbangkan  supaya  mendapatkan  jadwal  yang optimal. Di dalam penyusunan jadwal kuliah ini terdapat sangat banyak kemungkinan  yang  selayaknya  dicoba  untuk  menemukan  penjadwalan yang  terbaik.  Karena  itu  dibutuhkan  metode  optimasi  yang  dapat diterapkan  untuk  mengerjakan  penjadwalan  mata  kuliah  ini.  Metode yang  dapat  digunakan  untuk  menyelesaikan  permasalahan  tersebut adalah  dengan  menggunakan  Algoritma  Genetika.  Tugas  Akhir  ini bertujuan  untuk  membuat  suatu  sistem  yang  dapat  membuat  jadwal matakuliah  secara  otomatis  dan  hasilnya  optimal.  Dari  hasil  penelitian yang  dilakukan  algoritma  genetika  mampu  membuat  jadwal  dengan optimal  yang  dibuktikan  dari  nilai  fitness  yang memiliki  nilai  1  secara otomatis  jadwal  yang  dibentuk  akan  optimal.  Semoga  adanya  aplikasi ini  diharapkan  bisa  mempermudah  didalam  pembuatan  penjadwalan matakuliah dengan mudah dan cepat.  Kata Kunci: Algoritma Genetika, Optimasi,  Penjadwalan.
+True Label: komputasi, Predicted Label: komputasi 
+
+Seiring perkembangan teknologi yang ada didunia, muncul teknologi yang disebut augmented reality. Augmented Reality (AR) merupakan upaya untuk menggabungkan dunia maya dan dunia virtual yang dibuat melalui komputer sehingga batas antara keduanya menjadi sangat tipis. Head-Mounted Display (HMD) merupakan contoh hasil dari penelitian tentang Augmented Reality, ini merupakan satu-satunya peralatan dasar dalam teknologi-teknologi terbaru. Seiring berjalannya waktu, augmented reality berkembang pesat sehingga memungkinkan pengembangan aplikasi ini di berbagai bidang.Untuk mengembangkan AR banyak sekali library pendukung yang dapat digunakan. FlarToolKit adalah salah satunya. FlarToolKit merupakan library pendukung augmented reality pada platform flash.Berdasarkan sistem AR animasi benda bergerak yang dibuat adalah animasi bergerak permainan pingpong dimana telah dikolaborasikan dengan augmented reality untuk menggerakkan setiap langkah dari playernya. Interaksi antar obyek tersebut dapat dilihat dari gerak bola yang dapat dipukul dengan obyek virtual yang ditampilkan melalui augmented reality.
+True Label: komputasi, Predicted Label: komputasi 
+
+Gerak pekerja ada pada game yang memiliki genre RTS (Real-Time Strategy). Gerak pekerja memiliki berbagai macam gerak. Oleh sebab itu dibutuhkan sebuah pendekatan konsep AI  untuk mendesain perilaku pekerja tersebut. Perilaku karakter tersebut harus ditambahi dengan AI (Artifical intelegent) agar perilakunya menjadi lebih hidup dan realistis.Dalam penelitian ini AI yang digunakan adalah Finite State Machine. Finite State Machine digunakan untuk menentukan gerak pekerja terhadap parameter-parameter yang digunakan sebagai dasar gerak yang akan dilakukan . Selanjutnya akan disimulasikan pada game RTS dengan menggunakan game engine.Hasil yang di peroleh dalam penelitian ini adalah penerapan metode Finite State machine untuk menentukan gerak pekerja berdasarkan parameter jumlah harta, prajurit, kondisi bangunan, dan stockpile (jumlah resources yang di bawa). Kata kunci : Game, Real-Time Strategy, Gerak Pekerja, Finite State Machine.
+True Label: komputasi, Predicted Label: komputasi 
+
+Perkembangan teknologi komunikasi yang begitu cepat memicu perkembangan teknologi telpon seluler sebagai salah satu alat komunikasi modern. Komunikasi data yang diimplementasikan juga beragam, teks, gambar bahkan suara. Medium yang digunakan-pun kini beragam baik itu internet, local connection hingga bluetooth. Bluetooth dapat dipilih sebagai alternatif medium untuk menghubungkan satu perangkat dengan perangkat lain. Ditambah lagi dengan perkembangan android yang belakangan ini juga semakin pesat semakin memberi kemudahan untuk betukar data melalui bluetooth. Bluetooth mampu menghubungkan perangkat yang satu dengan perangkat lainnya. Ini kemudian memungkinkan antar perangkat dapat saling bertukar atau berkirim data. Namun, dalam proses pengiriman data tersebut tidak ada yang dapat menjamin keamanannya. Hal ini yang kemudian membuat proses enkripsi menjadi hal yang penting. Data yang dikirim terlebih dahulu dikodekan sedemikian rupa hingga hanya dengan kunci tertentu kode tersebut dapat dibaca. RSA kemudian muncul sebagai salah satu alternatif algoritma yang dapat digunakan menangani proses enkripsi tersebut. RSA memiliki teknik pemfaktoran yang cukup rumit, hal ini membuat tingkat keamanannya cukup tinggi. Selain itu, RSA juga cocok diaplikasikan dalam platform mobile karena memiliki struktur yang asimetris sehingga tidak terlalu membebani sistem yang dimiliki oleh perangkat mobile tersebut. Pengujian aplikasi ini sudah teruji melalui perhitungan manual dan dari pengambilan dua device yang berbeda. 
+True Label: PBA, Predicted Label: komputasi 
+
+Berita memiliki peranan penting dalam kehidupan manusia. Saat ini tren memperoleh informasi melalui situs berita online semakin populer. Kebanyakan pembaca ingin memperoleh informasi dari sebuah berita dengan cepat, ringkas dan tidak banyak membuang waktu. Tujuan penelitian ini untuk memberikan kemudahan bagi pembaca untuk mendapatkan informasi terpenting dari suatu berita dengan cepat.Pada penelitian ini, dibangun sebuah aplikasi peringkas berita online otomatis yang dikembangkan menggunakan metode perhitungan Ordinary Weighting. Metode Ordinary Weighting merupakan perhitungan bobot term berdasarkan prinsip TF * IDF dengan menggunakan TF tanpa normalisasi. Tujuan aplikasi ini untuk menghasilkan sebuah ringkasan yang terdiri dari tiga kalimat dengan nilai bobot tertinggi sebagai ringkasan dari suatu artikel berita dengan tetap mempertahankan ide utama dari berita tersebut. Proses evaluasi dilakukan dengan cara membandingkan hasil ringkasan yang dihasilkan oleh sistem dengan ringkasan yang dibuat secara manual oleh koresponden melalui metode kuesioner, dengan prinsip Majority Opinion.Dari hasil penelitian diketahui bahwa kesesuaian hasil ringkasan sistem dengan pengguna yang diperoleh dari kuesioner menunjukkan hasil nilai rata-rata recall sebesar 0.47, precision 0.40 dan rata-rata f-measures sebesar 0.53.
+True Label: PBA, Predicted Label: komputasi 
+
+Perintah dengan menggunakan suara memungkinkan penggunadapat mengakses isi database dengan mengucapkan perintah melaluiperalatan masukan audio tanpa harus menggunakan cara konvensional.Penggunaan program database dalam pengoperasiannya, diperlukanpemahaman pada struktur SQL (Structured Query Language).Kemudahan bisa dirasakan bagi pengguna awam karena sistempengaksesan database disertai dengan pengembangan NLP (NaturalLanguage Processing).Perintah dengan suara menggunakan piranti masukan audioseperti mikrofon dan mesin pengenal ucapan. Ketika penggunamengucapkan perintah melalui mikrofon, mesin pengenal ucapan akanmenerjemahkan dari ucapan ke teks. Dari teks akan diterjemahkankedalam bentuk perintah SQL untuk pengaksesan database. Penelitianini memanfaatkan Teknologi Pengenalan Suara Automatis padaMicrosoft Speech Aplication Programming Interface. Perintah suarayang diucapkan menggunakan sintaksis bahasa alami, yaitu bahasaInggris. Dengan proses NLP menggunakan metode Top Down Parse.Masalah yang dihadapi dalam menggunakan pengenalanucapan adalah noise juga perlu untuk berbicara sejelas mungkin. Dalampengaplikasiannya dilakukan suatu uji coba pengenalan ucapansebanyak 12 kali pengucapan perintah dan diperoleh hasil keakuratansebesar 33% sedangkan inputan kalimat bahasa alami yang berhasilditerjemahkan dalam bentuk SQL sebanyak 67%.
+True Label: PBA, Predicted Label: komputasi 
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Result</strong></em></p>
+<ul class="simple">
+<li><p>Model Gaussian Naive Bayes</p></li>
+<li><p>3 Abstrak dapat diprediksi dengan <strong>tepat</strong></p></li>
+<li><p>7 Abstrak diprediksi dengan <strong>salah</strong></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="reduksi-dimensi">
+<h2>Reduksi Dimensi<a class="headerlink" href="#reduksi-dimensi" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span><span class="p">,</span> <span class="n">CountVectorizer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">split_sequence</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Split a univariate sequence into samples</span>
+<span class="sd">        end_ix = i + n_steps # find the end of this pattern</span>
+<span class="sd">        if end_ix &gt; len(sequence)-1 # check if we are beyond the sequence</span>
+<span class="sd">        seq_x, seq_y = sequence[i:end_ix], sequence[end_ix] # gather input and output parts of the pattern</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(),</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)):</span>
+        <span class="n">end_ix</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n_steps</span>
+        <span class="k">if</span> <span class="n">end_ix</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">seq_x</span><span class="p">,</span> <span class="n">seq_y</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">end_ix</span><span class="p">],</span> <span class="n">sequence</span><span class="p">[</span><span class="n">end_ix</span><span class="p">]</span>
+        <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_x</span><span class="p">)</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">abstract_vector_column</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">new_df</span><span class="p">[</span><span class="s2">&quot;Abstract&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">data_actual</span> <span class="o">=</span> <span class="n">split_sequence</span><span class="p">(</span><span class="n">abstract_vector_column</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">matrix_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">((</span><span class="n">data</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Vt-2&quot;</span><span class="p">,</span><span class="s2">&quot;Vt-1&quot;</span><span class="p">,</span> <span class="s2">&quot;Vt&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Standardize the features</span>
+<span class="c1">#Create an object of StandardScaler which is present in sklearn.preprocessing</span>
+<span class="n">scalar</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaled_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scalar</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">matrix_data</span><span class="p">))</span> <span class="c1">#scaling the data</span>
+<span class="n">scaled_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Check the Co-relation between features without PCA</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">scaled_data</span><span class="o">.</span><span class="n">corr</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -2011,13 +2104,14 @@ True Label: RPL, Predicted Label: RPL
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-preparation">Evaluation Preparation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-with-machine-learning-classifier">Train with machine learning classifier.</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-classifier-svm">Support Vector Classifier(SVM)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-naive-bayes">Gaussian Naive Bayes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors">K-Nearest Neighbors</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-test">Classification Test</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi">Reduksi Dimensi</a></li>
 </ul>
   </nav></div>
 
