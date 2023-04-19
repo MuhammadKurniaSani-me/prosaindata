@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/usr/local/lib/python3.9/dist-packages/nbclient/client.py", line 730, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/usr/local/lib/python3.9/dist-packages/nbclient/util.py", line 96, in ensure_async
-    result = await obj
-  File "/usr/local/lib/python3.9/dist-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/usr/local/lib/python3.9/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/usr/local/lib/python3.9/dist-packages/nbclient/client.py", line 1204, in execute
@@ -22,18 +11,59 @@ Traceback (most recent call last):
     return future.result()
   File "/usr/local/lib/python3.9/dist-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.9/dist-packages/nbclient/client.py", line 949, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/usr/local/lib/python3.9/dist-packages/nbclient/client.py", line 754, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/usr/local/lib/python3.9/dist-packages/nbclient/client.py", line 801, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['import twint', 'import nest_asyncio ', 'nest_asyncio.apply()', '', 'c = twint.Config()']
-...
-['c.Search = "Puan Maharani" # topic', 'c.Pandas = True', 'c.Store_csv = True', 'twint.run.Search(c)', 'Tweets_df = twint.storage.panda.Tweets_df']
--------------------
+  File "/usr/local/lib/python3.9/dist-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.9/dist-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import twint
+import nest_asyncio 
+nest_asyncio.apply()
+
+c = twint.Config()
+c.Limit = 500
+c.Search = "Puan Maharani" # topic
+c.Pandas = True
+c.Store_csv = True
+twint.run.Search(c)
+Tweets_df = twint.storage.panda.Tweets_df
+------------------
+
+[0;31m[0m
+[0;31mRefreshTokenException[0mTraceback (most recent call last)
+[0;32m<ipython-input-4-0c967dddc5ba>[0m in [0;36m<cell line: 10>[0;34m()[0m
+[1;32m      8[0m [0mc[0m[0;34m.[0m[0mPandas[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m [0mc[0m[0;34m.[0m[0mStore_csv[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 10[0;31m [0mtwint[0m[0;34m.[0m[0mrun[0m[0;34m.[0m[0mSearch[0m[0;34m([0m[0mc[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     11[0m [0mTweets_df[0m [0;34m=[0m [0mtwint[0m[0;34m.[0m[0mstorage[0m[0;34m.[0m[0mpanda[0m[0;34m.[0m[0mTweets_df[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.9/site-packages/twint/run.py[0m in [0;36mSearch[0;34m(config, callback)[0m
+[1;32m    408[0m     [0mconfig[0m[0;34m.[0m[0mFollowers[0m [0;34m=[0m [0;32mFalse[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    409[0m     [0mconfig[0m[0;34m.[0m[0mProfile[0m [0;34m=[0m [0;32mFalse[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 410[0;31m     [0mrun[0m[0;34m([0m[0mconfig[0m[0;34m,[0m [0mcallback[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    411[0m     [0;32mif[0m [0mconfig[0m[0;34m.[0m[0mPandas_au[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    412[0m         [0mstorage[0m[0;34m.[0m[0mpanda[0m[0;34m.[0m[0m_autoget[0m[0;34m([0m[0;34m"tweet"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.9/site-packages/twint/run.py[0m in [0;36mrun[0;34m(config, callback)[0m
+[1;32m    327[0m         [0;32mraise[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    328[0m [0;34m[0m[0m
+[0;32m--> 329[0;31m     [0mget_event_loop[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mrun_until_complete[0m[0;34m([0m[0mTwint[0m[0;34m([0m[0mconfig[0m[0;34m)[0m[0;34m.[0m[0mmain[0m[0;34m([0m[0mcallback[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    330[0m [0;34m[0m[0m
+[1;32m    331[0m [0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.9/site-packages/twint/run.py[0m in [0;36m__init__[0;34m(self, config)[0m
+[1;32m     34[0m         [0;31m# USAGE : to get a new guest token simply do `self.token.refresh()`[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     35[0m         [0mself[0m[0;34m.[0m[0mtoken[0m [0;34m=[0m [0mtoken[0m[0;34m.[0m[0mToken[0m[0;34m([0m[0mconfig[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 36[0;31m         [0mself[0m[0;34m.[0m[0mtoken[0m[0;34m.[0m[0mrefresh[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     37[0m         [0mself[0m[0;34m.[0m[0mconn[0m [0;34m=[0m [0mdb[0m[0;34m.[0m[0mConn[0m[0;34m([0m[0mconfig[0m[0;34m.[0m[0mDatabase[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     38[0m         [0mself[0m[0;34m.[0m[0md[0m [0;34m=[0m [0mdatelock[0m[0;34m.[0m[0mSet[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mconfig[0m[0;34m.[0m[0mUntil[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mconfig[0m[0;34m.[0m[0mSince[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.9/site-packages/twint/token.py[0m in [0;36mrefresh[0;34m(self)[0m
+[1;32m     67[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     68[0m             [0mself[0m[0;34m.[0m[0mconfig[0m[0;34m.[0m[0mGuest_token[0m [0;34m=[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 69[0;31m             [0;32mraise[0m [0mRefreshTokenException[0m[0;34m([0m[0;34m'Could not find the Guest token in HTML'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mRefreshTokenException[0m: Could not find the Guest token in HTML
+RefreshTokenException: Could not find the Guest token in HTML
 

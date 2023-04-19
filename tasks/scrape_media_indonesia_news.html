@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graph.html">Analisis Graf</a></li>
 </ul>
 
     </div>
@@ -411,17 +412,17 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.27.1)
+Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.28.2)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (3.4)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.9/dist-packages (from requests) (2.0.12)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests) (2.0.12)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.15)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: html5lib in /usr/local/lib/python3.9/dist-packages (1.1)
-Requirement already satisfied: webencodings in /usr/local/lib/python3.9/dist-packages (from html5lib) (0.5.1)
 Requirement already satisfied: six&gt;=1.9 in /usr/local/lib/python3.9/dist-packages (from html5lib) (1.16.0)
+Requirement already satisfied: webencodings in /usr/local/lib/python3.9/dist-packages (from html5lib) (0.5.1)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
@@ -495,64 +496,179 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Polisi Italia Geledah Kantor Tiga Klub Serie A Terkait Transfer Pemain...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Erick Thohir: PSSI Sudah Berusaha soal Naturalisasi Justin Hubner...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pendukung Liverpool Gugat UEFA Terkait Kekacauan di Final Liga Champions...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ada Isu untuk Ganggu Timnas di SEA Games...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Real Madrid Bantai Barcelona, Ancelotti: Pertandingan yang Sempurna...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Semen Padang akan Gelar Laga Perang Bintang...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Gol Tunggal Rashford Bawa MU Masuk Empat Besar Liga Primer Inggris...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Manchester United Pincang di Leg Kedua Liga Europa Kontra Sevilla...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Kalahkan Cremonese, Fiorentina Letakkan Satu Kaki di Final Coppa Italia...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Inzaghi Minta Inter Lupakan Performa Buruk di Serie A dan Fokus Hadapi Benfica...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Kalahkan Lyon, Nantes Melaju ke Final Coupe de France...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Pioli tidak Pikirkan Lawan AC Milan di Semifinal Liga Champions...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Benzema Hattrick, Real Madrid Hajar Barcelona di Leg Kedua Semifinal Copa del Rey...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Bayern Berpeluang Mainkan Mane Kontra City...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Kalahkan Dortmund, Leipzig Melaju ke Semifinal DFB Pokal...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Lampard Bawa Chelsea ke Jurang Nestapa...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Lampard Disebut akan Jadi Pelatih Interim Chelsea...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Lampard Sesalkan Chelsea Gagal Manfaatkan Peluang Mencetak Gol...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Juergen Klopp tidak Sabar Hadapi Arsenal Akhir Pekan Ini...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ancelotti Akui Chelsea Sempat Sulitkan Real Madrid...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;CdM SEA Games Rasakan Aura Optimisme dari Timnas U-22...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Delapan Orang akan Diadili Terkait Kematian Maradona...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Fokus SEA Games, Timnas U-22 tidak Dapat Libur Lebaran...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Tuchel Akui Bayern Butuh Keajaiban untuk Melaju ke Semifinal Liga Champions...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Menpora Optimistis Sepak Bola Putra Mampu Lewati Fase Penyisihan Grup SEA Games 2023...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Kembali Menang 2-0 Atas Chelsea, Real Madrid Melaju ke Semifinal Liga Champions...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ceferin Bertahan Jadi Presiden UEFA Hingga 2027...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;AC Milan Melaju ke Semifinal Liga Champions...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Indra Sjafri Panggil 7 Pemain Timnas U-20 ke SEA Games 2023...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Komplek Latihan Dinamo Zagreb Diberi Nama Luka Modric...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Indra Sjafri Fokus Siapkan Anak Asuhnya di Sea Games 2023...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Ancelotti Waspadai Kebangkitan Chelsea...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Suporter Tuntut Politisi Minta Maaf Atas Batalnya Piala Dunia U-20...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Guardiola Waspadai Soliditas Muenchen Usai Isu Konflik Internal Merebak...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Luis Enrique Menuju Stamford Bridge ...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Nahas! Tak Ada Uang Tunai, Juara Liga 1 Hanya Dapat Trofi...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Tak ada Lawan Mudah Indonesia buat Masuk Grup A SEA Games 2023...&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Spalletti Optimistis Osimhen Bisa Bawa Napoli Tekuk AC Milan...&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sedang mengambil konten dengan judul &#39;Manajemen Persikabo Pertimbangkan Banding ke FIFA...&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">KeyboardInterrupt</span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-5-7284b85072f2&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>         <span class="n">current_title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="ne">----&gt; </span><span class="mi">5</span>         <span class="n">r_row</span> <span class="o">=</span> <span class="n">request_header_url</span><span class="p">(</span><span class="s2">&quot;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;href&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">soup_row</span> <span class="o">=</span> <span class="n">parse_website</span><span class="p">(</span><span class="n">r_row</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">prettify_web_structure</span><span class="p">(</span><span class="n">soup_row</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-3-e6e6f38faca4&gt;</span> in <span class="ni">request_header_url</span><span class="nt">(header, url_website)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">request_header_url</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">url_website</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="n">header</span><span class="p">}</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url_website</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">def</span> <span class="nf">parse_website</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">73</span><span class="s2">     return request(&quot;get&quot;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="s2"> </span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span><span class="s2">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span><span class="s2">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span><span class="s2">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="s2"> </span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span><span class="s2">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span><span class="s2">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">587</span><span class="s2">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span><span class="s2">         return resp</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span><span class="s2">         # Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">701</span><span class="s2">         r = adapter.send(request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">         # Total elapsed time of the request (approximately)</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="s2">             if not chunked:</span>
+<span class="ne">--&gt; </span><span class="mi">489</span><span class="s2">                 resp = conn.urlopen(</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span><span class="s2">                     method=request.method,</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span><span class="s2">                     url=url,</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="s2">             # Make the request on the httplib connection object.</span>
+<span class="ne">--&gt; </span><span class="mi">703</span><span class="s2">             httplib_response = self._make_request(</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">                 conn,</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span><span class="s2">                 method,</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">                     # Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">                     # Otherwise it looks like a bug in the code.</span>
+<span class="ne">--&gt; </span><span class="mi">449</span><span class="s2">                     six.raise_from(e, None)</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span><span class="s2">         except (SocketTimeout, BaseSSLError, SocketError) as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span><span class="s2">             self._raise_timeout(err=e, url=url, timeout_value=read_timeout)</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span><span class="s2">                 # Python 3</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="s2">                 try:</span>
+<span class="ne">--&gt; </span><span class="mi">444</span><span class="s2">                     httplib_response = conn.getresponse()</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2">                 except BaseException as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">                     # Remove the TypeError from the exception chain in</span>
+
+<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1375</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1376</span><span class="s2">             try:</span>
+<span class="ne">-&gt; </span><span class="mi">1377</span><span class="s2">                 response.begin()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1378</span><span class="s2">             except ConnectionError:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1379</span><span class="s2">                 self.close()</span>
+
+<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s2">         # read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="s2">         while True:</span>
+<span class="ne">--&gt; </span><span class="mi">320</span><span class="s2">             version, status, reason = self._read_status()</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2">             if status != CONTINUE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span><span class="s2">                 break</span>
+
+<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span><span class="s2">     def _read_status(self):</span>
+<span class="ne">--&gt; </span><span class="mi">281</span><span class="s2">         line = str(self.fp.readline(_MAXLINE + 1), &quot;iso-8859-1&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span><span class="s2">         if len(line) &gt; _MAXLINE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="s2">             raise LineTooLong(&quot;status line&quot;)</span>
+
+<span class="nn">/usr/lib/python3.9/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="s2">         while True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">704</span><span class="s2">                 return self._sock.recv_into(b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span><span class="s2">             except timeout:</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span><span class="s2">                 self._timeout_occurred = True</span>
+
+<span class="nn">/usr/lib/python3.9/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span><span class="s2">                   &quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot; %</span>
+<span class="g g-Whitespace">   </span><span class="mi">1241</span><span class="s2">                   self.__class__)</span>
+<span class="ne">-&gt; </span><span class="mi">1242</span><span class="s2">             return self.read(nbytes, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1244</span><span class="s2">             return super().recv_into(buffer, nbytes, flags)</span>
+
+<span class="nn">/usr/lib/python3.9/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1098</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1099</span><span class="s2">             if buffer is not None:</span>
+<span class="ne">-&gt; </span><span class="mi">1100</span><span class="s2">                 return self._sslobj.read(len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1101</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1102</span><span class="s2">                 return self._sslobj.read(len)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -580,7 +696,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-5fb0a68c-5b00-4db3-93f0-918248f699de">
+  <div id="df-f394fb5e-2fad-4133-aa31-d2b84f882600">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -610,37 +726,37 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>JatengTV</td>
-      <td>Jateng TV</td>
-      <td>(13) Masih belum banyak peraturan yang mengatu...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
       <td>folktrade</td>
       <td>Petrichor🌧️</td>
       <td>@ndahmutty @AikHoki @maulanarifki @PNS_Ababil ...</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>2</td>
+      <th>1</th>
+      <td>1</td>
       <td>Muhamma43425577</td>
       <td>#PISANGrebus</td>
       <td>@andre_rosiade Yakin : Capres 1. Puan Maharani...</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>3</td>
+      <th>2</th>
+      <td>2</td>
       <td>dicaprio_deni</td>
       <td>Deni Dicaprio</td>
       <td>@puanmaharani_ri Mbak @puanmaharani_ri for 202...</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>4</td>
+      <th>3</th>
+      <td>3</td>
       <td>iniandii</td>
       <td>𝕴𝖓𝖎𝖆𝖓𝖉𝖎𝖎 ´༎ຶ ۝ ༎ຶ༽</td>
       <td>@hanmula @kring_pajak @KPK_RI @BBCIndonesia @j...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>sospolkw</td>
+      <td>Rezim Buzzer</td>
+      <td>@StopPlandemit Yth buk @puanmaharani_ri  apa a...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -650,45 +766,45 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
       <td>...</td>
     </tr>
     <tr>
-      <th>110</th>
-      <td>110</td>
+      <th>132</th>
+      <td>132</td>
       <td>PUANnews</td>
       <td>Berita Mbak Puan Maharani</td>
       <td>#GPMN Galang Dukungan Puan Maharani di Desa - ...</td>
     </tr>
     <tr>
-      <th>111</th>
-      <td>111</td>
+      <th>133</th>
+      <td>133</td>
       <td>PUANnews</td>
       <td>Berita Mbak Puan Maharani</td>
       <td>#Untuk Raih Kemenangan pada 2024, Puan-Airlang...</td>
     </tr>
     <tr>
-      <th>112</th>
-      <td>112</td>
+      <th>134</th>
+      <td>134</td>
       <td>PUANnews</td>
       <td>Berita Mbak Puan Maharani</td>
       <td>#Jokowi Sebut Banyak Capres, Adi Prayitno: Nun...</td>
     </tr>
     <tr>
-      <th>113</th>
-      <td>113</td>
+      <th>135</th>
+      <td>135</td>
       <td>PUANnews</td>
       <td>Berita Mbak Puan Maharani</td>
       <td>#Polisi Duga Kebakaran Pasar Cik Puan akibat K...</td>
     </tr>
     <tr>
-      <th>114</th>
-      <td>114</td>
+      <th>136</th>
+      <td>136</td>
       <td>JarnasABWBpn</td>
       <td>JARNAS ABW BALIKPAPAN</td>
       <td>Survey Capres Favorit Kaltim, yuk yg domisili ...</td>
     </tr>
   </tbody>
 </table>
-<p>115 rows × 4 columns</p>
+<p>137 rows × 4 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-5fb0a68c-5b00-4db3-93f0-918248f699de')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f394fb5e-2fad-4133-aa31-d2b84f882600')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -739,12 +855,12 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 
       <script>
         const buttonEl =
-          document.querySelector('#df-5fb0a68c-5b00-4db3-93f0-918248f699de button.colab-df-convert');
+          document.querySelector('#df-f394fb5e-2fad-4133-aa31-d2b84f882600 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-5fb0a68c-5b00-4db3-93f0-918248f699de');
+          const element = document.querySelector('#df-f394fb5e-2fad-4133-aa31-d2b84f882600');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});

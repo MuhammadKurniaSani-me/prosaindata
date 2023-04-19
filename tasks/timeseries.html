@@ -167,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graph.html">Analisis Graf</a></li>
 </ul>
 
     </div>
@@ -421,161 +422,69 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting orchest
-  Downloading orchest-0.3.11.tar.gz (17 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pyarrow&lt;8.0,&gt;=1.0.0
-  Downloading pyarrow-7.0.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (26.7 MB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/26.7 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.3/26.7 MB</span> <span class=" -Color -Color-Red">8.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:04</span>
-     ━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.7/26.7 MB</span> <span class=" -Color -Color-Red">38.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">9.0/26.7 MB</span> <span class=" -Color -Color-Red">84.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">12.9/26.7 MB</span> <span class=" -Color -Color-Red">139.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">16.8/26.7 MB</span> <span class=" -Color -Color-Red">124.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━ <span class=" -Color -Color-Green">19.9/26.7 MB</span> <span class=" -Color -Color-Red">120.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━ <span class=" -Color -Color-Green">21.5/26.7 MB</span> <span class=" -Color -Color-Red">79.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">95.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">95.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">95.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">95.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">42.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: requests&gt;=1.0.0 in /usr/local/lib/python3.9/dist-packages (from orchest) (2.27.1)
+Requirement already satisfied: orchest in /usr/local/lib/python3.9/dist-packages (0.3.11)
+Requirement already satisfied: pyarrow&lt;8.0,&gt;=1.0.0 in /usr/local/lib/python3.9/dist-packages (from orchest) (7.0.0)
+Requirement already satisfied: requests&gt;=1.0.0 in /usr/local/lib/python3.9/dist-packages (from orchest) (2.28.2)
 Requirement already satisfied: numpy&gt;=1.16.6 in /usr/local/lib/python3.9/dist-packages (from pyarrow&lt;8.0,&gt;=1.0.0-&gt;orchest) (1.22.4)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (3.4)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (2.0.12)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (1.26.15)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (3.4)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (2.0.12)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (2022.12.7)
-Building wheels for collected packages: orchest
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for orchest (setup.py) ... ?25l?25hdone
-  Created wheel for orchest: filename=orchest-0.3.11-py3-none-any.whl size=19359 sha256=037004dc45ab8b0b0a10ca141df2b15f9fe19d1d905f7a5d28bd0dbd1d13ad04
-  Stored in directory: /root/.cache/pip/wheels/28/fd/ad/876cab218568a51f43fe21359fda871407b5366898829e089e
-Successfully built orchest
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: pyarrow, orchest
-  Attempting uninstall: pyarrow
-    Found existing installation: pyarrow 9.0.0
-    Uninstalling pyarrow-9.0.0:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Successfully uninstalled pyarrow-9.0.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed orchest-0.3.11 pyarrow-7.0.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting jupyterlab_code_formatter
-  Downloading jupyterlab_code_formatter-1.6.0-py3-none-any.whl (39 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyterlab~=3.0
-  Downloading jupyterlab-3.6.3-py3-none-any.whl (8.9 MB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/8.9 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.0/8.9 MB</span> <span class=" -Color -Color-Red">30.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4.2/8.9 MB</span> <span class=" -Color -Color-Red">61.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">8.9/8.9 MB</span> <span class=" -Color -Color-Red">91.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">8.9/8.9 MB</span> <span class=" -Color -Color-Red">62.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: jupyter-server&lt;3,&gt;=1.16.0 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.23.6)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyter-ydoc~=0.2.3
-  Downloading jupyter_ydoc-0.2.3-py3-none-any.whl (5.9 kB)
+Requirement already satisfied: jupyterlab_code_formatter in /usr/local/lib/python3.9/dist-packages (1.6.1)
+Requirement already satisfied: jupyterlab~=3.0 in /usr/local/lib/python3.9/dist-packages (from jupyterlab_code_formatter) (3.6.3)
+Requirement already satisfied: tornado&gt;=6.1.0 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.2)
+Requirement already satisfied: tomli in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.0.1)
+Requirement already satisfied: ipython in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (7.34.0)
+Requirement already satisfied: jupyterlab-server~=2.19 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.22.1)
+Requirement already satisfied: nbclassic in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.5.5)
+Requirement already satisfied: jupyter-server-ydoc~=0.8.0 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.8.0)
 Requirement already satisfied: jupyter-core in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (5.3.0)
-Collecting jupyter-server-ydoc~=0.8.0
-  Downloading jupyter_server_ydoc-0.8.0-py3-none-any.whl (11 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipython in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (7.34.0)
+Requirement already satisfied: jupyter-server&lt;3,&gt;=1.16.0 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.23.6)
+Requirement already satisfied: jupyter-ydoc~=0.2.3 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.4)
 Requirement already satisfied: notebook&lt;7 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.4.8)
 Requirement already satisfied: packaging in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (23.0)
-Requirement already satisfied: tomli in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.0.1)
-Collecting jupyterlab-server~=2.19
-  Downloading jupyterlab_server-2.22.0-py3-none-any.whl (57 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/57.1 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">57.1/57.1 KB</span> <span class=" -Color -Color-Red">6.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hCollecting nbclassic
-  Downloading nbclassic-0.5.5-py3-none-any.whl (10.0 MB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/10.0 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.4/10.0 MB</span> <span class=" -Color -Color-Red">42.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.1/10.0 MB</span> <span class=" -Color -Color-Red">89.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">10.0/10.0 MB</span> <span class=" -Color -Color-Red">97.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">10.0/10.0 MB</span> <span class=" -Color -Color-Red">97.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">10.0/10.0 MB</span> <span class=" -Color -Color-Red">64.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jinja2&gt;=2.1 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (3.1.2)
-Requirement already satisfied: tornado&gt;=6.1.0 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.2)
+Requirement already satisfied: jinja2&gt;=2.1 in /usr/local/lib/python3.9/dist-packages (from jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (3.1.2)
 Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from jinja2&gt;=2.1-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.1.2)
-Requirement already satisfied: pyzmq&gt;=17 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (23.2.1)
-Requirement already satisfied: Send2Trash in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.8.0)
-Requirement already satisfied: argon2-cffi in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (21.3.0)
-Requirement already satisfied: jupyter-client&gt;=6.1.12 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.1.12)
-Requirement already satisfied: traitlets&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (5.7.1)
-Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.17.1)
 Requirement already satisfied: anyio&lt;4,&gt;=3.1.0 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (3.6.2)
-Requirement already satisfied: nbformat&gt;=5.2.0 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (5.8.0)
-Requirement already satisfied: websocket-client in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.5.1)
 Requirement already satisfied: prometheus-client in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.16.0)
+Requirement already satisfied: nbformat&gt;=5.2.0 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (5.8.0)
+Requirement already satisfied: pyzmq&gt;=17 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (23.2.1)
+Requirement already satisfied: traitlets&gt;=5.1 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (5.7.1)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.1.12)
+Requirement already satisfied: argon2-cffi in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (21.3.0)
+Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.17.1)
+Requirement already satisfied: Send2Trash in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.8.0)
 Requirement already satisfied: nbconvert&gt;=6.4.4 in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.5.4)
+Requirement already satisfied: websocket-client in /usr/local/lib/python3.9/dist-packages (from jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.5.1)
 Requirement already satisfied: platformdirs&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from jupyter-core-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (3.2.0)
-Collecting ypy-websocket&lt;0.9.0,&gt;=0.8.2
+Requirement already satisfied: jupyter-server-fileid&lt;1,&gt;=0.6.0 in /usr/local/lib/python3.9/dist-packages (from jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.9.0)
+Requirement already satisfied: ypy-websocket&lt;0.9.0,&gt;=0.8.2 in /usr/local/lib/python3.9/dist-packages (from jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.8.2)
+Requirement already satisfied: importlib-metadata&gt;=3.6 in /usr/local/lib/python3.9/dist-packages (from jupyter-ydoc~=0.2.3-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.3.0)
+Requirement already satisfied: y-py&lt;0.6.0,&gt;=0.5.3 in /usr/local/lib/python3.9/dist-packages (from jupyter-ydoc~=0.2.3-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.5.9)
+Requirement already satisfied: jsonschema&gt;=4.17.3 in /usr/local/lib/python3.9/dist-packages (from jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.17.3)
+Requirement already satisfied: requests&gt;=2.28 in /usr/local/lib/python3.9/dist-packages (from jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.28.2)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading ypy_websocket-0.8.4-py3-none-any.whl (10 kB)
-Collecting jupyter-server-fileid&lt;1,&gt;=0.6.0
-  Downloading jupyter_server_fileid-0.8.0-py3-none-any.whl (15 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting y-py&lt;0.6.0,&gt;=0.5.3
-  Downloading y_py-0.5.9-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/1.6 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.6/1.6 MB</span> <span class=" -Color -Color-Red">65.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: importlib-metadata&gt;=3.6 in /usr/local/lib/python3.9/dist-packages (from jupyter-ydoc~=0.2.3-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.1.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting requests&gt;=2.28
-  Downloading requests-2.28.2-py3-none-any.whl (62 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/62.8 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">62.8/62.8 KB</span> <span class=" -Color -Color-Red">6.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: babel&gt;=2.10 in /usr/local/lib/python3.9/dist-packages (from jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.12.1)
-Collecting json5&gt;=0.9.0
-  Downloading json5-0.9.11-py2.py3-none-any.whl (19 kB)
-Collecting jsonschema&gt;=4.17.3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading jsonschema-4.17.3-py3-none-any.whl (90 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/90.4 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">90.4/90.4 KB</span> <span class=" -Color -Color-Red">3.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: ipykernel in /usr/local/lib/python3.9/dist-packages (from notebook&lt;7-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (5.5.6)
-Requirement already satisfied: nest-asyncio&gt;=1.5 in /usr/local/lib/python3.9/dist-packages (from notebook&lt;7-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.5.6)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: babel&gt;=2.10 in /usr/local/lib/python3.9/dist-packages (from jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.12.1)
+Requirement already satisfied: json5&gt;=0.9.0 in /usr/local/lib/python3.9/dist-packages (from jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.9.11)
 Requirement already satisfied: ipython-genutils in /usr/local/lib/python3.9/dist-packages (from notebook&lt;7-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.0)
-Requirement already satisfied: pickleshare in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.7.5)
+Requirement already satisfied: ipykernel in /usr/local/lib/python3.9/dist-packages (from notebook&lt;7-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (5.5.6)
+Requirement already satisfied: nest-asyncio&gt;=1.5 in /usr/local/lib/python3.9/dist-packages (from notebook&lt;7-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.5.6)
+Requirement already satisfied: jedi&gt;=0.16 in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.18.2)
+Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (67.6.1)
 Requirement already satisfied: pygments in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.14.0)
 Requirement already satisfied: matplotlib-inline in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.1.6)
-Requirement already satisfied: jedi&gt;=0.16 in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.18.2)
-Requirement already satisfied: backcall in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.0)
-Requirement already satisfied: decorator in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.4.2)
-Requirement already satisfied: pexpect&gt;4.3 in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.8.0)
 Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (3.0.38)
-Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (67.6.1)
-Collecting notebook-shim&gt;=0.1.0
-  Downloading notebook_shim-0.2.2-py3-none-any.whl (13 kB)
-Requirement already satisfied: sniffio&gt;=1.1 in /usr/local/lib/python3.9/dist-packages (from anyio&lt;4,&gt;=3.1.0-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.3.0)
+Requirement already satisfied: decorator in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.4.2)
+Requirement already satisfied: backcall in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.0)
+Requirement already satisfied: pexpect&gt;4.3 in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.8.0)
+Requirement already satisfied: pickleshare in /usr/local/lib/python3.9/dist-packages (from ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.7.5)
+Requirement already satisfied: notebook-shim&gt;=0.1.0 in /usr/local/lib/python3.9/dist-packages (from nbclassic-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.2)
 Requirement already satisfied: idna&gt;=2.8 in /usr/local/lib/python3.9/dist-packages (from anyio&lt;4,&gt;=3.1.0-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (3.4)
+Requirement already satisfied: sniffio&gt;=1.1 in /usr/local/lib/python3.9/dist-packages (from anyio&lt;4,&gt;=3.1.0-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.3.0)
 Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.9/dist-packages (from importlib-metadata&gt;=3.6-&gt;jupyter-ydoc~=0.2.3-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (3.15.0)
 </pre></div>
 </div>
@@ -583,175 +492,59 @@ Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.9/dist-pac
 Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /usr/local/lib/python3.9/dist-packages (from jsonschema&gt;=4.17.3-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.19.3)
 Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.9/dist-packages (from jsonschema&gt;=4.17.3-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (22.2.0)
 Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.9/dist-packages (from jupyter-client&gt;=6.1.12-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.8.2)
-Collecting jupyter-events&gt;=0.5.0
-  Downloading jupyter_events-0.6.3-py3-none-any.whl (18 kB)
+Requirement already satisfied: jupyter-events&gt;=0.5.0 in /usr/local/lib/python3.9/dist-packages (from jupyter-server-fileid&lt;1,&gt;=0.6.0-&gt;jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.6.3)
 Requirement already satisfied: nbclient&gt;=0.5.0 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.5.13)
-Requirement already satisfied: defusedxml in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.7.1)
-Requirement already satisfied: jupyterlab-pygments in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.2)
-Requirement already satisfied: tinycss2 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.2.1)
-Requirement already satisfied: lxml in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.9.2)
 Requirement already satisfied: bleach in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.0.0)
 Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.4)
-Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.11.2)
-Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.8.4)
+Requirement already satisfied: tinycss2 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.2.1)
+Requirement already satisfied: defusedxml in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.7.1)
 Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.5.0)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.11.2)
+Requirement already satisfied: lxml in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.9.2)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.8.4)
+Requirement already satisfied: jupyterlab-pygments in /usr/local/lib/python3.9/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.2)
 Requirement already satisfied: fastjsonschema in /usr/local/lib/python3.9/dist-packages (from nbformat&gt;=5.2.0-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.16.3)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /usr/local/lib/python3.9/dist-packages (from pexpect&gt;4.3-&gt;ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.7.0)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.9/dist-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.6)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ptyprocess&gt;=0.5 in /usr/local/lib/python3.9/dist-packages (from pexpect&gt;4.3-&gt;ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.7.0)
-Requirement already satisfied: wcwidth in /usr/local/lib/python3.9/dist-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.2.6)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=2.28-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.0.12)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=2.28-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.0.12)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=2.28-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.26.15)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests&gt;=2.28-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2022.12.7)
-Collecting aiofiles&lt;23,&gt;=22.1.0
-  Downloading aiofiles-22.1.0-py3-none-any.whl (14 kB)
-Collecting aiosqlite&lt;1,&gt;=0.17.0
-  Downloading aiosqlite-0.18.0-py3-none-any.whl (15 kB)
-Collecting ypy-websocket&lt;0.9.0,&gt;=0.8.2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading ypy_websocket-0.8.3-py3-none-any.whl (10 kB)
-  Downloading ypy_websocket-0.8.2-py3-none-any.whl (10 kB)
+Requirement already satisfied: aiosqlite&lt;1,&gt;=0.17.0 in /usr/local/lib/python3.9/dist-packages (from ypy-websocket&lt;0.9.0,&gt;=0.8.2-&gt;jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.19.0)
+Requirement already satisfied: aiofiles&lt;23,&gt;=22.1.0 in /usr/local/lib/python3.9/dist-packages (from ypy-websocket&lt;0.9.0,&gt;=0.8.2-&gt;jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (22.1.0)
 Requirement already satisfied: argon2-cffi-bindings in /usr/local/lib/python3.9/dist-packages (from argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (21.2.0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting python-json-logger&gt;=2.0.4
-  Downloading python_json_logger-2.0.7-py3-none-any.whl (8.1 kB)
-Collecting rfc3339-validator
-  Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
-Requirement already satisfied: jsonschema[format-nongpl]&gt;=3.2.0 in /usr/local/lib/python3.9/dist-packages (from jupyter-events&gt;=0.5.0-&gt;jupyter-server-fileid&lt;1,&gt;=0.6.0-&gt;jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (4.3.3)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: rfc3986-validator&gt;=0.1.1 in /usr/local/lib/python3.9/dist-packages (from jupyter-events&gt;=0.5.0-&gt;jupyter-server-fileid&lt;1,&gt;=0.6.0-&gt;jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.1.1)
+Requirement already satisfied: rfc3339-validator in /usr/local/lib/python3.9/dist-packages (from jupyter-events&gt;=0.5.0-&gt;jupyter-server-fileid&lt;1,&gt;=0.6.0-&gt;jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.1.4)
 Requirement already satisfied: pyyaml&gt;=5.3 in /usr/local/lib/python3.9/dist-packages (from jupyter-events&gt;=0.5.0-&gt;jupyter-server-fileid&lt;1,&gt;=0.6.0-&gt;jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (6.0)
-Collecting rfc3986-validator&gt;=0.1.1
-  Downloading rfc3986_validator-0.1.1-py2.py3-none-any.whl (4.2 kB)
+Requirement already satisfied: python-json-logger&gt;=2.0.4 in /usr/local/lib/python3.9/dist-packages (from jupyter-events&gt;=0.5.0-&gt;jupyter-server-fileid&lt;1,&gt;=0.6.0-&gt;jupyter-server-ydoc~=0.8.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.0.7)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.9/dist-packages (from python-dateutil&gt;=2.1-&gt;jupyter-client&gt;=6.1.12-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.16.0)
+Requirement already satisfied: cffi&gt;=1.0.1 in /usr/local/lib/python3.9/dist-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.15.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.9/dist-packages (from python-dateutil&gt;=2.1-&gt;jupyter-client&gt;=6.1.12-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.16.0)
-Requirement already satisfied: cffi&gt;=1.0.1 in /usr/local/lib/python3.9/dist-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.15.1)
-Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.4)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.4)
 Requirement already satisfied: webencodings in /usr/local/lib/python3.9/dist-packages (from bleach-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (0.5.1)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.9/dist-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.16.0-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.21)
-<span class=" -Color -Color-Yellow">WARNING: jsonschema 4.3.3 does not provide the extra &#39;format-nongpl&#39;</span>
-Collecting isoduration
-  Downloading isoduration-20.11.0-py3-none-any.whl (11 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting fqdn
-  Downloading fqdn-1.5.1-py3-none-any.whl (9.1 kB)
-Collecting uri-template
-  Downloading uri_template-1.2.0-py3-none-any.whl (10 kB)
 Requirement already satisfied: webcolors&gt;=1.11 in /usr/local/lib/python3.9/dist-packages (from jsonschema&gt;=4.17.3-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.13)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jsonpointer&gt;1.13
-  Downloading jsonpointer-2.3-py2.py3-none-any.whl (7.8 kB)
-Collecting arrow&gt;=0.15.0
-  Downloading arrow-1.2.3-py3-none-any.whl (66 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/66.4 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">66.4/66.4 KB</span> <span class=" -Color -Color-Red">7.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: y-py, json5, uri-template, rfc3986-validator, rfc3339-validator, requests, python-json-logger, jsonschema, jsonpointer, fqdn, aiosqlite, aiofiles, ypy-websocket, jupyter-ydoc, arrow, isoduration, jupyter-events, notebook-shim, jupyterlab-server, jupyter-server-fileid, nbclassic, jupyter-server-ydoc, jupyterlab, jupyterlab_code_formatter
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Attempting uninstall: requests
-    Found existing installation: requests 2.27.1
-    Uninstalling requests-2.27.1:
-      Successfully uninstalled requests-2.27.1
-  Attempting uninstall: jsonschema
-    Found existing installation: jsonschema 4.3.3
-    Uninstalling jsonschema-4.3.3:
-      Successfully uninstalled jsonschema-4.3.3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed aiofiles-22.1.0 aiosqlite-0.18.0 arrow-1.2.3 fqdn-1.5.1 isoduration-20.11.0 json5-0.9.11 jsonpointer-2.3 jsonschema-4.17.3 jupyter-events-0.6.3 jupyter-server-fileid-0.8.0 jupyter-server-ydoc-0.8.0 jupyter-ydoc-0.2.3 jupyterlab-3.6.3 jupyterlab-server-2.22.0 jupyterlab_code_formatter-1.6.0 nbclassic-0.5.5 notebook-shim-0.2.2 python-json-logger-2.0.7 requests-2.28.2 rfc3339-validator-0.1.4 rfc3986-validator-0.1.1 uri-template-1.2.0 y-py-0.5.9 ypy-websocket-0.8.2
+Requirement already satisfied: fqdn in /usr/local/lib/python3.9/dist-packages (from jsonschema&gt;=4.17.3-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.5.1)
+Requirement already satisfied: isoduration in /usr/local/lib/python3.9/dist-packages (from jsonschema&gt;=4.17.3-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (20.11.0)
+Requirement already satisfied: uri-template in /usr/local/lib/python3.9/dist-packages (from jsonschema&gt;=4.17.3-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.2.0)
+Requirement already satisfied: jsonpointer&gt;1.13 in /usr/local/lib/python3.9/dist-packages (from jsonschema&gt;=4.17.3-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (2.3)
+Requirement already satisfied: arrow&gt;=0.15.0 in /usr/local/lib/python3.9/dist-packages (from isoduration-&gt;jsonschema&gt;=4.17.3-&gt;jupyterlab-server~=2.19-&gt;jupyterlab~=3.0-&gt;jupyterlab_code_formatter) (1.2.3)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: pandas in /usr/local/lib/python3.9/dist-packages (1.4.4)
+Requirement already satisfied: pandas in /usr/local/lib/python3.9/dist-packages (1.5.3)
 Requirement already satisfied: numpy in /usr/local/lib/python3.9/dist-packages (1.22.4)
 Requirement already satisfied: scikit-learn in /usr/local/lib/python3.9/dist-packages (1.2.2)
-Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/local/lib/python3.9/dist-packages (from pandas) (2.8.2)
 Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.9/dist-packages (from pandas) (2022.7.1)
-Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist-packages (from scikit-learn) (1.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/local/lib/python3.9/dist-packages (from pandas) (2.8.2)
+Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.9/dist-packages (from scikit-learn) (1.2.0)
 Requirement already satisfied: scipy&gt;=1.3.2 in /usr/local/lib/python3.9/dist-packages (from scikit-learn) (1.10.1)
 Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.9/dist-packages (from scikit-learn) (3.1.0)
 Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.9/dist-packages (from python-dateutil&gt;=2.8.1-&gt;pandas) (1.16.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3021, in _dep_map
-    return self.__dep_map
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 2815, in __getattr__
-    raise AttributeError(attr)
-AttributeError: _DistInfoDistribution__dep_map
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 167, in exc_logging_wrapper
-    status = run_func(*args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/req_command.py&quot;, line 199, in wrapper
-    return func(self, options, args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/commands/install.py&quot;, line 397, in run
-    conflicts = self._determine_conflicts(to_install)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/commands/install.py&quot;, line 529, in _determine_conflicts
-    return check_install_conflicts(to_install)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/operations/check.py&quot;, line 101, in check_install_conflicts
-    package_set, _ = create_package_set_from_installed()
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/operations/check.py&quot;, line 42, in create_package_set_from_installed
-    dependencies = list(dist.iter_dependencies())
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/metadata/pkg_resources.py&quot;, line 202, in iter_dependencies
-    return self._dist.requires(extras)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 2736, in requires
-    dm = self._dep_map
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3023, in _dep_map
-    self.__dep_map = self._compute_dependencies()
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3040, in _compute_dependencies
-    common = frozenset(reqs_for_extra(None))
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3036, in reqs_for_extra
-    for req in reqs:
-KeyboardInterrupt
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/usr/local/bin/pip3&quot;, line 8, in &lt;module&gt;
-    sys.exit(main())
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/main.py&quot;, line 70, in main
-    return command.main(cmd_args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 101, in main
-    return self._main(args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 221, in _main
-    return run(options, args)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/cli/base_command.py&quot;, line 204, in exc_logging_wrapper
-    logger.critical(&quot;Operation cancelled by user&quot;)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1493, in critical
-    self._log(CRITICAL, msg, args, **kwargs)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1589, in _log
-    self.handle(record)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1599, in handle
-    self.callHandlers(record)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 1661, in callHandlers
-    hdlr.handle(record)
-  File &quot;/usr/lib/python3.9/logging/__init__.py&quot;, line 952, in handle
-    self.emit(record)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_internal/utils/logging.py&quot;, line 172, in emit
-    self.console.print(renderable, overflow=&quot;ignore&quot;, crop=False, style=style)
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/rich/console.py&quot;, line 1601, in print
-    render_options = self.options.update(
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/rich/console.py&quot;, line 938, in options
-    max_height=self.size.height,
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/rich/console.py&quot;, line 958, in size
-    if self.is_dumb_terminal:
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/rich/console.py&quot;, line 932, in is_dumb_terminal
-    return self.is_terminal and is_dumb
-  File &quot;/usr/local/lib/python3.9/dist-packages/pip/_vendor/rich/console.py&quot;, line 915, in is_terminal
-    return False if isatty is None else isatty()
-KeyboardInterrupt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
 </pre></div>
 </div>
 </div>
