@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'tasks/TUGAS_SVD';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Analisis Graf" href="Graph.html" />
+    <link rel="prev" title="Time Series" href="timeseries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,13 +160,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
-<li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Graph.html">Analisis Graf</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas SVD</a></li>
 </ul>
 
@@ -620,7 +615,7 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-c0d24a5e-347a-40b6-a5e0-1f5abc8b8536">
+  <div id="df-4ec154b4-f9f9-457c-81f6-2d8b2bb00a15">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -687,7 +682,7 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-c0d24a5e-347a-40b6-a5e0-1f5abc8b8536')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-4ec154b4-f9f9-457c-81f6-2d8b2bb00a15')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -738,12 +733,12 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 
       <script>
         const buttonEl =
-          document.querySelector('#df-c0d24a5e-347a-40b6-a5e0-1f5abc8b8536 button.colab-df-convert');
+          document.querySelector('#df-4ec154b4-f9f9-457c-81f6-2d8b2bb00a15 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-c0d24a5e-347a-40b6-a5e0-1f5abc8b8536');
+          const element = document.querySelector('#df-4ec154b4-f9f9-457c-81f6-2d8b2bb00a15');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -992,11 +987,25 @@ Length: 714, dtype: object
 <span class="g g-Whitespace">     </span><span class="mi">91</span>                 <span class="k">return</span>
 
 <span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">accept_prefix_visitors</span><span class="nt">(self, visitors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="n">removalCount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">removals</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span>         <span class="k">for</span> <span class="n">visitor</span> <span class="ow">in</span> <span class="n">visitors</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>             <span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">111</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_word</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">110</span>             <span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_word</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">112</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_word</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_is_stopped</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">accept</span><span class="nt">(self, visitor)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span> 
+<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitor</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">97</span>         <span class="n">visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span> 
+<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">def</span> <span class="nf">accept_visitors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitors</span><span class="p">):</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Visitor/AbstractDisambiguatePrefixRule.py</span> in <span class="ni">visit</span><span class="nt">(self, context)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">for</span> <span class="n">disambiguator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">disambiguators</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">disambiguator</span><span class="o">.</span><span class="n">disambiguate</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">current_word</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>             <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>                 <span class="k">break</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> 
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1045,19 +1054,10 @@ Length: 714, dtype: object
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">)</span>
 
 <span class="c1"># Vectorize document using TF-IDF</span>
-<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">,</span>
-                        <span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
-                        <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
 
 <span class="c1"># Fit and Transform the documents</span>
 <span class="n">train_data</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">cleaned_comments</span><span class="p">)</span>   
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/sklearn/feature_extraction/text.py:528: UserWarning: The parameter &#39;token_pattern&#39; will not be used since &#39;tokenizer&#39; is not None&#39;
-  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -1136,7 +1136,7 @@ Length: 714, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-26fc4ef7-5975-45be-919f-549cd51337ee">
+  <div id="df-467813fa-0b67-47e2-8277-5ad594e28a52">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1316,7 +1316,7 @@ Length: 714, dtype: object
 </table>
 <p>714 rows × 10 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-26fc4ef7-5975-45be-919f-549cd51337ee')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-467813fa-0b67-47e2-8277-5ad594e28a52')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1367,12 +1367,12 @@ Length: 714, dtype: object
 
       <script>
         const buttonEl =
-          document.querySelector('#df-26fc4ef7-5975-45be-919f-549cd51337ee button.colab-df-convert');
+          document.querySelector('#df-467813fa-0b67-47e2-8277-5ad594e28a52 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-26fc4ef7-5975-45be-919f-549cd51337ee');
+          const element = document.querySelector('#df-467813fa-0b67-47e2-8277-5ad594e28a52');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1408,13 +1408,6 @@ Length: 714, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Column A&#39;</span><span class="p">,</span><span class="s1">&#39;Column B&#39;</span><span class="p">,</span><span class="s1">&#39;Column C&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vh</span>
 </pre></div>
 </div>
@@ -1436,6 +1429,386 @@ Length: 714, dtype: object
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dVh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Vh</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">col_set</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Topik 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 4&#39;</span><span class="p">,</span><span class="s1">&#39;Topik 5&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 6&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 7&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 8&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 9&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dVh</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-a1555699-b198-4193-9ded-4066cefe23d1">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aaaa</th>
+      <th>aamiin</th>
+      <th>aamin</th>
+      <th>abai</th>
+      <th>abal</th>
+      <th>abas</th>
+      <th>abdi</th>
+      <th>abdul</th>
+      <th>abdur</th>
+      <th>abdurrahman</th>
+      <th>...</th>
+      <th>yudoyono</th>
+      <th>yuhanis</th>
+      <th>yuk</th>
+      <th>yunanto</th>
+      <th>yunarto</th>
+      <th>yuniarto</th>
+      <th>yusp</th>
+      <th>yusuf</th>
+      <th>yv</th>
+      <th>zonk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Topik 0</th>
+      <td>0.000074</td>
+      <td>0.010124</td>
+      <td>0.002080</td>
+      <td>0.000562</td>
+      <td>0.047921</td>
+      <td>0.002524</td>
+      <td>0.000930</td>
+      <td>0.000328</td>
+      <td>0.000562</td>
+      <td>0.001567</td>
+      <td>...</td>
+      <td>0.002004</td>
+      <td>0.003091</td>
+      <td>0.010851</td>
+      <td>0.001108</td>
+      <td>0.011714</td>
+      <td>0.002437</td>
+      <td>0.005606</td>
+      <td>0.000562</td>
+      <td>0.005612</td>
+      <td>0.001576</td>
+    </tr>
+    <tr>
+      <th>Topik 1</th>
+      <td>-0.000026</td>
+      <td>-0.014716</td>
+      <td>-0.002225</td>
+      <td>-0.000847</td>
+      <td>-0.001480</td>
+      <td>0.001039</td>
+      <td>-0.000607</td>
+      <td>-0.000452</td>
+      <td>-0.000847</td>
+      <td>-0.000614</td>
+      <td>...</td>
+      <td>0.001716</td>
+      <td>-0.003771</td>
+      <td>0.018984</td>
+      <td>-0.000472</td>
+      <td>-0.006440</td>
+      <td>-0.003395</td>
+      <td>0.001162</td>
+      <td>-0.000847</td>
+      <td>0.000584</td>
+      <td>-0.000933</td>
+    </tr>
+    <tr>
+      <th>Topik 2</th>
+      <td>0.000051</td>
+      <td>-0.018560</td>
+      <td>0.002439</td>
+      <td>0.000614</td>
+      <td>0.033142</td>
+      <td>-0.000545</td>
+      <td>-0.000258</td>
+      <td>-0.000517</td>
+      <td>0.000614</td>
+      <td>-0.000440</td>
+      <td>...</td>
+      <td>-0.000190</td>
+      <td>0.003286</td>
+      <td>-0.001062</td>
+      <td>-0.000757</td>
+      <td>-0.016344</td>
+      <td>-0.005962</td>
+      <td>0.004645</td>
+      <td>0.000614</td>
+      <td>0.005565</td>
+      <td>-0.000400</td>
+    </tr>
+    <tr>
+      <th>Topik 3</th>
+      <td>0.000356</td>
+      <td>-0.008688</td>
+      <td>0.001537</td>
+      <td>-0.000404</td>
+      <td>0.137014</td>
+      <td>0.001471</td>
+      <td>0.002305</td>
+      <td>-0.000285</td>
+      <td>-0.000404</td>
+      <td>0.002361</td>
+      <td>...</td>
+      <td>0.001161</td>
+      <td>0.003239</td>
+      <td>-0.005730</td>
+      <td>0.006428</td>
+      <td>0.017685</td>
+      <td>0.000135</td>
+      <td>-0.001091</td>
+      <td>-0.000404</td>
+      <td>-0.001211</td>
+      <td>0.006138</td>
+    </tr>
+    <tr>
+      <th>Topik 4</th>
+      <td>-0.000226</td>
+      <td>0.012685</td>
+      <td>0.005120</td>
+      <td>-0.000196</td>
+      <td>-0.127695</td>
+      <td>-0.000325</td>
+      <td>0.003000</td>
+      <td>0.000707</td>
+      <td>-0.000196</td>
+      <td>0.002968</td>
+      <td>...</td>
+      <td>0.001034</td>
+      <td>-0.007817</td>
+      <td>-0.005109</td>
+      <td>-0.004467</td>
+      <td>-0.020724</td>
+      <td>-0.002849</td>
+      <td>-0.001890</td>
+      <td>-0.000196</td>
+      <td>0.000214</td>
+      <td>0.001860</td>
+    </tr>
+    <tr>
+      <th>Topik 5</th>
+      <td>-0.000081</td>
+      <td>-0.001503</td>
+      <td>-0.000413</td>
+      <td>-0.000734</td>
+      <td>-0.296671</td>
+      <td>0.005115</td>
+      <td>0.000877</td>
+      <td>0.000145</td>
+      <td>-0.000734</td>
+      <td>0.005813</td>
+      <td>...</td>
+      <td>0.000293</td>
+      <td>-0.012517</td>
+      <td>-0.003544</td>
+      <td>-0.003459</td>
+      <td>-0.011153</td>
+      <td>0.000124</td>
+      <td>0.009069</td>
+      <td>-0.000734</td>
+      <td>0.006040</td>
+      <td>-0.000940</td>
+    </tr>
+    <tr>
+      <th>Topik 6</th>
+      <td>0.000043</td>
+      <td>-0.016146</td>
+      <td>-0.001661</td>
+      <td>-0.001035</td>
+      <td>-0.357752</td>
+      <td>-0.003036</td>
+      <td>-0.000870</td>
+      <td>-0.001670</td>
+      <td>-0.001035</td>
+      <td>-0.000506</td>
+      <td>...</td>
+      <td>-0.001132</td>
+      <td>-0.013179</td>
+      <td>-0.002439</td>
+      <td>0.002842</td>
+      <td>0.015123</td>
+      <td>0.003536</td>
+      <td>0.000298</td>
+      <td>-0.001035</td>
+      <td>-0.000106</td>
+      <td>-0.000279</td>
+    </tr>
+    <tr>
+      <th>Topik 7</th>
+      <td>0.000055</td>
+      <td>-0.004896</td>
+      <td>-0.002059</td>
+      <td>0.000535</td>
+      <td>-0.173694</td>
+      <td>-0.003240</td>
+      <td>-0.001351</td>
+      <td>-0.000809</td>
+      <td>0.000535</td>
+      <td>-0.001854</td>
+      <td>...</td>
+      <td>0.000021</td>
+      <td>-0.002101</td>
+      <td>-0.003892</td>
+      <td>0.003599</td>
+      <td>-0.005692</td>
+      <td>-0.002795</td>
+      <td>-0.006207</td>
+      <td>0.000535</td>
+      <td>-0.006768</td>
+      <td>-0.001310</td>
+    </tr>
+    <tr>
+      <th>Topik 8</th>
+      <td>-0.000213</td>
+      <td>-0.001254</td>
+      <td>-0.000987</td>
+      <td>-0.000985</td>
+      <td>0.770754</td>
+      <td>-0.000370</td>
+      <td>-0.001156</td>
+      <td>-0.000602</td>
+      <td>-0.000985</td>
+      <td>0.000229</td>
+      <td>...</td>
+      <td>-0.000074</td>
+      <td>0.017700</td>
+      <td>-0.005079</td>
+      <td>-0.004670</td>
+      <td>-0.008648</td>
+      <td>0.000661</td>
+      <td>0.002238</td>
+      <td>-0.000985</td>
+      <td>-0.000940</td>
+      <td>-0.003996</td>
+    </tr>
+    <tr>
+      <th>Topik 9</th>
+      <td>0.000044</td>
+      <td>-0.019176</td>
+      <td>-0.001716</td>
+      <td>0.001036</td>
+      <td>0.149049</td>
+      <td>0.005216</td>
+      <td>0.001007</td>
+      <td>-0.001599</td>
+      <td>0.001036</td>
+      <td>0.005827</td>
+      <td>...</td>
+      <td>-0.000756</td>
+      <td>0.006893</td>
+      <td>-0.003190</td>
+      <td>0.001132</td>
+      <td>-0.016117</td>
+      <td>-0.002044</td>
+      <td>0.005325</td>
+      <td>0.001036</td>
+      <td>0.003647</td>
+      <td>-0.000548</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 1986 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-a1555699-b198-4193-9ded-4066cefe23d1')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-a1555699-b198-4193-9ded-4066cefe23d1 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-a1555699-b198-4193-9ded-4066cefe23d1');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
 </div>
 </div>
 <div class="section" id="proses-svd">
@@ -1475,16 +1848,16 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0:  [&#39;ganteng&#39;, &#39;anissss&#39;, &#39;anis&#39;, &#39;pilores&#39;, &#39;yudhoyono&#39;]
-Topic 1:  [&#39;ganteng&#39;, &#39;prediksi&#39;, &#39;pranowo&#39;, &#39;plosok&#39;, &#39;puti&#39;]
-Topic 2:  [&#39;anissss&#39;, &#39;ahy&#39;, &#39;oleh&#39;, &#39;paham&#39;, &#39;maraukue&#39;]
-Topic 3:  [&#39;yudhoyono&#39;, &#39;surveynya&#39;, &#39;survenya&#39;, &#39;periode&#39;, &#39;bbm&#39;]
-Topic 4:  [&#39;prestasi&#39;, &#39;info&#39;, &#39;yudhoyono&#39;, &#39;prediksi&#39;, &#39;pilores&#39;]
-Topic 5:  [&#39;pranowo&#39;, &#39;mencle&#39;, &#39;ahy&#39;, &#39;subjektif&#39;, &#39;yudhoyono&#39;]
-Topic 6:  [&#39;pilores&#39;, &#39;anis&#39;, &#39;surveynya&#39;, &#39;anissss&#39;, &#39;rangkai&#39;]
-Topic 7:  [&#39;mencle&#39;, &#39;prediksi&#39;, &#39;batik&#39;, &#39;pilores&#39;, &#39;bbm&#39;]
-Topic 8:  [&#39;abal&#39;, &#39;pilores&#39;, &#39;mencle&#39;, &#39;anis&#39;, &#39;prediksi&#39;]
-Topic 9:  [&#39;batik&#39;, &#39;pranowo&#39;, &#39;pilores&#39;, &#39;yudhoyono&#39;, &#39;surveynya&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0:  [&#39;ganjar&#39;, &#39;anis&#39;, &#39;anies&#39;, &#39;pilih&#39;, &#39;yg&#39;]
+Topic 1:  [&#39;ganjar&#39;, &#39;pranowo&#39;, &#39;prabowo&#39;, &#39;plh&#39;, &#39;purnomo&#39;]
+Topic 2:  [&#39;anis&#39;, &#39;ahy&#39;, &#39;ok&#39;, &#39;pa&#39;, &#39;mantap&#39;]
+Topic 3:  [&#39;yg&#39;, &#39;survey&#39;, &#39;survei&#39;, &#39;percaya&#39;, &#39;bayar&#39;]
+Topic 4:  [&#39;presiden&#39;, &#39;indonesia&#39;, &#39;yg&#39;, &#39;pranowo&#39;, &#39;pilih&#39;]
+Topic 5:  [&#39;prabowo&#39;, &#39;menang&#39;, &#39;ahy&#39;, &#39;subianto&#39;, &#39;yg&#39;]
+Topic 6:  [&#39;pilih&#39;, &#39;anies&#39;, &#39;survey&#39;, &#39;anis&#39;, &#39;rakyat&#39;]
+Topic 7:  [&#39;menang&#39;, &#39;pranowo&#39;, &#39;baswedan&#39;, &#39;pilih&#39;, &#39;bayar&#39;]
+Topic 8:  [&#39;abal&#39;, &#39;pilih&#39;, &#39;menang&#39;, &#39;anies&#39;, &#39;pranowo&#39;]
+Topic 9:  [&#39;baswedan&#39;, &#39;prabowo&#39;, &#39;pilih&#39;, &#39;yg&#39;, &#39;survey&#39;]
 </pre></div>
 </div>
 </div>
@@ -1524,12 +1897,12 @@ Topic 9:  [&#39;batik&#39;, &#39;pranowo&#39;, &#39;pilores&#39;, &#39;yudhoyono
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Graph.html"
+       href="timeseries.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Analisis Graf</p>
+        <p class="prev-next-title">Time Series</p>
       </div>
     </a>
 </div></div>
