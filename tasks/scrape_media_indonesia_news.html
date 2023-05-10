@@ -597,7 +597,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-09ff2b1a-6795-4cd0-9c37-5aa9ab6ef004">
+  <div id="df-a5b18004-6527-47d9-b5d2-5384587e5cdf">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -705,7 +705,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 </table>
 <p>115 rows × 4 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-09ff2b1a-6795-4cd0-9c37-5aa9ab6ef004')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-a5b18004-6527-47d9-b5d2-5384587e5cdf')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -756,12 +756,12 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 
       <script>
         const buttonEl =
-          document.querySelector('#df-09ff2b1a-6795-4cd0-9c37-5aa9ab6ef004 button.colab-df-convert');
+          document.querySelector('#df-a5b18004-6527-47d9-b5d2-5384587e5cdf button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-09ff2b1a-6795-4cd0-9c37-5aa9ab6ef004');
+          const element = document.querySelector('#df-a5b18004-6527-47d9-b5d2-5384587e5cdf');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -781,44 +781,6 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
     </div>
   </div>
   </div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def scrap_website_data(table_content = None, header_browser = &quot;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1&quot;):</span>
-	
-<span class="c1"># 	if (table_content is None):</span>
-<span class="c1"># 		return &quot;Tidak ada yang diambil&quot; </span>
-
-<span class="c1"># 	articles = []</span>
-
-<span class="c1"># 	main_url = table_content[&quot;url&quot;]</span>
-<span class="c1"># 	attribute_elements = table_content[&quot;attributes&quot;]</span>
-
-<span class="c1"># 	r_row = request_header_url(header_browser, main_url)</span>
-<span class="c1"># 	soup_row = parse_website(r_row)</span>
-<span class="c1"># 	prettify_web_structure(soup_row)</span>
-<span class="c1"># 	for data in range(len(attribute_elements)):</span>
-<span class="c1"># 		table_row = get_content_table(soup_row, &quot;div&quot;, {&quot;style&quot;:&quot;line-height: 1.6;&quot;, &quot;itemprop&quot;:&quot;articleBody&quot;})</span>
-
-<span class="c1"># 	for row in table.findAll(&#39;a&#39;, attrs = {&#39;class&#39;:&#39;hover-effect&#39;}):</span>
-<span class="c1"># 		current_title = row[&quot;title&quot;]</span>
-
-<span class="c1"># 		r_row = request_header_url(header_browser, row[&quot;href&quot;])</span>
-<span class="c1"># 		soup_row = parse_website(r_row)</span>
-<span class="c1"># 		prettify_web_structure(soup_row)</span>
-<span class="c1"># 		table_row = get_content_table(soup_row, &quot;div&quot;, {&quot;style&quot;:&quot;line-height: 1.6;&quot;, &quot;itemprop&quot;:&quot;articleBody&quot;})</span>
-
-<span class="c1"># 		current_content = &quot;&quot;</span>
-<span class="c1"># 		for inner_row in table_row.findAll(&#39;p&#39;):</span>
-<span class="c1"># 			current_content += f&quot; {inner_row.string}&quot;</span>
-<span class="c1"># 		# dump variable </span>
-<span class="c1"># 		articles.append([current_title, current_content])</span>
-<span class="c1"># 		print(f&quot;sedang mengambil konten dengan judul &#39;{current_title}...&#39;&quot;)</span>
-<span class="c1"># 		print()</span>
-<span class="c1"># 	return articles</span>
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 

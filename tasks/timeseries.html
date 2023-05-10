@@ -63,8 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'tasks/timeseries';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tugas SVD" href="TUGAS_SVD.html" />
-    <link rel="prev" title="Scrape Website with Beautiful Soap" href="scrape_PTA_UTM.html" />
+    <link rel="next" title="Text Classification (UTS)" href="text_classification_PTA_UTM_UTS.html" />
+    <link rel="prev" title="Langkah 1 Ambil Data" href="get_data_from_dbs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,8 +161,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graph.html">Analisis Graf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TUGAS_SVD.html">Tugas SVD</a></li>
 </ul>
 
@@ -456,9 +461,7 @@ Requirement already satisfied: idna&gt;=2.8 in /usr/local/lib/python3.10/dist-pa
 Requirement already satisfied: sniffio&gt;=1.1 in /usr/local/lib/python3.10/dist-packages (from anyio&lt;4,&gt;=3.1.0-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.3.0)
 Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.10/dist-packages (from jupyter-client&gt;=6.1.12-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.8.2)
 Requirement already satisfied: platformdirs&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from jupyter-core!=5.0.*,&gt;=4.12-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (3.3.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: lxml in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (4.9.2)
+Requirement already satisfied: lxml in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (4.9.2)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (4.11.2)
 Requirement already satisfied: bleach in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (6.0.0)
 Requirement already satisfied: defusedxml in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (0.7.1)
@@ -470,17 +473,19 @@ Requirement already satisfied: nbclient&gt;=0.5.0 in /usr/local/lib/python3.10/d
 Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.5.0)
 Requirement already satisfied: pygments&gt;=2.4.1 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.14.0)
 Requirement already satisfied: tinycss2 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.2.1)
-Requirement already satisfied: fastjsonschema in /usr/local/lib/python3.10/dist-packages (from nbformat&gt;=5.2.0-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.16.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: fastjsonschema in /usr/local/lib/python3.10/dist-packages (from nbformat&gt;=5.2.0-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.16.3)
 Requirement already satisfied: jsonschema&gt;=2.6 in /usr/local/lib/python3.10/dist-packages (from nbformat&gt;=5.2.0-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (4.3.3)
 Requirement already satisfied: ptyprocess in /usr/local/lib/python3.10/dist-packages (from terminado&gt;=0.8.3-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (0.7.0)
 Requirement already satisfied: argon2-cffi-bindings in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (21.2.0)
 Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=5.2.0-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (23.1.0)
 Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=5.2.0-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (0.19.3)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.1-&gt;jupyter-client&gt;=6.1.12-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.16.0)
+Requirement already satisfied: cffi&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.15.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.1-&gt;jupyter-client&gt;=6.1.12-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.16.0)
-Requirement already satisfied: cffi&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.15.1)
-Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.4.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.4.1)
 Requirement already satisfied: webencodings in /usr/local/lib/python3.10/dist-packages (from bleach-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (0.5.1)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.21)
 </pre></div>
@@ -780,20 +785,20 @@ memory usage: 592.0 bytes
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="scrape_PTA_UTM.html"
+       href="get_data_from_dbs.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Scrape Website with Beautiful Soap</p>
+        <p class="prev-next-title">Langkah 1 Ambil Data</p>
       </div>
     </a>
     <a class="right-next"
-       href="TUGAS_SVD.html"
+       href="text_classification_PTA_UTM_UTS.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tugas SVD</p>
+        <p class="prev-next-title">Text Classification (UTS)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

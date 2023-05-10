@@ -159,8 +159,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graph.html">Analisis Graf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TUGAS_SVD.html">Tugas SVD</a></li>
 </ul>
 
@@ -457,10 +462,10 @@ Requirement already satisfied: click in /usr/local/lib/python3.10/dist-packages 
 Requirement already satisfied: joblib in /usr/local/lib/python3.10/dist-packages (from nltk-&gt;sentence-transformers) (1.2.0)
 Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;sentence-transformers) (3.1.0)
 Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.10/dist-packages (from torchvision-&gt;sentence-transformers) (8.4.0)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (2.1.2)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (1.26.15)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;torch&gt;=1.6.0-&gt;sentence-transformers) (2.1.2)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (1.26.15)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2022.12.7)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (2.0.12)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests-&gt;huggingface-hub&gt;=0.4.0-&gt;sentence-transformers) (3.4)
@@ -474,8 +479,8 @@ Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.10/dist
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
 Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting git+https://github.com/MartinoMensio/spacy-sentence-bert.git
-  Cloning https://github.com/MartinoMensio/spacy-sentence-bert.git to /tmp/pip-req-build-ccg3v8my
-  Running command git clone --filter=blob:none --quiet https://github.com/MartinoMensio/spacy-sentence-bert.git /tmp/pip-req-build-ccg3v8my
+  Cloning https://github.com/MartinoMensio/spacy-sentence-bert.git to /tmp/pip-req-build-h7emtdsi
+  Running command git clone --filter=blob:none --quiet https://github.com/MartinoMensio/spacy-sentence-bert.git /tmp/pip-req-build-h7emtdsi
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Resolved https://github.com/MartinoMensio/spacy-sentence-bert.git to commit 9fb25f92b5be77d42921a66fda2c54caa3199925
@@ -512,19 +517,17 @@ Requirement already satisfied: scipy in /usr/local/lib/python3.10/dist-packages 
 Requirement already satisfied: nltk in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.8.1)
 Requirement already satisfied: sentencepiece in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.1.99)
 Requirement already satisfied: huggingface-hub&gt;=0.4.0 in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (0.14.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: filelock in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.12.0)
+Requirement already satisfied: filelock in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.12.0)
 Requirement already satisfied: fsspec in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2023.4.0)
 Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (6.0)
 Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (4.5.0)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.26.15)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (1.26.15)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2022.12.7)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.0.12)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (3.4)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sympy in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.11.1)
+Requirement already satisfied: sympy in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.11.1)
 Requirement already satisfied: networkx in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.1)
 Requirement already satisfied: triton==2.0.0 in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (2.0.0)
 Requirement already satisfied: cmake in /usr/local/lib/python3.10/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.25.2)
@@ -537,9 +540,7 @@ Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in /usr/local/lib/pytho
 Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;spacy&lt;4.0.0,&gt;=3.0.0-&gt;spacy-sentence-bert==0.1.2) (2.1.2)
 Requirement already satisfied: joblib in /usr/local/lib/python3.10/dist-packages (from nltk-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.2.0)
 Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (3.1.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.10/dist-packages (from torchvision-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (8.4.0)
+Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.10/dist-packages (from torchvision-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (8.4.0)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.10/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2) (1.3.0)
@@ -586,10 +587,10 @@ Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/pyt
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2022.12.7)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.12)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.4)
+Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in /usr/local/lib/python3.10/dist-packages (from typer&lt;0.4.0,&gt;=0.3.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (7.1.2)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in /usr/local/lib/python3.10/dist-packages (from typer&lt;0.4.0,&gt;=0.3.0-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (7.1.2)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.1.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;spacy&lt;3.1.0,&gt;=3.0.3-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.1.2)
 Requirement already satisfied: transformers&lt;5.0.0,&gt;=4.6.0 in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (4.28.1)
 Requirement already satisfied: torch&gt;=1.6.0 in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2.0.0+cu118)
 Requirement already satisfied: torchvision in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.15.1+cu118)
@@ -598,7 +599,9 @@ Requirement already satisfied: scipy in /usr/local/lib/python3.10/dist-packages 
 Requirement already satisfied: nltk in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.8.1)
 Requirement already satisfied: sentencepiece in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.1.99)
 Requirement already satisfied: huggingface-hub&gt;=0.4.0 in /usr/local/lib/python3.10/dist-packages (from sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (0.14.1)
-Requirement already satisfied: filelock in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.12.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: filelock in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (3.12.0)
 Requirement already satisfied: fsspec in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (2023.4.0)
 Requirement already satisfied: pyyaml&gt;=5.1 in /usr/local/lib/python3.10/dist-packages (from huggingface-hub&gt;=0.4.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (6.0)
 Requirement already satisfied: sympy in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-paraphrase-xlm-r-multilingual-v1==0.1.2) (1.11.1)
@@ -687,64 +690,96 @@ Requirement already satisfied: lit in /usr/local/lib/python3.10/dist-packages (f
 Requirement already satisfied: tokenizers!=0.11.3,&lt;0.14,&gt;=0.11.1 in /usr/local/lib/python3.10/dist-packages (from transformers&lt;5.0.0,&gt;=4.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-distiluse-base-multilingual-cased-v2==0.1.2) (0.13.3)
 Requirement already satisfied: joblib in /usr/local/lib/python3.10/dist-packages (from nltk-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-distiluse-base-multilingual-cased-v2==0.1.2) (1.2.0)
 Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-distiluse-base-multilingual-cased-v2==0.1.2) (3.1.0)
-Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.10/dist-packages (from torchvision-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-distiluse-base-multilingual-cased-v2==0.1.2) (8.4.0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.10/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-distiluse-base-multilingual-cased-v2==0.1.2) (1.3.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pillow!=8.3.*,&gt;=5.3.0 in /usr/local/lib/python3.10/dist-packages (from torchvision-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-distiluse-base-multilingual-cased-v2==0.1.2) (8.4.0)
+Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.10/dist-packages (from sympy-&gt;torch&gt;=1.6.0-&gt;sentence-transformers-&gt;spacy-sentence-bert==0.1.2-&gt;xx-distiluse-base-multilingual-cased-v2==0.1.2) (1.3.0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3108, in _dep_map
+    return self.__dep_map
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 2901, in __getattr__
+    raise AttributeError(attr)
+AttributeError: _DistInfoDistribution__dep_map
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 100, in main
-    with self.main_context():
-  File &quot;/usr/lib/python3.10/contextlib.py&quot;, line 142, in __exit__
-    next(self.gen)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/command_context.py&quot;, line 19, in main_context
-    with self._main_context:
-  File &quot;/usr/lib/python3.10/contextlib.py&quot;, line 576, in __exit__
-    raise exc_details[1]
-  File &quot;/usr/lib/python3.10/contextlib.py&quot;, line 153, in __exit__
-    self.gen.throw(typ, value, traceback)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/temp_dir.py&quot;, line 70, in tempdir_registry
-    yield _tempdir_registry
-  File &quot;/usr/lib/python3.10/contextlib.py&quot;, line 561, in __exit__
-    if cb(*exc_details):
-  File &quot;/usr/lib/python3.10/contextlib.py&quot;, line 142, in __exit__
-    next(self.gen)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/temp_dir.py&quot;, line 31, in global_tempdir_manager
-    with ExitStack() as stack:
-  File &quot;/usr/lib/python3.10/contextlib.py&quot;, line 576, in __exit__
-    raise exc_details[1]
-  File &quot;/usr/lib/python3.10/contextlib.py&quot;, line 561, in __exit__
-    if cb(*exc_details):
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/temp_dir.py&quot;, line 156, in __exit__
-    self.cleanup()
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/temp_dir.py&quot;, line 173, in cleanup
-    rmtree(self._path)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/tenacity/__init__.py&quot;, line 291, in wrapped_f
-    return self(f, *args, **kw)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/tenacity/__init__.py&quot;, line 381, in __call__
-    do = self.iter(retry_state=retry_state)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/tenacity/__init__.py&quot;, line 316, in iter
-    return fut.result()
-  File &quot;/usr/lib/python3.10/concurrent/futures/_base.py&quot;, line 451, in result
-    return self.__get_result()
-  File &quot;/usr/lib/python3.10/concurrent/futures/_base.py&quot;, line 403, in __get_result
-    raise self._exception
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/tenacity/__init__.py&quot;, line 384, in __call__
-    result = fn(*args, **kwargs)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/misc.py&quot;, line 130, in rmtree
-    shutil.rmtree(dir, ignore_errors=ignore_errors, onerror=rmtree_errorhandler)
-  File &quot;/usr/lib/python3.10/shutil.py&quot;, line 725, in rmtree
-    _rmtree_safe_fd(fd, path, onerror)
-  File &quot;/usr/lib/python3.10/shutil.py&quot;, line 658, in _rmtree_safe_fd
-    _rmtree_safe_fd(dirfd, fullname, onerror)
-  File &quot;/usr/lib/python3.10/shutil.py&quot;, line 658, in _rmtree_safe_fd
-    _rmtree_safe_fd(dirfd, fullname, onerror)
-  File &quot;/usr/lib/python3.10/shutil.py&quot;, line 658, in _rmtree_safe_fd
-    _rmtree_safe_fd(dirfd, fullname, onerror)
-  File &quot;/usr/lib/python3.10/shutil.py&quot;, line 679, in _rmtree_safe_fd
-    os.unlink(entry.name, dir_fd=topfd)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 169, in exc_logging_wrapper
+    status = run_func(*args)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/req_command.py&quot;, line 242, in wrapper
+    return func(self, options, args)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/commands/install.py&quot;, line 441, in run
+    conflicts = self._determine_conflicts(to_install)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/commands/install.py&quot;, line 572, in _determine_conflicts
+    return check_install_conflicts(to_install)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/operations/check.py&quot;, line 101, in check_install_conflicts
+    package_set, _ = create_package_set_from_installed()
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/operations/check.py&quot;, line 42, in create_package_set_from_installed
+    dependencies = list(dist.iter_dependencies())
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/metadata/pkg_resources.py&quot;, line 216, in iter_dependencies
+    return self._dist.requires(extras)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 2821, in requires
+    dm = self._dep_map
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3110, in _dep_map
+    self.__dep_map = self._compute_dependencies()
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3120, in _compute_dependencies
+    reqs.extend(parse_requirements(req))
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3173, in __init__
+    super(Requirement, self).__init__(requirement_string)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/packaging/requirements.py&quot;, line 102, in __init__
+    req = REQUIREMENT.parseString(requirement_string)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 1131, in parse_string
+    loc, tokens = self._parse(instring, 0)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3886, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4114, in parseImpl
+    return e._parse(
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3886, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4959, in parseImpl
+    loc, tokens = self_expr._parse(instring, loc, doActions, callPreParse=False)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3886, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3886, in parseImpl
+    loc, exprtokens = e._parse(instring, loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 5226, in parseImpl
+    return super().parseImpl(instring, loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4375, in parseImpl
+    return self.expr._parse(instring, loc, doActions, callPreParse=False)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3864, in parseImpl
+    loc, resultlist = self.exprs[0]._parse(
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4114, in parseImpl
+    return e._parse(
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4375, in parseImpl
+    return self.expr._parse(instring, loc, doActions, callPreParse=False)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
+    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3864, in parseImpl
+    loc, resultlist = self.exprs[0]._parse(
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 776, in _parseNoCache
+    def _parseNoCache(
 KeyboardInterrupt
 
 During handling of the above exception, another exception occurred:
@@ -754,14 +789,38 @@ Traceback (most recent call last):
     sys.exit(main())
   File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/main.py&quot;, line 79, in main
     return command.main(cmd_args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 103, in main
-    logging.shutdown()
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 2182, in shutdown
-    h.flush()
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1086, in flush
-    self.release()
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 924, in release
-    self.lock.release()
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 101, in main
+    return self._main(args)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 223, in _main
+    return run(options, args)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 206, in exc_logging_wrapper
+    logger.critical(&quot;Operation cancelled by user&quot;)
+  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1524, in critical
+    self._log(CRITICAL, msg, args, **kwargs)
+  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1624, in _log
+    self.handle(record)
+  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1634, in handle
+    self.callHandlers(record)
+  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1696, in callHandlers
+    hdlr.handle(record)
+  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 968, in handle
+    self.emit(record)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/logging.py&quot;, line 177, in emit
+    self.console.print(renderable, overflow=&quot;ignore&quot;, crop=False, style=style)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 1683, in print
+    render_options = self.options.update(
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 981, in options
+    max_height=self.size.height,
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 1001, in size
+    if self.is_dumb_terminal:
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 973, in is_dumb_terminal
+    _term = self._environ.get(&quot;TERM&quot;, &quot;&quot;)
+  File &quot;/usr/lib/python3.10/_collections_abc.py&quot;, line 824, in get
+    return self[key]
+  File &quot;/usr/lib/python3.10/os.py&quot;, line 677, in __getitem__
+    value = self._data[self.encodekey(key)]
+  File &quot;/usr/lib/python3.10/os.py&quot;, line 755, in encode
+    def encode(value):
 KeyboardInterrupt
 </pre></div>
 </div>
