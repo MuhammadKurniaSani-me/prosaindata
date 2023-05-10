@@ -620,7 +620,7 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-dfe55227-6a89-4188-a97c-a6a6e6b6b514">
+  <div id="df-ae8ac549-0b34-4248-9c7c-9d40571676f7">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -687,7 +687,7 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-dfe55227-6a89-4188-a97c-a6a6e6b6b514')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-ae8ac549-0b34-4248-9c7c-9d40571676f7')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -738,12 +738,12 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 
       <script>
         const buttonEl =
-          document.querySelector('#df-dfe55227-6a89-4188-a97c-a6a6e6b6b514 button.colab-df-convert');
+          document.querySelector('#df-ae8ac549-0b34-4248-9c7c-9d40571676f7 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-dfe55227-6a89-4188-a97c-a6a6e6b6b514');
+          const element = document.querySelector('#df-ae8ac549-0b34-4248-9c7c-9d40571676f7');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1006,11 +1006,32 @@ Length: 714, dtype: object
 <span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">def</span> <span class="nf">accept_visitors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitors</span><span class="p">):</span>
 
 <span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Visitor/AbstractDisambiguatePrefixRule.py</span> in <span class="ni">visit</span><span class="nt">(self, context)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> 
 <span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">for</span> <span class="n">disambiguator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">disambiguators</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">disambiguator</span><span class="o">.</span><span class="n">disambiguate</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">current_word</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>             <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">disambiguator</span><span class="o">.</span><span class="n">disambiguate</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">current_word</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>             <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">16</span>                 <span class="k">break</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> 
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Morphology/Disambiguator/DisambiguatorPrefixRule40.py</span> in <span class="ni">disambiguate</span><span class="nt">(self, word)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="n">Rule</span> <span class="mi">40</span><span class="n">a</span> <span class="p">:</span> <span class="n">CinV</span> <span class="o">-&gt;</span> <span class="n">CinV</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">12</span><span class="sd">         matches = re.match(r&#39;^([bcdfghjklmnpqrstvwxyz])(in[aiueo])(.*)$&#39;, word)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span><span class="sd">         if matches:</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span><span class="sd">             return matches.group(1) + matches.group(2) + matches.group(3)</span>
+
+<span class="nn">/usr/lib/python3.10/re.py</span> in <span class="ni">match</span><span class="nt">(pattern, string, flags)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span><span class="sd">     &quot;&quot;&quot;</span><span class="n">Try</span> <span class="n">to</span> <span class="n">apply</span> <span class="n">the</span> <span class="n">pattern</span> <span class="n">at</span> <span class="n">the</span> <span class="n">start</span> <span class="n">of</span> <span class="n">the</span> <span class="n">string</span><span class="p">,</span> <span class="n">returning</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>     <span class="n">a</span> <span class="n">Match</span> <span class="nb">object</span><span class="p">,</span> <span class="ow">or</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">no</span> <span class="n">match</span> <span class="n">was</span> <span class="n">found</span><span class="o">.</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">190</span><span class="s2">     return _compile(pattern, flags).match(string)</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span><span class="s2"> def fullmatch(pattern, string, flags=0):</span>
+
+<span class="nn">/usr/lib/python3.10/re.py</span> in <span class="ni">_compile</span><span class="nt">(pattern, flags)</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span><span class="s2"> def _compile(pattern, flags):</span>
+<span class="g g-Whitespace">    </span><span class="mi">289</span><span class="s2">     # internal: compile pattern</span>
+<span class="ne">--&gt; </span><span class="mi">290</span><span class="s2">     if isinstance(flags, RegexFlag):</span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span><span class="s2">         flags = flags.value</span>
+<span class="g g-Whitespace">    </span><span class="mi">292</span><span class="s2">     try:</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
