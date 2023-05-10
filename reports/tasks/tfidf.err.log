@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+nest_asyncio.apply()
+c = twint.Config()
+c.Limit = 500
+c.Search = "capres 2024" # topic
+c.Pandas = True
+c.Store_csv = True
+twint.run.Search(c)
+Tweets_df = twint.storage.panda.Tweets_df
+------------------
+
+
+[0;31m[0m
+[0;31mRefreshTokenException[0mTraceback (most recent call last)
+[0;32m<ipython-input-11-e0eea6627a23>[0m in [0;36m<cell line: 7>[0;34m()[0m
+[1;32m      5[0m [0mc[0m[0;34m.[0m[0mPandas[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0mc[0m[0;34m.[0m[0mStore_csv[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0mtwint[0m[0;34m.[0m[0mrun[0m[0;34m.[0m[0mSearch[0m[0;34m([0m[0mc[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m [0mTweets_df[0m [0;34m=[0m [0mtwint[0m[0;34m.[0m[0mstorage[0m[0;34m.[0m[0mpanda[0m[0;34m.[0m[0mTweets_df[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/twint/run.py[0m in [0;36mSearch[0;34m(config, callback)[0m
+[1;32m    408[0m     [0mconfig[0m[0;34m.[0m[0mFollowers[0m [0;34m=[0m [0;32mFalse[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    409[0m     [0mconfig[0m[0;34m.[0m[0mProfile[0m [0;34m=[0m [0;32mFalse[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 410[0;31m     [0mrun[0m[0;34m([0m[0mconfig[0m[0;34m,[0m [0mcallback[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    411[0m     [0;32mif[0m [0mconfig[0m[0;34m.[0m[0mPandas_au[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    412[0m         [0mstorage[0m[0;34m.[0m[0mpanda[0m[0;34m.[0m[0m_autoget[0m[0;34m([0m[0;34m"tweet"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/twint/run.py[0m in [0;36mrun[0;34m(config, callback)[0m
+[1;32m    327[0m         [0;32mraise[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    328[0m [0;34m[0m[0m
+[0;32m--> 329[0;31m     [0mget_event_loop[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mrun_until_complete[0m[0;34m([0m[0mTwint[0m[0;34m([0m[0mconfig[0m[0;34m)[0m[0;34m.[0m[0mmain[0m[0;34m([0m[0mcallback[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    330[0m [0;34m[0m[0m
+[1;32m    331[0m [0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/twint/run.py[0m in [0;36m__init__[0;34m(self, config)[0m
+[1;32m     34[0m         [0;31m# USAGE : to get a new guest token simply do `self.token.refresh()`[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     35[0m         [0mself[0m[0;34m.[0m[0mtoken[0m [0;34m=[0m [0mtoken[0m[0;34m.[0m[0mToken[0m[0;34m([0m[0mconfig[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 36[0;31m         [0mself[0m[0;34m.[0m[0mtoken[0m[0;34m.[0m[0mrefresh[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     37[0m         [0mself[0m[0;34m.[0m[0mconn[0m [0;34m=[0m [0mdb[0m[0;34m.[0m[0mConn[0m[0;34m([0m[0mconfig[0m[0;34m.[0m[0mDatabase[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     38[0m         [0mself[0m[0;34m.[0m[0md[0m [0;34m=[0m [0mdatelock[0m[0;34m.[0m[0mSet[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mconfig[0m[0;34m.[0m[0mUntil[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mconfig[0m[0;34m.[0m[0mSince[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/twint/token.py[0m in [0;36mrefresh[0;34m(self)[0m
+[1;32m     67[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     68[0m             [0mself[0m[0;34m.[0m[0mconfig[0m[0;34m.[0m[0mGuest_token[0m [0;34m=[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 69[0;31m             [0;32mraise[0m [0mRefreshTokenException[0m[0;34m([0m[0;34m'Could not find the Guest token in HTML'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mRefreshTokenException[0m: Could not find the Guest token in HTML
+
