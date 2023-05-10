@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SVD &#8212; Proyek Sains Data</title>
+    <title>Tugas SVD &#8212; Proyek Sains Data</title>
   
   
   
@@ -63,6 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'tasks/TUGAS_SVD';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Analisis Graf" href="Graph.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -158,7 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../introduction/proyek_sain_data.html">📚 Proyek Sains Data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
@@ -166,6 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Graph.html">Analisis Graf</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas SVD</a></li>
 </ul>
 
     </div>
@@ -367,7 +369,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -378,11 +382,25 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>SVD</h1>
+    <h1>Tugas SVD</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan">Persiapan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawl-komentar-dari-youtube">Crawl Komentar dari YouTube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">TF-Idf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buat-matriks-u-sigma-dan-v-transpos">Buat Matriks U, Sigma, dan V Transpos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-svd">Proses SVD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstrak-topic-dan-kata-penting">Ekstrak Topic dan Kata Penting</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -392,8 +410,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="svd">
-<h1>SVD<a class="headerlink" href="#svd" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="tugas-svd">
+<h1>Tugas SVD<a class="headerlink" href="#tugas-svd" title="Permalink to this heading">#</a></h1>
+<div class="section" id="persiapan">
+<h2>Persiapan<a class="headerlink" href="#persiapan" title="Permalink to this heading">#</a></h2>
+<p>Install dan Import Packages</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>google-auth<span class="w"> </span>google-auth-oauthlib<span class="w"> </span>google-auth-httplib2<span class="w"> </span>google-api-python-client<span class="w">  </span>
@@ -404,7 +425,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: google-auth in /usr/local/lib/python3.10/dist-packages (2.17.3)
 Requirement already satisfied: google-auth-oauthlib in /usr/local/lib/python3.10/dist-packages (1.0.0)
 Requirement already satisfied: google-auth-httplib2 in /usr/local/lib/python3.10/dist-packages (0.1.0)
@@ -429,19 +451,17 @@ Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/pytho
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0dev,&gt;=2.18.0-&gt;google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,&lt;3.0.0dev,&gt;=1.31.5-&gt;google-api-python-client) (3.4)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting Sastrawi
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading Sastrawi-1.0.1-py2.py3-none-any.whl (209 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/209.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺ <span class=" -Color -Color-Green">204.8/209.7 kB</span> <span class=" -Color -Color-Red">7.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">209.7/209.7 kB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packages (1.0.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: Sastrawi
-Successfully installed Sastrawi-1.0.1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+
 </pre></div>
 </div>
 </div>
@@ -494,15 +514,16 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt.zip.
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
-[nltk_data]   Unzipping corpora/stopwords.zip.
-</pre></div>
 </div>
 </div>
 </div>
+<div class="section" id="crawl-komentar-dari-youtube">
+<h2>Crawl Komentar dari YouTube<a class="headerlink" href="#crawl-komentar-dari-youtube" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/prosaindata/source/tasks/assets/api.json&#39;</span><span class="p">)</span>
@@ -599,7 +620,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-c56f8c1f-7a36-454d-b03c-8bd7a5344d7c">
+  <div id="df-c0d24a5e-347a-40b6-a5e0-1f5abc8b8536">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -666,7 +687,7 @@ Successfully installed Sastrawi-1.0.1
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-c56f8c1f-7a36-454d-b03c-8bd7a5344d7c')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-c0d24a5e-347a-40b6-a5e0-1f5abc8b8536')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -717,12 +738,12 @@ Successfully installed Sastrawi-1.0.1
 
       <script>
         const buttonEl =
-          document.querySelector('#df-c56f8c1f-7a36-454d-b03c-8bd7a5344d7c button.colab-df-convert');
+          document.querySelector('#df-c0d24a5e-347a-40b6-a5e0-1f5abc8b8536 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-c56f8c1f-7a36-454d-b03c-8bd7a5344d7c');
+          const element = document.querySelector('#df-c0d24a5e-347a-40b6-a5e0-1f5abc8b8536');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -750,6 +771,9 @@ Successfully installed Sastrawi-1.0.1
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
@@ -792,6 +816,7 @@ Successfully installed Sastrawi-1.0.1
 </div>
 </div>
 </div>
+<p>Bersihkan kalimat dari tanda baca dan pola kata yang tidak penting</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessed_comments</span> <span class="o">=</span> <span class="p">[]</span>
@@ -831,6 +856,7 @@ Length: 714, dtype: object
 </div>
 </div>
 </div>
+<p>Hapus Stopword</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessed_stopword_comments</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1007,6 +1033,9 @@ Length: 714, dtype: object
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="tf-idf">
+<h2>TF-Idf<a class="headerlink" href="#tf-idf" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># vectorizer = TfidfVectorizer()</span>
@@ -1016,13 +1045,13 @@ Length: 714, dtype: object
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">)</span>
 
 <span class="c1"># Vectorize document using TF-IDF</span>
-<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">lowercase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">,</span>
                         <span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
                         <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">)</span>
 
 <span class="c1"># Fit and Transform the documents</span>
-<span class="n">train_data</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">cleaned_comments</span><span class="p">)</span>   
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">cleaned_comments</span><span class="p">)</span>   
 </pre></div>
 </div>
 </div>
@@ -1052,15 +1081,18 @@ Length: 714, dtype: object
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="buat-matriks-u-sigma-dan-v-transpos">
+<h2>Buat Matriks U, Sigma, dan V Transpos<a class="headerlink" href="#buat-matriks-u-sigma-dan-v-transpos" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">(</span><span class="n">tf_vector</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">(</span><span class="n">tf_vector</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Vh</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((714, 2), (2,), (2, 1986))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((714, 10), (10,), (10, 1986))
 </pre></div>
 </div>
 </div>
@@ -1072,16 +1104,294 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2.12922271e-02, -1.22807282e-02],
-       [-1.14714004e-10, -3.00866611e-10],
-       [ 4.71258795e-02, -5.90876084e-02],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2.12954634e-02, -1.22982753e-02, -8.23985381e-03, ...,
+         2.50849597e-03, -1.79542748e-03,  3.04137614e-02],
+       [ 1.54398667e-11,  1.44892110e-10, -1.02585279e-09, ...,
+        -7.57208330e-08, -1.25725785e-07,  9.65175133e-08],
+       [ 4.71330036e-02, -5.90056147e-02, -8.18182815e-02, ...,
+        -7.88061374e-02, -2.57344592e-02, -7.09660061e-02],
        ...,
-       [ 5.92845020e-02, -2.92314440e-03],
-       [ 6.49388192e-03, -2.94135507e-03],
-       [ 0.00000000e+00, -0.00000000e+00]])
+       [ 5.92796400e-02, -2.94908768e-03, -5.91682292e-02, ...,
+        -5.00547298e-02,  2.51064589e-02, -3.24046101e-03],
+       [ 6.49481827e-03, -2.95635636e-03, -5.15090278e-06, ...,
+        -3.49876640e-03, -2.72850476e-03, -5.54398707e-03],
+       [ 0.00000000e+00, -0.00000000e+00,  0.00000000e+00, ...,
+        -0.00000000e+00,  0.00000000e+00, -0.00000000e+00]])
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dU</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Topik 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 4&#39;</span><span class="p">,</span><span class="s1">&#39;Topik 5&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 6&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 7&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 8&#39;</span><span class="p">,</span> <span class="s1">&#39;Topik 9&#39;</span><span class="p">,])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dU</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-26fc4ef7-5975-45be-919f-549cd51337ee">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Topik 0</th>
+      <th>Topik 1</th>
+      <th>Topik 2</th>
+      <th>Topik 3</th>
+      <th>Topik 4</th>
+      <th>Topik 5</th>
+      <th>Topik 6</th>
+      <th>Topik 7</th>
+      <th>Topik 8</th>
+      <th>Topik 9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.129546e-02</td>
+      <td>-1.229828e-02</td>
+      <td>-8.239854e-03</td>
+      <td>4.631690e-02</td>
+      <td>2.671356e-02</td>
+      <td>5.372211e-03</td>
+      <td>6.411763e-03</td>
+      <td>2.508496e-03</td>
+      <td>-1.795427e-03</td>
+      <td>3.041376e-02</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.543987e-11</td>
+      <td>1.448921e-10</td>
+      <td>-1.025853e-09</td>
+      <td>-1.268459e-09</td>
+      <td>2.754015e-08</td>
+      <td>1.419946e-08</td>
+      <td>5.195004e-08</td>
+      <td>-7.572083e-08</td>
+      <td>-1.257258e-07</td>
+      <td>9.651751e-08</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.713300e-02</td>
+      <td>-5.900561e-02</td>
+      <td>-8.181828e-02</td>
+      <td>1.198865e-02</td>
+      <td>1.008521e-03</td>
+      <td>8.648074e-03</td>
+      <td>-1.395432e-02</td>
+      <td>-7.880614e-02</td>
+      <td>-2.573446e-02</td>
+      <td>-7.096601e-02</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.720109e-02</td>
+      <td>-6.478723e-02</td>
+      <td>-1.138259e-01</td>
+      <td>-3.022457e-02</td>
+      <td>-2.721443e-02</td>
+      <td>4.981882e-03</td>
+      <td>6.177186e-02</td>
+      <td>-5.085227e-02</td>
+      <td>3.144306e-02</td>
+      <td>-4.862996e-02</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.813467e-02</td>
+      <td>-9.555747e-02</td>
+      <td>-1.695722e-01</td>
+      <td>-5.926072e-02</td>
+      <td>-5.663690e-02</td>
+      <td>2.416773e-03</td>
+      <td>9.307215e-02</td>
+      <td>-6.783037e-02</td>
+      <td>5.068514e-02</td>
+      <td>-7.531297e-02</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>709</th>
+      <td>6.226783e-03</td>
+      <td>6.159578e-04</td>
+      <td>-2.442761e-03</td>
+      <td>2.323882e-02</td>
+      <td>-2.220341e-02</td>
+      <td>-1.595785e-02</td>
+      <td>6.440279e-03</td>
+      <td>6.566233e-03</td>
+      <td>-1.811473e-02</td>
+      <td>-1.504546e-02</td>
+    </tr>
+    <tr>
+      <th>710</th>
+      <td>2.036018e-02</td>
+      <td>-1.949966e-02</td>
+      <td>-2.815390e-02</td>
+      <td>6.655624e-03</td>
+      <td>1.374495e-02</td>
+      <td>-4.902752e-03</td>
+      <td>-6.512959e-03</td>
+      <td>3.584287e-03</td>
+      <td>5.166692e-03</td>
+      <td>-3.272886e-02</td>
+    </tr>
+    <tr>
+      <th>711</th>
+      <td>5.927964e-02</td>
+      <td>-2.949088e-03</td>
+      <td>-5.916823e-02</td>
+      <td>-3.024809e-02</td>
+      <td>-4.719669e-02</td>
+      <td>6.018329e-02</td>
+      <td>2.698910e-02</td>
+      <td>-5.005473e-02</td>
+      <td>2.510646e-02</td>
+      <td>-3.240461e-03</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>6.494818e-03</td>
+      <td>-2.956356e-03</td>
+      <td>-5.150903e-06</td>
+      <td>7.135696e-03</td>
+      <td>1.902002e-02</td>
+      <td>4.502246e-03</td>
+      <td>-7.799213e-03</td>
+      <td>-3.498766e-03</td>
+      <td>-2.728505e-03</td>
+      <td>-5.543987e-03</td>
+    </tr>
+    <tr>
+      <th>713</th>
+      <td>0.000000e+00</td>
+      <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-0.000000e+00</td>
+      <td>-0.000000e+00</td>
+      <td>-0.000000e+00</td>
+      <td>-0.000000e+00</td>
+      <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>-0.000000e+00</td>
+    </tr>
+  </tbody>
+</table>
+<p>714 rows × 10 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-26fc4ef7-5975-45be-919f-549cd51337ee')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-26fc4ef7-5975-45be-919f-549cd51337ee button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-26fc4ef7-5975-45be-919f-549cd51337ee');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1090,7 +1400,15 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.45722117, 3.75267074])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.45722125, 3.75267271, 3.56966273, 3.27192706, 2.91014574,
+       2.85424042, 2.78063976, 2.7109697 , 2.69634617, 2.62282495])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Column A&#39;</span><span class="p">,</span><span class="s1">&#39;Column B&#39;</span><span class="p">,</span><span class="s1">&#39;Column C&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1102,14 +1420,26 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 7.42387194e-05,  1.01242702e-02,  2.08076598e-03, ...,
-         5.62050356e-04,  5.61210346e-03,  1.57734176e-03],
-       [-2.61080679e-05, -1.47030413e-02, -2.22376561e-03, ...,
-        -8.45258409e-04,  5.95526225e-04, -9.32319180e-04]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 7.42896713e-05,  1.01235251e-02,  2.08045308e-03, ...,
+         5.61938730e-04,  5.61186077e-03,  1.57599140e-03],
+       [-2.61750375e-05, -1.47164979e-02, -2.22547844e-03, ...,
+        -8.46975252e-04,  5.83659274e-04, -9.33495729e-04],
+       [ 5.09283039e-05, -1.85599213e-02,  2.43873064e-03, ...,
+         6.14150114e-04,  5.56474765e-03, -3.99780260e-04],
+       ...,
+       [ 5.54574443e-05, -4.89573113e-03, -2.05856969e-03, ...,
+         5.34934571e-04, -6.76795474e-03, -1.30974683e-03],
+       [-2.12710172e-04, -1.25421946e-03, -9.86930916e-04, ...,
+        -9.85345629e-04, -9.39518197e-04, -3.99608034e-03],
+       [ 4.36215165e-05, -1.91755318e-02, -1.71560171e-03, ...,
+         1.03569191e-03,  3.64705088e-03, -5.47760248e-04]])
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="proses-svd">
+<h2>Proses SVD<a class="headerlink" href="#proses-svd" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the number of topics or components</span>
@@ -1128,10 +1458,13 @@ Length: 714, dtype: object
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="ekstrak-topic-dan-kata-penting">
+<h2>Ekstrak Topic dan Kata Penting<a class="headerlink" href="#ekstrak-topic-dan-kata-penting" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the topics with their terms</span>
-<span class="n">terms</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">component</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lsa</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
     <span class="n">zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">terms</span><span class="p">,</span> <span class="n">component</span><span class="p">)</span>
@@ -1142,17 +1475,18 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-34-0e4b293ff1f5&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Print the topics with their terms</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">terms</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">component</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lsa</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">zipped</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">terms</span><span class="p">,</span> <span class="n">component</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: &#39;TfidfVectorizer&#39; object has no attribute &#39;get_feature_names&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0:  [&#39;ganteng&#39;, &#39;anissss&#39;, &#39;anis&#39;, &#39;pilores&#39;, &#39;yudhoyono&#39;]
+Topic 1:  [&#39;ganteng&#39;, &#39;prediksi&#39;, &#39;pranowo&#39;, &#39;plosok&#39;, &#39;puti&#39;]
+Topic 2:  [&#39;anissss&#39;, &#39;ahy&#39;, &#39;oleh&#39;, &#39;paham&#39;, &#39;maraukue&#39;]
+Topic 3:  [&#39;yudhoyono&#39;, &#39;surveynya&#39;, &#39;survenya&#39;, &#39;periode&#39;, &#39;bbm&#39;]
+Topic 4:  [&#39;prestasi&#39;, &#39;info&#39;, &#39;yudhoyono&#39;, &#39;prediksi&#39;, &#39;pilores&#39;]
+Topic 5:  [&#39;pranowo&#39;, &#39;mencle&#39;, &#39;ahy&#39;, &#39;subjektif&#39;, &#39;yudhoyono&#39;]
+Topic 6:  [&#39;pilores&#39;, &#39;anis&#39;, &#39;surveynya&#39;, &#39;anissss&#39;, &#39;rangkai&#39;]
+Topic 7:  [&#39;mencle&#39;, &#39;prediksi&#39;, &#39;batik&#39;, &#39;pilores&#39;, &#39;bbm&#39;]
+Topic 8:  [&#39;abal&#39;, &#39;pilores&#39;, &#39;mencle&#39;, &#39;anis&#39;, &#39;prediksi&#39;]
+Topic 9:  [&#39;batik&#39;, &#39;pranowo&#39;, &#39;pilores&#39;, &#39;yudhoyono&#39;, &#39;surveynya&#39;]
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -1189,6 +1523,15 @@ Length: 714, dtype: object
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Graph.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analisis Graf</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
@@ -1198,6 +1541,26 @@ Length: 714, dtype: object
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan">Persiapan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawl-komentar-dari-youtube">Crawl Komentar dari YouTube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">TF-Idf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buat-matriks-u-sigma-dan-v-transpos">Buat Matriks U, Sigma, dan V Transpos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-svd">Proses SVD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstrak-topic-dan-kata-penting">Ekstrak Topic dan Kata Penting</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

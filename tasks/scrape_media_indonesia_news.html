@@ -168,6 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Graph.html">Analisis Graf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TUGAS_SVD.html">Tugas SVD</a></li>
 </ul>
 
     </div>
@@ -411,7 +412,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (2.27.1)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests) (1.26.15)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests) (2022.12.7)
@@ -419,16 +421,30 @@ Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/pytho
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests) (3.4)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: html5lib in /usr/local/lib/python3.10/dist-packages (1.1)
 Requirement already satisfied: six&gt;=1.9 in /usr/local/lib/python3.10/dist-packages (from html5lib) (1.16.0)
 Requirement already satisfied: webencodings in /usr/local/lib/python3.10/dist-packages (from html5lib) (0.5.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: bs4 in /usr/local/lib/python3.10/dist-packages (0.0.1)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (from bs4) (4.11.2)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;bs4) (2.4.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
+
 </pre></div>
 </div>
 </div>
@@ -581,7 +597,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-a1feb4f6-484e-4644-bae1-87de4da2116c">
+  <div id="df-09ff2b1a-6795-4cd0-9c37-5aa9ab6ef004">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -689,7 +705,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 </table>
 <p>115 rows × 4 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-a1feb4f6-484e-4644-bae1-87de4da2116c')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-09ff2b1a-6795-4cd0-9c37-5aa9ab6ef004')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -740,12 +756,12 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 
       <script>
         const buttonEl =
-          document.querySelector('#df-a1feb4f6-484e-4644-bae1-87de4da2116c button.colab-df-convert');
+          document.querySelector('#df-09ff2b1a-6795-4cd0-9c37-5aa9ab6ef004 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-a1feb4f6-484e-4644-bae1-87de4da2116c');
+          const element = document.querySelector('#df-09ff2b1a-6795-4cd0-9c37-5aa9ab6ef004');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
