@@ -15,18 +15,38 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-pip install orchest
-pip install jupyterlab_code_formatter
-pip install pandas scikit-learn psycopg2-binary 
-pip install typing 
-pip install SQLAlchemy
-pip install mysql-connector-python
+import orchest
+import pandas as pd
+from sklearn import datasets
+
+import os
+import urllib.parse as up
+import psycopg2
+
+import mysql.connector
+import sqlalchemy as db
+from sqlalchemy import create_engine
+import pymysql
 ------------------
 
 
-[0;36m  File [0;32m"<ipython-input-1-4cc08a3620e0>"[0;36m, line [0;32m1[0m
-[0;31m    pip install orchest[0m
-[0m        ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+[0;31m[0m
+[0;31mModuleNotFoundError[0mTraceback (most recent call last)
+[0;32m<ipython-input-3-09741f6ca55f>[0m in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0;31m [0;32mimport[0m [0morchest[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mfrom[0m [0msklearn[0m [0;32mimport[0m [0mdatasets[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;34m[0m[0m
+[1;32m      5[0m [0;32mimport[0m [0mos[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'orchest'
+
+[0;31m---------------------------------------------------------------------------[0;32m
+NOTE: If your import is failing due to a missing package, you can
+manually install dependencies using either !pip or !apt.
+
+To view examples of installing some common dependencies, click the
+"Open Examples" button below.
+[0;31m---------------------------------------------------------------------------[0m
 
 

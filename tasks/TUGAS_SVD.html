@@ -163,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Langkah 1 Ambil Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Gabung Kolom dari berbagai Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Graph.html">Analisis Graf</a></li>
@@ -425,8 +425,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
-Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: google-auth in /usr/local/lib/python3.10/dist-packages (2.17.3)
 Requirement already satisfied: google-auth-oauthlib in /usr/local/lib/python3.10/dist-packages (1.0.0)
 Requirement already satisfied: google-auth-httplib2 in /usr/local/lib/python3.10/dist-packages (0.1.0)
@@ -451,17 +450,23 @@ Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/pytho
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0dev,&gt;=2.18.0-&gt;google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,&lt;3.0.0dev,&gt;=1.31.5-&gt;google-api-python-client) (3.4)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
-
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
-Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packages (1.0.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting Sastrawi
+  Downloading Sastrawi-1.0.1-py2.py3-none-any.whl (209 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/209.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺ <span class=" -Color -Color-Green">204.8/209.7 kB</span> <span class=" -Color -Color-Red">6.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Ignoring invalid distribution -pacy (/usr/local/lib/python3.10/dist-packages)</span>
-
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">209.7/209.7 kB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: Sastrawi
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed Sastrawi-1.0.1
 </pre></div>
 </div>
 </div>
@@ -514,9 +519,11 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /root/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to /root/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Unzipping corpora/stopwords.zip.
 </pre></div>
 </div>
 </div>
@@ -524,13 +531,6 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 </div>
 <div class="section" id="crawl-komentar-dari-youtube">
 <h2>Crawl Komentar dari YouTube<a class="headerlink" href="#crawl-komentar-dari-youtube" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/prosaindata/source/tasks/assets/api.json&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python program for extracting YouTube comments using YouTube API  </span>
@@ -595,19 +595,19 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;bound method DataFrame.info of                                                comment
-0    survai bohoong, rakyat dah cerdas tahun2 yg la...
-1                                    Alahsurve survean
-2       Surpey pesanan Tetap anies yg terbaik for Ri 1
-3                  Sekali Anies tetap Anies hidup NKRI
-4                             Sekali Anies tetap Anies
+0    Anies❤❤❤❤\nSelamanya Anies akan di atas terus ...
+1    Intinya jgn milih calon yang HOBY NONTON VIDIO...
+2    survai bohoong, rakyat dah cerdas tahun2 yg la...
+3                                    Alahsurve survean
+4       Surpey pesanan Tetap anies yg terbaik for Ri 1
 ..                                                 ...
-709                          charta politika,hhhhhh 😂🤣
-710  Klo anies presiden, hutang negara dipastikan l...
-711  Berarti fix putaran kedua ada Ganjar dan Anies...
-712          Muka muka calon banyakin utang negara 🤣🤣🤣
-713                                    Assalamualaikum
+711                          charta politika,hhhhhh 😂🤣
+712  Klo anies presiden, hutang negara dipastikan l...
+713  Berarti fix putaran kedua ada Ganjar dan Anies...
+714          Muka muka calon banyakin utang negara 🤣🤣🤣
+715                                    Assalamualaikum
 
-[714 rows x 1 columns]&gt;
+[716 rows x 1 columns]&gt;
 </pre></div>
 </div>
 </div>
@@ -620,7 +620,7 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-59888e65-154c-4087-856c-6230f9b5ab85">
+  <div id="df-692fa57f-aa53-45fd-b8b5-089d41153f15">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -646,48 +646,48 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
   <tbody>
     <tr>
       <th>0</th>
-      <td>survai bohoong, rakyat dah cerdas tahun2 yg la...</td>
+      <td>Anies❤❤❤❤\nSelamanya Anies akan di atas terus ...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Alahsurve survean</td>
+      <td>Intinya jgn milih calon yang HOBY NONTON VIDIO...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Surpey pesanan Tetap anies yg terbaik for Ri 1</td>
+      <td>survai bohoong, rakyat dah cerdas tahun2 yg la...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Sekali Anies tetap Anies hidup NKRI</td>
+      <td>Alahsurve survean</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Sekali Anies tetap Anies</td>
+      <td>Surpey pesanan Tetap anies yg terbaik for Ri 1</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>Dimana2 Anis selalu dikecilkan tapi buktinya a...</td>
+      <td>Sekali Anies tetap Anies hidup NKRI</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>Pasti survei pa Prabowo,tapi yg naik ga tau</td>
+      <td>Sekali Anies tetap Anies</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>Sok lah mang Anis</td>
+      <td>Dimana2 Anis selalu dikecilkan tapi buktinya a...</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>Pdip ganjar puang kenapa bigun cari pasagan co...</td>
+      <td>Pasti survei pa Prabowo,tapi yg naik ga tau</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>Jagan di atik 2 degan surpai tegakan hatimu  a...</td>
+      <td>Sok lah mang Anis</td>
     </tr>
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-59888e65-154c-4087-856c-6230f9b5ab85')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-692fa57f-aa53-45fd-b8b5-089d41153f15')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -738,12 +738,12 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 
       <script>
         const buttonEl =
-          document.querySelector('#df-59888e65-154c-4087-856c-6230f9b5ab85 button.colab-df-convert');
+          document.querySelector('#df-692fa57f-aa53-45fd-b8b5-089d41153f15 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-59888e65-154c-4087-856c-6230f9b5ab85');
+          const element = document.querySelector('#df-692fa57f-aa53-45fd-b8b5-089d41153f15');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -840,18 +840,18 @@ Requirement already satisfied: Sastrawi in /usr/local/lib/python3.10/dist-packag
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      bohoong rakyat dah cerdas tahun yg lalu trnyat...
-1                                                survean
-2                  pesanan tetap anies yg terbaik for ri
-3                           anies tetap anies hidup nkri
-4                                      anies tetap anies
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0              selamanya anies akan di atas terus sampai
+1           jgn milih calon yang hoby nonton vidio porno
+2      bohoong rakyat dah cerdas tahun yg lalu trnyat...
+3                                                survean
+4                  pesanan tetap anies yg terbaik for ri
                              ...                        
-709                                     politika hhhhhh 
-710    anies presiden hutang negara dipastikan lunas ...
-711    fix putaran kedua ada ganjar dan anies putaran...
-712                    muka calon banyakin utang negara 
-713                                                     
-Length: 714, dtype: object
+711                                     politika hhhhhh 
+712    anies presiden hutang negara dipastikan lunas ...
+713    fix putaran kedua ada ganjar dan anies putaran...
+714                    muka calon banyakin utang negara 
+715                                                     
+Length: 716, dtype: object
 </pre></div>
 </div>
 </div>
@@ -880,18 +880,18 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      bohoong rakyat dah cerdas yg trnyata bayaran l...
-1                                                survean
-2                        pesanan anies yg terbaik for ri
-3                                 anies anies hidup nkri
-4                                            anies anies
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                                                  anies
+1                jgn milih calon hoby nonton vidio porno
+2      bohoong rakyat dah cerdas yg trnyata bayaran l...
+3                                                survean
+4                        pesanan anies yg terbaik for ri
                              ...                        
-709                                      politika hhhhhh
-710    anies presiden hutang negara lunas dana buzzer...
-711    fix putaran ganjar anies putaran final suara p...
-712                     muka calon banyakin utang negara
-713                                                     
-Length: 714, dtype: object
+711                                      politika hhhhhh
+712    anies presiden hutang negara lunas dana buzzer...
+713    fix putaran ganjar anies putaran final suara p...
+714                     muka calon banyakin utang negara
+715                                                     
+Length: 716, dtype: object
 </pre></div>
 </div>
 </div>
@@ -925,18 +925,18 @@ Length: 714, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">KeyboardInterrupt</span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-17-82a4a0613c57&gt;</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="nn">&lt;ipython-input-16-82a4a0613c57&gt;</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">cleaned_comments</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">removed_stopword_comments</span><span class="p">:</span>
 <span class="ne">----&gt; </span><span class="mi">7</span>     <span class="n">cleaned_comments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">to_base_word</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">)))</span>
 
-<span class="nn">&lt;ipython-input-16-ec0e8746541e&gt;</span> in <span class="ni">to_base_word</span><span class="nt">(string)</span>
+<span class="nn">&lt;ipython-input-15-ec0e8746541e&gt;</span> in <span class="ni">to_base_word</span><span class="nt">(string)</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Change words to base words&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="ne">----&gt; </span><span class="mi">8</span>     <span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">string</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 
-<span class="nn">&lt;ipython-input-16-ec0e8746541e&gt;</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="nn">&lt;ipython-input-15-ec0e8746541e&gt;</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Change words to base words&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="ne">----&gt; </span><span class="mi">8</span>     <span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">string</span><span class="p">]</span>
@@ -992,25 +992,11 @@ Length: 714, dtype: object
 <span class="g g-Whitespace">     </span><span class="mi">91</span>                 <span class="k">return</span>
 
 <span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">accept_prefix_visitors</span><span class="nt">(self, visitors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="n">removalCount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">removals</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span>         <span class="k">for</span> <span class="n">visitor</span> <span class="ow">in</span> <span class="n">visitors</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">110</span>             <span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_word</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>             <span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">111</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_word</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">112</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_word</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Context.py</span> in <span class="ni">accept</span><span class="nt">(self, visitor)</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span> 
-<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitor</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">97</span>         <span class="n">visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span> 
-<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">def</span> <span class="nf">accept_visitors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitors</span><span class="p">):</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/Sastrawi/Stemmer/Context/Visitor/AbstractDisambiguatePrefixRule.py</span> in <span class="ni">visit</span><span class="nt">(self, context)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">for</span> <span class="n">disambiguator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">disambiguators</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">disambiguator</span><span class="o">.</span><span class="n">disambiguate</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">current_word</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>             <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>                 <span class="k">break</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> 
+<span class="g g-Whitespace">    </span><span class="mi">113</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_is_stopped</span><span class="p">:</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1031,18 +1017,18 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      bohoong rakyat dah cerdas yg trnyata bayar lih...
-1                                                survean
-2                             pesan anies yg baik for ri
-3                                 anies anies hidup nkri
-4                                            anies anies
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                                                  anies
+1                jgn milih calon hoby nonton vidio porno
+2      bohoong rakyat dah cerdas yg trnyata bayar lih...
+3                                                survean
+4                             pesan anies yg baik for ri
                              ...                        
-709                                      politika hhhhhh
-710    anies presiden hutang negara lunas dana buzzer...
-711    fix putar ganjar anies putar final suara prabo...
-712                     muka calon banyakin utang negara
-713                                                     
-Length: 714, dtype: object
+711                                      politika hhhhhh
+712    anies presiden hutang negara lunas dana buzzer...
+713    fix putar ganjar anies putar final suara prabo...
+714                     muka calon banyakin utang negara
+715                                                     
+Length: 716, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1076,12 +1062,12 @@ Length: 714, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tf_vector</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">train_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(714, 1986)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(716, 1988)
 </pre></div>
 </div>
 </div>
@@ -1091,13 +1077,13 @@ Length: 714, dtype: object
 <h2>Buat Matriks U, Sigma, dan V Transpos<a class="headerlink" href="#buat-matriks-u-sigma-dan-v-transpos" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">(</span><span class="n">tf_vector</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">Vh</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">Vh</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((714, 10), (10,), (10, 1986))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((716, 10), (10,), (10, 1988))
 </pre></div>
 </div>
 </div>
@@ -1109,19 +1095,19 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2.12954634e-02, -1.22982753e-02, -8.23985381e-03, ...,
-         2.50849597e-03, -1.79542748e-03,  3.04137614e-02],
-       [ 1.54398667e-11,  1.44892110e-10, -1.02585279e-09, ...,
-        -7.57208330e-08, -1.25725785e-07,  9.65175133e-08],
-       [ 4.71330036e-02, -5.90056147e-02, -8.18182815e-02, ...,
-        -7.88061374e-02, -2.57344592e-02, -7.09660061e-02],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.07523216, -0.12788325, -0.15429901, ..., -0.06734746,
+         0.03369938, -0.0668824 ],
+       [ 0.00560112, -0.00219152,  0.00150009, ..., -0.00164904,
+        -0.00108023, -0.00142574],
+       [ 0.02119029, -0.01119329, -0.00227642, ...,  0.00447725,
+        -0.0043914 ,  0.03045931],
        ...,
-       [ 5.92796400e-02, -2.94908768e-03, -5.91682292e-02, ...,
-        -5.00547298e-02,  2.51064589e-02, -3.24046101e-03],
-       [ 6.49481827e-03, -2.95635636e-03, -5.15090278e-06, ...,
-        -3.49876640e-03, -2.72850476e-03, -5.54398707e-03],
-       [ 0.00000000e+00, -0.00000000e+00,  0.00000000e+00, ...,
-        -0.00000000e+00,  0.00000000e+00, -0.00000000e+00]])
+       [ 0.06114403, -0.01409603, -0.05914802, ..., -0.04835101,
+         0.01288905,  0.00307255],
+       [ 0.00639565, -0.00231451,  0.0013305 , ..., -0.00506322,
+        -0.00321755, -0.00627118],
+       [ 0.        , -0.        ,  0.        , ...,  0.        ,
+         0.        ,  0.        ]])
 </pre></div>
 </div>
 </div>
@@ -1141,7 +1127,7 @@ Length: 714, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-467813fa-0b67-47e2-8277-5ad594e28a52">
+  <div id="df-f9d8eaac-1629-421d-a934-e53aefcb410c">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1176,68 +1162,68 @@ Length: 714, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>2.129546e-02</td>
-      <td>-1.229828e-02</td>
-      <td>-8.239854e-03</td>
-      <td>4.631690e-02</td>
-      <td>2.671356e-02</td>
-      <td>5.372211e-03</td>
-      <td>6.411763e-03</td>
-      <td>2.508496e-03</td>
-      <td>-1.795427e-03</td>
-      <td>3.041376e-02</td>
+      <td>7.523216e-02</td>
+      <td>-1.278832e-01</td>
+      <td>-1.542990e-01</td>
+      <td>-5.220734e-02</td>
+      <td>-6.118730e-02</td>
+      <td>2.831136e-03</td>
+      <td>-9.839804e-02</td>
+      <td>-6.734746e-02</td>
+      <td>3.369938e-02</td>
+      <td>-6.688240e-02</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.543987e-11</td>
-      <td>1.448921e-10</td>
-      <td>-1.025853e-09</td>
-      <td>-1.268459e-09</td>
-      <td>2.754015e-08</td>
-      <td>1.419946e-08</td>
-      <td>5.195004e-08</td>
-      <td>-7.572083e-08</td>
-      <td>-1.257258e-07</td>
-      <td>9.651751e-08</td>
+      <td>5.601124e-03</td>
+      <td>-2.191524e-03</td>
+      <td>1.500091e-03</td>
+      <td>6.703360e-03</td>
+      <td>1.037440e-02</td>
+      <td>4.418338e-03</td>
+      <td>1.845767e-03</td>
+      <td>-1.649044e-03</td>
+      <td>-1.080234e-03</td>
+      <td>-1.425739e-03</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>4.713300e-02</td>
-      <td>-5.900561e-02</td>
-      <td>-8.181828e-02</td>
-      <td>1.198865e-02</td>
-      <td>1.008521e-03</td>
-      <td>8.648074e-03</td>
-      <td>-1.395432e-02</td>
-      <td>-7.880614e-02</td>
-      <td>-2.573446e-02</td>
-      <td>-7.096601e-02</td>
+      <td>2.119029e-02</td>
+      <td>-1.119329e-02</td>
+      <td>-2.276418e-03</td>
+      <td>4.762253e-02</td>
+      <td>2.673387e-02</td>
+      <td>5.910113e-03</td>
+      <td>-5.856805e-03</td>
+      <td>4.477251e-03</td>
+      <td>-4.391398e-03</td>
+      <td>3.045931e-02</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>4.720109e-02</td>
-      <td>-6.478723e-02</td>
-      <td>-1.138259e-01</td>
-      <td>-3.022457e-02</td>
-      <td>-2.721443e-02</td>
-      <td>4.981882e-03</td>
-      <td>6.177186e-02</td>
-      <td>-5.085227e-02</td>
-      <td>3.144306e-02</td>
-      <td>-4.862996e-02</td>
+      <td>1.355067e-11</td>
+      <td>6.786470e-11</td>
+      <td>-1.366317e-10</td>
+      <td>-5.971301e-09</td>
+      <td>-2.550077e-08</td>
+      <td>-4.514108e-09</td>
+      <td>1.016630e-08</td>
+      <td>6.531642e-08</td>
+      <td>1.882617e-08</td>
+      <td>2.418168e-08</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6.813467e-02</td>
-      <td>-9.555747e-02</td>
-      <td>-1.695722e-01</td>
-      <td>-5.926072e-02</td>
-      <td>-5.663690e-02</td>
-      <td>2.416773e-03</td>
-      <td>9.307215e-02</td>
-      <td>-6.783037e-02</td>
-      <td>5.068514e-02</td>
-      <td>-7.531297e-02</td>
+      <td>4.942366e-02</td>
+      <td>-6.982994e-02</td>
+      <td>-6.545734e-02</td>
+      <td>1.795843e-02</td>
+      <td>3.593223e-03</td>
+      <td>8.820980e-03</td>
+      <td>1.182380e-02</td>
+      <td>-7.115854e-02</td>
+      <td>-4.058271e-02</td>
+      <td>-6.000831e-02</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1253,75 +1239,75 @@ Length: 714, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>709</th>
-      <td>6.226783e-03</td>
-      <td>6.159578e-04</td>
-      <td>-2.442761e-03</td>
-      <td>2.323882e-02</td>
-      <td>-2.220341e-02</td>
-      <td>-1.595785e-02</td>
-      <td>6.440279e-03</td>
-      <td>6.566233e-03</td>
-      <td>-1.811473e-02</td>
-      <td>-1.504546e-02</td>
-    </tr>
-    <tr>
-      <th>710</th>
-      <td>2.036018e-02</td>
-      <td>-1.949966e-02</td>
-      <td>-2.815390e-02</td>
-      <td>6.655624e-03</td>
-      <td>1.374495e-02</td>
-      <td>-4.902752e-03</td>
-      <td>-6.512959e-03</td>
-      <td>3.584287e-03</td>
-      <td>5.166692e-03</td>
-      <td>-3.272886e-02</td>
-    </tr>
-    <tr>
       <th>711</th>
-      <td>5.927964e-02</td>
-      <td>-2.949088e-03</td>
-      <td>-5.916823e-02</td>
-      <td>-3.024809e-02</td>
-      <td>-4.719669e-02</td>
-      <td>6.018329e-02</td>
-      <td>2.698910e-02</td>
-      <td>-5.005473e-02</td>
-      <td>2.510646e-02</td>
-      <td>-3.240461e-03</td>
+      <td>6.154043e-03</td>
+      <td>7.842521e-04</td>
+      <td>-1.559888e-03</td>
+      <td>2.323170e-02</td>
+      <td>-2.283450e-02</td>
+      <td>-1.720162e-02</td>
+      <td>-4.038667e-03</td>
+      <td>8.874204e-03</td>
+      <td>-1.295586e-02</td>
+      <td>-1.600504e-02</td>
     </tr>
     <tr>
       <th>712</th>
-      <td>6.494818e-03</td>
-      <td>-2.956356e-03</td>
-      <td>-5.150903e-06</td>
-      <td>7.135696e-03</td>
-      <td>1.902002e-02</td>
-      <td>4.502246e-03</td>
-      <td>-7.799213e-03</td>
-      <td>-3.498766e-03</td>
-      <td>-2.728505e-03</td>
-      <td>-5.543987e-03</td>
+      <td>2.130120e-02</td>
+      <td>-2.359559e-02</td>
+      <td>-2.318621e-02</td>
+      <td>8.449295e-03</td>
+      <td>1.416170e-02</td>
+      <td>-4.838569e-03</td>
+      <td>3.743854e-03</td>
+      <td>-1.709052e-03</td>
+      <td>6.537542e-03</td>
+      <td>-3.222741e-02</td>
     </tr>
     <tr>
       <th>713</th>
+      <td>6.114403e-02</td>
+      <td>-1.409603e-02</td>
+      <td>-5.914802e-02</td>
+      <td>-2.828669e-02</td>
+      <td>-4.870880e-02</td>
+      <td>6.001182e-02</td>
+      <td>-2.856884e-02</td>
+      <td>-4.835101e-02</td>
+      <td>1.288905e-02</td>
+      <td>3.072550e-03</td>
+    </tr>
+    <tr>
+      <th>714</th>
+      <td>6.395651e-03</td>
+      <td>-2.314509e-03</td>
+      <td>1.330504e-03</td>
+      <td>7.472364e-03</td>
+      <td>1.892431e-02</td>
+      <td>4.852378e-03</td>
+      <td>5.919456e-03</td>
+      <td>-5.063218e-03</td>
+      <td>-3.217549e-03</td>
+      <td>-6.271184e-03</td>
+    </tr>
+    <tr>
+      <th>715</th>
       <td>0.000000e+00</td>
       <td>-0.000000e+00</td>
       <td>0.000000e+00</td>
       <td>-0.000000e+00</td>
-      <td>-0.000000e+00</td>
-      <td>-0.000000e+00</td>
-      <td>-0.000000e+00</td>
-      <td>-0.000000e+00</td>
       <td>0.000000e+00</td>
       <td>-0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
+      <td>0.000000e+00</td>
     </tr>
   </tbody>
 </table>
-<p>714 rows × 10 columns</p>
+<p>716 rows × 10 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-467813fa-0b67-47e2-8277-5ad594e28a52')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f9d8eaac-1629-421d-a934-e53aefcb410c')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1372,12 +1358,12 @@ Length: 714, dtype: object
 
       <script>
         const buttonEl =
-          document.querySelector('#df-467813fa-0b67-47e2-8277-5ad594e28a52 button.colab-df-convert');
+          document.querySelector('#df-f9d8eaac-1629-421d-a934-e53aefcb410c button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-467813fa-0b67-47e2-8277-5ad594e28a52');
+          const element = document.querySelector('#df-f9d8eaac-1629-421d-a934-e53aefcb410c');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1405,8 +1391,8 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.45722125, 3.75267271, 3.56966273, 3.27192706, 2.91014574,
-       2.85424042, 2.78063976, 2.7109697 , 2.69634617, 2.62282495])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.46885425, 3.77565707, 3.61610126, 3.27767242, 2.91580634,
+       2.85469874, 2.79391351, 2.71773806, 2.69843214, 2.62986315])
 </pre></div>
 </div>
 </div>
@@ -1418,19 +1404,19 @@ Length: 714, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 7.42896713e-05,  1.01235251e-02,  2.08045308e-03, ...,
-         5.61938730e-04,  5.61186077e-03,  1.57599140e-03],
-       [-2.61750375e-05, -1.47164979e-02, -2.22547844e-03, ...,
-        -8.46975252e-04,  5.83659274e-04, -9.33495729e-04],
-       [ 5.09283039e-05, -1.85599213e-02,  2.43873064e-03, ...,
-         6.14150114e-04,  5.56474765e-03, -3.99780260e-04],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 7.26304846e-05,  1.05707886e-02,  2.04941478e-03, ...,
+         5.56379613e-04,  5.49916261e-03,  1.55898669e-03],
+       [-9.72560877e-06, -1.70170651e-02, -1.64045725e-03, ...,
+        -6.90115134e-04,  1.61087106e-03, -7.76688669e-04],
+       [ 6.69588021e-05, -1.45203326e-02,  2.93851674e-03, ...,
+         7.92514592e-04,  5.29944871e-03,  1.10463205e-04],
        ...,
-       [ 5.54574443e-05, -4.89573113e-03, -2.05856969e-03, ...,
-         5.34934571e-04, -6.76795474e-03, -1.30974683e-03],
-       [-2.12710172e-04, -1.25421946e-03, -9.86930916e-04, ...,
-        -9.85345629e-04, -9.39518197e-04, -3.99608034e-03],
-       [ 4.36215165e-05, -1.91755318e-02, -1.71560171e-03, ...,
-         1.03569191e-03,  3.64705088e-03, -5.47760248e-04]])
+       [ 1.29175344e-04, -7.44503357e-03, -2.49128671e-03, ...,
+         6.51166381e-04, -6.46694625e-03, -1.24830231e-03],
+       [-1.81607087e-04, -1.32100947e-03, -1.16748494e-03, ...,
+        -7.78190525e-04, -2.08175632e-03, -3.32449168e-03],
+       [ 5.79210120e-05, -1.78034263e-02, -2.03127042e-03, ...,
+         8.06793286e-04,  3.99629766e-03, -1.55371982e-03]])
 </pre></div>
 </div>
 </div>
@@ -1450,7 +1436,7 @@ Length: 714, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-a1555699-b198-4193-9ded-4066cefe23d1">
+  <div id="df-1b306939-c3b6-44e4-8967-b558ba7cdb3e">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1496,249 +1482,249 @@ Length: 714, dtype: object
   <tbody>
     <tr>
       <th>Topik 0</th>
-      <td>0.000074</td>
-      <td>0.010124</td>
-      <td>0.002080</td>
-      <td>0.000562</td>
-      <td>0.047921</td>
-      <td>0.002524</td>
-      <td>0.000930</td>
-      <td>0.000328</td>
-      <td>0.000562</td>
-      <td>0.001567</td>
+      <td>0.000073</td>
+      <td>0.010571</td>
+      <td>0.002049</td>
+      <td>0.000556</td>
+      <td>0.046933</td>
+      <td>0.002486</td>
+      <td>0.000922</td>
+      <td>0.000331</td>
+      <td>0.000556</td>
+      <td>0.001550</td>
       <td>...</td>
-      <td>0.002004</td>
-      <td>0.003091</td>
-      <td>0.010851</td>
-      <td>0.001108</td>
-      <td>0.011714</td>
-      <td>0.002437</td>
-      <td>0.005606</td>
-      <td>0.000562</td>
-      <td>0.005612</td>
-      <td>0.001576</td>
+      <td>0.001966</td>
+      <td>0.003051</td>
+      <td>0.010587</td>
+      <td>0.001097</td>
+      <td>0.012048</td>
+      <td>0.002600</td>
+      <td>0.005492</td>
+      <td>0.000556</td>
+      <td>0.005499</td>
+      <td>0.001559</td>
     </tr>
     <tr>
       <th>Topik 1</th>
-      <td>-0.000026</td>
-      <td>-0.014716</td>
-      <td>-0.002225</td>
-      <td>-0.000847</td>
-      <td>-0.001480</td>
-      <td>0.001039</td>
-      <td>-0.000607</td>
-      <td>-0.000452</td>
-      <td>-0.000847</td>
-      <td>-0.000614</td>
+      <td>-0.000010</td>
+      <td>-0.017017</td>
+      <td>-0.001640</td>
+      <td>-0.000690</td>
+      <td>0.007056</td>
+      <td>0.001083</td>
+      <td>-0.000526</td>
+      <td>-0.000479</td>
+      <td>-0.000690</td>
+      <td>-0.000510</td>
       <td>...</td>
-      <td>0.001716</td>
-      <td>-0.003771</td>
-      <td>0.018984</td>
-      <td>-0.000472</td>
-      <td>-0.006440</td>
-      <td>-0.003395</td>
-      <td>0.001162</td>
-      <td>-0.000847</td>
-      <td>0.000584</td>
-      <td>-0.000933</td>
+      <td>0.001737</td>
+      <td>-0.002930</td>
+      <td>0.018452</td>
+      <td>-0.000424</td>
+      <td>-0.008625</td>
+      <td>-0.004317</td>
+      <td>0.002030</td>
+      <td>-0.000690</td>
+      <td>0.001611</td>
+      <td>-0.000777</td>
     </tr>
     <tr>
       <th>Topik 2</th>
-      <td>0.000051</td>
-      <td>-0.018560</td>
-      <td>0.002439</td>
-      <td>0.000614</td>
-      <td>0.033142</td>
-      <td>-0.000545</td>
-      <td>-0.000258</td>
-      <td>-0.000517</td>
-      <td>0.000614</td>
-      <td>-0.000440</td>
+      <td>0.000067</td>
+      <td>-0.014520</td>
+      <td>0.002939</td>
+      <td>0.000793</td>
+      <td>0.036713</td>
+      <td>-0.000515</td>
+      <td>0.000038</td>
+      <td>-0.000343</td>
+      <td>0.000793</td>
+      <td>-0.000068</td>
       <td>...</td>
-      <td>-0.000190</td>
-      <td>0.003286</td>
-      <td>-0.001062</td>
-      <td>-0.000757</td>
-      <td>-0.016344</td>
-      <td>-0.005962</td>
-      <td>0.004645</td>
-      <td>0.000614</td>
-      <td>0.005565</td>
-      <td>-0.000400</td>
+      <td>-0.000397</td>
+      <td>0.004156</td>
+      <td>-0.004744</td>
+      <td>-0.000359</td>
+      <td>-0.013950</td>
+      <td>-0.005123</td>
+      <td>0.004310</td>
+      <td>0.000793</td>
+      <td>0.005299</td>
+      <td>0.000110</td>
     </tr>
     <tr>
       <th>Topik 3</th>
-      <td>0.000356</td>
-      <td>-0.008688</td>
-      <td>0.001537</td>
-      <td>-0.000404</td>
-      <td>0.137014</td>
-      <td>0.001471</td>
-      <td>0.002305</td>
-      <td>-0.000285</td>
-      <td>-0.000404</td>
-      <td>0.002361</td>
+      <td>0.000349</td>
+      <td>-0.006987</td>
+      <td>0.001491</td>
+      <td>-0.000394</td>
+      <td>0.133563</td>
+      <td>0.001543</td>
+      <td>0.002367</td>
+      <td>-0.000203</td>
+      <td>-0.000394</td>
+      <td>0.002481</td>
       <td>...</td>
-      <td>0.001161</td>
-      <td>0.003239</td>
-      <td>-0.005730</td>
-      <td>0.006428</td>
-      <td>0.017685</td>
-      <td>0.000135</td>
-      <td>-0.001091</td>
-      <td>-0.000404</td>
-      <td>-0.001211</td>
-      <td>0.006138</td>
+      <td>0.001154</td>
+      <td>0.003158</td>
+      <td>-0.006027</td>
+      <td>0.006439</td>
+      <td>0.018391</td>
+      <td>0.000447</td>
+      <td>-0.001371</td>
+      <td>-0.000394</td>
+      <td>-0.001498</td>
+      <td>0.006222</td>
     </tr>
     <tr>
       <th>Topik 4</th>
-      <td>-0.000226</td>
-      <td>0.012685</td>
-      <td>0.005120</td>
-      <td>-0.000196</td>
-      <td>-0.127695</td>
-      <td>-0.000325</td>
-      <td>0.003000</td>
-      <td>0.000707</td>
-      <td>-0.000196</td>
-      <td>0.002968</td>
+      <td>-0.000233</td>
+      <td>0.014256</td>
+      <td>0.005036</td>
+      <td>-0.000102</td>
+      <td>-0.124930</td>
+      <td>-0.000159</td>
+      <td>0.002939</td>
+      <td>0.000843</td>
+      <td>-0.000102</td>
+      <td>0.002959</td>
       <td>...</td>
-      <td>0.001034</td>
-      <td>-0.007817</td>
-      <td>-0.005109</td>
-      <td>-0.004467</td>
-      <td>-0.020724</td>
-      <td>-0.002849</td>
-      <td>-0.001890</td>
-      <td>-0.000196</td>
-      <td>0.000214</td>
-      <td>0.001860</td>
+      <td>0.001031</td>
+      <td>-0.007279</td>
+      <td>-0.005172</td>
+      <td>-0.004484</td>
+      <td>-0.021561</td>
+      <td>-0.002969</td>
+      <td>-0.002098</td>
+      <td>-0.000102</td>
+      <td>-0.000166</td>
+      <td>0.001653</td>
     </tr>
     <tr>
       <th>Topik 5</th>
-      <td>-0.000081</td>
-      <td>-0.001503</td>
-      <td>-0.000413</td>
+      <td>-0.000080</td>
+      <td>-0.001806</td>
+      <td>-0.000424</td>
       <td>-0.000734</td>
-      <td>-0.296671</td>
-      <td>0.005115</td>
-      <td>0.000877</td>
-      <td>0.000145</td>
+      <td>-0.295426</td>
+      <td>0.005023</td>
+      <td>0.000896</td>
+      <td>0.000161</td>
       <td>-0.000734</td>
-      <td>0.005813</td>
+      <td>0.005904</td>
       <td>...</td>
-      <td>0.000293</td>
-      <td>-0.012517</td>
-      <td>-0.003544</td>
-      <td>-0.003459</td>
-      <td>-0.011153</td>
-      <td>0.000124</td>
-      <td>0.009069</td>
+      <td>0.000221</td>
+      <td>-0.012563</td>
+      <td>-0.003485</td>
+      <td>-0.003445</td>
+      <td>-0.011481</td>
+      <td>0.000016</td>
+      <td>0.009099</td>
       <td>-0.000734</td>
-      <td>0.006040</td>
-      <td>-0.000940</td>
+      <td>0.006263</td>
+      <td>-0.001067</td>
     </tr>
     <tr>
       <th>Topik 6</th>
-      <td>0.000043</td>
-      <td>-0.016146</td>
-      <td>-0.001661</td>
-      <td>-0.001035</td>
-      <td>-0.357752</td>
-      <td>-0.003036</td>
-      <td>-0.000870</td>
-      <td>-0.001670</td>
-      <td>-0.001035</td>
-      <td>-0.000506</td>
+      <td>0.000005</td>
+      <td>0.015070</td>
+      <td>0.000808</td>
+      <td>0.001190</td>
+      <td>0.290972</td>
+      <td>0.003015</td>
+      <td>0.000621</td>
+      <td>0.001657</td>
+      <td>0.001190</td>
+      <td>0.000593</td>
       <td>...</td>
-      <td>-0.001132</td>
-      <td>-0.013179</td>
-      <td>-0.002439</td>
-      <td>0.002842</td>
-      <td>0.015123</td>
-      <td>0.003536</td>
-      <td>0.000298</td>
-      <td>-0.001035</td>
-      <td>-0.000106</td>
-      <td>-0.000279</td>
+      <td>0.000935</td>
+      <td>0.012286</td>
+      <td>0.002175</td>
+      <td>-0.001694</td>
+      <td>-0.013806</td>
+      <td>-0.003587</td>
+      <td>-0.000795</td>
+      <td>0.001190</td>
+      <td>-0.000464</td>
+      <td>0.000018</td>
     </tr>
     <tr>
       <th>Topik 7</th>
-      <td>0.000055</td>
-      <td>-0.004896</td>
-      <td>-0.002059</td>
-      <td>0.000535</td>
-      <td>-0.173694</td>
-      <td>-0.003240</td>
-      <td>-0.001351</td>
-      <td>-0.000809</td>
-      <td>0.000535</td>
-      <td>-0.001854</td>
+      <td>0.000129</td>
+      <td>-0.007445</td>
+      <td>-0.002491</td>
+      <td>0.000651</td>
+      <td>-0.355478</td>
+      <td>-0.002915</td>
+      <td>-0.001306</td>
+      <td>-0.000795</td>
+      <td>0.000651</td>
+      <td>-0.001585</td>
       <td>...</td>
-      <td>0.000021</td>
-      <td>-0.002101</td>
-      <td>-0.003892</td>
-      <td>0.003599</td>
-      <td>-0.005692</td>
-      <td>-0.002795</td>
-      <td>-0.006207</td>
-      <td>0.000535</td>
-      <td>-0.006768</td>
-      <td>-0.001310</td>
+      <td>-0.000131</td>
+      <td>-0.006636</td>
+      <td>-0.003462</td>
+      <td>0.005076</td>
+      <td>-0.003279</td>
+      <td>-0.002501</td>
+      <td>-0.005780</td>
+      <td>0.000651</td>
+      <td>-0.006467</td>
+      <td>-0.001248</td>
     </tr>
     <tr>
       <th>Topik 8</th>
-      <td>-0.000213</td>
-      <td>-0.001254</td>
-      <td>-0.000987</td>
-      <td>-0.000985</td>
-      <td>0.770754</td>
-      <td>-0.000370</td>
-      <td>-0.001156</td>
-      <td>-0.000602</td>
-      <td>-0.000985</td>
-      <td>0.000229</td>
+      <td>-0.000182</td>
+      <td>-0.001321</td>
+      <td>-0.001167</td>
+      <td>-0.000778</td>
+      <td>0.730544</td>
+      <td>-0.001328</td>
+      <td>-0.001212</td>
+      <td>-0.000724</td>
+      <td>-0.000778</td>
+      <td>-0.000151</td>
       <td>...</td>
-      <td>-0.000074</td>
-      <td>0.017700</td>
-      <td>-0.005079</td>
-      <td>-0.004670</td>
-      <td>-0.008648</td>
-      <td>0.000661</td>
-      <td>0.002238</td>
-      <td>-0.000985</td>
-      <td>-0.000940</td>
-      <td>-0.003996</td>
+      <td>0.000034</td>
+      <td>0.017344</td>
+      <td>-0.005630</td>
+      <td>-0.003947</td>
+      <td>-0.008333</td>
+      <td>0.000092</td>
+      <td>0.000415</td>
+      <td>-0.000778</td>
+      <td>-0.002082</td>
+      <td>-0.003324</td>
     </tr>
     <tr>
       <th>Topik 9</th>
-      <td>0.000044</td>
-      <td>-0.019176</td>
-      <td>-0.001716</td>
-      <td>0.001036</td>
-      <td>0.149049</td>
-      <td>0.005216</td>
-      <td>0.001007</td>
-      <td>-0.001599</td>
-      <td>0.001036</td>
-      <td>0.005827</td>
+      <td>0.000058</td>
+      <td>-0.017803</td>
+      <td>-0.002031</td>
+      <td>0.000807</td>
+      <td>0.178331</td>
+      <td>0.005513</td>
+      <td>0.000704</td>
+      <td>-0.001303</td>
+      <td>0.000807</td>
+      <td>0.006075</td>
       <td>...</td>
-      <td>-0.000756</td>
-      <td>0.006893</td>
-      <td>-0.003190</td>
-      <td>0.001132</td>
-      <td>-0.016117</td>
-      <td>-0.002044</td>
-      <td>0.005325</td>
-      <td>0.001036</td>
-      <td>0.003647</td>
-      <td>-0.000548</td>
+      <td>-0.000867</td>
+      <td>0.007310</td>
+      <td>-0.003949</td>
+      <td>0.000771</td>
+      <td>-0.016151</td>
+      <td>-0.002021</td>
+      <td>0.005843</td>
+      <td>0.000807</td>
+      <td>0.003996</td>
+      <td>-0.001554</td>
     </tr>
   </tbody>
 </table>
-<p>10 rows × 1986 columns</p>
+<p>10 rows × 1988 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-a1555699-b198-4193-9ded-4066cefe23d1')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-1b306939-c3b6-44e4-8967-b558ba7cdb3e')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1789,12 +1775,12 @@ Length: 714, dtype: object
 
       <script>
         const buttonEl =
-          document.querySelector('#df-a1555699-b198-4193-9ded-4066cefe23d1 button.colab-df-convert');
+          document.querySelector('#df-1b306939-c3b6-44e4-8967-b558ba7cdb3e button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-a1555699-b198-4193-9ded-4066cefe23d1');
+          const element = document.querySelector('#df-1b306939-c3b6-44e4-8967-b558ba7cdb3e');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1827,7 +1813,7 @@ Length: 714, dtype: object
 <span class="n">lsa</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">num_components</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># Fit SVD model on data</span>
-<span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">tf_vector</span><span class="p">)</span>
+<span class="n">lsa</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
 
 <span class="c1"># Get Singular values and Components </span>
 <span class="n">Sigma</span> <span class="o">=</span> <span class="n">lsa</span><span class="o">.</span><span class="n">singular_values_</span> 
@@ -1854,15 +1840,15 @@ Length: 714, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Topic 0:  [&#39;ganjar&#39;, &#39;anis&#39;, &#39;anies&#39;, &#39;pilih&#39;, &#39;yg&#39;]
-Topic 1:  [&#39;ganjar&#39;, &#39;pranowo&#39;, &#39;prabowo&#39;, &#39;plh&#39;, &#39;purnomo&#39;]
-Topic 2:  [&#39;anis&#39;, &#39;ahy&#39;, &#39;ok&#39;, &#39;pa&#39;, &#39;mantap&#39;]
+Topic 1:  [&#39;ganjar&#39;, &#39;pranowo&#39;, &#39;prabowo&#39;, &#39;gk&#39;, &#39;plh&#39;]
+Topic 2:  [&#39;anis&#39;, &#39;ahy&#39;, &#39;survei&#39;, &#39;menang&#39;, &#39;ok&#39;]
 Topic 3:  [&#39;yg&#39;, &#39;survey&#39;, &#39;survei&#39;, &#39;percaya&#39;, &#39;bayar&#39;]
 Topic 4:  [&#39;presiden&#39;, &#39;indonesia&#39;, &#39;yg&#39;, &#39;pranowo&#39;, &#39;pilih&#39;]
 Topic 5:  [&#39;prabowo&#39;, &#39;menang&#39;, &#39;ahy&#39;, &#39;subianto&#39;, &#39;yg&#39;]
-Topic 6:  [&#39;pilih&#39;, &#39;anies&#39;, &#39;survey&#39;, &#39;anis&#39;, &#39;rakyat&#39;]
-Topic 7:  [&#39;menang&#39;, &#39;pranowo&#39;, &#39;baswedan&#39;, &#39;pilih&#39;, &#39;bayar&#39;]
-Topic 8:  [&#39;abal&#39;, &#39;pilih&#39;, &#39;menang&#39;, &#39;anies&#39;, &#39;pranowo&#39;]
-Topic 9:  [&#39;baswedan&#39;, &#39;prabowo&#39;, &#39;pilih&#39;, &#39;yg&#39;, &#39;survey&#39;]
+Topic 6:  [&#39;baswedan&#39;, &#39;abal&#39;, &#39;ri&#39;, &#39;presiden&#39;, &#39;menang&#39;]
+Topic 7:  [&#39;menang&#39;, &#39;baswedan&#39;, &#39;pilih&#39;, &#39;pranowo&#39;, &#39;survey&#39;]
+Topic 8:  [&#39;abal&#39;, &#39;menang&#39;, &#39;pilih&#39;, &#39;pranowo&#39;, &#39;ridwan&#39;]
+Topic 9:  [&#39;prabowo&#39;, &#39;baswedan&#39;, &#39;pilih&#39;, &#39;abal&#39;, &#39;rakyat&#39;]
 </pre></div>
 </div>
 </div>
