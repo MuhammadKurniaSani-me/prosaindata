@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'tasks/scrape_twitter_Twint';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Scrape Website with Beautiful Soap" href="scrape_media_indonesia_news.html" />
+    <link rel="next" title="Scrape Website Berita" href="scrape_media_indonesia_news.html" />
     <link rel="prev" title="📚 Proyek Sains Data" href="../introduction/proyek_sain_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -162,8 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Scrapping Twitter with Twint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website Berita</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape PTA UTM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Gabung Kolom dari berbagai Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
@@ -416,8 +416,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Skipping Twint as it is not installed.</span>
-
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found existing installation: twint 2.1.21
+Uninstalling twint-2.1.21:
+  Successfully uninstalled twint-2.1.21
 </pre></div>
 </div>
 </div>
@@ -434,110 +435,33 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting Twint
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading twint-2.1.20.tar.gz (31 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting aiohttp (from Twint)
-  Downloading aiohttp-3.8.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.0 MB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/1.0 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.2/1.0 MB</span> <span class=" -Color -Color-Red">7.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">1.0/1.0 MB</span> <span class=" -Color -Color-Red">18.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.0/1.0 MB</span> <span class=" -Color -Color-Red">13.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hCollecting aiodns (from Twint)
-  Downloading aiodns-3.0.0-py3-none-any.whl (5.0 kB)
+  Using cached twint-2.1.20-py3-none-any.whl
+Requirement already satisfied: aiohttp in /usr/local/lib/python3.10/dist-packages (from Twint) (3.8.4)
+Requirement already satisfied: aiodns in /usr/local/lib/python3.10/dist-packages (from Twint) (3.0.0)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (from Twint) (4.11.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting cchardet (from Twint)
-  Downloading cchardet-2.1.7.tar.gz (653 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/653.6 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">653.6/653.6 kB</span> <span class=" -Color -Color-Red">37.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting elasticsearch (from Twint)
-  Downloading elasticsearch-8.7.0-py3-none-any.whl (387 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/387.9 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">387.9/387.9 kB</span> <span class=" -Color -Color-Red">26.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: pysocks in /usr/local/lib/python3.10/dist-packages (from Twint) (1.7.1)
+Requirement already satisfied: cchardet in /usr/local/lib/python3.10/dist-packages (from Twint) (2.1.7)
+Requirement already satisfied: elasticsearch in /usr/local/lib/python3.10/dist-packages (from Twint) (8.7.0)
+Requirement already satisfied: pysocks in /usr/local/lib/python3.10/dist-packages (from Twint) (1.7.1)
 Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (from Twint) (1.5.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting aiohttp_socks (from Twint)
-  Downloading aiohttp_socks-0.8.0-py3-none-any.whl (9.4 kB)
-Collecting schedule (from Twint)
-  Downloading schedule-1.2.0-py2.py3-none-any.whl (11 kB)
+Requirement already satisfied: aiohttp-socks in /usr/local/lib/python3.10/dist-packages (from Twint) (0.8.0)
+Requirement already satisfied: schedule in /usr/local/lib/python3.10/dist-packages (from Twint) (1.2.0)
 Requirement already satisfied: geopy in /usr/local/lib/python3.10/dist-packages (from Twint) (2.3.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting fake-useragent (from Twint)
-  Downloading fake_useragent-1.1.3-py3-none-any.whl (50 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/50.5 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">50.5/50.5 kB</span> <span class=" -Color -Color-Red">4.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hCollecting googletransx (from Twint)
-  Downloading googletransx-2.4.2.tar.gz (13 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pycares&gt;=4.0.0 (from aiodns-&gt;Twint)
-  Downloading pycares-4.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (288 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/288.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">288.7/288.7 kB</span> <span class=" -Color -Color-Red">27.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;Twint) (23.1.0)
+Requirement already satisfied: fake-useragent in /usr/local/lib/python3.10/dist-packages (from Twint) (1.1.3)
+Requirement already satisfied: googletransx in /usr/local/lib/python3.10/dist-packages (from Twint) (2.4.2)
+Requirement already satisfied: pycares&gt;=4.0.0 in /usr/local/lib/python3.10/dist-packages (from aiodns-&gt;Twint) (4.3.0)
+Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;Twint) (23.1.0)
 Requirement already satisfied: charset-normalizer&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;Twint) (2.0.12)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;Twint) (6.0.4)
+Requirement already satisfied: async-timeout&lt;5.0,&gt;=4.0.0a3 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;Twint) (4.0.2)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;Twint) (1.9.2)
+Requirement already satisfied: frozenlist&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;Twint) (1.3.3)
+Requirement already satisfied: aiosignal&gt;=1.1.2 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;Twint) (1.3.1)
+Requirement already satisfied: python-socks[asyncio]&lt;3.0.0,&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp-socks-&gt;Twint) (2.3.0)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;Twint) (2.4.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting multidict&lt;7.0,&gt;=4.5 (from aiohttp-&gt;Twint)
-  Downloading multidict-6.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (114 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/114.5 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">114.5/114.5 kB</span> <span class=" -Color -Color-Red">12.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting async-timeout&lt;5.0,&gt;=4.0.0a3 (from aiohttp-&gt;Twint)
-  Downloading async_timeout-4.0.2-py3-none-any.whl (5.8 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting yarl&lt;2.0,&gt;=1.0 (from aiohttp-&gt;Twint)
-  Downloading yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (268 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/268.8 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">268.8/268.8 kB</span> <span class=" -Color -Color-Red">24.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting frozenlist&gt;=1.1.1 (from aiohttp-&gt;Twint)
-  Downloading frozenlist-1.3.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (149 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/149.6 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">149.6/149.6 kB</span> <span class=" -Color -Color-Red">15.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hCollecting aiosignal&gt;=1.1.2 (from aiohttp-&gt;Twint)
-  Downloading aiosignal-1.3.1-py3-none-any.whl (7.6 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting python-socks[asyncio]&lt;3.0.0,&gt;=2.0.0 (from aiohttp_socks-&gt;Twint)
-  Downloading python_socks-2.3.0-py3-none-any.whl (53 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/53.3 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">53.3/53.3 kB</span> <span class=" -Color -Color-Red">4.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;Twint) (2.4.1)
-Collecting elastic-transport&lt;9,&gt;=8 (from elasticsearch-&gt;Twint)
-  Downloading elastic_transport-8.4.0-py3-none-any.whl (59 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/59.5 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">59.5/59.5 kB</span> <span class=" -Color -Color-Red">6.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: geographiclib&lt;3,&gt;=1.52 in /usr/local/lib/python3.10/dist-packages (from geopy-&gt;Twint) (2.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: elastic-transport&lt;9,&gt;=8 in /usr/local/lib/python3.10/dist-packages (from elasticsearch-&gt;Twint) (8.4.0)
+Requirement already satisfied: geographiclib&lt;3,&gt;=1.52 in /usr/local/lib/python3.10/dist-packages (from geopy-&gt;Twint) (2.0)
 Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (from googletransx-&gt;Twint) (2.27.1)
 Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;Twint) (2.8.2)
 Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas-&gt;Twint) (2022.7.1)
@@ -548,35 +472,16 @@ Requirement already satisfied: cffi&gt;=1.5.0 in /usr/local/lib/python3.10/dist-
 Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.8.1-&gt;pandas-&gt;Twint) (1.16.0)
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp-&gt;Twint) (3.4)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.5.0-&gt;pycares&gt;=4.0.0-&gt;aiodns-&gt;Twint) (2.21)
-Building wheels for collected packages: Twint, cchardet, googletransx
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for Twint (setup.py) ... ?25l?25hdone
-  Created wheel for Twint: filename=twint-2.1.20-py3-none-any.whl size=33911 sha256=082def89cbe74f3fbccde00543c6ed07345dec7205e061215a44a52f2f90c2a0
-  Stored in directory: /root/.cache/pip/wheels/48/d2/f5/7a71ea8b6788b85fac82abf4ef84dac03562571f695c3b8f77
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for cchardet (setup.py) ... ?25l?25hdone
-  Created wheel for cchardet: filename=cchardet-2.1.7-cp310-cp310-linux_x86_64.whl size=261597 sha256=1fb2666b87ead031dfea4f3037ccfd2173b1e1073bfec87c5a88668881b3edf2
-  Stored in directory: /root/.cache/pip/wheels/ee/e0/ab/e01326f15c59438d080b1496dbab8091e952ec72f35e3c437e
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for googletransx (setup.py) ... ?25l?25hdone
-  Created wheel for googletransx: filename=googletransx-2.4.2-py3-none-any.whl size=15953 sha256=2e15bc9873ee58b732aaa31691148c4d1e4dd1dec01fdf9732ebaca8108378c6
-  Stored in directory: /root/.cache/pip/wheels/12/79/4f/43718126b3548eda695b4c2fa4cd82667b2d62018a98dc6767
-Successfully built Twint cchardet googletransx
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: python-socks, fake-useragent, cchardet, schedule, multidict, frozenlist, elastic-transport, async-timeout, yarl, pycares, googletransx, elasticsearch, aiosignal, aiohttp, aiodns, aiohttp_socks, Twint
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed Twint-2.1.20 aiodns-3.0.0 aiohttp-3.8.4 aiohttp_socks-0.8.0 aiosignal-1.3.1 async-timeout-4.0.2 cchardet-2.1.7 elastic-transport-8.4.0 elasticsearch-8.7.0 fake-useragent-1.1.3 frozenlist-1.3.3 googletransx-2.4.2 multidict-6.0.4 pycares-4.3.0 python-socks-2.3.0 schedule-1.2.0 yarl-1.9.2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: Twint
+Successfully installed Twint-2.1.20
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting twint
-  Cloning https://github.com/twintproject/twint.git (to revision origin/master) to /tmp/pip-install-ixvakgp6/twint_36b49d2766de4f2a81b7a865fa19735d
-  Running command git clone --filter=blob:none --quiet https://github.com/twintproject/twint.git /tmp/pip-install-ixvakgp6/twint_36b49d2766de4f2a81b7a865fa19735d
+  Cloning https://github.com/twintproject/twint.git (to revision origin/master) to /tmp/pip-install-pxlvbiyn/twint_4c463f2c6b054035b7e96be0b55d8c9f
+  Running command git clone --filter=blob:none --quiet https://github.com/twintproject/twint.git /tmp/pip-install-pxlvbiyn/twint_4c463f2c6b054035b7e96be0b55d8c9f
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">  WARNING: Did not find branch or tag &#39;origin/master&#39;, assuming revision or ref.</span>
@@ -589,8 +494,7 @@ Requirement already satisfied: aiohttp in /usr/local/lib/python3.10/dist-package
 Requirement already satisfied: aiodns in /usr/local/lib/python3.10/dist-packages (from twint) (3.0.0)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (from twint) (4.11.2)
 Requirement already satisfied: cchardet in /usr/local/lib/python3.10/dist-packages (from twint) (2.1.7)
-Collecting dataclasses (from twint)
-  Downloading dataclasses-0.6-py3-none-any.whl (14 kB)
+Requirement already satisfied: dataclasses in /usr/local/lib/python3.10/dist-packages (from twint) (0.6)
 Requirement already satisfied: elasticsearch in /usr/local/lib/python3.10/dist-packages (from twint) (8.7.0)
 Requirement already satisfied: pysocks in /usr/local/lib/python3.10/dist-packages (from twint) (1.7.1)
 Requirement already satisfied: pandas in /usr/local/lib/python3.10/dist-packages (from twint) (1.5.3)
@@ -599,9 +503,7 @@ Requirement already satisfied: schedule in /usr/local/lib/python3.10/dist-packag
 Requirement already satisfied: geopy in /usr/local/lib/python3.10/dist-packages (from twint) (2.3.0)
 Requirement already satisfied: fake-useragent in /usr/local/lib/python3.10/dist-packages (from twint) (1.1.3)
 Requirement already satisfied: googletransx in /usr/local/lib/python3.10/dist-packages (from twint) (2.4.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pycares&gt;=4.0.0 in /usr/local/lib/python3.10/dist-packages (from aiodns-&gt;twint) (4.3.0)
+Requirement already satisfied: pycares&gt;=4.0.0 in /usr/local/lib/python3.10/dist-packages (from aiodns-&gt;twint) (4.3.0)
 Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;twint) (23.1.0)
 Requirement already satisfied: charset-normalizer&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;twint) (2.0.12)
 Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.10/dist-packages (from aiohttp-&gt;twint) (6.0.4)
@@ -623,138 +525,21 @@ Requirement already satisfied: cffi&gt;=1.5.0 in /usr/local/lib/python3.10/dist-
 Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.8.1-&gt;pandas-&gt;twint) (1.16.0)
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp-&gt;twint) (3.4)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.5.0-&gt;pycares&gt;=4.0.0-&gt;aiodns-&gt;twint) (2.21)
-Building wheels for collected packages: twint
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building wheels for collected packages: twint
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for twint (setup.py) ... ?25l?25hdone
-  Created wheel for twint: filename=twint-2.1.21-py3-none-any.whl size=38850 sha256=8e322f9495b444a9228eb6fc9c15dcc73b5f5ce2d84bc83749a8517f9b381c53
-  Stored in directory: /tmp/pip-ephem-wheel-cache-_98s8_5v/wheels/82/53/6a/1748715999869633a137492ae93351d1c6a41e642549f7a822
+  Created wheel for twint: filename=twint-2.1.21-py3-none-any.whl size=38850 sha256=83ee2afbbe374c3fdc65ba20833966680faad3ca6d7594386f292d1debd6d8c0
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ege8x8zd/wheels/82/53/6a/1748715999869633a137492ae93351d1c6a41e642549f7a822
 Successfully built twint
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3108, in _dep_map
-    return self.__dep_map
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 2901, in __getattr__
-    raise AttributeError(attr)
-AttributeError: _DistInfoDistribution__dep_map
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 169, in exc_logging_wrapper
-    status = run_func(*args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/req_command.py&quot;, line 242, in wrapper
-    return func(self, options, args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/commands/install.py&quot;, line 441, in run
-    conflicts = self._determine_conflicts(to_install)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/commands/install.py&quot;, line 572, in _determine_conflicts
-    return check_install_conflicts(to_install)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/operations/check.py&quot;, line 101, in check_install_conflicts
-    package_set, _ = create_package_set_from_installed()
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/operations/check.py&quot;, line 42, in create_package_set_from_installed
-    dependencies = list(dist.iter_dependencies())
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/metadata/pkg_resources.py&quot;, line 216, in iter_dependencies
-    return self._dist.requires(extras)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 2821, in requires
-    dm = self._dep_map
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3110, in _dep_map
-    self.__dep_map = self._compute_dependencies()
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3120, in _compute_dependencies
-    reqs.extend(parse_requirements(req))
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pkg_resources/__init__.py&quot;, line 3173, in __init__
-    super(Requirement, self).__init__(requirement_string)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/packaging/requirements.py&quot;, line 102, in __init__
-    req = REQUIREMENT.parseString(requirement_string)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 1131, in parse_string
-    loc, tokens = self._parse(instring, 0)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3886, in parseImpl
-    loc, exprtokens = e._parse(instring, loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4114, in parseImpl
-    return e._parse(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3864, in parseImpl
-    loc, resultlist = self.exprs[0]._parse(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3886, in parseImpl
-    loc, exprtokens = e._parse(instring, loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4959, in parseImpl
-    loc, tokens = self_expr._parse(instring, loc, doActions, callPreParse=False)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4114, in parseImpl
-    return e._parse(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3886, in parseImpl
-    loc, exprtokens = e._parse(instring, loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 4375, in parseImpl
-    return self.expr._parse(instring, loc, doActions, callPreParse=False)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3864, in parseImpl
-    loc, resultlist = self.exprs[0]._parse(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 817, in _parseNoCache
-    loc, tokens = self.parseImpl(instring, pre_loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 3999, in parseImpl
-    loc2, toks = expr1._parse(instring, loc, doActions)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/core.py&quot;, line 825, in _parseNoCache
-    ret_tokens = ParseResults(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyparsing/results.py&quot;, line 137, in __new__
-    if isinstance(toklist, ParseResults):
-KeyboardInterrupt
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/usr/local/bin/pip3&quot;, line 8, in &lt;module&gt;
-    sys.exit(main())
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/main.py&quot;, line 79, in main
-    return command.main(cmd_args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 101, in main
-    return self._main(args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 223, in _main
-    return run(options, args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 206, in exc_logging_wrapper
-    logger.critical(&quot;Operation cancelled by user&quot;)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1524, in critical
-    self._log(CRITICAL, msg, args, **kwargs)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1624, in _log
-    self.handle(record)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1634, in handle
-    self.callHandlers(record)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1696, in callHandlers
-    hdlr.handle(record)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 968, in handle
-    self.emit(record)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/logging.py&quot;, line 177, in emit
-    self.console.print(renderable, overflow=&quot;ignore&quot;, crop=False, style=style)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 1701, in print
-    extend(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/segment.py&quot;, line 198, in &lt;genexpr&gt;
-    result_segments = (
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 1330, in render
-    for render_output in iter_render:
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/text.py&quot;, line 654, in __rich_console__
-    lines = self.wrap(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/text.py&quot;, line 1188, in wrap
-    new_lines.justify(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/containers.py&quot;, line 129, in justify
-    if justify == &quot;left&quot;:
-KeyboardInterrupt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: twint
+<span class=" -Color -Color-Yellow">  WARNING: The script twint is installed in &#39;/root/.local/bin&#39; which is not on PATH.</span>
+<span class=" -Color -Color-Yellow">  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.</span>
+Successfully installed twint-2.1.21
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
@@ -791,6 +576,136 @@ Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.10/dist-pa
 <span class="n">c</span><span class="o">.</span><span class="n">Store_csv</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">twint</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">Search</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="n">Tweets_df</span> <span class="o">=</span> <span class="n">twint</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">panda</span><span class="o">.</span><span class="n">Tweets_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRITICAL:root:twint.run:Twint:Feed:noDataExpecting value: line 1 column 1 (char 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sleeping for 1.0 secs
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRITICAL:root:twint.run:Twint:Feed:noDataExpecting value: line 1 column 1 (char 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sleeping for 8.0 secs
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRITICAL:root:twint.run:Twint:Feed:noDataExpecting value: line 1 column 1 (char 0)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sleeping for 27.0 secs
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">JSONDecodeError</span>Traceback (most recent call last)
+<span class="nn">/usr/local/lib/python3.10/dist-packages/twint/run.py</span> in <span class="ni">Feed</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>                 <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">TwitterSearch</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">65</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">feed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">init</span> <span class="o">=</span> <span class="n">feed</span><span class="o">.</span><span class="n">Json</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>                 <span class="k">break</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/twint/feed.py</span> in <span class="ni">Json</span><span class="nt">(response)</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="n">logme</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="vm">__name__</span><span class="o">+</span><span class="s1">&#39;:Json&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">42</span>     <span class="n">json_response</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="n">html</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;items_html&quot;</span><span class="p">]</span>
+
+<span class="nn">/usr/lib/python3.10/json/__init__.py</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>             <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>         <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span>     <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/usr/lib/python3.10/json/decoder.py</span> in <span class="ni">decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">337</span><span class="s2">         obj, end = self.raw_decode(s, idx=_w(s, 0).end())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span><span class="s2">         end = _w(s, end).end()</span>
+
+<span class="nn">/usr/lib/python3.10/json/decoder.py</span> in <span class="ni">raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span><span class="s2">         except StopIteration as err:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span><span class="s2">             raise JSONDecodeError(&quot;Expecting value&quot;, s, err.value) from None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span><span class="s2">         return obj, end</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+
+<span class="s2">During handling of the above exception, another exception occurred:</span>
+
+<span class="ne">KeyboardInterrupt</span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-4-e09dc2b670c4&gt;</span> in <span class="ni">&lt;cell line: 25&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span><span class="s2"> c.Pandas = True</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span><span class="s2"> c.Store_csv = True</span>
+<span class="ne">---&gt; </span><span class="mi">25</span><span class="s2"> twint.run.Search(c)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span><span class="s2"> Tweets_df = twint.storage.panda.Tweets_df</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/twint/run.py</span> in <span class="ni">Search</span><span class="nt">(config, callback)</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span><span class="s2">     config.Profile = False</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span><span class="s2">     config.Profile_full = False</span>
+<span class="ne">--&gt; </span><span class="mi">327</span><span class="s2">     run(config, callback)</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span><span class="s2">     if config.Pandas_au:</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span><span class="s2">         storage.panda._autoget(&quot;tweet&quot;)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/twint/run.py</span> in <span class="ni">run</span><span class="nt">(config, callback)</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="s2">         raise</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">226</span><span class="s2">     get_event_loop().run_until_complete(Twint(config).main(callback))</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span><span class="s2"> def Favorites(config):</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/nest_asyncio.py</span> in <span class="ni">run_until_complete</span><span class="nt">(self, future)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">                 f._log_destroy_pending = False</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="s2">             while not f.done():</span>
+<span class="ne">---&gt; </span><span class="mi">84</span><span class="s2">                 self._run_once()</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="s2">                 if self._stopping:</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span><span class="s2">                     break</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/nest_asyncio.py</span> in <span class="ni">_run_once</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span><span class="s2">             handle = ready.popleft()</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span><span class="s2">             if not handle._cancelled:</span>
+<span class="ne">--&gt; </span><span class="mi">120</span><span class="s2">                 handle._run()</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span><span class="s2">         handle = None</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span><span class="s2"> </span>
+
+<span class="nn">/usr/lib/python3.10/asyncio/events.py</span> in <span class="ni">_run</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span><span class="s2">     def _run(self):</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span><span class="s2">         try:</span>
+<span class="ne">---&gt; </span><span class="mi">80</span><span class="s2">             self._context.run(self._callback, *self._args)</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span><span class="s2">         except (SystemExit, KeyboardInterrupt):</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="s2">             raise</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/nest_asyncio.py</span> in <span class="ni">step</span><span class="nt">(task, exc)</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span><span class="s2">         curr_task = curr_tasks.get(task._loop)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span><span class="s2">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">196</span><span class="s2">             step_orig(task, exc)</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="s2">         finally:</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="s2">             if curr_task is None:</span>
+
+<span class="nn">/usr/lib/python3.10/asyncio/tasks.py</span> in <span class="ni">__step</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span><span class="s2">                 # We use the `send` method directly, because coroutines</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span><span class="s2">                 # don&#39;t have `__iter__` and `__next__` methods.</span>
+<span class="ne">--&gt; </span><span class="mi">232</span><span class="s2">                 result = coro.send(None)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="s2">                 result = coro.throw(exc)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/twint/run.py</span> in <span class="ni">run</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span><span class="s2">                     elif self.config.TwitterSearch:</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span><span class="s2">                         logme.debug(__name__+&#39;:Twint:main:twitter-search&#39;)</span>
+<span class="ne">--&gt; </span><span class="mi">199</span><span class="s2">                         await self.tweets()</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span><span class="s2">                 else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span><span class="s2">                     logme.debug(__name__+&#39;:Twint:main:no-more-tweets&#39;)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/twint/run.py</span> in <span class="ni">tweets</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span><span class="s2">     async def tweets(self):</span>
+<span class="ne">--&gt; </span><span class="mi">137</span><span class="s2">         await self.Feed()</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span><span class="s2">         if self.config.Location:</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span><span class="s2">             logme.debug(__name__+&#39;:Twint:tweets:location&#39;)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/twint/run.py</span> in <span class="ni">Feed</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="s2">                     sys.stderr.write(&#39;sleeping for </span><span class="si">{}</span><span class="s2"> secs</span><span class="se">\n</span><span class="s2">&#39;.format(delay))</span>
+<span class="ne">---&gt; </span><span class="mi">98</span><span class="s2">                     time.sleep(delay)</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="s2">                     self.user_agent = await get.RandomUserAgent(wa=True)</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span><span class="s2">                     continue</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1062,7 +977,7 @@ Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.10/dist-pa
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Scrape Website with Beautiful Soap</p>
+        <p class="prev-next-title">Scrape Website Berita</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

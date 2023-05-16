@@ -30,9 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-# # instal Twint 
-!pip install Twint
-!pip3 install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint
-!pip install nest_asyncio
+['"""', 'Info Library Twint ', '', '"This repository has been archived by the owner on Mar 30, 2023. It is now read-only."', '']
+...
+['c.Search = "#capres2024" # topic', 'c.Pandas = True', 'c.Store_csv = True', 'twint.run.Search(c)', 'Tweets_df = twint.storage.panda.Tweets_df']
 -------------------
 

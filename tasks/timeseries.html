@@ -162,8 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website Berita</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape PTA UTM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Gabung Kolom dari berbagai Database</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
@@ -423,105 +423,19 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting orchest
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading orchest-0.3.11.tar.gz (17 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pyarrow&lt;8.0,&gt;=1.0.0 (from orchest)
-  Downloading pyarrow-7.0.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (26.7 MB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/26.7 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.3/26.7 MB</span> <span class=" -Color -Color-Red">8.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:04</span>
-     ━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.2/26.7 MB</span> <span class=" -Color -Color-Red">31.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.0/26.7 MB</span> <span class=" -Color -Color-Red">56.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7.9/26.7 MB</span> <span class=" -Color -Color-Red">55.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">9.9/26.7 MB</span> <span class=" -Color -Color-Red">55.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">11.3/26.7 MB</span> <span class=" -Color -Color-Red">64.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">12.2/26.7 MB</span> <span class=" -Color -Color-Red">54.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">13.1/26.7 MB</span> <span class=" -Color -Color-Red">47.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">14.2/26.7 MB</span> <span class=" -Color -Color-Red">41.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">15.4/26.7 MB</span> <span class=" -Color -Color-Red">37.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">16.4/26.7 MB</span> <span class=" -Color -Color-Red">34.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━ <span class=" -Color -Color-Green">17.6/26.7 MB</span> <span class=" -Color -Color-Red">33.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━ <span class=" -Color -Color-Green">18.8/26.7 MB</span> <span class=" -Color -Color-Red">31.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━ <span class=" -Color -Color-Green">20.0/26.7 MB</span> <span class=" -Color -Color-Red">29.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━ <span class=" -Color -Color-Green">21.1/26.7 MB</span> <span class=" -Color -Color-Red">28.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━ <span class=" -Color -Color-Green">22.4/26.7 MB</span> <span class=" -Color -Color-Red">30.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━ <span class=" -Color -Color-Green">23.4/26.7 MB</span> <span class=" -Color -Color-Red">30.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━ <span class=" -Color -Color-Green">24.8/26.7 MB</span> <span class=" -Color -Color-Red">31.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">34.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">26.7/26.7 MB</span> <span class=" -Color -Color-Red">8.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: requests&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from orchest) (2.27.1)
+Requirement already satisfied: orchest in /usr/local/lib/python3.10/dist-packages (0.3.11)
+Requirement already satisfied: pyarrow&lt;8.0,&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from orchest) (7.0.0)
+Requirement already satisfied: requests&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from orchest) (2.27.1)
 Requirement already satisfied: numpy&gt;=1.16.6 in /usr/local/lib/python3.10/dist-packages (from pyarrow&lt;8.0,&gt;=1.0.0-&gt;orchest) (1.22.4)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (1.26.15)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (2022.12.7)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (2.0.12)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=1.0.0-&gt;orchest) (3.4)
-Building wheels for collected packages: orchest
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for orchest (setup.py) ... ?25l?25hdone
-  Created wheel for orchest: filename=orchest-0.3.11-py3-none-any.whl size=19345 sha256=e8a381d079a023f98ce018aa1f3713d9dc3041d1eec4d78c716e620839a7fb41
-  Stored in directory: /root/.cache/pip/wheels/34/fb/fc/0cfd52dd71822472e9646034483e4add9139a6e62bd0e575fe
-Successfully built orchest
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: pyarrow, orchest
-  Attempting uninstall: pyarrow
-    Found existing installation: pyarrow 9.0.0
-    Uninstalling pyarrow-9.0.0:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Successfully uninstalled pyarrow-9.0.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed orchest-0.3.11 pyarrow-7.0.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyterlab_code_formatter
-  Downloading jupyterlab_code_formatter-2.0.0-py3-none-any.whl (61 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/61.4 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">61.4/61.4 kB</span> <span class=" -Color -Color-Red">2.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: jupyter-server&lt;3,&gt;=1.21 in /usr/local/lib/python3.10/dist-packages (from jupyterlab_code_formatter) (1.24.0)
+Requirement already satisfied: jupyterlab_code_formatter in /usr/local/lib/python3.10/dist-packages (2.0.0)
+Requirement already satisfied: jupyter-server&lt;3,&gt;=1.21 in /usr/local/lib/python3.10/dist-packages (from jupyterlab_code_formatter) (1.24.0)
 Requirement already satisfied: packaging in /usr/local/lib/python3.10/dist-packages (from jupyterlab_code_formatter) (23.1)
 Requirement already satisfied: anyio&lt;4,&gt;=3.1.0 in /usr/local/lib/python3.10/dist-packages (from jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (3.6.2)
 Requirement already satisfied: argon2-cffi in /usr/local/lib/python3.10/dist-packages (from jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (21.3.0)
@@ -561,17 +475,13 @@ Requirement already satisfied: ptyprocess in /usr/local/lib/python3.10/dist-pack
 Requirement already satisfied: argon2-cffi-bindings in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (21.2.0)
 Requirement already satisfied: attrs&gt;=17.4.0 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=5.2.0-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (23.1.0)
 Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=5.2.0-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (0.19.3)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.1-&gt;jupyter-client&gt;=6.1.12-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.16.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.1-&gt;jupyter-client&gt;=6.1.12-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.16.0)
 Requirement already satisfied: cffi&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (1.15.1)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.4.1)
 Requirement already satisfied: webencodings in /usr/local/lib/python3.10/dist-packages (from bleach-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (0.5.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.21)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: jupyterlab_code_formatter
-Successfully installed jupyterlab_code_formatter-2.0.0
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=1.21-&gt;jupyterlab_code_formatter) (2.21)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
@@ -584,10 +494,6 @@ Requirement already satisfied: scipy&gt;=1.3.2 in /usr/local/lib/python3.10/dist
 Requirement already satisfied: joblib&gt;=1.1.1 in /usr/local/lib/python3.10/dist-packages (from scikit-learn) (1.2.0)
 Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn) (3.1.0)
 Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.8.1-&gt;pandas) (1.16.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">ERROR: Operation cancelled by user</span>
-
 </pre></div>
 </div>
 </div>
@@ -827,6 +733,24 @@ memory usage: 592.0 bytes
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;/content/asset&#39;</span><span class="p">)</span>
 <span class="n">passengers_df_norm</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;/content/asset/passengers-df-norm.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">FileExistsError</span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-19-6e16acd390b5&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;/content/asset&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">passengers_df_norm</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;/content/asset/passengers-df-norm.csv&quot;</span><span class="p">)</span>
+
+<span class="nn">/usr/lib/python3.10/os.py</span> in <span class="ni">makedirs</span><span class="nt">(name, mode, exist_ok)</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>             <span class="k">return</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">225</span>         <span class="n">mkdir</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="c1"># Cannot rely on checking for EEXIST, since the operating system</span>
+
+<span class="ne">FileExistsError</span>: [Errno 17] File exists: &#39;/content/asset&#39;
 </pre></div>
 </div>
 </div>

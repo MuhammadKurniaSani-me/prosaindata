@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrape Website with Beautiful Soap &#8212; Proyek Sains Data</title>
+    <title>Scrape PTA UTM &#8212; Proyek Sains Data</title>
   
   
   
@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Gabung Kolom dari berbagai Database" href="get_data_from_dbs.html" />
-    <link rel="prev" title="Scrape Website with Beautiful Soap" href="scrape_media_indonesia_news.html" />
+    <link rel="prev" title="Scrape Website Berita" href="scrape_media_indonesia_news.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,8 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website with Beautiful Soap</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_media_indonesia_news.html">Scrape Website Berita</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Scrape PTA UTM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Gabung Kolom dari berbagai Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
@@ -381,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Scrape Website with Beautiful Soap</h1>
+    <h1>Scrape PTA UTM</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,8 +395,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="scrape-website-with-beautiful-soap">
-<h1>Scrape Website with Beautiful Soap<a class="headerlink" href="#scrape-website-with-beautiful-soap" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="scrape-pta-utm">
+<h1>Scrape PTA UTM<a class="headerlink" href="#scrape-pta-utm" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Use BeautifulSoup Library</p></li>
 <li><p>Main goal is to scrape data from a PTA Universitas Trunojoyo Madura</p></li>
@@ -427,26 +427,9 @@ Requirement already satisfied: webencodings in /usr/local/lib/python3.10/dist-pa
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting bs4
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading bs4-0.0.1.tar.gz (1.1 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: bs4 in /usr/local/lib/python3.10/dist-packages (0.0.1)
 Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (from bs4) (4.11.2)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;bs4) (2.4.1)
-Building wheels for collected packages: bs4
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for bs4 (setup.py) ... ?25l?25hdone
-  Created wheel for bs4: filename=bs4-0.0.1-py3-none-any.whl size=1257 sha256=cd5953d1755130eb316ea27a461ab3dfec013c44638a49cee833870ce6975948
-  Stored in directory: /root/.cache/pip/wheels/25/42/45/b773edc52acb16cd2db4cf1a0b47117e2f69bb4eb300ed0e70
-Successfully built bs4
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: bs4
-Successfully installed bs4-0.0.1
 </pre></div>
 </div>
 </div>
@@ -914,7 +897,7 @@ Successfully installed bs4-0.0.1
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Scrape Website with Beautiful Soap</p>
+        <p class="prev-next-title">Scrape Website Berita</p>
       </div>
     </a>
     <a class="right-next"

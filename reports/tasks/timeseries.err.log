@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 778, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/usr/local/lib/python3.10/dist-packages/jupyter_core/utils/__init__.py", line 182, in ensure_async
-    result = await obj
-  File "/usr/local/lib/python3.10/dist-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1305, in execute
@@ -20,18 +9,31 @@ Traceback (most recent call last):
     return future.result()
   File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1001, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 802, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 852, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-!pip install orchest
-!pip install jupyterlab_code_formatter
-!pip install pandas numpy scikit-learn
--------------------
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import os
+os.makedirs('/content/asset')
+passengers_df_norm.to_csv("/content/asset/passengers-df-norm.csv")
+------------------
+
+
+[0;31m[0m
+[0;31mFileExistsError[0mTraceback (most recent call last)
+[0;32m<ipython-input-19-6e16acd390b5>[0m in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [0;32mimport[0m [0mos[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mos[0m[0;34m.[0m[0mmakedirs[0m[0;34m([0m[0;34m'/content/asset'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0mpassengers_df_norm[0m[0;34m.[0m[0mto_csv[0m[0;34m([0m[0;34m"/content/asset/passengers-df-norm.csv"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/lib/python3.10/os.py[0m in [0;36mmakedirs[0;34m(name, mode, exist_ok)[0m
+[1;32m    223[0m             [0;32mreturn[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    224[0m     [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 225[0;31m         [0mmkdir[0m[0;34m([0m[0mname[0m[0;34m,[0m [0mmode[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    226[0m     [0;32mexcept[0m [0mOSError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    227[0m         [0;31m# Cannot rely on checking for EEXIST, since the operating system[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileExistsError[0m: [Errno 17] File exists: '/content/asset'
 

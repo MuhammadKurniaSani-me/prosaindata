@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scrape Website with Beautiful Soap &#8212; Proyek Sains Data</title>
+    <title>Scrape Website Berita &#8212; Proyek Sains Data</title>
   
   
   
@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'tasks/scrape_media_indonesia_news';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Scrape Website with Beautiful Soap" href="scrape_PTA_UTM.html" />
+    <link rel="next" title="Scrape PTA UTM" href="scrape_PTA_UTM.html" />
     <link rel="prev" title="Scrapping Twitter with Twint" href="scrape_twitter_Twint.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -162,8 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tasks</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="scrape_twitter_Twint.html">Scrapping Twitter with Twint</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Scrape Website with Beautiful Soap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape Website with Beautiful Soap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Scrape Website Berita</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrape_PTA_UTM.html">Scrape PTA UTM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_data_from_dbs.html">Gabung Kolom dari berbagai Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timeseries.html">Time Series</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text_classification_PTA_UTM_UTS.html">Text Classification (UTS)</a></li>
@@ -381,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Scrape Website with Beautiful Soap</h1>
+    <h1>Scrape Website Berita</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,8 +395,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="scrape-website-with-beautiful-soap">
-<h1>Scrape Website with Beautiful Soap<a class="headerlink" href="#scrape-website-with-beautiful-soap" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="scrape-website-berita">
+<h1>Scrape Website Berita<a class="headerlink" href="#scrape-website-berita" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Use BeautifulSoup Library</p></li>
 <li><p>Main goal is to scrape data from Media Indonesia</p></li>
@@ -574,6 +574,24 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">FileExistsError</span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-7-f02b9d3c86ee&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;/content/asset&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;/content/asset/news_media_indonesia_sepak_bola.csv&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/lib/python3.10/os.py</span> in <span class="ni">makedirs</span><span class="nt">(name, mode, exist_ok)</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>             <span class="k">return</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">225</span>         <span class="n">mkdir</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>         <span class="c1"># Cannot rely on checking for EEXIST, since the operating system</span>
+
+<span class="ne">FileExistsError</span>: [Errno 17] File exists: &#39;/content/asset&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -583,7 +601,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-000ed138-3711-4a0d-b9cc-996a017517de">
+  <div id="df-48804cd7-63c9-4157-93f2-d0c8d621eb02">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -612,127 +630,127 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>Diaspora di Kamboja dan Thailand Siap Dukung L...</td>
-      <td>None “Saya kebetulan ditugaskan untuk memandu...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
       <td>Kemampuan Real Madrid akan Diuji di Markas Man...</td>
       <td>None None Man City memiliki rekor kandang yan...</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>2</td>
+      <th>1</th>
+      <td>1</td>
       <td>Bali United Fokus Benahi Benteng Pertahanan</td>
       <td>BALI United fokus memperbaiki penampilan para...</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>3</td>
+      <th>2</th>
+      <td>2</td>
       <td>Manchester City Bisa Langsung Angkat Trofi usa...</td>
       <td>None Piala akan dipersiapkan di sana dan tim ...</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>4</td>
+      <th>3</th>
+      <td>3</td>
       <td>Pelatih PSS Sambut Positif Regulasi Baru Liga 1</td>
       <td>PELATIH kepala baru PSS Marian Mihail menyamb...</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>5</td>
+      <th>4</th>
+      <td>4</td>
       <td>Bielsa Ditunjuk Sebagai Pelatih Timnas Uruguay</td>
       <td>None Bielsa, yang dipecat Leeds United, Febru...</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>6</td>
+      <th>5</th>
+      <td>5</td>
       <td>Klopp Sebut Kemenangan Liverpool Atas Leiceste...</td>
       <td>None Liverpool unggul dua gol lebih dulu mela...</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>7</td>
+      <th>6</th>
+      <td>6</td>
       <td>Komisi X Sebut Erick Thohir Bawa Perubahan Pos...</td>
       <td>None Anggota Komisi X DPR RI Dewi Coryati men...</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>8</td>
+      <th>7</th>
+      <td>7</td>
       <td>Timnas U-22 akan Berjuang Maksimal di Laga Fin...</td>
       <td>None Kini, empat tahun berselang, timnas akan...</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>9</td>
+      <th>8</th>
+      <td>8</td>
       <td>Makam Pele yang Berlapis Emas Dibuka untuk Umum</td>
       <td>None Para pengunjung akan disambut oleh dua p...</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>10</td>
+      <th>9</th>
+      <td>9</td>
       <td>Keluarga Beri Dukungan untuk Witan dari Kampun...</td>
       <td>JELANG final sepak bola di SEA Games 2023 yan...</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>11</td>
+      <th>10</th>
+      <td>10</td>
       <td>Tolak Pakai Jersey Pelangi, Mohamed Didenda Na...</td>
       <td>None Nantes mengatakan Mohamed diganjar hukum...</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>12</td>
+      <th>11</th>
+      <td>11</td>
       <td>Cardiff Gugat Nantes Terkait Pembelian Sala</td>
       <td>None Kuasa hukum Nantes, Senin (15/5), mengat...</td>
     </tr>
     <tr>
-      <th>13</th>
-      <td>13</td>
+      <th>12</th>
+      <td>12</td>
       <td>Tekuk Leicester, Liverpool Pertahankan Peluang...</td>
       <td>None Bagi Leicester, kekalahan itu membuat me...</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>14</td>
+      <th>13</th>
+      <td>13</td>
       <td>Barcelona Gelar Parade Juara</td>
       <td>None El Barce mangalahkan Espanyol, Senin (15...</td>
     </tr>
     <tr>
-      <th>15</th>
-      <td>15</td>
+      <th>14</th>
+      <td>14</td>
       <td>Jangan Kendurkan Mental Garuda Muda</td>
       <td>None Kemenangan atas juara bertahan edisi 201...</td>
     </tr>
     <tr>
-      <th>16</th>
-      <td>16</td>
+      <th>15</th>
+      <td>15</td>
       <td>Format Baru Liga 1 Disosialisasikan, ada VAR h...</td>
       <td>None Kompetisi musim 2023-2024 akan digelar p...</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>17</td>
+      <th>16</th>
+      <td>16</td>
       <td>Titik Balik Inter Milan di Eropa Lewat Liga Ch...</td>
       <td>None Inter mengawali kompetisi kasta tertingg...</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>18</td>
+      <th>17</th>
+      <td>17</td>
       <td>Guardiola Puji Gundogan Usai Laga Kontra Everton</td>
       <td>None Dalam laga lanjutan Liga Primer Inggris ...</td>
     </tr>
     <tr>
-      <th>19</th>
-      <td>19</td>
+      <th>18</th>
+      <td>18</td>
       <td>Usai Antar Barcelona Juara La Liga, Busquets I...</td>
       <td>None Pemain berusia 34 tahun itu bakal mengak...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>19</td>
+      <td>Barcelona Juara La Liga, Laporta Puji Xavi</td>
+      <td>None "Xavi sangat menentukan. Pengetahuannya ...</td>
     </tr>
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-000ed138-3711-4a0d-b9cc-996a017517de')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-48804cd7-63c9-4157-93f2-d0c8d621eb02')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -783,12 +801,12 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 
       <script>
         const buttonEl =
-          document.querySelector('#df-000ed138-3711-4a0d-b9cc-996a017517de button.colab-df-convert');
+          document.querySelector('#df-48804cd7-63c9-4157-93f2-d0c8d621eb02 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-000ed138-3711-4a0d-b9cc-996a017517de');
+          const element = document.querySelector('#df-48804cd7-63c9-4157-93f2-d0c8d621eb02');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -856,7 +874,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Scrape Website with Beautiful Soap</p>
+        <p class="prev-next-title">Scrape PTA UTM</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
